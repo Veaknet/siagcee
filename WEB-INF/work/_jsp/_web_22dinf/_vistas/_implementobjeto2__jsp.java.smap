@@ -1,0 +1,21 @@
+SMAP
+_implementobjeto2__jsp.java
+JSP
+*S JSP
+*F
++ 1 implementobjeto2.jsp
+WEB-INF/vistas/implementobjeto2.jsp
++ 2 adminheader.jsp
+WEB-INF/vistas/adminheader.jsp
+*L
+1#1:29
+2#2,5:30
+6#2,2:35
+7#2:37,2
+7#2,7:38
+13#2:45
+7#1,9:46
+15#1,2:55
+16#1:57,3
+20#1:60
+*E

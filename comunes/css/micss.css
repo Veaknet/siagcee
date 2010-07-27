@@ -1,0 +1,218 @@
+@charset "utf-8";
+/* CSS Document */
+
+h1 {
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+body {
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+}
+a:link, a:visited, a:active{
+	text-decoration:none;
+	color: #3366ff;
+}
+a:hover {
+	text-decoration: underline;
+	color: #3366ff;
+}
+img{
+	border: none;
+}
+
+table.reporte{
+	border-collapse:collapse;
+	border-style: ridge;
+	border-width: medium;
+}
+
+h1, h2, h3 {
+	text-transform:capitalize;
+}
+
+label {
+	text-transform:capitalize;
+	font-style:italic;
+}
+
+tr.reporteTR{
+	background-color: #9999ff;
+	color: white;
+}
+
+tr.selectedTR{
+	background-color: #CCCC66;
+	color: black;
+}
+
+table.tablaprincipal{
+	width:500px;
+	min-width:500px;
+	max-width:1200px;
+	border-width:0px;
+	text-align:center;
+}
+
+table.tablasecundaria{
+	width:1010px;
+	min-width:1010px;
+	max-width:1010px;
+	border-left:burlywood ridge thick;
+	border-bottom:burlywood ridge thick;
+	border-width:3px;
+}
+
+table.tablasecundariatitulo{
+	background: url(../imagenes/fondotitulo.png) repeat-x;
+  background-position: top right;
+	width:1010px;
+	min-width:1010px;
+	max-width:1010px;
+	border-right:burlywood ridge thick;
+	border-top:burlywood ridge thick;
+	border-width:3px;
+}
+
+table.tablageneradorestudio{
+	min-width:100px;
+	border-right:burlywood groove thin;
+	border-top:burlywood outset thin;
+	border-width:2px;
+
+}
+
+table.tablageneradorestudio2{
+	min-width:100px;
+	border-left:burlywood groove thin;
+	border-bottom:burlywood outset thin;
+	border-width:2px;
+
+}
+
+span.enlaces_banner{
+	text-transform:capitalize;
+}
+
+span.enlaces_banner a{
+}
+
+div.encapsulador{
+	display: none;
+	position: absolute;
+	top:40%;
+	left:40%;
+	width:350px;
+	height: 60px;
+}
+div.mensaje_alerta {
+	border: chocolate outset thin;
+	background: khaki;
+	position: relative;
+	padding: 0.5em;
+	bottom: 4px;
+	right: 4px;
+}
+
+div.fondo {
+	border: darkgray outset thin;
+	background: darkgray;
+	display: block;
+	position: relative;
+}
+/*
+ * SimpleModal Basic Modal Dialog
+ * http://www.ericmmartin.com/projects/simplemodal/
+ * http://code.google.com/p/simplemodal/
+ *
+ * Copyright (c) 2009 Eric Martin - http://ericmmartin.com
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Revision: $Id: basic.css 213 2009-09-17 04:10:02Z emartin24 $
+ *
+ */
+
+/* Overlay */
+#simplemodal-overlay {cursor:wait;}
+
+/* Container */
+#simplemodal-container {height:400px; width:550px; color: #ffffff; background-color: #666666; border:4px solid #999900; padding:12px;}
+#simplemodal-container code {background: #cccccc; border-left:3px solid #65B43D; color:#bbb; display:block; margin-bottom:12px; padding:4px 6px 6px;}
+#simplemodal-container a {color: #ffcc33;}
+#simplemodal-container img.modalCloseImg {background:url(../imagenes/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+#simplemodal-container {padding:8px;}
+
+/*MENU*/
+/* General */
+#cssdropdown, #cssdropdown ul { list-style: none; }
+#cssdropdown, #cssdropdown * { padding: 0; margin: 0; }
+
+/* Head links */
+#cssdropdown li.headlink { min-width:96px; float: left; margin-left: -1px; border: 1px black solid; background-color: #e9e9e9; text-align: center; }
+#cssdropdown li.headlink a { display: block; padding: 5px; }
+
+/* Child lists and links */
+#cssdropdown li.headlink ul { display: none; border-top: 1px black solid; text-align: left; }
+#cssdropdown li.headlink:hover ul { display: block; }
+#cssdropdown li.headlink ul li a { padding: 5px;}
+#cssdropdown li.headlink ul li a:hover { background-color: #999999; color: #FFFFFF}
+
+#cssdropdown li.childlink {background-image: url(../imagenes/fondotitulo.png); background-position: bottom; padding-bottom: 0px; }
+
+/* Pretty styling */
+#cssdropdown a { color: #000000; } #cssdropdown ul li a:hover { text-decoration: none; }
+#cssdropdown li.headlink { background-color: white; background-image: url(../imagenes/fondotitulo.png); }
+#cssdropdown li.headlink ul { background-image: url(../imagenes/fondotitulo.png); background-position: bottom; padding-bottom: 0px; }
+
+
+/* tables */
+table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #999900;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #000000;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #cccc00;
+}
+
+textarea{
+  width: 500px;
+  height: 150px;
+  border: 3px solid #cccccc;
+  padding: 5px;
+}

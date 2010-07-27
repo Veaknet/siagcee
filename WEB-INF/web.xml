@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app>
+
+	<display-name>SIGECENE - Sistema Para La Gestión De Censos, Encuestas y Estudios</display-name>
+	<description>SIGECENE - Sistema Para La Gestión De Censos, Encuestas y Estudios</description>
+
+
+<!-- Controladores del Módulo Administrador -->
+
+	<servlet>
+		<servlet-name>Autenticar</servlet-name>
+    <servlet-class>com.siagcee.web.Autenticar</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Autenticar</servlet-name>
+	  <url-pattern>/autenticar.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Ayuda</servlet-name>
+    <servlet-class>com.siagcee.web.Ayuda</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Ayuda</servlet-name>
+	  <url-pattern>/ayuda.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Respuestas</servlet-name>
+    <servlet-class>com.siagcee.web.AdministrarRespuestas</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Respuestas</servlet-name>
+	  <url-pattern>/adminrespuestas.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Respuestas2</servlet-name>
+    <servlet-class>com.siagcee.web.AdministrarRespuestas2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Respuestas2</servlet-name>
+	  <url-pattern>/adminrespuestas2.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Respuestas3</servlet-name>
+    <servlet-class>com.siagcee.web.AdministrarRespuestas3</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Respuestas3</servlet-name>
+	  <url-pattern>/adminrespuestas3.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Preguntas</servlet-name>
+    <servlet-class>com.siagcee.web.AdministrarPreguntas</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Preguntas</servlet-name>
+	  <url-pattern>/adminpreguntas.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Objetos</servlet-name>
+    <servlet-class>com.siagcee.web.AdministrarObjetos</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Objetos</servlet-name>
+	  <url-pattern>/adminobjetos.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Objetos2</servlet-name>
+    <servlet-class>com.siagcee.web.AdministrarObjetos2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Objetos2</servlet-name>
+	  <url-pattern>/adminobjetos2.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Objetos3</servlet-name>
+    <servlet-class>com.siagcee.web.AdministrarObjetos3</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Objetos3</servlet-name>
+	  <url-pattern>/adminobjetos3.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ImplementarObjeto</servlet-name>
+    <servlet-class>com.siagcee.web.ImplementObjeto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ImplementarObjeto</servlet-name>
+	  <url-pattern>/implementobjeto.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Salir</servlet-name>
+    <servlet-class>com.siagcee.web.Salir</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Salir</servlet-name>
+	  <url-pattern>/salir.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SalirUsuario</servlet-name>
+    <servlet-class>com.siagcee.web.SalirUsuario</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>SalirUsuario</servlet-name>
+	  <url-pattern>/salirusuario.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AutenticarUsuario</servlet-name>
+    <servlet-class>com.siagcee.web.AutenticarUsuario</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>AutenticarUsuario</servlet-name>
+	  <url-pattern>/autenticarusuario.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserObjetos</servlet-name>
+    <servlet-class>com.siagcee.web.UserObjetos</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>UserObjetos</servlet-name>
+	  <url-pattern>/userobjetos.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GeneradorSQL</servlet-name>
+    <servlet-class>com.siagcee.web.GeneradorSQL</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>GeneradorSQL</servlet-name>
+	  <url-pattern>/generadorsql.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminInsObj</servlet-name>
+    <servlet-class>com.siagcee.web.AdministraInstanciaObjeto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>AdminInsObj</servlet-name>
+	  <url-pattern>/admininsobj.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MostrarInfo</servlet-name>
+    <servlet-class>com.siagcee.web.MostrarInfo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>MostrarInfo</servlet-name>
+	  <url-pattern>/mostrarinfo.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminRelaciones</servlet-name>
+    <servlet-class>com.siagcee.web.AdministrarRelacion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>AdminRelaciones</servlet-name>
+	  <url-pattern>/adminrelaciones.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminRelaciones2</servlet-name>
+    <servlet-class>com.siagcee.web.AdministrarRelacion2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>AdminRelaciones2</servlet-name>
+	  <url-pattern>/adminrelaciones2.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GeneradorEstudios</servlet-name>
+    <servlet-class>com.siagcee.web.GeneradorEstudios</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>GeneradorEstudios</servlet-name>
+	  <url-pattern>/generadorestudios</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AplicadorEstudios</servlet-name>
+    <servlet-class>com.siagcee.web.AplicadorEstudios</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>AplicadorEstudios</servlet-name>
+	  <url-pattern>/aplicadorestudios</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Cuentas</servlet-name>
+    <servlet-class>com.siagcee.web.Cuentas</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Cuentas</servlet-name>
+	  <url-pattern>/cuentas.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>IndexAdminMenu</servlet-name>
+    <servlet-class>com.siagcee.web.IndexAdminMenu</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>IndexAdminMenu</servlet-name>
+	  <url-pattern>/indexadminmenu.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Estudios</servlet-name>
+    <servlet-class>com.siagcee.web.Estudios</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Estudios</servlet-name>
+	  <url-pattern>/estudios.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SqlPreview</servlet-name>
+    <servlet-class>com.siagcee.web.SqlPreview</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>SqlPreview</servlet-name>
+	  <url-pattern>/sqlpreview</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CorreosAInv</servlet-name>
+		<servlet-class>com.siagcee.web.CorreosAInvitar</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CorreosAInv</servlet-name>
+		<url-pattern>/correos_a_invitar.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Mensaje</servlet-name>
+		<servlet-class>com.siagcee.web.Mensaje</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Mensaje</servlet-name>
+		<url-pattern>/mensaje.do</url-pattern>
+	</servlet-mapping>
+
+	<listener>
+		<listener-class>
+			com.siagcee.logic.ContextListener
+		</listener-class>
+	</listener>
+
+</web-app>

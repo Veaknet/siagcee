@@ -1,0 +1,28 @@
+SMAP
+_adminpregunta__jsp.java
+JSP
+*S JSP
+*F
++ 1 adminpregunta.jsp
+adminpregunta.jsp
++ 2 header.jsp
+header.jsp
+*L
+1#1:28
+2#2,5:29
+6#2,10:34
+2#1:44
+11#1,5:45
+15#1:50
+19#1,15:51
+33#1:66
+37#1,5:67
+41#1:72
+45#1:73,2
+47#1,5:75
+51#1:80
+56#1:81,2
+60#1:83,2
+64#1:85,2
+70#1:87
+*E
