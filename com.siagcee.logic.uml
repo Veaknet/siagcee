@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagramm>
+  <classes>
+    <class fqn="com.siagcee.logic.OrdenadorResultadosEstudio" x="1634.0" y="1980.0" />
+    <class fqn="com.siagcee.logic.OrdenadorUsuarios" x="1315.0" y="1980.0" />
+    <class fqn="com.siagcee.logic.Respuesta" x="2385.950657894737" y="528.0" />
+    <class fqn="com.siagcee.logic.EstructuraBase" x="2209.0" y="1647.0" />
+    <class fqn="com.siagcee.logic.Objeto" x="2946.950657894737" y="558.0" />
+    <class fqn="com.siagcee.logic.InstanciaPregunta" x="3832.950657894737" y="528.0" />
+    <class fqn="com.siagcee.logic.AccesosEncuestados" x="740.0" y="688.0" />
+    <class fqn="com.siagcee.logic.OrdenadorRespuestas" x="2035.0" y="1980.0" />
+    <class fqn="com.siagcee.logic.Pregunta" x="4384.950657894737" y="638.0" />
+    <class fqn="com.siagcee.logic.DatoSolicitadoEstudio" x="257.0" y="2353.0" />
+    <class fqn="com.siagcee.logic.ContextListener" x="1086.0" y="2353.0" />
+    <class fqn="com.siagcee.logic.OrdenadorInstanciaPreguntas" x="952.0" y="1980.0" />
+    <class fqn="com.siagcee.logic.Encuesta" x="3628.0" y="1647.0" />
+    <class fqn="com.siagcee.logic.InstanciaObjeto" x="3367.950657894737" y="588.0" />
+    <class fqn="com.siagcee.logic.Relacion" x="3155.0" y="1647.0" />
+    <class fqn="com.siagcee.logic.Estudio.NodoResultadoCalculo" x="1998.0" y="1727.5" />
+    <class fqn="com.siagcee.logic.OrdenadorObjetos" x="2599.0" y="1980.0" />
+    <class fqn="com.siagcee.logic.Encuestado" x="275.25" y="1617.0" />
+    <class fqn="com.siagcee.logic.OrdenadorEstudios" x="0.0" y="2353.0" />
+    <class fqn="com.siagcee.logic.ObjetoBase" x="2279.4375" y="0.0" />
+    <class fqn="com.siagcee.logic.UtilidadesVarias" x="601.0" y="2353.0" />
+    <class fqn="com.siagcee.logic.Estudio.NodoResultadoCalculoSinCoincidencias" x="1711.0" y="1727.5" />
+    <class fqn="com.siagcee.logic.RespuestasPosibles" x="0.0" y="748.0" />
+    <class fqn="com.siagcee.logic.DuplicadorRespuestas" x="1278.0" y="578.0" />
+    <class fqn="com.siagcee.logic.OrdenadorInstanciaObjetos" x="611.0" y="1980.0" />
+    <class fqn="com.siagcee.logic.Usuario" x="478.0" y="798.5" />
+    <class fqn="com.siagcee.logic.Estudio" x="1751.0" y="248.0" />
+    <class fqn="com.siagcee.logic.Nodo" x="0.0" y="1980.0" />
+    <class fqn="com.siagcee.logic.CursoEjecucionNodo" x="305.0" y="1980.0" />
+    <class fqn="com.siagcee.logic.Censo" x="2682.0" y="1647.0" />
+    <class fqn="com.siagcee.logic.Administrador" x="604.25" y="1607.0" />
+    <class fqn="com.siagcee.logic.OrdenadorPreguntas" x="2324.0" y="1980.0" />
+  </classes>
+  <packages />
+  <edges>
+    <edge source="com.siagcee.logic.Censo" target="com.siagcee.logic.Objeto" relationship="GENERALIZATION">
+      <point x="1.1368683772161603E-13" y="-124.0" />
+      <point x="2908.5" y="1587.0" />
+      <point x="3097.325657894737" y="1587.0" />
+      <point x="-50.125" y="344.5" />
+    </edge>
+    <edge source="com.siagcee.logic.Estudio.NodoResultadoCalculo" target="com.siagcee.logic.Estudio" relationship="INNER_CLASS">
+      <point x="0.0" y="-43.5" />
+      <point x="2093.5" y="1587.0" />
+      <point x="2078.0" y="1587.0" />
+      <point x="109.0" y="654.5" />
+    </edge>
+    <edge source="com.siagcee.logic.EstructuraBase" target="com.siagcee.logic.Objeto" relationship="GENERALIZATION">
+      <point x="0.0" y="-124.0" />
+      <point x="2435.5" y="1577.0" />
+      <point x="2997.075657894737" y="1577.0" />
+      <point x="-150.375" y="344.5" />
+    </edge>
+    <edge source="com.siagcee.logic.InstanciaPregunta" target="com.siagcee.logic.ObjetoBase" relationship="GENERALIZATION">
+      <point x="0.0" y="-374.5" />
+      <point x="4098.950657894737" y="198.0" />
+      <point x="2479.1875" y="198.0" />
+      <point x="82.25" y="84.0" />
+    </edge>
+    <edge source="com.siagcee.logic.Estudio.NodoResultadoCalculoSinCoincidencias" target="com.siagcee.logic.Estudio" relationship="INNER_CLASS">
+      <point x="0.0" y="-43.5" />
+      <point x="1844.5" y="1587.0" />
+      <point x="1860.0" y="1587.0" />
+      <point x="-109.0" y="654.5" />
+    </edge>
+    <edge source="com.siagcee.logic.Estudio" target="com.siagcee.logic.ObjetoBase" relationship="GENERALIZATION">
+      <point x="0.0" y="-654.5" />
+      <point x="1969.0" y="228.0" />
+      <point x="2385.1875" y="228.0" />
+      <point x="-11.75" y="84.0" />
+    </edge>
+    <edge source="com.siagcee.logic.AccesosEncuestados" target="com.siagcee.logic.ObjetoBase" relationship="GENERALIZATION">
+      <point x="0.0" y="-214.5" />
+      <point x="999.0" y="208.0" />
+      <point x="2338.1875" y="208.0" />
+      <point x="-58.75" y="84.0" />
+    </edge>
+    <edge source="com.siagcee.logic.Usuario" target="com.siagcee.logic.ObjetoBase" relationship="GENERALIZATION">
+      <point x="0.0" y="-104.0" />
+      <point x="599.0" y="198.0" />
+      <point x="2314.6875" y="198.0" />
+      <point x="-82.25" y="84.0" />
+    </edge>
+    <edge source="com.siagcee.logic.RespuestasPosibles" target="com.siagcee.logic.ObjetoBase" relationship="GENERALIZATION">
+      <point x="0.0" y="-154.5" />
+      <point x="229.0" y="188.0" />
+      <point x="2291.1875" y="188.0" />
+      <point x="-105.75" y="84.0" />
+    </edge>
+    <edge source="com.siagcee.logic.Encuestado" target="com.siagcee.logic.Usuario" relationship="GENERALIZATION">
+      <point x="5.6843418860808015E-14" y="-154.0" />
+      <point x="429.75" y="1587.0" />
+      <point x="538.5" y="1587.0" />
+      <point x="-60.5" y="104.0" />
+    </edge>
+    <edge source="com.siagcee.logic.Encuesta" target="com.siagcee.logic.Objeto" relationship="GENERALIZATION">
+      <point x="0.0" y="-124.0" />
+      <point x="3854.5" y="1577.0" />
+      <point x="3297.825657894737" y="1577.0" />
+      <point x="150.375" y="344.5" />
+    </edge>
+    <edge source="com.siagcee.logic.DuplicadorRespuestas" target="com.siagcee.logic.ObjetoBase" relationship="GENERALIZATION">
+      <point x="0.0" y="-324.5" />
+      <point x="1504.5" y="218.0" />
+      <point x="2361.6875" y="218.0" />
+      <point x="-35.25" y="84.0" />
+    </edge>
+    <edge source="com.siagcee.logic.Respuesta" target="com.siagcee.logic.ObjetoBase" relationship="GENERALIZATION">
+      <point x="0.0" y="-374.5" />
+      <point x="2656.450657894737" y="228.0" />
+      <point x="2408.6875" y="228.0" />
+      <point x="11.75" y="84.0" />
+    </edge>
+    <edge source="com.siagcee.logic.Objeto" target="com.siagcee.logic.ObjetoBase" relationship="GENERALIZATION">
+      <point x="0.0" y="-344.5" />
+      <point x="3147.450657894737" y="218.0" />
+      <point x="2432.1875" y="218.0" />
+      <point x="35.25" y="84.0" />
+    </edge>
+    <edge source="com.siagcee.logic.Administrador" target="com.siagcee.logic.Usuario" relationship="GENERALIZATION">
+      <point x="0.0" y="-164.0" />
+      <point x="768.25" y="1587.0" />
+      <point x="659.5" y="1587.0" />
+      <point x="60.5" y="104.0" />
+    </edge>
+    <edge source="com.siagcee.logic.InstanciaObjeto" target="com.siagcee.logic.ObjetoBase" relationship="GENERALIZATION">
+      <point x="-5.6843418860808015E-14" y="-314.5" />
+      <point x="3590.450657894737" y="208.0" />
+      <point x="2455.6875" y="208.0" />
+      <point x="58.75" y="84.0" />
+    </edge>
+    <edge source="com.siagcee.logic.Relacion" target="com.siagcee.logic.Objeto" relationship="GENERALIZATION">
+      <point x="1.1368683772161603E-13" y="-124.0" />
+      <point x="3381.5" y="1587.0" />
+      <point x="3197.575657894737" y="1587.0" />
+      <point x="50.125" y="344.5" />
+    </edge>
+    <edge source="com.siagcee.logic.Pregunta" target="com.siagcee.logic.ObjetoBase" relationship="GENERALIZATION">
+      <point x="0.0" y="-264.5" />
+      <point x="4616.950657894737" y="188.0" />
+      <point x="2502.6875" y="188.0" />
+      <point x="105.75" y="84.0" />
+    </edge>
+  </edges>
+  <settings isCamel="false" isColorManagerEnabled="true" isFieldsVisible="true" isConstructorsVisible="true" isMethodsVisible="true" isShowDependencies="false" isShowInnerClasses="true" defaultVisibility="private" isPropertiesVisible="true" zoom="1.0" x="495.5" y="978.0" />
+  <SelectedNodes />
+</ClassDiagramm>
+
