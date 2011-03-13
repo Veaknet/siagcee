@@ -21,9 +21,9 @@
           <root url="file://$MODULE_DIR$/.." relative="/" />
         </webroots>
         <building>
-          <setting name="EXPLODED_URL" value="file://" />
+          <setting name="EXPLODED_URL" value="file:$MODULE_DIR$/../../../../" />
           <setting name="EXPLODED_ENABLED" value="false" />
-          <setting name="JAR_URL" value="file://" />
+          <setting name="JAR_URL" value="file:$MODULE_DIR$/../../../../" />
           <setting name="JAR_ENABLED" value="false" />
           <setting name="EXCLUDE_EXPLODED_DIRECTORY" value="true" />
         </building>
