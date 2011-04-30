@@ -77,9 +77,22 @@ if(request.getParameter("accioninvitar") != null){
 			<%
 				Enumeration _enu = _listadoPreguntas.elements();
 				InstanciaPregunta _pregAct = null;
-				while(_enu.hasMoreElements()){
+                String _strListadoPreguntasDeseadas  = "";
+                while(_enu.hasMoreElements()){
 					_pregAct = (InstanciaPregunta)_enu.nextElement();
-					out.print("<option value='"+_pregAct.getId()+"'>"+_pregAct.getAcronimo()+"</option>");
+					out.print("<option value='"+_pregAct.getId()+"'");
+                    if(request.getParameter("preguntasdeseadas") != null){
+                        String[] _listadoPreguntasDeseadas = request.getParameterValues("preguntasdeseadas");
+                        if(_listadoPreguntasDeseadas != null){
+                            for(int p = 0; p < _listadoPreguntasDeseadas.length; ++p){
+                                String _miParam = _listadoPreguntasDeseadas[p];
+                                if(Integer.valueOf(_miParam) == _pregAct.getId()){
+                                    out.print(" selected='selected' ");
+                                }
+                            }
+                        }
+                    }
+                    out.print(">"+_pregAct.getAcronimo()+"</option>");
 				}
 			%>
 		</select><br />

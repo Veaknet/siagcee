@@ -19,7 +19,7 @@ import java.util.Properties;
  */
 public class UtilidadesVarias {
 
-	public static String dominioWeb = "http://127.0.0.1:8080/siagcee/";
+	public static String dominioWeb = "http://www.ciens.ucv.ve/sigecene/";
 
 	public UtilidadesVarias() {
 	}

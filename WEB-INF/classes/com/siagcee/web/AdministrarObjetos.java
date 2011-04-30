@@ -67,7 +67,7 @@ public class AdministrarObjetos extends HttpServlet{
 							_objetoSeleccionado.setPublico(_miVisible);
 							if(!_objetoSeleccionado.getCargadaDeBD()){
 								//error en su creacion... probablemente el nombre indicado no esta disponible
-								request.setAttribute("mensaje", "<span style='color:red'>El nombre indicado no est&eacute; diponible.</span>");
+								request.setAttribute("mensaje", "<span style='color:red'>El nombre indicado no est&aacute; diponible.</span>");
 								view = request.getRequestDispatcher("WEB-INF/vistas/adminobjetos.jsp");
 								doGet(request, response);
 							}

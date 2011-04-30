@@ -33,19 +33,12 @@
 												</ul>
 											</li>
 											<li class="headlink">
-												<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
-													<a href="#" id='link_estructuras' title="Cree, modifique, publique o elimine estructuras que sirven de base para la creaci&oacute;n de censos o encuestas" onmouseover="this.focus();">Estructuras Base</a>
-												<% }	%>
-												<% if(admin.getTipoUsuario().equals("regular")){ %>
-													<a href="#" id='link_estructuras' title="Revise estructuras que sirven de base para la creaci&oacute;n de censos o encuestas" onmouseover="this.focus();">Revisar Estructuras Base</a>
-												<% }	%>
+                                                <a href="#" id='link_estructuras' title="Cree, modifique, publique o elimine estructuras que sirven de base para la creaci&oacute;n de censos o encuestas" onmouseover="this.focus();">Estructuras Base</a>
 												<ul style="display: none;">
-													<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
 													<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=estructura&opcionbase=armar"><img src="comunes/imagenes/file-add.png" height="18" title="Armar estructura base">&nbsp;Crear</a></li>
 													<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=estructura&opcionbase=modificar"><img src="comunes/imagenes/file-edit.png" height="18" title="Modificar estructura base">&nbsp;Modificar</a></li>
 													<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=estructura&opcionbase=crear"><img src="comunes/imagenes/file-check.png" height="18" title="Generar estructura base previamente armada">&nbsp;Generar</a></li>
 													<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=estructura&opcionbase=eliminar"><img src="comunes/imagenes/file-delete.png" height="18" title="Eliminar estructura base">&nbsp;Eliminar</a></li>
-													<% } %>
 													<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=estructura&opcionbase=revisar"><img src="comunes/imagenes/file-review.png" height="18" title="Revisar estructuras base generadas que no ya no pueden modificarse">&nbsp;Revisar</a></li>
 												</ul>
 											</li>
@@ -101,7 +94,7 @@
 															<a id='link_administrar_cuentas' href="cuentas.do"><img src="comunes/imagenes/profile.png" height="18" title="Maneje las cuentas de administradores del sistema">&nbsp;Cuentas</a>
 														<% } 	%>
 														<% if(admin.getTipoUsuario().equals("regular")){ %>
-															<a id='link_administrar_cuentas' href="cuentas.do"><img src="comunes/imagenes/profile.png" height="18" title="Administre sus datos personales">&nbsp;Mi Cuenta</a>
+															<a id='link_administrar_cuentas' href="cuentas.do"><img src="comunes/imagenes/profile.png" height="18" title="Administre sus datos personales">&nbsp;Cuenta</a>
 														<% } 	%>
 													</li>
 													<li class="childlink">

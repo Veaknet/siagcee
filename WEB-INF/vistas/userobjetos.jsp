@@ -95,7 +95,7 @@ if(request.getAttribute("seleccionado") != null){
 			<h2>Responda las preguntas que se indican</h2>
 		</td>
 		<td style="text-align:right" valign="bottom" width="36px">
-			<a href="autenticarusuario.do" ><img src="comunes/imagenes/back.png" title="Regresar a la Secci&oacute;n Anterior" alt="Regresar a la Secci&oacute;n Anterior" ></a>
+            &nbsp;
 		</td>
 	</tr>
 </table>
@@ -109,7 +109,7 @@ if (!mensaje.equals("")) {
 }
 if(_miIns == null){
 %>
-No existen en este momento Censos o Encuestas disponibles.
+No ha indicado un censo o encuesta para participar.
 <%
 }else{
 	StringBuffer _pregTit = new StringBuffer();  //preguntas titulares inicio de pagina
@@ -142,11 +142,13 @@ No existen en este momento Censos o Encuestas disponibles.
 			if(miPreg.getTipoPregunta() == 100){
 				continue;
 			}
+
 			//titulo de la pregunta
-			_pregTit.append("<a href='#pregunta_"+miPreg.getId()+"'>"+miPreg.getTextoPregunta()+"</a><p />");
+		    //_pregTit.append("<a href='#pregunta_"+miPreg.getId()+"'>"+miPreg.getTextoPregunta()+"</a><p />");
+            _pregTit.append(miPreg.getTextoPregunta());
 
 			//muestro la pregunta
-			_pregResp.append("<p><a name='pregunta_"+miPreg.getId()+"'><label>"+miPreg.getTextoPregunta()+"</label></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#top' title='Regresar al tope de la p&aacute;gina'><img src='comunes/imagenes/top.png' height='18'></a><br />");
+			_pregResp.append("<p><label>"+miPreg.getTextoPregunta()+"</label><br />");
 
 
 			//+++++++++++++++
@@ -254,6 +256,7 @@ No existen en este momento Censos o Encuestas disponibles.
 			}else{
 
 				//ubico la respuesta correspondiente a la pregunta, si existiera
+                _misRespDadasTmp = _misRespDadas.elements();
 				while(_misRespDadasTmp.hasMoreElements()){
 					miRespDada = (Respuesta)_misRespDadasTmp.nextElement();
 					if(miPreg.getId() == miRespDada.getInstanciaPregunta().getId()){
@@ -321,7 +324,7 @@ No existen en este momento Censos o Encuestas disponibles.
 			}
 		}
 
-		out.println(_pregTit);
+		//out.println(_pregTit);
 		out.println(_pregResp);
 		%>
 		<p />

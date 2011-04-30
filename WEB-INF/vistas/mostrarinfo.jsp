@@ -174,18 +174,18 @@ if(_miEst != null){
 	if(accion.equals("mostrarinfodeobjeto")){
 		if((request.getParameter("perohaz") != null) && (request.getParameter("perohaz").equals("eliminar"))){
 %>
-							<div style='text-align:right'><a href="#" onclick='if(confirm("Realmente desea eliminar esta pregunta?")){window.opener.location = "adminobjetos2.do?tipoinstrumento=<% out.print(request.getParameter("tipoinstrumento"));%>&opcionbase=<% out.print(request.getParameter("opcionbase"));%>&accionobjeto=eliminar&objetoseleccionado=<% out.print(_miObj.getId());%>";window.close();}' title="Eliminar" alt="Eliminar">Eliminar</a></div>
+							<div style='text-align:right'><input type="button" value="Eliminar" onclick='if(confirm("Realmente proceder con la eliminaci&oacute;n?")){window.opener.location = "adminobjetos2.do?tipoinstrumento=<% out.print(request.getParameter("tipoinstrumento"));%>&opcionbase=<% out.print(request.getParameter("opcionbase"));%>&accionobjeto=eliminar&objetoseleccionado=<% out.print(_miObj.getId());%>";window.close();}' title="Eliminar" alt="Eliminar" /></div>
 <%
 		}
 	}else{
 		if((request.getParameter("perohaz") != null) && (request.getParameter("perohaz").equals("eliminar"))){
 %>
-							<div style='text-align:right'><a href="#" onclick='if(confirm("Realmente desea eliminar esta pregunta?")){window.opener.location = "adminpreguntas.do?accion=eliminar&preguntaseleccionada=<% out.print(_miPreg.getId());%>";window.close();}' title="Eliminar" alt="Eliminar">Eliminar</a></div>
+							<div style='text-align:right'><input type="button" value="Eliminar esta pregunta" onclick='if(confirm("Realmente desea eliminar esta pregunta?")){window.opener.location = "adminpreguntas.do?accion=eliminar&preguntaseleccionada=<% out.print(_miPreg.getId());%>";window.close();}' title="Eliminar" alt="Eliminar" /></div>
 <%
 		}
 	}
 %>
-							<div style='text-align:right'><a href="#" onclick="window.close();" title="Cerrar esta ventana" alt="Cerrar esta ventana">Cerrar Ventana</a></div>
+							<div style='text-align:right'><input type="button" value="Cerrar esta ventana" onclick="window.close();" title="Cerrar esta ventana" alt="Cerrar esta ventana" /></div>
 						</td>
 					</tr>
 				</table>

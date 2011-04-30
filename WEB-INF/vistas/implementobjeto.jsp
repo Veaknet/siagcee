@@ -305,7 +305,7 @@ while(_misInstanciados99.hasMoreElements()){
 					%>
 						</optgroup>
 					</select>
-					<span style="display:none;" id="infoEstructuras"><a href="#" title="Revisar Instrumento" alt="Revisar Instrumento" onclick="$('#id_encapsulador').show('slow');revisarEstructura();"><img src="comunes/imagenes/search.png" height="18">Revisar Instrumento</a></span><p />
+					<span style="display:none;" id="infoEstructuras"><a href="#" title="Revisar Instrumento Seleccionado" alt="Revisar Instrumento Seleccionado" onclick="$('#id_encapsulador').show('slow');revisarEstructura();"><img src="comunes/imagenes/search.png" height="18">Revisar Instrumento Seleccionado</a></span><p />
 					<label>Fecha de Inicio: </label><input gtbfieldid="1" class="plain" id="inicio"  name="inicio" value="" size="9" readonly="readonly" onkeyup="if(self.gfPop)gfPop.fStartPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;" onclick="if(self.gfPop)gfPop.fStartPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;">&nbsp;&nbsp;&nbsp;
 					<label>Fecha de Cierre: </label><input gtbfieldid="2" class="plain" id="cierre" name="cierre" value="" size="9" readonly="readonly" onkeyup="if(self.gfPop)gfPop.fEndPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;" onclick="if(self.gfPop)gfPop.fEndPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;">
 					<p />

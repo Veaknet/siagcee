@@ -229,7 +229,7 @@ if(_tipoinstrumento.equals("estructura")){
 		</td>
 		<td width="45%" style="max-width:45%" valign="top" align="left">
 			<% if(objetoexterno != null){ %>
-			<h4>Preguntas que se agregar&aacute;n a <% out.print(objetoatrabajar.getObjeto()); %>:</h4>
+			<h4>Preguntas a agregar a <% out.print(objetoatrabajar.getObjeto()); %> desde el instrumento:</h4>
 			<form action="adminobjetos3.do" method="post" name="formListadoPreguntasDeseadas" id="formListadoPreguntasDeseadas">
 				<input type="hidden" value="<% out.print(objetoatrabajar.getId()); %>" name="objetoseleccionado" id="objetoseleccionado">
 				<input type="hidden" value="agregarPreguntas" name="accion" id="accion">
@@ -237,7 +237,7 @@ if(_tipoinstrumento.equals("estructura")){
 				<input type="hidden" name="opcionbase" value="<% out.print(_opcionBase);%>">
 				<select name="listadoPreguntasDeseadas" id="listadoPreguntasDeseadas" size="8" style="max-width:400px;width:400px;" multiple>
 				</select><p />
-				<input type="submit" value="Procesar" name="miboton2" id="miboton2" onclick="seleccionaTodo();">
+				<input type="submit" value="Procesar preguntas agregadas" name="miboton2" id="miboton2" onclick="seleccionaTodo();">
 			</form>
 			<% } %>
 		</td>

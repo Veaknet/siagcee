@@ -110,6 +110,7 @@ if(request.getAttribute("insVector") != null){
 	_opcion = 0;
 	_insVector = (Vector)request.getAttribute("insVector");
 	_titulo = "Seleccione el Censo o Encuesta a Responder";
+	_titulo = "SIGECENE.";
 }
 %>
 <table cellpadding="4" cellspacing="4" class="tablasecundariatitulo">
@@ -117,8 +118,7 @@ if(request.getAttribute("insVector") != null){
 		<td style="text-align:left" valign="top">
 			<h2><% out.print(_titulo);%></h2>
 		</td>
-		<td style="text-align:right" valign="bottom" width="36px">
-			<a href="autenticarusuario.do" ><img src="comunes/imagenes/back.png" title="Regresar a la Secci&oacute;n Anterior" alt="Regresar a la Secci&oacute;n Anterior" ></a>
+		<td style="text-align:right" valign="bottom" width="36px">&nbsp;
 		</td>
 	</tr>
 </table>
@@ -130,34 +130,40 @@ if(request.getAttribute("insVector") != null){
 			<%
 			out.println(_mensaje+"<p />");
 			if(_opcion == 0){
-				if(!_insVector.isEmpty()){
-					Vector _instrumentos = new Vector();
-					Enumeration _enu = _insVector.elements();
-					InstanciaObjeto _insObj = null;
-					%>
-						<form action="autenticarusuario.do" method="get">
-							<label>Censo o Encuesta:</label><br />
-							<select id="identificador_publico" name="identificador_publico" onchange="if(this.value != -1){this.parentNode.submit();}">
-								<option value="-1">Seleccione...</option>
-							<%
-							while (_enu.hasMoreElements()){
-								_insObj = (InstanciaObjeto)_enu.nextElement();
-								if(!(_insObj.getAcceso() == 0 || (request.getParameter("muestratodos") != null))){
-									//solo muestro los publicos
-									//los restringidos se acceden por links
-									continue;
-								}
-								%>
-									<option value="<% out.print(_insObj.getIdPublico()); %>"><% out.print(_insObj.getObjeto()); %></option>
-								<%
-							}
-								%>
-							</select>
-						</form>
-						<%
-					}else{
-						out.println("No existen censos o encuestas disponibles. Disculpe.");
-					}
+                if(true){
+                    out.println("Puede ahora cerrar esta ventana.");
+                    out.println("<script>window.close();</script>");
+                }else{
+                    //por petición del tutor estas lineas quedan deshabilitadas
+                    if(!_insVector.isEmpty()){
+                        Vector _instrumentos = new Vector();
+                        Enumeration _enu = _insVector.elements();
+                        InstanciaObjeto _insObj = null;
+                        %>
+                            <form action="autenticarusuario.do" method="get">
+                                <label>Censo o Encuesta:</label><br />
+                                <select id="identificador_publico" name="identificador_publico" onchange="if(this.value != -1){this.parentNode.submit();}">
+                                    <option value="-1">Seleccione...</option>
+                                <%
+                                while (_enu.hasMoreElements()){
+                                    _insObj = (InstanciaObjeto)_enu.nextElement();
+                                    if(!(_insObj.getAcceso() == 0 || (request.getParameter("muestratodos") != null))){
+                                        //solo muestro los publicos
+                                        //los restringidos se acceden por links
+                                        continue;
+                                    }
+                                    %>
+                                        <option value="<% out.print(_insObj.getIdPublico()); %>"><% out.print(_insObj.getObjeto()); %></option>
+                                    <%
+                                }
+                                    %>
+                                </select>
+                            </form>
+                            <%
+                        }else{
+                            out.println("No existen censos o encuestas disponibles. Disculpe.");
+                        }
+                    }
 				}else{
 					//solicito campo_clave
 					InstanciaPregunta _miPreguntaClave = seleccionado.getObjetoAsociado().retornaPreguntaClave(true);

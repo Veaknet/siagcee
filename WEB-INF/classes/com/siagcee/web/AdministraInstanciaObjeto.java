@@ -108,6 +108,7 @@ public class AdministraInstanciaObjeto extends HttpServlet {
 						}else{
 							sesion.setAttribute("generadorSql_poblacionAsociada", _miIns.getPoblacion_asociada());
 						}
+                        
 						view = request.getRequestDispatcher("generadorsql.do");
 
 					}else{

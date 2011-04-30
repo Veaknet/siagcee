@@ -807,6 +807,12 @@ function hacerPreview(){
 		_salida = _salida;
 	}
 	_output.innerHTML = _salida;
+   var _miBotProce = document.getElementById("boton_procesar");
+    if(_salida == ""){
+        _miBotProce.value="Seleccionar Todos";
+    }else{
+        _miBotProce.value="Procesar";
+    }
 
 }
 
@@ -1013,8 +1019,8 @@ if(!_objetos.isEmpty()){
 <table cellpadding="4" cellspacing="4" class='tablageneradorestudio2' style="max-width:1150px;min-width:1150px;width:1150px">
 	<tr>
 		<td>
-		<h2>Obtener Participantes para el Instrumento</h2>
-		<form action="generadorsql.do" method="post" id="seleccionaform" name="seleccionaform" onsubmit="var _esteSele = document.getElementById('objetoatrabajar').value;if(_esteSele == ''){return false;}">
+		<h2>Filtrar participantes en el instrumento</h2>
+		<form action="generadorsql.do?objetoatrabajar=<% out.print(request.getParameter("objetoatrabajar")); %>&accion=<% out.print(request.getParameter("accion")); %>&invitar=<% out.print(request.getParameter("invitar")); %>&soloeste=<% out.print(request.getParameter("soloeste")); %>&accioninvitar=<% out.print(request.getParameter("accioninvitar")); %>" method="post" id="seleccionaform" name="seleccionaform" onsubmit="var _esteSele = document.getElementById('objetoatrabajar').value;if(_esteSele == ''){return false;}">
 		<input type="hidden" value="seleccionar" id="accion" name="accion"> 
 		<label>Instrumento:</label><select id="objetoatrabajar" name="objetoatrabajar" onchange="document.seleccionaform.submit();">
 		<option id=""
@@ -1104,7 +1110,7 @@ if(objetoatrabajar != null){
 	<input type="hidden" name="total_lineas" id="total_lineas" value="0">
 	<input type="hidden" name="miaccion" id="miaccion" value="nada">
 	<input type="hidden" name="objetoatrabajar" id="objetoatrabajar" value="<% out.print(objetoatrabajar.getId()); %>">
-	<input type="submit" value="Procesar" onclick="return procesarFormSQL();">
+	<input id="boton_procesar" type="submit" value="Seleccionar Todos" onclick="return procesarFormSQL();">
 </form>
 <p/><br /><strong>Vista Preliminar de la Consulta:</strong>
 <div id="preview" name="preview" style="max-width:800px;display:block;border-collapse:collapse;border-color: #CCCCCC;border-style:outset;border-width:thin;text-indent:5px;vertical-align:top;">

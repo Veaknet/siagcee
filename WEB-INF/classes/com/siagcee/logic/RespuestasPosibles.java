@@ -192,9 +192,10 @@ public class RespuestasPosibles extends ObjetoBase{
 				pstmt = _miConexion.prepareStatement("SELECT * FROM pool_respuestas_posibles WHERE id_pool_preguntas = ?");
 				pstmt.setInt(1, padre.getId());
 			}else{
-				pstmt = _miConexion.prepareStatement("SELECT * FROM pool_respuestas_posibles WHERE id_pool_preguntas = ? AND creado_por = ?");
+                //pstmt = _miConexion.prepareStatement("SELECT * FROM pool_respuestas_posibles WHERE id_pool_preguntas = ? AND creado_por = ?");
+				pstmt = _miConexion.prepareStatement("SELECT * FROM pool_respuestas_posibles WHERE id_pool_preguntas = ?");
 				pstmt.setInt(1, padre.getId());
-				pstmt.setInt(2, _usuario.getUsuarioId());
+				//pstmt.setInt(2, _usuario.getUsuarioId());
 			}
 			rs = pstmt.executeQuery();
 		}

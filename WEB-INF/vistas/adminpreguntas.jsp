@@ -161,7 +161,7 @@ try{
 			if(_opcionBase.equals("modificar") || _opcionBase.equals("eliminar") || _opcionBase.equals("revisar")){
 				Enumeration preguntasDisponibles = _preguntas.elements();
 				if(_preguntas.isEmpty()){
-					out.print("No existen preguntas creadas");
+					out.print("No existen preguntas creadas por este usuario a "+_opcionBase);
 				}else{
 				%>
 					<label>Seleccione una pregunta:</label><br />
@@ -222,7 +222,6 @@ try{
 						<option value="31" <% if(preguntaatrabajar != null){if(preguntaatrabajar.getTipoPregunta() == 31){%>selected="selected"<%}}%>>Tipo abierto para n&uacute;meros sin decimales</option>
 						<option value="32" <% if(preguntaatrabajar != null){if(preguntaatrabajar.getTipoPregunta() == 32){%>selected="selected"<%}}%>>Tipo abierto para n&uacute;meros con decimales</option>
 						<option value="33" <% if(preguntaatrabajar != null){if(preguntaatrabajar.getTipoPregunta() == 33){%>selected="selected"<%}}%>>Tipo abierto para fecha</option>
-						<option value="100" <% if(preguntaatrabajar != null){if(preguntaatrabajar.getTipoPregunta() == 100){%>selected="selected"<%}}%>>De uso exclusivo para estudios</option>
 					</select><p />
 					<label style="display:none;">Trabajar como borrador?</label>
 					<select style="display:none;" id="visible" name="visible" onchange="$('#boton').removeAttr('disabled');">

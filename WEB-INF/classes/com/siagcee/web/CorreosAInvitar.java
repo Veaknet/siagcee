@@ -48,7 +48,7 @@ public class CorreosAInvitar extends HttpServlet {
 					if(request.getParameter("correos") != null){
 						_listadoCorreos = request.getParameter("correos");
 						_listadoCorreos2 = _listadoCorreos.split("\n");
-						_mensaje = _mensaje+"\n<br /><p />\n"+"<a target='_blank' href=\""+dominioweb+"autenticarusuario.do?identificador_publico="+_miIns.getIdPublico()+"\">"+_miIns.getObjeto()+"</a>";
+						_mensaje = _mensaje+"\n<br /><p />\n"+"<a target='_blank' href=\""+UtilidadesVarias.dominioWeb+"autenticarusuario.do?identificador_publico="+_miIns.getIdPublico()+"\">"+_miIns.getObjeto()+"</a>";
 						UtilidadesVarias.enviarMailSinAutenticacion(_listadoCorreos2, "Usted esta cordialmente invitado a participar.", _mensaje, "SIGECENE <sigecene@sigecene.com>", "", "mail.cantv.net");
 
 /*							for(int p = 0; p < _listadoCorreos2.length; ++p){

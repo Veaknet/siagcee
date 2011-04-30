@@ -241,7 +241,7 @@ public class AccesosEncuestados extends ObjetoBase{
 								if(_re.getInstanciaPregunta().getTipoPregunta() == 30 || _re.getInstanciaPregunta().getTipoPregunta() == 100){
 									InstanciaObjeto _miIns = new InstanciaObjeto(_e, _micon, rs.getInt("id_objeto_fuente"));
 									if(_primero){
-										_textoEmail = _textoEmail+"\n<br /><p />\n"+"<a target='_blank' href=\""+dominioweb+"autenticarusuario.do?identificador_publico="+_id_objeto_destino.getIdPublico()+"\">"+_miIns.getObjeto()+"</a>";
+										_textoEmail = _textoEmail+"\n<br /><p />\n"+"<a target='_blank' href=\""+UtilidadesVarias.dominioWeb+"autenticarusuario.do?identificador_publico="+_id_objeto_destino.getIdPublico()+"\">"+_miIns.getObjeto()+"</a>";
 									}
 									UtilidadesVarias.enviarMailSinAutenticacion(_re.getRespuestaAbiertaTexto(), "Usted esta cordialmente invitado a participar.", _textoEmail, "SIGECENE <sigecene@sigecene.com>", "", "mail.cantv.net");
 								}else{
