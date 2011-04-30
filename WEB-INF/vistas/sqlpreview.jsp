@@ -176,12 +176,23 @@ if(request.getParameter("accioninvitar") != null){
 	<% if(_accioninvitar.equals("true")) {%>
 	<form action="#">
 		<label>Indique cu&aacute;l es el campo de correo electr&oacute;nico a utilizar para invitar a los participantes:</label><br />
-		<select id='email_id_invite' name="email_id_invite">
+		<select id='email_id_invite' name="email_id_invite" onchange="if(this.value == '-1'){$('#containerParaMensaje').css('display', 'none');}else{$('#containerParaMensaje').css('display', 'block');}">
 			<%
+            boolean setFirst = true;
+            boolean sinEmailInviacion = false;
 			_enu = _listadoPreguntas.elements();
 			_pregAct = null;
 			while(_enu.hasMoreElements()){
 				_pregAct = (InstanciaPregunta)_enu.nextElement();
+                if(setFirst){
+                    if(_pregAct.getPadre().retornaPreguntaComunicacionEmail() == null){
+                        out.print("<option value='-1' selected='selected'>Sin indicar email</option>");
+                        sinEmailInviacion = true;
+                    }else{
+                        out.print("<option value='-1'>Sin indicar email.</option>");
+                    }
+                    setFirst = !setFirst;
+                }
 				if(_pregAct.isCampo_comunicacion_email()){
 					out.print("<option value='"+_pregAct.getId()+"' selected='selected'>"+_pregAct.getAcronimo()+"</option>");
 				}else{
@@ -192,6 +203,7 @@ if(request.getParameter("accioninvitar") != null){
 			%>
 		</select><p />
 		<% if(_miObj != null){ %>
+        <div id="containerParaMensaje" <%if(sinEmailInviacion){out.print("style='display:none'");}else{out.print("style='display:block'");}%>>
 		<label>Mensaje a ser colocado en el correo a enviar:</label><br />
 		<textarea rows="10" cols="120" id="email_id_invite_text" name="email_id_invite_text">
 			Se le invita cordialmente a participar en <% if(_miObj.getObjetoAsociado().getClass().toString().contains("Censo")){out.print("el censo: ");}else{out.print("la encuesta: ");} out.print(_miObj.getObjeto());%>.<br />
@@ -199,7 +211,7 @@ if(request.getParameter("accioninvitar") != null){
 		</textarea>
 		<script language="JavaScript" type="text/javascript">
 	    makeWhizzyWig("email_id_invite_text");
-		</script><p />
+		</script><p /></div>
 		<% }else{ %>
 			 <input type="hidden" value="" id="email_id_invite_text" name="email_id_invite_text">
 		<% } %>

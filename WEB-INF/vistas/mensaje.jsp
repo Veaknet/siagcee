@@ -54,7 +54,7 @@ if(request.getAttribute("titulo") != null){
 				Se ha enviado el mensaje a las personas indicadas por usted.<br /><strong>Mensaje enviado:</strong><br /><p />
 				<% out.print(_mensaje); %>
 			<% }else if(_accion.equals("seleccionar_correos")){ %>
-			<form action="mensaje.do" method="post" onsubmit="$('#id_encapsulador').show('slow');">
+			<form action="mensaje.do?accioninvitar=true" method="post" onsubmit="$('#id_encapsulador').show('slow');">
 				<input type="hidden" value="enviar_correos" id="opcion" name="opcion">
 				<input type="hidden" value="<% out.print(_titulo); %>" id="titulo" name="titulo">
 				<input type="hidden" value="<% out.print(_mensaje); %>" id="mensaje" name="mensaje">
@@ -63,7 +63,7 @@ if(request.getAttribute("titulo") != null){
 				<input type ="submit" value="Enviar Mensaje">
 			</form>
 			<% }else{ %>
-			<form action="mensaje.do" method="post" onsubmit="var _temp = document.getElementById('titulo');if(_temp.value == ''){alert('Debe indicar un asunto');_temp.style.backgroundColor = 'yellow';_temp.focus();return false;}else{_temp.style.backgroundColor = '';return true;}">
+			<form action="mensaje.do?accioninvitar=true" method="post" onsubmit="var _temp = document.getElementById('titulo');if(_temp.value == ''){alert('Debe indicar un asunto');_temp.style.backgroundColor = 'yellow';_temp.focus();return false;}else{_temp.style.backgroundColor = '';return true;}">
 				<input type="hidden" value="seleccionar_correos" id="opcion" name="opcion">
 				<label>Asunto:</label><br />
 				<input type="text" id="titulo" name="titulo" size="100"><p />

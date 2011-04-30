@@ -250,7 +250,7 @@ while(_misInstanciados99.hasMoreElements()){
 	<tr>
 		<td valign="top" align="left">
 			<h2>Publicar Instrumento</h2>
-				<form action="implementobjeto.do" method="post" name="formimplementar" id="formimplementar">
+				<form action="implementobjeto.do?soloeste=false&accioninvitar=true" method="post" name="formimplementar" id="formimplementar">
 					<input type="hidden" name="id" id="id" value="-1"><p />
 					<input type="hidden" name="accion" id="accion" value="insertar"><p />
 					<label>t&iacute;tulo:</label><br /><input type="text" name="objeto" id="objeto" value="" size="50"><p />

@@ -83,7 +83,80 @@
     <favorites_list name="siagcee" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="AdministrarRelacion.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/AdministrarRelacion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="352" column="74" selection-start="22660" selection-end="22660" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generadorsql.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/generadorsql.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="996" column="48" selection-start="37801" selection-end="37801" vertical-scroll-proportion="-4.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="implementobjeto.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/implementobjeto.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="252" column="41" selection-start="7437" selection-end="7437" vertical-scroll-proportion="-4.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sqlpreview.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/sqlpreview.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="178" column="90" selection-start="7060" selection-end="7060" vertical-scroll-proportion="-1.5833334">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImplementObjeto.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/ImplementObjeto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="198" column="83" selection-start="8353" selection-end="8353" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UtilidadesVarias.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/UtilidadesVarias.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="84" column="32" selection-start="2899" selection-end="2899" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccesosEncuestados.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/AccesosEncuestados.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="255" column="40" selection-start="8469" selection-end="8469" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mensaje.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/mensaje.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="55" selection-start="2047" selection-end="2047" vertical-scroll-proportion="0.64030135">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -537,65 +610,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminobjetos.jsp">
+    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/AdministrarRelacion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/Nodo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="352" column="74" selection-start="22660" selection-end="22660" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/AdministrarObjetos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="116" selection-start="3235" selection-end="3235" vertical-scroll-proportion="0.9378428">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/MostrarInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/mostrarinfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="176" column="153" selection-start="6821" selection-end="6821" vertical-scroll-proportion="0.46715328">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminobjetos3.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="239" column="72" selection-start="9118" selection-end="9118" vertical-scroll-proportion="0.707457">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminobjetos2.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="484" column="0" selection-start="18617" selection-end="18617" vertical-scroll-proportion="-5.4693875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/implementobjeto.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="307" column="310" selection-start="10105" selection-end="10105" vertical-scroll-proportion="-7.897959">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/admininsobj.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="378" column="0" selection-start="17964" selection-end="17964" vertical-scroll-proportion="0.669708">
           <folding />
         </state>
       </provider>
@@ -607,44 +631,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/generadorsql.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1101" column="39" selection-start="42787" selection-end="42787" vertical-scroll-proportion="-10.791667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/SqlPreview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="58" selection-start="1380" selection-end="1380" vertical-scroll-proportion="-4.56">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/GeneradorSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="256" column="9" selection-start="10886" selection-end="10886" vertical-scroll-proportion="-14.4">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminheader.jsp">
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/indexadminmenu.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/admininicio.jsp">
+    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/Mensaje.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="81" selection-start="1484" selection-end="1484" vertical-scroll-proportion="-26.208334">
+        <state line="131" column="59" selection-start="5461" selection-end="5461" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/generadorsql.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="996" column="48" selection-start="37801" selection-end="37801" vertical-scroll-proportion="-4.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/correos_a_invitar.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminobjetos3.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminobjetos2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="494" column="600" selection-start="26994" selection-end="26994" vertical-scroll-proportion="0.7312253">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/sqlpreview.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="16" selection-start="4130" selection-end="4130" vertical-scroll-proportion="0.43065694">
+        <state line="178" column="90" selection-start="7060" selection-end="7060" vertical-scroll-proportion="-1.5833334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/implementobjeto.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="252" column="41" selection-start="7437" selection-end="7437" vertical-scroll-proportion="-4.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/GeneradorSQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/UtilidadesVarias.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="32" selection-start="2899" selection-end="2899" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/ImplementObjeto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="198" column="83" selection-start="8353" selection-end="8353" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/AccesosEncuestados.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="255" column="40" selection-start="8469" selection-end="8469" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/mensaje.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="55" selection-start="2047" selection-end="2047" vertical-scroll-proportion="0.64030135">
           <folding />
         </state>
       </provider>

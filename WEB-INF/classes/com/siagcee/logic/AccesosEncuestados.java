@@ -218,9 +218,14 @@ public class AccesosEncuestados extends ObjetoBase{
 				pstmt = _micon.prepareStatement(_SQL+ " AND (id_instancia_preguntas = ?)");
 				pstmt.setInt(1, _idPreguntaEmail);
 				rs = pstmt.executeQuery();
-				boolean _primero = true;
 
-				//*** DOMINIO WEB ***//
+                if(_idPreguntaEmail == -1){
+                    pstmt = _micon.prepareStatement(_SQL);
+                    rs = pstmt.executeQuery();
+                }
+
+                boolean _primero = true;
+                //*** DOMINIO WEB ***//
 				String dominioweb = UtilidadesVarias.dominioWeb;
 				while(rs.next()){
 					Encuestado _e = new Encuestado(_micon, rs.getInt("elaborado_por"));
@@ -251,7 +256,19 @@ public class AccesosEncuestados extends ObjetoBase{
 								eee.printStackTrace();
 							}
 						}
-					}
+					}else{
+                        PreparedStatement pstmt2 = _micon.prepareStatement("SELECT distinct on (elaborado_por) * FROM respuestas WHERE elaborado_por = ? AND id_instancia_objetos = ?");
+                        pstmt2.setInt(1, rs.getInt("elaborado_por"));
+                        pstmt2.setInt(2, rs.getInt("id_objeto_fuente"));
+                        ResultSet rs2 = pstmt2.executeQuery();
+                        if(rs2.next()){
+                            try{
+                                Respuesta _re = new Respuesta(new Encuestado(_micon, rs.getInt("elaborado_por")), _micon, rs2.getInt("id_respuestas"));
+                            }catch (Exception eee){
+                                eee.printStackTrace();
+                            }
+                        }
+                    }
 					_primero = false;
 				}
 			}

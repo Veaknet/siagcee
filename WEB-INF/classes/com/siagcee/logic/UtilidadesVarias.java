@@ -41,7 +41,7 @@ public class UtilidadesVarias {
 		return _miBuffer.toString();
 	}
 
-	public static void enviarMailSinAutenticacion(String _destinatarios[], String _titulo, String _mensaje, String _de, String _encabezados, String _smtp_server) throws MessagingException {
+	public static void enviarMailSinAutenticacion(String _destinatarios[], String _titulo, String _mensaje, String _de, String _encabezados, String _smtp_server){
 		try{
 			// Propiedades de la conexión
 			Properties props = new Properties();
@@ -56,30 +56,38 @@ public class UtilidadesVarias {
 
 			// Construimos el mensaje
 			for (int i = 0; i < _destinatarios.length; i++){
-				String to = _destinatarios[i];
-				MimeMessage message = new MimeMessage(session);
-				message.setFrom(new InternetAddress(_de));
-				message.addRecipient(
-						Message.RecipientType.TO,
-						new InternetAddress(to));
-				message.setSubject(_titulo);
-				//message.setText(_mensaje);
-				message.setContent(_mensaje, "text/html");
-				// Lo enviamos.
-				Transport t = session.getTransport("smtp");
-				t.connect("sigecene@gmail.com", "_siagcee_");
-				t.sendMessage(message, message.getAllRecipients());
+                try{
+                    String to = _destinatarios[i];
+                    MimeMessage message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(_de));
+                    message.addRecipient(
+                            Message.RecipientType.TO,
+                            new InternetAddress(to));
+                    message.setSubject(_titulo);
+                    //message.setText(_mensaje);
+                    message.setContent(_mensaje, "text/html");
+                    // Lo enviamos.
+                    Transport t = session.getTransport("smtp");
+                    t.connect("sigecene@gmail.com", "_siagcee_");
+                    t.sendMessage(message, message.getAllRecipients());
 
-				// Cierre.
-				t.close();
+                    // Cierre.
+                    t.close();
+                }catch (Exception ee){
+                    System.out.println("Error enviando mail");
+                }
 			}
 		}catch (Exception e){
-				e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 
-	public static void enviarMailSinAutenticacion(String _destinatario, String _titulo, String _mensaje, String _de, String _encabezados, String _smtp_server) throws MessagingException {
-		String _destinatarios[] = {_destinatario};
-		enviarMailSinAutenticacion(_destinatarios, _titulo, _mensaje, _de, _encabezados, _smtp_server);
+	public static void enviarMailSinAutenticacion(String _destinatario, String _titulo, String _mensaje, String _de, String _encabezados, String _smtp_server){
+        try{
+            String _destinatarios[] = {_destinatario};
+            enviarMailSinAutenticacion(_destinatarios, _titulo, _mensaje, _de, _encabezados, _smtp_server);
+        }catch (Exception e){
+            System.out.println("Error enviando mail.");
+        }
 	}
 }
