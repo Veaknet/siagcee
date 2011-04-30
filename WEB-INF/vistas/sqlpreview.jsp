@@ -101,7 +101,7 @@ if(request.getParameter("accioninvitar") != null){
 <%
 	if(!_preguntas.isEmpty()){
 %>
-	<table id="myTable" class="tablesorter" style="min-width:940px;max-width:940px;width:940px">
+	<table id="_myTable" class="tablesorter" style="min-width:940px;max-width:940px;width:940px">
 	<thead>
 	<tr>
 		<%
