@@ -614,23 +614,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/SqlPreview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="58" selection-start="1380" selection-end="1380" vertical-scroll-proportion="-4.56">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/AdministraInstanciaObjeto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="110" column="24" selection-start="4816" selection-end="4816" vertical-scroll-proportion="-19.84">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/GeneradorSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1666" selection-end="1666" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -642,9 +628,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/SqlPreview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="58" selection-start="1380" selection-end="1380" vertical-scroll-proportion="-4.56">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/sqlpreview.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="88" column="80" selection-start="3607" selection-end="3607" vertical-scroll-proportion="-17.166666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/GeneradorSQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="256" column="9" selection-start="10886" selection-end="10886" vertical-scroll-proportion="-14.4">
           <folding />
         </state>
       </provider>

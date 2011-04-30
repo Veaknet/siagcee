@@ -148,7 +148,7 @@ public class GeneradorSQL extends HttpServlet{
 
 	//funcion que dado los parametros del formulario atado a este servlet devuelve el codigo SQL deseado
 	private String generaSql(Usuario admin, Connection micon, InstanciaObjeto _padre,HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		StringBuffer _sqlFinal = new StringBuffer();
+		StringBuffer _sqlFinal = new StringBuffer("(");
 		StringBuffer _sqltmp = new StringBuffer();
 		Integer _totalLineas = Integer.parseInt((String)request.getParameter("total_lineas"));
 		InstanciaObjeto _objetoseleccionado = new InstanciaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoatrabajar")));		
@@ -203,7 +203,7 @@ public class GeneradorSQL extends HttpServlet{
 				_sqltmp.append(" AND ");
 
 				if((_insPregunta.getTipoPregunta() == 1) || (_insPregunta.getTipoPregunta() == 2)){
-					_sqltmp.append(" respuestas.id_respuestas_posibles ");
+					_sqltmp.append(" (respuestas.id_respuestas_posibles ");
 					_sqltmp.append(_operador);
 					_sqltmp.append((String)request.getParameter("respuesta_"+i));
 
@@ -255,8 +255,9 @@ public class GeneradorSQL extends HttpServlet{
 
 
 		}
-		_sqlFinal.append(" AND id_instancia_objetos = "+_objetoseleccionado.getId());
-		return new String(_sqlFinal);
+		_sqlFinal.append(" ) AND id_instancia_objetos = "+_objetoseleccionado.getId());
+
+        return new String(_sqlFinal);
 	}
 
 }
