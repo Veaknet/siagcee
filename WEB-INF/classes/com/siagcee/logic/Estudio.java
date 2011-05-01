@@ -1,12 +1,12 @@
 package com.siagcee.logic;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.Vector;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 /**
  * Creado por Fábio Pereira.

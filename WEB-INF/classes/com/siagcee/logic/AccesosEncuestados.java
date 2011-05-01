@@ -10,9 +10,6 @@ package com.siagcee.logic;
  * Hora: 09:00:03 AM
  */
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextListener;
-import javax.servlet.Servlet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -68,11 +68,12 @@ if(request.getParameter("accioninvitar") != null){
 		out.println("La consulta no arroj&oacute; resultados.<br /><p /><a href='#' onclick='window.close();'>Cerrar esta ventana y regresar.</a>");
 	}else{
 %>
-	<form action="sqlpreview" method="post" target="_top">
+	<form action="sqlpreview" method="post" target="_top" id="formPreguntas">
 		<input type="hidden" value="<% out.print(_sqlFinal); %>" id="generadorSql_sqlFinal" name="generadorSql_sqlFinal">
 		<input type="hidden" value="<% out.print(_objetoatrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
 		<input type="hidden" value="<% out.print(_accioninvitar); %>" id="accioninvitar" name="accioninvitar">
-		<label>Indique que preguntas desea revisar:</label><br />
+        <input type="hidden" value="" id="accionextra" name="accionextra">
+        <label>Indique que preguntas desea revisar:</label><br />
 		<select multiple="multiple" id="preguntasdeseadas" name="preguntasdeseadas" size="8">
 			<%
 				Enumeration _enu = _listadoPreguntas.elements();
@@ -96,7 +97,7 @@ if(request.getParameter("accioninvitar") != null){
 				}
 			%>
 		</select><br />
-		<input type="submit" value="Revisar" onclick="if($('#preguntasdeseadas').attr('value') == ''){alert('Debe indicar las preguntas que desea revisar');return false;}return true;">
+		<input type="submit" value="Revisar" onclick="$('#accionextra').val('');if($('#preguntasdeseadas').attr('value') == ''){alert('Debe indicar las preguntas que desea revisar');return false;}return true;">
 	</form>
 <%
 	if(!_preguntas.isEmpty()){
@@ -220,6 +221,7 @@ if(request.getParameter("accioninvitar") != null){
 	</form>		
 	<% }else{ %>
 	<button value="Cerrar esta ventana" onclick="window.close();">Cerrar esta ventana</button>
+    <div style="padding-right:50px;float:right;text-align:right"><a href="javascript:void(null);" onclick="$('#accionextra').val('exportaexcel');$('#formPreguntas').submit();"><img height="32" src="comunes/imagenes/excel.png" alt="Exportar estos datos a excel" title="Exportar estos datos a excel"/></a></div>
 	<% } %>
 	<br />
 </td></tr></table>			

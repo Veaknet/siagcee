@@ -3,8 +3,8 @@ package com.siagcee.logic;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Vector;
 import java.util.Enumeration;
+import java.util.Vector;
 
 /**
  * Creado por Fábio Pereira.

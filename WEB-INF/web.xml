@@ -250,7 +250,16 @@
 		<url-pattern>/mensaje.do</url-pattern>
 	</servlet-mapping>
 
-	<listener>
+	<servlet>
+		<servlet-name>ExportaExcelWeb</servlet-name>
+		<servlet-class>com.siagcee.web.ExportaExcelWeb</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExportaExcelWeb</servlet-name>
+		<url-pattern>/exportaexcel</url-pattern>
+	</servlet-mapping>
+
+    <listener>
 		<listener-class>
 			com.siagcee.logic.ContextListener
 		</listener-class>

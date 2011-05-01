@@ -1,25 +1,20 @@
 package com.siagcee.web;
 
+import com.siagcee.logic.Estudio;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.*;
-import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.labels.PieToolTipGenerator;
 import org.jfree.chart.plot.PiePlot3D;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.AbstractDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.util.Rotation;
 
-import java.util.Vector;
-import java.util.Enumeration;
-import java.util.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-
-import com.siagcee.logic.Estudio;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.Vector;
 
 
 /**

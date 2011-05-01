@@ -1,6 +1,8 @@
 package com.siagcee.web;
 
-import com.siagcee.logic.*;
+import com.siagcee.logic.Administrador;
+import com.siagcee.logic.Pregunta;
+import com.siagcee.logic.RespuestasPosibles;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

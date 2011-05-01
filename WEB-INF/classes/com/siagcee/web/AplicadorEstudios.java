@@ -1,24 +1,20 @@
 package com.siagcee.web;
 
 import com.siagcee.logic.*;
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
-import java.io.File;
-import org.jfree.chart.plot.*;
-import java.io.*;
-import org.jfree.data.category.DefaultCategoryDataset;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.ServletException;
-import javax.servlet.RequestDispatcher;
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.Vector;
 import java.util.Enumeration;
+import java.util.Vector;
 
 /**
  * Creado por Fábio Pereira.

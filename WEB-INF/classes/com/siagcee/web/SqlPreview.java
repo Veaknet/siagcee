@@ -1,16 +1,13 @@
 package com.siagcee.web;
 
-import com.siagcee.logic.Administrador;
-import com.siagcee.logic.InstanciaPregunta;
-import com.siagcee.logic.InstanciaObjeto;
-import com.siagcee.logic.Respuesta;
+import com.siagcee.logic.*;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.ServletException;
-import javax.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -81,7 +78,18 @@ public class SqlPreview extends HttpServlet{
 				}
 				request.setAttribute("preguntas", _tempVec2);
 
+                //es para exportar a Excel
+				if(request.getParameter("accionextra") != null && request.getParameter("accionextra").equals("exportaexcel")){
+
+                    String _nombreArchivo = getServletContext().getAttribute("javax.servlet.context.tempdir")+"/"+_objetoatrabajar.getId()+".xls";
+
+                    UtilidadesVarias.generaExcel(_nombreArchivo, _tempVec2, _tempVec, _objetoatrabajar);
+
+                    view = request.getRequestDispatcher("WEB-INF/tmp/"+_objetoatrabajar.getId()+".xls");
+				}
+
 				view.forward(request, response);
+
 			}catch(Exception e){
 				e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
