@@ -116,9 +116,9 @@ if(_relacionActual != null){
 				out.println("array_preguntas_relacion["+i+"] = new Array();");
 				out.println("array_preguntas_relacion["+i+"]['id'] = '"+_miPregunta.getId()+"';");
 				if(_miPregunta.isCampo_clave_unico()){
-					out.println("array_preguntas_relacion["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_miPregunta.getTextoPregunta(), "'", "\"")+" (Pregunta Clave)';");
+					out.println("array_preguntas_relacion["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_miPregunta.getAcronimo(), "'", "\"")+" (Pregunta Clave)';");
 				}else{
-					out.println("array_preguntas_relacion["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_miPregunta.getTextoPregunta(), "'", "\"")+"';");
+					out.println("array_preguntas_relacion["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_miPregunta.getAcronimo(), "'", "\"")+"';");
 				}
 				out.println("array_preguntas_relacion["+i+"]['tipopregunta'] = '"+_miPregunta.getTipoPregunta()+"';");
 				i++;
@@ -142,9 +142,9 @@ if(_instrumentoSeleccionado != null){
 			  out.println("array_preguntas_instrumento["+i+"] = new Array();");
 				out.println("array_preguntas_instrumento["+i+"]['id'] = '"+_miPregunta.getId()+"';");
 				if(_miPregunta.isCampo_clave_unico()){
-					out.println("array_preguntas_instrumento["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_miPregunta.getTextoPregunta(), "'", "\"")+" (Pregunta Clave)';");
+					out.println("array_preguntas_instrumento["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_miPregunta.getAcronimo(), "'", "\"")+" (Pregunta Clave)';");
 				}else{
-					out.println("array_preguntas_instrumento["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_miPregunta.getTextoPregunta(), "'", "\"")+"';");
+					out.println("array_preguntas_instrumento["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_miPregunta.getAcronimo(), "'", "\"")+"';");
 				}
 				out.println("array_preguntas_instrumento["+i+"]['tipopregunta'] = '"+_miPregunta.getTipoPregunta()+"';");
 				i++;
@@ -271,9 +271,9 @@ if(_instrumentoSeleccionado == null){
 							do{
 								_preguntaActual = (InstanciaPregunta)_enuPreguntas.nextElement();
 								if(_preguntaActual.isCampo_clave_unico()){
-									out.println("<option value='"+_preguntaActual.getId()+"'>"+_preguntaActual.getTextoPregunta()+" (Pregunta Clave)</option>");
+									out.println("<option value='"+_preguntaActual.getId()+"'>"+_preguntaActual.getAcronimo()+" (Pregunta Clave)</option>");
 								}else{
-									out.println("<option value='"+_preguntaActual.getId()+"'>"+_preguntaActual.getTextoPregunta()+"</option>");
+									out.println("<option value='"+_preguntaActual.getId()+"'>"+_preguntaActual.getAcronimo()+"</option>");
 								}
 							}while(_enuPreguntas.hasMoreElements());
 							%>
@@ -289,7 +289,7 @@ if(_instrumentoSeleccionado == null){
 									Collections.sort(_preguntasAMostrar, new OrdenadorInstanciaPreguntas(OrdenadorInstanciaPreguntas.ORDEN_PREGUNTA));
 									do{
 										_preguntaActual = (InstanciaPregunta)_enuPreguntas.nextElement();
-										out.println("<option value='"+_preguntaActual.getId()+"'>"+_preguntaActual.getTextoPregunta()+"</option>");
+										out.println("<option value='"+_preguntaActual.getId()+"'>"+_preguntaActual.getAcronimo()+"</option>");
 									}while(_enuPreguntas.hasMoreElements());
 									%>
 								</select>

@@ -110,7 +110,7 @@ if(request.getParameter("accioninvitar") != null){
 			_pregAct = null;
 			while(_enu.hasMoreElements()){
 				_pregAct = (InstanciaPregunta)_enu.nextElement();
-				out.print("<th title='clic aqu&iacute; para ordenar por: "+_pregAct.getTextoPregunta()+"' style='max-width:140px;'>"+_pregAct.getTextoPregunta()+"</th>");
+				out.print("<th title='clic aqu&iacute; para ordenar por: "+_pregAct.getAcronimo()+"' style='max-width:140px;'>"+_pregAct.getAcronimo()+"</th>");
 			}
 		%>
 	</tr>

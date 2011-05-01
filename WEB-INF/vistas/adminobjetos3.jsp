@@ -214,7 +214,11 @@ if(_tipoinstrumento.equals("estructura")){
 				InstanciaPregunta pre;
 				while(preguntasExternas.hasMoreElements()){
 					pre = (InstanciaPregunta)preguntasExternas.nextElement();
-					out.println("<option value='"+pre.getId()+"'>"+pre.getTextoPregunta()+"</option>");
+                    if(_tipoinstrumento.equals("relacion")){
+                        out.println("<option value='"+pre.getId()+"'>"+pre.getAcronimo()+"</option>");
+                    }else{
+                        out.println("<option value='"+pre.getId()+"'>"+pre.getTextoPregunta()+"</option>");
+                    }
 				}
 			}catch(Exception e){}
 			%>

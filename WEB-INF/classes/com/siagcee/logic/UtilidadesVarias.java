@@ -3,6 +3,8 @@ package com.siagcee.logic;
 import jxl.Workbook;
 import jxl.format.*;
 import jxl.format.Colour;
+import jxl.format.Alignment;
+import jxl.format.VerticalAlignment;
 import jxl.write.*;
 import jxl.write.Number;
 import jxl.write.Border;
@@ -118,12 +120,15 @@ public class UtilidadesVarias {
             while(_enu.hasMoreElements()){
                 _pregAct = (InstanciaPregunta)_enu.nextElement();
 
-                WritableFont times14font = new WritableFont(WritableFont.TIMES, 14, WritableFont.BOLD, true);
+                WritableFont times14font = new WritableFont(WritableFont.TIMES, 12, WritableFont.NO_BOLD);
                 WritableCellFormat times14format = new WritableCellFormat (times14font);
                 times14format.setBorder(Border.ALL, jxl.format.BorderLineStyle.MEDIUM, Colour.BLACK);
+                times14format.setWrap(true);
+                times14format.setAlignment(Alignment.LEFT);
+                times14format.setVerticalAlignment(VerticalAlignment.TOP);
                 times14format.setBackground(Colour.SEA_GREEN);
 
-                Label label = new Label(Col, Fil, _pregAct.getTextoPregunta(), times14format);
+                Label label = new Label(Col, Fil, _pregAct.getAcronimo(), times14format);
                 hoja.addCell(label);
                 Col++;
             }

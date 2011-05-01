@@ -87,7 +87,7 @@
       <file leaf-file-name="UtilidadesVarias.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/UtilidadesVarias.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="157" column="0" selection-start="5913" selection-end="5913" vertical-scroll-proportion="0.0">
+            <state line="131" column="0" selection-start="4892" selection-end="4892" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,7 +98,7 @@
       <file leaf-file-name="sqlpreview.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/sqlpreview.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="171" column="13" selection-start="6879" selection-end="6879" vertical-scroll-proportion="-43.375">
+            <state line="112" column="16" selection-start="4503" selection-end="4503" vertical-scroll-proportion="-7.9583335">
               <folding />
             </state>
           </provider>
@@ -107,7 +107,7 @@
       <file leaf-file-name="SqlPreview.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/SqlPreview.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="0" selection-start="3710" selection-end="3710" vertical-scroll-proportion="1.0996504">
+            <state line="60" column="56" selection-start="2275" selection-end="2275" vertical-scroll-proportion="0.35664335">
               <folding />
             </state>
           </provider>
@@ -567,41 +567,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/DatoSolicitadoEstudio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/Estudios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="0" selection-start="3289" selection-end="4357" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/Censo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/ContextListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/Encuesta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="18" selection-start="517" selection-end="517" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminfooter.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -639,13 +604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/sqlpreview.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="13" selection-start="6879" selection-end="6879" vertical-scroll-proportion="-43.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/Respuesta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -660,13 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/WEB-INF/lib/jxl.jar!/jxl/write/WritableFont.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/WEB-INF/lib/jxl.jar!/jxl/write/WritableCellFormat.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="20" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.53496504">
@@ -674,18 +625,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/WEB-INF/lib/jxl.jar!/jxl/write/WritableFont.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/UtilidadesVarias.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="0" selection-start="5913" selection-end="5913" vertical-scroll-proportion="0.0">
+        <state line="131" column="0" selection-start="4892" selection-end="4892" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/sqlpreview.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="16" selection-start="4503" selection-end="4503" vertical-scroll-proportion="-7.9583335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminrelaciones2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="104" selection-start="3810" selection-end="3810" vertical-scroll-proportion="0.332696">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminrelaciones.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="283" column="104" selection-start="11008" selection-end="11008" vertical-scroll-proportion="-7.020408">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminobjetos.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminobjetos2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="667" column="48" selection-start="45456" selection-end="45456" vertical-scroll-proportion="-3.2040815">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/adminobjetos3.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="218" column="26" selection-start="7873" selection-end="7873" vertical-scroll-proportion="0.3001912">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/SqlPreview.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="0" selection-start="3710" selection-end="3710" vertical-scroll-proportion="1.0996504">
+        <state line="60" column="56" selection-start="2275" selection-end="2275" vertical-scroll-proportion="0.35664335">
           <folding />
         </state>
       </provider>

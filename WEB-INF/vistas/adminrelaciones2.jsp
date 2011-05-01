@@ -60,7 +60,7 @@ if(_instanciaObjeto != null && _relacionadaInstancia != null){
 						_miPreg = (InstanciaPregunta)_enu.nextElement();
 						out.println("<tr>");
 						out.println("<td style='text-align:right'>");
-						out.println(_miPreg.getTextoPregunta());
+						out.println(_miPreg.getAcronimo());
 						out.println("</td>");
 						out.println("<td style='text-align:left'>");
 						out.println("<select id='pregunta_"+_miPreg.getId()+"' name='pregunta_"+_miPreg.getId()+"'><option value='-1'>No asociar pregunta</option>");
@@ -71,7 +71,7 @@ if(_instanciaObjeto != null && _relacionadaInstancia != null){
 							if((_miPreg.getTipoPregunta() < 30 && (_miPreg.getPreguntaAsociada().getId() != _miPregIn.getPreguntaAsociada().getId())) || (_miPreg.getTipoPregunta() >= 30 && (_miPreg.getTipoPregunta() != _miPregIn.getTipoPregunta()))){
 								continue;
 							}
-							out.println("<option value='"+_miPregIn.getId()+"'>"+_miPregIn.getTextoPregunta()+"</option>");
+							out.println("<option value='"+_miPregIn.getId()+"'>"+_miPregIn.getAcronimo()+"</option>");
 						}
 						out.println("</select>");
 						out.println("</td>");
