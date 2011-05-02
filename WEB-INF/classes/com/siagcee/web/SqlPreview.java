@@ -88,6 +88,26 @@ public class SqlPreview extends HttpServlet{
                     view = request.getRequestDispatcher("WEB-INF/tmp/"+_objetoatrabajar.getId()+".xls");
 				}
 
+                //es para exportar a PDF
+				if(request.getParameter("accionextra") != null && request.getParameter("accionextra").equals("exportapdf")){
+
+                    String _nombreArchivo = getServletContext().getAttribute("javax.servlet.context.tempdir")+"/"+_objetoatrabajar.getId()+".pdf";
+
+                    UtilidadesVarias.generaPDF(_nombreArchivo, _tempVec2, _tempVec, _objetoatrabajar);
+
+                    view = request.getRequestDispatcher("WEB-INF/tmp/"+_objetoatrabajar.getId()+".pdf");
+				}
+
+                //es para exportar a word
+				if(request.getParameter("accionextra") != null && request.getParameter("accionextra").equals("exportaword")){
+
+                    String _nombreArchivo = getServletContext().getAttribute("javax.servlet.context.tempdir")+"/"+_objetoatrabajar.getId()+".doc";
+
+                    UtilidadesVarias.generaWord(_nombreArchivo, _tempVec2, _tempVec, _objetoatrabajar);
+
+                    view = request.getRequestDispatcher("WEB-INF/tmp/"+_objetoatrabajar.getId()+".doc");
+				}
+
 				view.forward(request, response);
 
 			}catch(Exception e){
