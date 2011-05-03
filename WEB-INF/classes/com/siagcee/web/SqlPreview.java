@@ -101,11 +101,11 @@ public class SqlPreview extends HttpServlet{
                 //es para exportar a word
 				if(request.getParameter("accionextra") != null && request.getParameter("accionextra").equals("exportaword")){
 
-                    String _nombreArchivo = getServletContext().getAttribute("javax.servlet.context.tempdir")+"/"+_objetoatrabajar.getId()+".doc";
+                    String _nombreArchivo = getServletContext().getAttribute("javax.servlet.context.tempdir")+"/"+_objetoatrabajar.getId();
 
                     UtilidadesVarias.generaWord(_nombreArchivo, _tempVec2, _tempVec, _objetoatrabajar);
 
-                    view = request.getRequestDispatcher("WEB-INF/tmp/"+_objetoatrabajar.getId()+".doc");
+                    view = request.getRequestDispatcher("WEB-INF/tmp/"+_objetoatrabajar.getId()+".docx");
 				}
 
 				view.forward(request, response);

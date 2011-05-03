@@ -17,14 +17,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.*;
-import java.util.Properties;
-import java.util.Vector;
-import java.util.Enumeration;
-import java.awt.*;
+import java.util.*;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
+import com.javadocx.CreateDocx;
 
 /**
  * Creado por Fábio Pereira.
@@ -340,45 +338,16 @@ public class UtilidadesVarias {
     }
 
     public static boolean generaWord(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj){
-        Document documento = new Document(PageSize.LEGAL.rotate());
         String titulo = _obj.getObjeto();
+
         boolean _resul = false;
         try{
-            PdfWriter.getInstance(documento, new FileOutputStream(_nombre_archivo));
-            documento.open();
+            CreateDocx docx = new CreateDocx("docx");
 
+            ArrayList valuesTable = new ArrayList();
+            ArrayList row1 = new ArrayList();
 
-            Paragraph _titulo = new Paragraph(titulo, FontFactory.getFont(FontFactory.TIMES_BOLDITALIC, 18));
-            _titulo.setAlignment(Paragraph.ALIGN_CENTER);
-            _titulo.setSpacingAfter(6.0f);
-            documento.add(_titulo);
-
-            PdfPTable table = new PdfPTable(3);
-            table.setWidthPercentage(100);
-            // the cell object
-            PdfPCell cell;
-            // we add a cell with colspan 3
-            cell = new PdfPCell(new Phrase("Cell with colspan 3"));
-            cell.setColspan(3);
-            table.addCell(cell);
-            // now we add a cell with rowspan 2
-            cell = new PdfPCell(new Phrase("Cell with rowspan 2"));
-            table.addCell(cell);
-            // we add the four remaining cells with addCell()
-            table.addCell("row 1; cell 1");
-            table.addCell("row 1; cell 2");
-            table.addCell("row 2; cell 1");
-            table.addCell("row 2; cell 2");
-
-            documento.add(table);
-            documento.close();
-
-/*
-
-            WritableSheet hoja = workbook.createSheet(titulo, 0);
-
-            int Col = 0;
-            int Fil = 0;
+            ArrayList row2 = new ArrayList();
 
             //recorro cada pregunta
             InstanciaPregunta _pregAct;
@@ -386,20 +355,11 @@ public class UtilidadesVarias {
             while(_enu.hasMoreElements()){
                 _pregAct = (InstanciaPregunta)_enu.nextElement();
 
-                WritableFont times14font = new WritableFont(WritableFont.TIMES, 12, WritableFont.NO_BOLD);
-                WritableCellFormat times14format = new WritableCellFormat (times14font);
-                times14format.setBorder(Border.ALL, jxl.format.BorderLineStyle.MEDIUM, Colour.BLACK);
-                times14format.setWrap(true);
-                times14format.setAlignment(Alignment.LEFT);
-                times14format.setVerticalAlignment(VerticalAlignment.TOP);
-                times14format.setBackground(Colour.SEA_GREEN);
-
-                Label label = new Label(Col, Fil, _pregAct.getAcronimo(), times14format);
-                hoja.addCell(label);
-                Col++;
+                row1.add(_pregAct.getAcronimo());
             }
-            Col = 0;
+            valuesTable.add(row1);
 
+            boolean iniciando = true;
             //recorro cada respuesta
             _enu = _respuestas.elements();
             Respuesta _respAct = null;
@@ -411,8 +371,12 @@ public class UtilidadesVarias {
                 if(id_usuario != _respAct.getElaborado_por()){
                     //otro usuario
                     id_usuario = _respAct.getElaborado_por();
-                    Col = 0;
-                    Fil++;
+                    if(!iniciando){
+                        valuesTable.add(row2);
+                    }else{
+                        iniciando = !iniciando;
+                    }
+                    row2 = new ArrayList();
                 }else{
                     //mismo usuario que el anterior... ya procesado
                     continue;
@@ -433,56 +397,44 @@ public class UtilidadesVarias {
                         if((_respActInterna.getElaborado_por() == id_usuario) && (_respActInterna.getInstanciaPregunta().getId() == _pregAct.getId())){
                             _respEncon = true;
                             try{
-                                WritableCellFormat times14format = new WritableCellFormat ();
-                                times14format.setBorder(Border.ALL, jxl.format.BorderLineStyle.THIN, Colour.GREY_80_PERCENT);
                                 if(_pregAct.getTipoPregunta() < 30){
-                                    Label label = new Label(Col, Fil, _respActInterna.getRespuestaCerrada().getRespuesta(), times14format);
-                                    hoja.addCell(label);
-                                    Col++;
+                                    row2.add(_respActInterna.getRespuestaCerrada().getRespuesta());
                                 }else	if(_pregAct.getTipoPregunta() == 30){
-                                    Label label = new Label(Col, Fil, _respActInterna.getRespuestaAbiertaTexto(), times14format);
-                                    hoja.addCell(label);
-                                    Col++;
+                                    row2.add(_respActInterna.getRespuestaAbiertaTexto());
                                 }else	if(_pregAct.getTipoPregunta() == 31){
-                                    Number number = new Number(Col, Fil, _respActInterna.getRespuestaAbiertaInt(), times14format);
-                                    hoja.addCell(number);
-                                    Col++;
+                                    row2.add(String.valueOf(_respActInterna.getRespuestaAbiertaInt()));
                                 }else	if(_pregAct.getTipoPregunta() == 32){
-                                    Number number = new Number(Col, Fil, _respActInterna.getRespuestaAbiertaDouble(), times14format);
-                                    hoja.addCell(number);
-                                    Col++;
+                                    row2.add(String.valueOf(_respActInterna.getRespuestaAbiertaDouble()));
                                 }else	if(_pregAct.getTipoPregunta() == 33){
                                     String[] _respDate = _respActInterna.getRespuestaAbiertaDate().toString().split("-");
-                                    Label label = new Label(Col, Fil, _respDate[2]+"-"+_respDate[1]+"-"+_respDate[0], times14format);
-                                    hoja.addCell(label);
-                                    Col++;
+                                    row2.add(_respDate[2]+"-"+_respDate[1]+"-"+_respDate[0]);
                                 }
                             }catch (Exception e1){
-                                Label label = new Label(Col, Fil, "Error cargando esta respuesta");
-                                hoja.addCell(label);
-                                Col++;
+                                row2.add("Error cargando esta respuesta");
                                 break;
                             }
                         }
                     }
                     if(!_respEncon){
-                        Label label = new Label(Col, Fil, "- No Sabe / No Responde -");
-                        hoja.addCell(label);
-                        Col++;
+                        row2.add("- No Sabe / No Responde -");
                     }
                 }
             }
 
-            workbook.write();
-            workbook.close();
-            */
+            if(!iniciando){
+                valuesTable.add(row2);
+            }
+
+            HashMap paramsTable = new HashMap();
+            paramsTable.put("border", "single");
+            paramsTable.put("border_sz", "12");
+            paramsTable.put("font", "Times New Roman");
+
+            docx.addTable(valuesTable, paramsTable);
+            docx.createDocx(_nombre_archivo);
 
             _resul = true;
 
-        }catch (IOException ioe){
-            System.out.println("Error creando el archivo pdf.");
-            ioe.printStackTrace();
-            _resul = false;
         }catch (Exception e){
             System.out.println("Error no especificado.");
             e.printStackTrace();

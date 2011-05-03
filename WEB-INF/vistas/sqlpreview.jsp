@@ -223,7 +223,7 @@ if(request.getParameter("accioninvitar") != null){
 	<button value="Cerrar esta ventana" onclick="window.close();">Cerrar esta ventana</button>
     <div style="padding-right:50px;float:right;text-align:right">
         <a href="javascript:void(null);" onclick="$('#accionextra').val('exportapdf');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/pdf.png" alt="Exportar estos datos a PDF" title="Exportar estos datos a PDF"/></a>
-        <!-- &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#accionextra').val('exportaword');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/word.png" alt="Exportar estos datos a Word" title="Exportar estos datos a Word"/></a> //-->
+        &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#accionextra').val('exportaword');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/word.png" alt="Exportar estos datos a Word" title="Exportar estos datos a Word"/></a> 
         &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#accionextra').val('exportaexcel');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/excel.png" alt="Exportar estos datos a excel" title="Exportar estos datos a excel"/></a>
     </div>
 	<% } %>

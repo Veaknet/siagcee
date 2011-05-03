@@ -19,8 +19,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="" />
-    <ignored path="siagcee.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="siagcee.iws" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CodeExplorer">
@@ -83,37 +83,7 @@
     <favorites_list name="siagcee" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="UtilidadesVarias.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/UtilidadesVarias.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="256" column="0" selection-start="10864" selection-end="10864" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sqlpreview.jsp" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/sqlpreview.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="225" column="0" selection-start="10472" selection-end="10472" vertical-scroll-proportion="0.25547445">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlPreview.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/SqlPreview.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="0" selection-start="3928" selection-end="3928" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -575,18 +545,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/web.xml">
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="258" column="37" selection-start="7641" selection-end="7641" vertical-scroll-proportion="0.82042253">
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
         <state />
       </provider>
       <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
         <state />
       </provider>
     </entry>
@@ -667,16 +637,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/SqlPreview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="0" selection-start="3928" selection-end="3928" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/logic/UtilidadesVarias.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="256" column="0" selection-start="10864" selection-end="10864" vertical-scroll-proportion="0.0">
+        <state line="429" column="44" selection-start="19247" selection-end="19247" vertical-scroll-proportion="0.50524473">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -685,7 +648,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/vistas/sqlpreview.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="225" column="0" selection-start="10472" selection-end="10472" vertical-scroll-proportion="0.25547445">
+        <state line="225" column="0" selection-start="10472" selection-end="10472" vertical-scroll-proportion="-5.8333335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/com/siagcee/web/SqlPreview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="0" selection-start="4850" selection-end="4850" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
