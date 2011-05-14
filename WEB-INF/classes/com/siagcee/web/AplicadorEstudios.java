@@ -43,6 +43,7 @@ public class AplicadorEstudios extends HttpServlet {
 				}else{
 					request.setAttribute("objetoatrabajar", null);
 				}
+
 				if(request.getParameter("accion") != null){
 					accion = (String)request.getParameter("accion");
 				}
@@ -184,7 +185,7 @@ public class AplicadorEstudios extends HttpServlet {
 		HttpSession sesion = request.getSession();
 		Connection micon = (Connection) getServletContext().getAttribute("conexion");
 		Administrador admin = (Administrador) sesion.getAttribute("administrador");
-		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/listarestudiosparaaplicar.jsp");
+    RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/listarestudiosaaplicar.jsp");
 		InstanciaObjeto _objetoSeleccionado = null;
 		if(admin != null){
 			try{
@@ -195,6 +196,12 @@ public class AplicadorEstudios extends HttpServlet {
 				}else{
 					request.setAttribute("objetoatrabajar", null);
 				}
+
+        try{
+          request.setAttribute("listadoDatos", _objetoSeleccionado.getObjetoAsociado().getPreguntas(false));
+        }catch (Exception e1){
+          request.setAttribute("listadoDatos", null);
+        }
 
 				request.setAttribute("listadoEstudios", Estudio.obtenerEstudiosDeEstructura(admin, micon, _objetoSeleccionado.getObjetoAsociado(), false));
 

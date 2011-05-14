@@ -1,28 +1,29 @@
 package com.siagcee.logic;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.javadocx.CreateDocx;
+import jxl.Cell;
+import jxl.Sheet;
 import jxl.Workbook;
-import jxl.format.*;
-import jxl.format.Colour;
 import jxl.format.Alignment;
+import jxl.format.Colour;
 import jxl.format.VerticalAlignment;
-import jxl.format.Font;
 import jxl.write.*;
 import jxl.write.Number;
-import jxl.write.Border;
-import jxl.write.Label;
 
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Connection;
 import java.util.*;
-
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
-
-import com.javadocx.CreateDocx;
 
 /**
  * Creado por Fábio Pereira.
@@ -137,7 +138,7 @@ public class UtilidadesVarias {
                 Col++;
             }
             Col = 0;
-            
+
             //recorro cada respuesta
             _enu = _respuestas.elements();
             Respuesta _respAct = null;
@@ -204,7 +205,7 @@ public class UtilidadesVarias {
                         }
                     }
                     if(!_respEncon){
-                        Label label = new Label(Col, Fil, "- No Sabe / No Responde -");
+                        Label label = new Label(Col, Fil, "");
                         hoja.addCell(label);
                         Col++;
                     }
@@ -243,7 +244,7 @@ public class UtilidadesVarias {
 
             PdfPTable table = new PdfPTable(_preguntas.size());
             table.setWidthPercentage(100);
-            
+
             //recorro cada pregunta
             InstanciaPregunta _pregAct;
             Enumeration _enu = _preguntas.elements();
@@ -315,7 +316,7 @@ public class UtilidadesVarias {
                         }
                     }
                     if(!_respEncon){
-                        table.addCell("- No Sabe / No Responde -");
+                        table.addCell("");
                     }
                 }
             }
@@ -416,7 +417,7 @@ public class UtilidadesVarias {
                         }
                     }
                     if(!_respEncon){
-                        row2.add("- No Sabe / No Responde -");
+                        row2.add("");
                     }
                 }
             }
@@ -435,6 +436,122 @@ public class UtilidadesVarias {
 
             _resul = true;
 
+        }catch (Exception e){
+            System.out.println("Error no especificado.");
+            e.printStackTrace();
+            _resul = false;
+        }
+        return _resul;
+    }
+
+    public static boolean cargaExcel(File archivo, InstanciaObjeto _obj, Administrador admin, Connection micon){
+        Workbook workbook = null;
+        String titulo = _obj.getObjeto();
+        boolean _resul = false;
+        try{
+            workbook = Workbook.getWorkbook(new File(archivo.getAbsolutePath()));
+            Sheet sheet = workbook.getSheet(0);
+            int Col = 0;
+            int Fil = 0;    //La primera fila define cantidad de preguntas a cargar
+            int CantPreguntas = 0;
+
+            int _preguntaClave = -1;
+            Cell celda = null;
+            String valor = "";
+            while(true){
+                try{
+                    celda = sheet.getCell(Col,Fil);
+                    valor = celda.getContents();
+                    if(valor.equals("")){
+                        Fil++;
+                        Col = 0;
+                        break;
+                    }
+                    Col++;
+                    CantPreguntas++;
+                }catch(Exception ee1){
+                    Fil++;
+                    Col = 0;
+                    break;
+                }
+            }
+
+            InstanciaPregunta _pregAct;
+            Enumeration _enu = _obj.getObjetoAsociado().getPreguntas().elements();
+            Vector _preguntas = new Vector();
+            Col = 0;
+            while(_enu.hasMoreElements()){
+                _pregAct = (InstanciaPregunta)_enu.nextElement();
+                if(_pregAct.isCampo_clave_unico()){
+                    _preguntaClave = Col;
+                }
+                Col++;
+                if(_pregAct.getTipoPregunta() == 100){
+                    continue;
+                }
+                _preguntas.add(_pregAct);
+            }
+
+            Respuesta _resp = null;
+            Encuestado _encu = null;
+            while(true){
+                boolean todosVacios = true;
+                _enu = _preguntas.elements();
+                if(_preguntaClave == -1){
+                    _encu = new Encuestado(micon, String.valueOf(_obj.getId()), "");
+                }else{
+                    try{
+                        celda = sheet.getCell(_preguntaClave, Fil);
+                        valor = celda.getContents();
+                        _encu = new Encuestado(micon, String.valueOf(_obj.getId()), valor);
+                    }catch(Exception ee3){
+                        _encu = new Encuestado(micon, String.valueOf(_obj.getId()), "");
+                    }
+                }
+
+                for(int col=0;col < CantPreguntas;col++){
+                    _pregAct = (InstanciaPregunta)_enu.nextElement();
+                    try{
+                        celda = sheet.getCell(col,Fil);
+                        valor = celda.getContents();
+                    }catch(Exception eee2){
+                        valor = "";
+                    }
+                    if(!(valor.trim().isEmpty() && valor.trim().equals(""))){
+                        todosVacios = false;
+                    }
+					_resp = new Respuesta(_encu, micon);
+				    _resp.asociarInstanciaObjeto(_obj);
+					_resp.asociarInstanciaPregunta(_pregAct);
+
+                    if(_pregAct.getTipoPregunta() == 30){
+                        _resp.setRespuesta(valor);
+                    }else if(_pregAct.getTipoPregunta() == 31){
+                        if(valor.equals("")){ valor = "0";}
+                        _resp.setRespuesta(Long.parseLong(valor));
+                    }else if(_pregAct.getTipoPregunta() == 32){
+                        if(valor.equals("")){ valor = "0";}
+                        _resp.setRespuesta(Double.parseDouble(valor));
+                    }else if(_pregAct.getTipoPregunta() == 33){
+                        //fecha
+                        _resp.setRespuesta(valor);
+                    }
+                }
+                if(todosVacios){
+                    //al ser vacio quiere decir que sus respuestas todas eran vacias y por lo tanto no existe
+                    Respuesta.delRespuestasDeUsuario(_encu, micon, _obj);
+                    _encu.delUsuario();
+                    break;
+                }
+                Fil++;
+            }
+            workbook.close();
+            _resul = true;
+
+        }catch (IOException ioe){
+            System.out.println("Error creando el archivo de excel.");
+            ioe.printStackTrace();
+            _resul = false;
         }catch (Exception e){
             System.out.println("Error no especificado.");
             e.printStackTrace();

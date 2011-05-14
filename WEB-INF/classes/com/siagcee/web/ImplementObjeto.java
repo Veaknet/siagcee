@@ -85,14 +85,14 @@ public class ImplementObjeto extends HttpServlet{
 								_miIns.setAcceso(0);
 							}
 							String _mifecha = (String)request.getParameter("cierre");
-							if(_mifecha.equals("")){
+							if(_mifecha == null || _mifecha.equals("")){
 								_miIns.setFechaCierre("");
 							}else{
 								_resltados = _mifecha.split("-");
 								_miIns.setFechaCierre(_resltados[2]+"-"+_resltados[1]+"-"+_resltados[0]);
 							}
 							_mifecha = (String)request.getParameter("inicio");
-							if(_mifecha.equals("")){
+							if(_mifecha == null || _mifecha.equals("")){
 								_miIns.setFechaInicio("");
 							}else{
 								_resltados = _mifecha.split("-");
@@ -112,10 +112,15 @@ public class ImplementObjeto extends HttpServlet{
 									request.setAttribute("highlight", _miIns.getId());
 									request.setAttribute("objeto", _miIns);
 									view = request.getRequestDispatcher("WEB-INF/vistas/correos_a_invitar.jsp");
+                                }else if(_tipoInvitacion == 4){
+                                    //carga desde excel
+									request.setAttribute("idobjetodestino", _miIns.getId());
+									view = request.getRequestDispatcher("WEB-INF/vistas/cargaexcel.jsp");
 								}else{
+                                    //no invitar
 									request.setAttribute("highlight", _miIns.getId());
 									view = request.getRequestDispatcher("WEB-INF/vistas/admininsobj.jsp");
-								}
+                                }
 							}
 						}else if (_accion.equals("actualizar")){
 							int _id = Integer.parseInt((String) request.getParameter("id"));

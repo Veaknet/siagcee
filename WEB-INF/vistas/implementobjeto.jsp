@@ -88,7 +88,7 @@ function compruebaSeleccionado(elem){
 
 function compruebaNoVacioNoLimitativo(elem){
 	if(elem){
-		if(elem.value != ""){
+		if(elem.value != "" || elem.disabled){
 			return true;
 		}
 		return confirm("No ha indicado ningun valor para la fecha de "+elem.id+". Se tomara el dia de hoy por defecto. Esta seguro de querer hacer esto?");
@@ -192,15 +192,37 @@ function modificarTipoInvitacion(){
 	var tipoinvitacion = document.getElementById("span_tipo_invitacion");
 	var _tipoinvitacion = document.getElementById("tipo_invitacion");
 	var _tipoacceso = document.getElementById("tipo_acceso");
+    var _inicio = document.getElementById("inicio");
+    var _cierre = document.getElementById("cierre");
 	var _temp;
 	if(_tipoacceso.value == "0"){
+        _inicio.disabled = false;
+        _cierre.disabled = false;
+        _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
+        _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
+        _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
+        _temp = new Option("A traves de otro instrumento", "1");
+        _tipoinvitacion.options[_tipoinvitacion.options.length] = _temp;
 		_temp = new Option("Correo electronico manualmente", "2");
 		_tipoinvitacion.options[_tipoinvitacion.options.length] = _temp;
 		_temp = new Option("No invitar", "3");
 		_tipoinvitacion.options[_tipoinvitacion.options.length] = _temp;
+    }else if(_tipoacceso.value == "1"){
+        _inicio.disabled = false;
+        _cierre.disabled = false;
+        _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
+        _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
+        _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
+        _temp = new Option("A traves de otro instrumento", "1");
+        _tipoinvitacion.options[_tipoinvitacion.options.length] = _temp;
 	}else{
-		_tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
-		_tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
+        _inicio.disabled = true;
+        _cierre.disabled = true;
+        _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
+        _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
+        _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
+        _temp = new Option("Cargando desde excel", "4");
+        _tipoinvitacion.options[_tipoinvitacion.options.length] = _temp;
 	}
 }
 
@@ -257,6 +279,7 @@ while(_misInstanciados99.hasMoreElements()){
 					<label>Tipo de acceso:</label><br /><select name="tipo_acceso" id="tipo_acceso" onchange="modificarTipoInvitacion();">
 						<option value="0" selected="selected">P&uacute;blico</option>
 						<option value="1">Restringido</option>
+                        <option value="2">Uso interno (carga de datos desde excel)</option>  
 					</select><p />
 					<span name="span_tipo_invitacion" id="span_tipo_invitacion">
 						<label>Seleccionar o invitar usuarios:</label><br /><select name="tipo_invitacion" id="tipo_invitacion">

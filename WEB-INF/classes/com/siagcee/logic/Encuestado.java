@@ -149,6 +149,7 @@ public class Encuestado extends Usuario{
 
 	public void delUsuario(){
 		try{
+            Respuesta.delRespuestasDeUsuario(this.getUsuario(), this.getConexion(), this.getPoblacion());
 			PreparedStatement pstmt = this.getConexion().prepareStatement("DELETE FROM usuarios WHERE id_usuarios = ?");
 			pstmt.setInt(1, this.getUsuarioId());
 			pstmt.execute();

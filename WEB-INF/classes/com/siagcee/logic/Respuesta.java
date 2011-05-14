@@ -399,6 +399,16 @@ public class Respuesta extends ObjetoBase{
 		}
 	}
 
+    public static void delRespuestasDeUsuario(Usuario _user, Connection _micon, InstanciaObjeto _insObj) {
+        try {
+            PreparedStatement pstmt = _micon.prepareStatement("DELETE FROM respuestas WHERE id_instancia_objetos = ? AND elaborado_por = ?");
+            pstmt.setInt(1, _insObj.getId());
+            pstmt.setInt(2, _user.getUsuarioId());
+            pstmt.execute();
+        }
+        catch (Exception e){e.printStackTrace();}
+    }
+
 	//eliminar completamente este acceso de la BD
 	public static void delRespuesta(Connection _micon, InstanciaObjeto _obj){
 		try{

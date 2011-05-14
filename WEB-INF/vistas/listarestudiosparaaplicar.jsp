@@ -73,6 +73,12 @@ if(request.getAttribute("listadoEstudios") != null){
 	Collections.sort(_listaDeEstudios, new OrdenadorEstudios(OrdenadorEstudios.TITULO));
 }
 
+Vector _listaDeDatos = new Vector();
+if(request.getAttribute("listadoDatos") != null){
+  _listaDeDatos = (Vector)request.getAttribute("listadoDatos");
+  Collections.sort(_listaDeDatos, new OrdenadorInstanciaPreguntas(OrdenadorInstanciaPreguntas.PREGUNTA));
+}
+
 Vector _listaDeDatosPantalla = new Vector();
 if(request.getAttribute("listadoDeDatosPorPantalla") != null){
 	_listaDeDatosPantalla = (Vector)request.getAttribute("listadoDeDatosPorPantalla");
@@ -178,16 +184,7 @@ caption {
 	});
 </script>
 
-<% if(tieneResultado.equals("si")){
-%>
-	<h2>Aplicar Estudio.</h2>
-<%
-}else{
-%>
-	<h2>Aplicar Estudio.</h2>
-<%
-}
-%>
+<h2>Aplicar Estudio.</h2>
 <h4>Instrumento: <% out.print(objetoatrabajar.getObjeto());%></h4>
 
 <%

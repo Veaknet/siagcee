@@ -47,14 +47,14 @@
 		}
 
 		function validarEntero(_nombreElem){
-			var mielem = document.getElementById(_nombreElem);
+		  var mielem = document.getElementById(_nombreElem);
 		  var er = /^[-]*[0-9]+$/;
 			if(mielem){
-				if(mielem.value.match(er)){
+				if(mielem.value.match(er) || mielem.value == ''){
 					return true;
 				}else{
 					alert("Solo pueden ingresarse numeros enteros.");
-					mielem.value = "0";
+					mielem.value = "";
 					mielem.focus();
 					return false;
 				}
@@ -66,11 +66,11 @@
 			var mielem = document.getElementById(_nombreElem);
 		  var er = /^[-+]?[0-9]+(\.[0-9]+)?$/;
 			if(mielem){
-				if(mielem.value.match(er)){
+				if(mielem.value.match(er) || mielem.value == ''){
 					return true;
 				}else{
 					alert("Solo pueden ingresarse numeros con o sin decimales.");
-					mielem.value = "0.0";
+					mielem.value = "";
 					mielem.focus();
 					return false;
 				}

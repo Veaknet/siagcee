@@ -36,7 +36,7 @@ public class UserObjetos extends HttpServlet {
 		if(encuestado != null){
 			try{
 				view = request.getRequestDispatcher("WEB-INF/vistas/userobjetos.jsp");
-				
+
 				int _seleccionado = Integer.parseInt((String)request.getParameter("id_instrumento"));
 				InstanciaObjeto _miIns = new InstanciaObjeto(encuestado, micon, _seleccionado, 1);
 
@@ -57,7 +57,7 @@ public class UserObjetos extends HttpServlet {
 					InstanciaPregunta miPreg;
 					Respuesta miResp;
 					Vector vectorResp = new Vector();
-					while(_misPreg.hasMoreElements()){						
+					while(_misPreg.hasMoreElements()){
 						miPreg = (InstanciaPregunta)_misPreg.nextElement();
 						//vectorResp = Respuesta.todasRespuestas(encuestado, micon, miPreg, _miIns);
 						//miResp = (Respuesta)vectorResp.elementAt(0);
@@ -86,16 +86,19 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 30){
 							//abierta texto
 							try{
+                if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){continue;}
 								miResp.setRespuesta((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())));
 							}catch(Exception e){e.printStackTrace();}
 						}else if(miPreg.getTipoPregunta() == 31){
 							//abierta int
 							try{
+                if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){continue;}
 								miResp.setRespuesta(Long.parseLong((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))));
 							}catch(Exception e){e.printStackTrace();}
 						}else if(miPreg.getTipoPregunta() == 32){
 							//abierta Double
 							try{
+                if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){continue;}
 								miResp.setRespuesta(Double.parseDouble((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))));
 							}catch(Exception e){e.printStackTrace();}
 						}else if(miPreg.getTipoPregunta() == 33){
@@ -105,7 +108,9 @@ public class UserObjetos extends HttpServlet {
 									SimpleDateFormat _temp = new SimpleDateFormat("yyyy-MM-dd");
 									String[] _fechaFormateada = ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).split("-");
 									miResp.setRespuesta(_temp.parse(_fechaFormateada[2]+"-"+_fechaFormateada[1]+"-"+_fechaFormateada[0]));
-								}
+								}else{
+                  continue;
+                }
 							}catch(Exception e){e.printStackTrace();}
 						}
 					}

@@ -251,12 +251,12 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>ExportaExcelWeb</servlet-name>
-		<servlet-class>com.siagcee.web.ExportaExcelWeb</servlet-class>
+		<servlet-name>SubirExcel</servlet-name>
+		<servlet-class>com.siagcee.web.SubirExcel</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>ExportaExcelWeb</servlet-name>
-		<url-pattern>/exportaexcel</url-pattern>
+		<servlet-name>SubirExcel</servlet-name>
+		<url-pattern>/subirexcel</url-pattern>
 	</servlet-mapping>
 
     <listener>

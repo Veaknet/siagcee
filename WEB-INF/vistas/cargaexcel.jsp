@@ -34,6 +34,11 @@ if(request.getAttribute("mensaje") != null){
 	_mensaje = (String)request.getAttribute("mensaje");
 }
 
+int idObj = -1;
+if(request.getAttribute("idobjetodestino") != null){
+    idObj = (Integer)request.getAttribute("idobjetodestino");
+}
+
 if(!_loaded){
 %>
     <table cellspacing="4" cellpadding="4" class="tablasecundaria">
@@ -45,9 +50,10 @@ if(!_loaded){
                     out.print("<p />"+_mensaje+"<p />");
                 }
                 %>
+                Nota: Recuerde descargar haciendo clic <a href="sqlpreview?accionextra=exportaexcel&opcionmadre=si&objetoatrabajar=<% out.print(idObj); %>">aqu&iacute;</a> el archivo excel base para cargar sus datos.
                 <form action="subirexcel" enctype="multipart/form-data" method="POST">
                     Indique el archivo a subir: <input type="file" name="file1" size="40"><p />
-                    <input type="hidden" value="id" id="idobjetodestino" name="idobjetodestino"><br>
+                    <input type="hidden" value="<% out.print(idObj); %>" id="idobjetodestino" name="idobjetodestino"><br>
                     <input type="Submit" value="Cargar archivo"><br>
                 </form>
             </td>

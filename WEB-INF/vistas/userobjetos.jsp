@@ -38,11 +38,11 @@ function validarEntero(_nombreElem){
 	var mielem = document.getElementById(_nombreElem);
   var er = /^[-]*[0-9]+$/;
 	if(mielem){
-		if(mielem.value.match(er)){
+		if(mielem.value.match(er) || mielem.value == ''){
 			return true;
 		}else{
 			alert("Solo pueden ingresarse numeros enteros.");
-			mielem.value = "0";
+			mielem.value = "";
 			mielem.focus();
 			return false;
 		}
@@ -54,11 +54,11 @@ function validarDouble(_nombreElem){
 	var mielem = document.getElementById(_nombreElem);
   var er = /^[-+]?[0-9]+(\.[0-9]+)?$/;
 	if(mielem){
-		if(mielem.value.match(er)){
+		if(mielem.value.match(er) || mielem.value == ''){
 			return true;
 		}else{
 			alert("Solo pueden ingresarse numeros con o sin decimales.");
-			mielem.value = "0.0";
+			mielem.value = "";
 			mielem.focus();
 			return false;
 		}
@@ -288,7 +288,7 @@ No ha indicado un censo o encuesta para participar.
 				}else if(miPreg.getTipoPregunta() == 31){
 					if(!respEncontrada || (miRespDada.getRespuestaAbiertaInt() == 0)){
 						//si no encontré respuesta
-						_pregResp.append(" value='0' onblur='validarEntero(\"pregunta_"+miPreg.getId()+"\");'>");
+						_pregResp.append(" value='' onblur='validarEntero(\"pregunta_"+miPreg.getId()+"\");'>");
 					}else{
 						//si encontré respuesta
 						_pregResp.append(" value='"+String.valueOf(miRespDada.getRespuestaAbiertaInt())+"' onblur='validarEntero(\"pregunta_"+miPreg.getId()+"\");'>");
@@ -301,7 +301,7 @@ No ha indicado un censo o encuesta para participar.
 					DecimalFormat _df = new DecimalFormat("###############.############");
 					if(!respEncontrada || miRespDada.getRespuestaAbiertaDouble() == 0F){
 						//si no encontré respuesta
-						_pregResp.append(" value='0.0' onblur='validarDouble(\"pregunta_"+miPreg.getId()+"\");'>");
+						_pregResp.append(" value='' onblur='validarDouble(\"pregunta_"+miPreg.getId()+"\");'>");
 					}else{
 						//si encontré respuesta
 						_pregResp.append(" value='"+_df.format(miRespDada.getRespuestaAbiertaDouble())+"' onblur='validarDouble(\"pregunta_"+miPreg.getId()+"\");'>");
