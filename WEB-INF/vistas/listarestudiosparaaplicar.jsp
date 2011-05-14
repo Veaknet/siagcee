@@ -162,7 +162,7 @@ td.first {
    left: -1000px;
 }
 table.resultados {
-	background-image:url(comunes/imagenes/bg_fade.png);	
+	background-image:url(comunes/imagenes/bg_fade.png);
 	background-repeat:repeat-x;
 	background-position:left top;
 	max-width: 1000px;
@@ -195,7 +195,7 @@ if(objetoatrabajar != null){
 		boolean primero = true;
 		int _del100porciento = 0;
 		int _totalCoincidencias = 0;
-		
+
 		while(_enu.hasMoreElements()){
 			Estudio.NodoResultadoCalculo _miNodo = (Estudio.NodoResultadoCalculo)_enu.nextElement();
 			_totalCoincidencias = _totalCoincidencias + _miNodo.cantidadCoincidencias;
