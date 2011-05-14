@@ -6,4 +6,5 @@ WEB-INF/tmp/*
 comunes/documentos/*
 comunes/subidos/*
 comunes/graficas/*
-
+siagcee*
+out/*
