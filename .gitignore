@@ -2,6 +2,7 @@ WEB-INF/out/*
 WEB-INF/work/*
 WEB-INF/classes/com/siagcee/logic/*.class
 WEB-INF/classes/com/siagcee/web/*.class
+WEB-INF/classes/META-INF/*
 WEB-INF/tmp/*
 comunes/documentos/*
 comunes/subidos/*
