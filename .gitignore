@@ -6,6 +6,6 @@ WEB-INF/classes/META-INF/*
 WEB-INF/tmp/*
 comunes/documentos/*
 comunes/subidos/*
-comunes/graficas/*
+comunes/graficos/*
 siagcee*
 out/*
