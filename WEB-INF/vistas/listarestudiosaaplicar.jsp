@@ -67,65 +67,85 @@ function seleccionardato(_elem){
 
 function seleccionar(_elem){
 	var _id = _elem.value;
-  var _selec_datos = $("#datoseleccionado");
-  var _selec_datos_txt = $("#datoseleccionadotxt");
-  if(_id.indexOf('_default_') == 0){
-    _selec_datos.css("display","block");
-    _selec_datos_txt.css("display","block");
-
-  }else{
-    _selec_datos.css("display","none");
-    _selec_datos_txt.css("display","none");
-  }
-
+	var _selec_datos = $("#datoseleccionado");
+	var _selec_datos_txt = $("#datoseleccionadotxt");
+	var _grafic = $("#tipo_grafico");
+	var _grafic_txt = $("#tipo_grafico_txt");
+	if(_id.indexOf('_default_') == 0){
+		_selec_datos.css("display","block");
+		_selec_datos_txt.css("display","block");
+		_grafic_txt.css("display","block");
+		_grafic.css("display","block");
+	}else{
+		_selec_datos.css("display","none");
+		_selec_datos_txt.css("display","none");
+		_grafic_txt.css("display","none");
+		_grafic.css("display","none");
+	}
 	var _descr = document.getElementById('descripcion');
 	var _boto = document.getElementById('enviar');
 	_boto.disabled = false;
 
 	for(var i=0;i<array_estudios.length;i++){
-	  if(_id == array_estudios[i]['id']){
-		  _descr.innerHTML = "<h4>Estudio:"+array_estudios[i]['titulo']+"</h4>Descripci&oacute;n:<br />"+array_estudios[i]['descripcion'];
-	  }
+		if(_id == array_estudios[i]['id']){
+			_descr.innerHTML = "<h4>Estudio:"+array_estudios[i]['titulo']+"</h4>Descripci&oacute;n:<br />"+array_estudios[i]['descripcion'];
+		}
 	}
 }
 
 function validarForm(){
-  var _id = $("#idestudio").val();
-  var _selec_datos = $("#datoseleccionado").val();
-
-  if(_id == '-1'){
-    alert("No ha indicado el estudio a aplicar");
-    return false;
-  }else if(_id.indexOf('_default_') == 0){
-    if(_selec_datos != -1){
-      var tipo_Pre = 30;
-      for(var i=0;i<_totalDatosInstr;i++){
-        if(_id == _listaDatos[i]["id"]){
-          tipo_Pre = _listaDatos[i]["tipopregunta"];
-          break;
-        }else{
-          continue;
-        }
-      }
-      if(tipo_Pre == 31 || tipo_Pre == 32){
-        return validarEntero("datovisualizacion");
-      }else{
-        return true;
-      }
-    }else{
-      alert("No ha indicado el campo sobre el que se realizara el estudio");
-      return false;
-    }
-  }else{
-    return true;
-  }
-  alert("Debe revisar los datos provistos para continuar.");
-  return false;
+	var _id = $("#idestudio").val();
+	var _selec_datos = $("#datoseleccionado").val();
+	var _idForm = $("#accion");
+	if(_id == '-1'){
+		alert("No ha indicado el estudio a aplicar");
+		return false;
+	}else if(_id.indexOf('_default_') == 0){
+		if(_selec_datos != -1){
+			var tipo_Pre = 30;
+			for(var i=0;i<_totalDatosInstr;i++){
+				if(_id == _listaDatos[i]["id"]){
+					tipo_Pre = _listaDatos[i]["tipopregunta"];
+					break;
+				}else{
+					continue;
+				}
+			}
+			if(tipo_Pre == 31 || tipo_Pre == 32){
+				if(validarEntero("datovisualizacion")){
+					_idForm.val('aplicarhistograma');
+					return true;
+				}else{
+					return false;
+				}
+			}else{
+				_idForm.val('aplicarhistograma');
+				return true;
+			}
+		}else{
+		  alert("No ha indicado el campo sobre el que se realizara el estudio");
+		  return false;
+		}
+	}else{
+		return true;
+	}
+	alert("Debe revisar los datos provistos para continuar.");
+	return false;
 }
 
 </script>
 
 <%
+String tieneResultado = "no";
+if (request.getAttribute("mostrarResultado") != null) {
+	tieneResultado = (String)request.getAttribute("mostrarResultado");
+}
+
+Vector _miResultados = new Vector();
+if(request.getAttribute("resultados") != null){
+	_miResultados = (Vector)request.getAttribute("resultados");
+}
+
 Vector _listaDeEstudios = new Vector();
 if(request.getAttribute("listadoEstudios") != null){
 	_listaDeEstudios = (Vector)request.getAttribute("listadoEstudios");
@@ -135,7 +155,7 @@ if(request.getAttribute("listadoEstudios") != null){
 Vector _listaDeDatos = new Vector();
 if(request.getAttribute("listadoDatos") != null){
   _listaDeDatos = (Vector)request.getAttribute("listadoDatos");
-  Collections.sort(_listaDeDatos, new OrdenadorInstanciaPreguntas(OrdenadorInstanciaPreguntas.PREGUNTA));
+  Collections.sort(_listaDeDatos, new OrdenadorInstanciaPreguntas(OrdenadorInstanciaPreguntas.ACRONIMO));
 }
 
 InstanciaObjeto objetoatrabajar = null;
@@ -171,12 +191,93 @@ if(request.getAttribute("objetoatrabajar") != null){
 		$("#link_estudios").css("color","red");
 	});
 </script>
+<%
+if(tieneResultado.equals("si")){
+	%>
+<style type="text/css">
+<!--
+td.value {
+	background-image: url(comunes/imagenes/gridline58.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border-left: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	padding:0;
+	border-bottom: none;
+	background-color:transparent;
+	min-width:400px;
+	max-width:400px;
+}
+td.conestilo {
+	padding: 4px 6px;
+	border-bottom:1px solid #e5e5e5;
+	border-left:1px solid #e5e5e5;
+	background-color:#fff;
+}
+td.value img {
+	vertical-align: middle;
+	margin: 5px 5px 5px 0;
+}
+th {
+	text-align: left;
+	vertical-align:top;
+}
+td.last {
+	border-bottom:1px solid #e5e5e5;
+}
+td.first {
+	border-top:1px solid #e5e5e5;
+}
+.auraltext
+{
+   position: absolute;
+   font-size: 0;
+   left: -1000px;
+}
+table.resultados {
+	background-image:url(comunes/imagenes/bg_fade.png);
+	background-repeat:repeat-x;
+	background-position:left top;
+	max-width: 1000px;
+	min-width: 500px;
+}
+caption {
+	font-size:90%;
+	font-style:italic;
+}
+-->
+</style>
 
 <table cellspacing="4" cellpadding="4" class="tablasecundaria">
 	<tr>
 		<td valign="top" align="left">
-      <h2>Aplicar Estudio.</h2>
-      <h4>Instrumento: <% out.print(objetoatrabajar.getObjeto());%></h4>
+		<%
+		if(_miResultados.isEmpty()){
+			out.print("No se obtuvieron resultados.<br />");
+		}else{
+			//muestro gráfico
+			if(request.getAttribute("imagen") != null){
+				if(request.getAttribute("imagen").equals("")){
+					out.println("<center>Error generando el gr&aacute;fico correspondiente... Intente con otro estilo.</center>");
+				}else{
+					out.println("<center><a href='"+((String)request.getAttribute("imagen"))+"' target='_blank'><img src='"+((String)request.getAttribute("imagen"))+"' height='450' width='800' /></a></center>");
+				}
+			}else{
+				out.println("<center>Error generando el gr&aacute;fico correspondiente...</center>");
+			}
+		}
+		%>
+		</td>
+	</tr>
+</table>
+<%
+}else{
+%>
+<table cellspacing="4" cellpadding="4" class="tablasecundaria">
+	<tr>
+		<td valign="top" align="left">
+		<h2>Aplicar Estudio.</h2>
+		<h4>Instrumento: <% out.print(objetoatrabajar.getObjeto());%></h4>
     </td>
   </tr>
   <tr>
@@ -189,7 +290,7 @@ if(request.getAttribute("objetoatrabajar") != null){
           <input type="hidden" value="seleccionarestudio" id="accion" name="accion">
           <table cellpadding="4" cellspacing="4">
             <tr>
-              <td style="text-align:right;width:150px">
+              <td style="text-align:right;width:200px">
                 <label>Estudio a aplicar:</label>
               </td>
               <td style="text-align:left;">
@@ -221,32 +322,49 @@ if(request.getAttribute("objetoatrabajar") != null){
                 </select>
               </td>
             </tr>
+			  <tr>
+				  <td style="text-align:right;">
+					  <label id="tipo_grafico_txt" style="display:none">Tipo de Gr&aacute;fico:</label>
+				  </td>
+				  <td style="text-align:left;">
+					  <select id="tipo_grafico" name="tipo_grafico" style="display:none">
+						  <option value="barras_horizontales" selected="selected">Barras Horizontales</option>
+						  <option value="barras_verticales">Barras Verticales</option>
+						  <option value="torta">Torta</option>
+						  <option value="lineas_horizontales">Linea Vertical</option>
+						  <option value="lineas_verticales">Linea Horizontal</option>
+					  </select>
+				  </td>
+			  </tr>
             <tr>
-              <td style="text-align:right;width:150px">
-                <label id="datoseleccionadotxt" style="display:none">campo deseado:</label>
+              <td style="text-align:right;width:200px">
+                <label id="datoseleccionadotxt" style="display:none">Sobre el campo:</label>
               </td>
               <td style="text-align:left;">
                 <select id="datoseleccionado" name="datoseleccionado" onchange="seleccionardato(this);" style="display:none;">
                   <option value="-1">Seleccione...</option>
-                  <%
-                  if(!_listaDeDatos.isEmpty()){
-                    Enumeration _enu = _listaDeDatos.elements();
-                    InstanciaPregunta _prg = null;
-                    while(_enu.hasMoreElements()){
-                      _prg = (InstanciaPregunta)_enu.nextElement();
-                      out.println("<option value='"+_prg.getId()+"'>"+_prg.getAcronimo()+"</option>");
-                    }
-                  }
-                  %>
+						<%
+						if(!_listaDeDatos.isEmpty()){
+							Enumeration _enu = _listaDeDatos.elements();
+							InstanciaPregunta _prg = null;
+							while(_enu.hasMoreElements()){
+								_prg = (InstanciaPregunta)_enu.nextElement();
+								if(_prg.getTipoPregunta() == 100){
+									continue;
+								}
+								out.println("<option value='"+_prg.getId()+"'>"+_prg.getAcronimo()+"</option>");
+							}
+						}
+						%>
                 </select>
               </td>
             </tr>
             <tr>
-              <td style="text-align:right;width:150px">
+              <td style="text-align:right;width:200px">
                 <label id="datovisualizaciontxt" style="display:none">Cantidad de intervalos:</label>
               </td>
               <td style="text-align:left;">
-                <input size="8" type="text" value="1" id="datovisualizacion" onchange="return validarEntero('datovisualizacion');" style="display:none">
+                <input size="8" type="text" value="1" name="datovisualizacion" id="datovisualizacion" onchange="return validarEntero('datovisualizacion');" style="display:none">
               </td>
             </tr>
             <tr>
@@ -260,7 +378,7 @@ if(request.getAttribute("objetoatrabajar") != null){
           </table>
         </form>
       <p />
-      Haga clic <a href='generadorestudios?objetoatrabajar=<% out.print(objetoatrabajar.getObjetoAsociado().getId()); %>'>aqu&iacute;</a> para crear un nuevo estudio.
+      Si desea crear un nuevo estudio haga clic <a href='generadorestudios?objetoatrabajar=<% out.print(objetoatrabajar.getObjetoAsociado().getId()); %>'>aqu&iacute;</a>.
       <%
       }else{
         out.println("No se indic&oacute; una estructura con la que se pueda trabajar.");
@@ -269,4 +387,8 @@ if(request.getAttribute("objetoatrabajar") != null){
     </td>
   </tr>
 </table>
+
+<%
+}
+%>
 <%@include file="adminfooter.jsp" %>

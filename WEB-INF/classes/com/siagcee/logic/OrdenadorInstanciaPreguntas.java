@@ -17,7 +17,8 @@ public class OrdenadorInstanciaPreguntas implements Comparator<InstanciaPregunta
 	public static int ORDEN_PREGUNTA = 1;
 	public static int PREGUNTA = 2;
 	public static int ID_INSTANCIA_PREGUNTA = 3;
-	public static int TIPO_PREGUNTA = 4;	
+	public static int TIPO_PREGUNTA = 4;
+	public static int ACRONIMO = 5;
 
 	int tipoOrdenacion;
 
@@ -43,6 +44,9 @@ public class OrdenadorInstanciaPreguntas implements Comparator<InstanciaPregunta
 	public int compare(InstanciaPregunta p1, InstanciaPregunta p2){
 		if(this.getOrdenarPor() == OrdenadorInstanciaPreguntas.PREGUNTA){
 			return p1.getTextoPregunta().toLowerCase().compareTo(p2.getTextoPregunta().toLowerCase());
+		}
+		if(this.getOrdenarPor() == OrdenadorInstanciaPreguntas.ACRONIMO){
+			return p1.getAcronimo().toLowerCase().compareTo(p2.getAcronimo().toLowerCase());
 		}
 		if(this.getOrdenarPor() == OrdenadorInstanciaPreguntas.ORDEN_PREGUNTA){
 			return ((Integer)p1.getOrden()).compareTo((Integer)p2.getOrden());

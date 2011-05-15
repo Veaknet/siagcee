@@ -37,12 +37,20 @@ public class Estudio extends ObjetoBase{
 			_valor = null;
 			cantidadCoincidencias = 0;
 		}
+		public NodoResultadoCalculo(Object __valor, int _cantCoincidencias){
+			_valor = __valor;
+			cantidadCoincidencias = _cantCoincidencias;
+		}
 	}
 	public class NodoResultadoCalculoSinCoincidencias{
 		public Object _valor = null;
 		public int id_usuario = -1;
 		public NodoResultadoCalculoSinCoincidencias(){
 			_valor = null;
+			id_usuario = -1;
+		}
+		public NodoResultadoCalculoSinCoincidencias(Object __valor){
+			_valor = __valor;
 			id_usuario = -1;
 		}
 	}

@@ -70,6 +70,186 @@ public class Graficos {
 		this._tipo_dataSet = _tipoDataSet;
 	}
 
+	public void setDataSetVector(Vector _datos, Vector _coincidencias){
+		try{
+			SimpleDateFormat _dateFormatVisible = new SimpleDateFormat("dd/MM/yyyy");  //formatear la fecha para la visualizacion del usuario
+			Enumeration _enu = _datos.elements();
+			Enumeration _enu2 = _coincidencias.elements();
+			if(this._tipo_grafico == Graficos.BARRAS_HORIZONTALES || this._tipo_grafico == Graficos.BARRAS_VERTICALES){
+				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+				if(this.get_tipo_dataSet() == Graficos.FRECUENCIA){
+					while(_enu.hasMoreElements()){
+						Object _nodo = (Object)_enu.nextElement();
+						int coincidencias = (Integer)_enu2.nextElement();
+						String _respuesta = "";
+						try{
+							Date _fecha = (Date)_nodo;
+							_respuesta = _dateFormatVisible.format(_fecha);
+						}catch (Exception e1){
+							try{
+								Double _t = (Double)_nodo;
+								DecimalFormat _df = new DecimalFormat("###############.###############");
+								_respuesta = _df.format(_t);
+							}catch (Exception ee){
+								try{
+									Long _t = (Long)_nodo;
+									DecimalFormat _df = new DecimalFormat("####################");
+									_respuesta = _df.format(_t);
+								}catch (Exception eee){
+									_respuesta = (String)_nodo;
+								}
+							}
+						}
+						dataset.setValue(coincidencias, "Respuestas", _respuesta);
+					}
+				}else if(this.get_tipo_dataSet() == Graficos.DETALLADO){
+					int contador = 1;
+					while(_enu.hasMoreElements()){
+						Object _nodo = (Object)_enu.nextElement();
+						String _respuesta = "";
+						try{
+							Date _fecha = (Date)_nodo;
+							_respuesta = _dateFormatVisible.format(_fecha);
+						}catch (Exception e1){
+							try{
+								Double _t = (Double)_nodo;
+								DecimalFormat _df = new DecimalFormat("###############.###############");
+								_respuesta = _df.format(_t);
+							}catch (Exception ee){
+								try{
+									Long _t = (Long)_nodo;
+									DecimalFormat _df = new DecimalFormat("####################");
+									_respuesta = _df.format(_t);
+								}catch (Exception eee){
+									_respuesta = (String)_nodo;
+								}
+							}
+						}
+						dataset.setValue((Number)Double.parseDouble(_respuesta), "Respuestas", contador);
+						contador++;
+					}
+				}
+				_dataset = dataset;
+
+			}else if(this._tipo_grafico == Graficos.LINEAS_HORIZONTALES || this._tipo_grafico == Graficos.LINEAS_VERTICALES){
+					DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+					if(this.get_tipo_dataSet() == Graficos.FRECUENCIA){
+						Object _nodo;
+						while(_enu.hasMoreElements()){
+							_nodo = (Object)_enu.nextElement();
+							int coincidencias = (Integer)_enu2.nextElement();
+							String _respuesta = "";
+							try{
+								Date _fecha = (Date)_nodo;
+								_respuesta = _dateFormatVisible.format(_fecha);
+							}catch (Exception e1){
+								try{
+									Double _t = (Double)_nodo;
+									DecimalFormat _df = new DecimalFormat("###############.###############");
+									_respuesta = _df.format(_t);
+								}catch (Exception ee){
+									try{
+										Long _t = (Long)_nodo;
+										DecimalFormat _df = new DecimalFormat("####################");
+										_respuesta = _df.format(_t);
+									}catch (Exception eee){
+										_respuesta = (String)_nodo;
+									}
+								}
+							}
+							dataset.setValue(coincidencias, "Respuestas", _respuesta);
+						}
+					}else if(this.get_tipo_dataSet() == Graficos.DETALLADO){
+						int contador = 1;
+						while(_enu.hasMoreElements()){
+							Object _nodo = (Object)_enu.nextElement();
+							String _respuesta = "";
+							try{
+								Date _fecha = (Date)_nodo;
+								_respuesta = _dateFormatVisible.format(_fecha);
+							}catch (Exception e1){
+								try{
+									Double _t = (Double)_nodo;
+									DecimalFormat _df = new DecimalFormat("###############.###############");
+									_respuesta = _df.format(_t);
+								}catch (Exception ee){
+									try{
+										Long _t = (Long)_nodo;
+										DecimalFormat _df = new DecimalFormat("####################");
+										_respuesta = _df.format(_t);
+									}catch (Exception eee){
+										_respuesta = (String)_nodo;
+									}
+								}
+							}
+							dataset.setValue((Number)Double.parseDouble(_respuesta), "Respuestas", contador);
+							contador++;
+						}
+					}
+					_dataset = dataset;
+
+			}else if(this._tipo_grafico == Graficos.TORTA){
+
+				DefaultPieDataset dataset = new DefaultPieDataset();
+				if(this.get_tipo_dataSet() == Graficos.FRECUENCIA){
+					Object _nodo;
+					while(_enu.hasMoreElements()){
+						int coincidencias = (Integer)_enu2.nextElement();
+						_nodo = (Object)_enu.nextElement();
+						String _respuesta = "";
+						try{
+							Date _fecha = (Date)_nodo;
+							_respuesta = _dateFormatVisible.format(_fecha);
+						}catch (Exception e1){
+							try{
+								Double _t = (Double)_nodo;
+								DecimalFormat _df = new DecimalFormat("###############.###############");
+								_respuesta = _df.format(_t);
+							}catch (Exception ee){
+								try{
+									Long _t = (Long)_nodo;
+									DecimalFormat _df = new DecimalFormat("####################");
+									_respuesta = _df.format(_t);
+								}catch (Exception eee){
+									_respuesta = (String)_nodo;
+								}
+							}
+						}
+						dataset.setValue(_respuesta, coincidencias);
+					}
+				}else if(this.get_tipo_dataSet() == Graficos.DETALLADO){
+					Object _nodo;
+					while(_enu.hasMoreElements()){
+						_nodo = (Object)_enu.nextElement();
+						String _respuesta = "";
+						try{
+							Date _fecha = (Date)_nodo;
+							_respuesta = _dateFormatVisible.format(_fecha);
+						}catch (Exception e1){
+							try{
+								Double _t = (Double)_nodo;
+								DecimalFormat _df = new DecimalFormat("###############.###############");
+								_respuesta = _df.format(_t);
+							}catch (Exception ee){
+								try{
+									Long _t = (Long)_nodo;
+									DecimalFormat _df = new DecimalFormat("####################");
+									_respuesta = _df.format(_t);
+								}catch (Exception eee){
+									_respuesta = (String)_nodo;
+								}
+							}
+						}
+						dataset.setValue(_respuesta, 1);
+					}
+				}
+				_dataset = dataset;
+
+			}
+		}catch (Exception e){e.printStackTrace();_dataset = null;}
+	}
 
 	public void setDataSet(Vector _datos){
 		try{
