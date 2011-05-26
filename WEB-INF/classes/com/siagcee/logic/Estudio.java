@@ -1703,7 +1703,7 @@ public class Estudio extends ObjetoBase{
 				Enumeration _enuPreg = _insObj.getObjetoAsociado().getPreguntas().elements();
 				while(_enuPreg.hasMoreElements()){
 					_insPregTemp = (InstanciaPregunta)_enuPreg.nextElement();
-					if((_insPregTemp.getEstudioAsociado() != null) && (_insPregTemp.getTipoPregunta() == 100) && (this.getId() == _insPregTemp.getEstudioAsociado().getId())){
+					if((_insPregTemp.getEstudioAsociado() != null) && (_insPregTemp.getTipoPregunta() == 100) && (this.getId() == _insPregTemp.getEstudioAsociado()._id)){
 						//hay que guardar en esta pregunta el resultado del estudio
 						Respuesta _resp = new Respuesta(new Encuestado(this.getConexion(), _usuarios), this.getConexion());
 						_resp.asociarInstanciaObjeto(_insObj);

@@ -9,8 +9,6 @@ package com.siagcee.web;
  * Fecha: 24/11/2009
  * Hora: 01:21:48 PM
  */
-
-
 import com.siagcee.logic.Administrador;
 
 import javax.servlet.RequestDispatcher;
@@ -39,6 +37,5 @@ public class Salir extends HttpServlet{
 		}
 		sesion.invalidate();
 		view.forward(request, response);
-
 	}
 }
