@@ -208,8 +208,9 @@ public class RespuestasPosibles extends ObjetoBase{
 	//recarga el objeto desde la BD tomando en cuenta el ID de la respuesta
 	public void recargarRespuestaDeBD() {
 		ResultSet rs = null;
+		PreparedStatement pstmt = null;
 		try {
-			PreparedStatement pstmt = this.getConexion().prepareStatement("SELECT * FROM pool_respuestas_posibles WHERE id_pool_respuestas_posibles = ?");
+			pstmt = this.getConexion().prepareStatement("SELECT * FROM pool_respuestas_posibles WHERE id_pool_respuestas_posibles = ?");
 			pstmt.setInt(1, this.getId());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -223,6 +224,7 @@ public class RespuestasPosibles extends ObjetoBase{
 			}
 		}
 		catch (Exception e) {
+			System.out.println(pstmt.toString());
 			e.printStackTrace();
 		}
 	}

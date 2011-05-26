@@ -149,7 +149,7 @@ if(request.getAttribute("resultados") != null){
 Vector _listaDeEstudios = new Vector();
 if(request.getAttribute("listadoEstudios") != null){
 	_listaDeEstudios = (Vector)request.getAttribute("listadoEstudios");
-	Collections.sort(_listaDeEstudios, new OrdenadorEstudios(OrdenadorEstudios.TITULO));
+	//Collections.sort(_listaDeEstudios, new OrdenadorEstudios(OrdenadorEstudios.TITULO));
 }
 
 Vector _listaDeDatos = new Vector();
@@ -307,10 +307,10 @@ caption {
                     }
                     if(!_listaDeEstudios.isEmpty()){
                       Enumeration _enu = _listaDeEstudios.elements();
-                      Estudio _est = null;
+                      EstudioPerso _est = null;
                       while(_enu.hasMoreElements()){
-                        _est = (Estudio)_enu.nextElement();
-                        out.println("<option value='"+_est.getId()+"'>"+_est.getTitulo()+"</option>");
+                        _est = (EstudioPerso)_enu.nextElement();
+                        out.println("<option value='"+_est.get_id()+"'>"+_est.get_titulo()+"</option>");
                       }
                     }
                     if(!_listaDeEstudios.isEmpty()){
@@ -378,7 +378,7 @@ caption {
           </table>
         </form>
       <p />
-      Si desea crear un nuevo estudio haga clic <a href='generadorestudios?objetoatrabajar=<% out.print(objetoatrabajar.getObjetoAsociado().getId()); %>'>aqu&iacute;</a>.
+      Si desea crear un nuevo estudio haga clic <a href='crearestudioperso?objetoatrabajar=<% out.print(objetoatrabajar.getId()); %>'>aqu&iacute;</a>.
       <%
       }else{
         out.println("No se indic&oacute; una estructura con la que se pueda trabajar.");

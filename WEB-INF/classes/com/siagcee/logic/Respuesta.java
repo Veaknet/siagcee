@@ -286,7 +286,7 @@ public class Respuesta extends ObjetoBase{
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				this.id = rs.getInt("id_respuestas");
-				this.elaborado_por = rs.getInt("elaborado_por"); 
+				this.elaborado_por = rs.getInt("elaborado_por");
 				this.insObjeto = new InstanciaObjeto(this.getUsuario(), this.getConexion(), rs.getInt("id_instancia_objetos"));
 				this.insPreg = new InstanciaPregunta(this.getUsuario(), this.getConexion(), rs.getInt("id_instancia_preguntas"));
 				if(this.getTipoPregunta() >= 30){
@@ -318,64 +318,66 @@ public class Respuesta extends ObjetoBase{
 	public void ingresaABd(){
 		//debe indicarse la respuesta, y las instancias de pregunta y objeto
 		if(((this.getRespuestaAbierta() != null) || (this.getRespuestaCerrada() != null)) && ((this.getInstanciaObjeto() != null) && (this.getInstanciaPregunta() != null))){
-			try {
-				if (getCargadaDeBD()) {
-					//ejecuto UPDATE
-					PreparedStatement pstmt = getConexion().prepareStatement("UPDATE respuestas SET id_instancia_objetos = ? , id_instancia_preguntas = ? , respuesta_string = ? , respuesta_int = ? , respuesta_float = ? , respuesta_date = ? , id_respuestas_posibles = ? WHERE id_respuestas = ?");
-					pstmt.setInt(1, this.getInstanciaObjeto().getId());
-					pstmt.setInt(2, this.getInstanciaPregunta().getId());
-					//abierta
-					pstmt.setString(3, this.textoRespuesta);
-					pstmt.setLong(4, this.intRespuesta);
-					pstmt.setDouble(5, this.DoubleRespuesta);
-					pstmt.setDate(6, new java.sql.Date((this.dateRespuesta).getTime()));
-					//cerrada
-					if(this.getTipoPregunta() < 30){
-						pstmt.setInt(7, this.getRespuestaCerrada().getId());
-					}else{
-						pstmt.setInt(7, -1);
-					}
-					pstmt.setInt(8, this.getId());
-					pstmt.execute();
-				}else{
-					//Justo antes de insertar nueva respuesta debo eliminar su antecesora si existiera... no pueden haber multiples respuestas para
-					//un mismo objeto, misma pregunta y mismo usuario (único caso son las respuestas de preguntas de seleccion multiple). De igual manera se borra
-					//para asegurar que las respuestas que estamos ingresando son las correctas. Pero se deja la responsabilidad al que invoque a Respuesta
-					if((this.getInstanciaPregunta().getTipoPregunta() == 1) || (this.getInstanciaPregunta().getTipoPregunta() >= 30)){
-						PreparedStatement pstmt = getConexion().prepareStatement("DELETE FROM respuestas WHERE id_instancia_objetos = ? AND id_instancia_preguntas = ? AND elaborado_por = ?");
+			if(this.getUsuario().getUsuarioId() != -1){
+				try {
+					if (getCargadaDeBD()) {
+						//ejecuto UPDATE
+						PreparedStatement pstmt = getConexion().prepareStatement("UPDATE respuestas SET id_instancia_objetos = ? , id_instancia_preguntas = ? , respuesta_string = ? , respuesta_int = ? , respuesta_float = ? , respuesta_date = ? , id_respuestas_posibles = ? WHERE id_respuestas = ?");
 						pstmt.setInt(1, this.getInstanciaObjeto().getId());
 						pstmt.setInt(2, this.getInstanciaPregunta().getId());
-						pstmt.setInt(3, this.getUsuario().getUsuarioId());
+						//abierta
+						pstmt.setString(3, this.textoRespuesta);
+						pstmt.setLong(4, this.intRespuesta);
+						pstmt.setDouble(5, this.DoubleRespuesta);
+						pstmt.setDate(6, new java.sql.Date((this.dateRespuesta).getTime()));
+						//cerrada
+						if(this.getTipoPregunta() < 30){
+							pstmt.setInt(7, this.getRespuestaCerrada().getId());
+						}else{
+							pstmt.setInt(7, -1);
+						}
+						pstmt.setInt(8, this.getId());
 						pstmt.execute();
-					}
-					//ejecuto INSERT
-					PreparedStatement _pstmt = getConexion().prepareStatement("SELECT nextval('seq_respuestas') AS numero");
-					ResultSet _rs = _pstmt.executeQuery();
-					_rs.next();
-					int siguiente = _rs.getInt("numero");
-
-					PreparedStatement pstmt = getConexion().prepareStatement("INSERT INTO respuestas(id_respuestas, id_instancia_preguntas, id_instancia_objetos, elaborado_por, respuesta_string, respuesta_int, respuesta_float, respuesta_date, id_respuestas_posibles) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-					pstmt.setInt(1, siguiente);
-					pstmt.setInt(2, this.getInstanciaPregunta().getId());
-					pstmt.setInt(3, this.getInstanciaObjeto().getId());
-					pstmt.setInt(4, this.getUsuario().getUsuarioId());
-					//abierta
-					pstmt.setString(5, this.textoRespuesta);
-					pstmt.setLong(6, this.intRespuesta);
-					pstmt.setDouble(7, this.DoubleRespuesta);
-					pstmt.setDate(8, new java.sql.Date((this.dateRespuesta).getTime()));
-					//cerrada
-					if(this.getTipoPregunta() < 30){
-						pstmt.setInt(9, this.getRespuestaCerrada().getId());
 					}else{
-						pstmt.setInt(9, -1);
+						//Justo antes de insertar nueva respuesta debo eliminar su antecesora si existiera... no pueden haber multiples respuestas para
+						//un mismo objeto, misma pregunta y mismo usuario (único caso son las respuestas de preguntas de seleccion multiple). De igual manera se borra
+						//para asegurar que las respuestas que estamos ingresando son las correctas. Pero se deja la responsabilidad al que invoque a Respuesta
+						if((this.getInstanciaPregunta().getTipoPregunta() == 1) || (this.getInstanciaPregunta().getTipoPregunta() >= 30)){
+							PreparedStatement pstmt = getConexion().prepareStatement("DELETE FROM respuestas WHERE id_instancia_objetos = ? AND id_instancia_preguntas = ? AND elaborado_por = ?");
+							pstmt.setInt(1, this.getInstanciaObjeto().getId());
+							pstmt.setInt(2, this.getInstanciaPregunta().getId());
+							pstmt.setInt(3, this.getUsuario().getUsuarioId());
+							pstmt.execute();
+						}
+						//ejecuto INSERT
+						PreparedStatement _pstmt = getConexion().prepareStatement("SELECT nextval('seq_respuestas') AS numero");
+						ResultSet _rs = _pstmt.executeQuery();
+						_rs.next();
+						int siguiente = _rs.getInt("numero");
+
+						PreparedStatement pstmt = getConexion().prepareStatement("INSERT INTO respuestas(id_respuestas, id_instancia_preguntas, id_instancia_objetos, elaborado_por, respuesta_string, respuesta_int, respuesta_float, respuesta_date, id_respuestas_posibles) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+						pstmt.setInt(1, siguiente);
+						pstmt.setInt(2, this.getInstanciaPregunta().getId());
+						pstmt.setInt(3, this.getInstanciaObjeto().getId());
+						pstmt.setInt(4, this.getUsuario().getUsuarioId());
+						//abierta
+						pstmt.setString(5, this.textoRespuesta);
+						pstmt.setLong(6, this.intRespuesta);
+						pstmt.setDouble(7, this.DoubleRespuesta);
+						pstmt.setDate(8, new java.sql.Date((this.dateRespuesta).getTime()));
+						//cerrada
+						if(this.getTipoPregunta() < 30){
+							pstmt.setInt(9, this.getRespuestaCerrada().getId());
+						}else{
+							pstmt.setInt(9, -1);
+						}
+						pstmt.execute();
+						this.setCargadaDeBD(true);
+						this.setId(siguiente);
 					}
-					pstmt.execute();
-					this.setCargadaDeBD(true);
-					this.setId(siguiente);
 				}
+				catch (Exception e) {e.printStackTrace();}
 			}
-			catch (Exception e) {e.printStackTrace();}
 		}
 	}
 
@@ -489,7 +491,7 @@ public class Respuesta extends ObjetoBase{
 					_resp.dateRespuesta = rs.getDate("respuesta_date");
 				}else{
 					//cerrada
-					_resp.respuestaDada = new RespuestasPosibles(_usuario,_miConexion,Integer.parseInt(rs.getString("id_respuestas_posibles")));
+					_resp.respuestaDada = new RespuestasPosibles(_usuario,_miConexion,rs.getInt("id_respuestas_posibles"));
 				}
 				_resp.cargadaDeBD = true;
 				_resp.id = rs.getInt("id_respuestas");
@@ -506,8 +508,8 @@ public class Respuesta extends ObjetoBase{
 	//retorna un Resulset de todas las instancias de objetos disponibles para un usuario
 	private static ResultSet obtenerDataRespuestas(Usuario _usuario, Connection _miConexion, InstanciaPregunta _pregunta, InstanciaObjeto _objeto){
 		ResultSet rs = null;
+		PreparedStatement pstmt = null;
 		try {
-			PreparedStatement pstmt = null;
 			if(_pregunta != null && _objeto != null && _usuario != null){
 				//ninguno es null
 				pstmt = _miConexion.prepareStatement("SELECT * FROM respuestas WHERE elaborado_por = ? AND id_instancia_objetos = ? AND id_instancia_preguntas = ?");

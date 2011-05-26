@@ -68,9 +68,9 @@
 											<li class="headlink">
 												<a id='link_estudios' href="#" title="Cree, modifique y elimine estudios asociados a un censos, encuestas o colecci&oacute;nes de datos" onmouseover="this.focus();">Estudios</a>
 												<ul style="display: none;">
-													<li class="childlink"><a href="estudios.do?opcionbase=crear"><img src="comunes/imagenes/file-add.png" height="18" title="Crear estudio">&nbsp;Crear</a></li>
+													<!-- <li class="childlink"><a href="estudios.do?opcionbase=crear"><img src="comunes/imagenes/file-add.png" height="18" title="Crear estudio">&nbsp;Crear</a></li>
 													<li class="childlink"><a href="estudios.do?opcionbase=modificar"><img src="comunes/imagenes/file-edit.png" height="18" title="Modificar estudio">&nbsp;Modificar</a></li>
-													<li class="childlink"><a href="estudios.do?opcionbase=eliminar"><img src="comunes/imagenes/file-delete.png" height="18" title="Eliminar estudio">&nbsp;Eliminar</a></li>
+													<li class="childlink"><a href="estudios.do?opcionbase=eliminar"><img src="comunes/imagenes/file-delete.png" height="18" title="Eliminar estudio">&nbsp;Eliminar</a></li> //-->
 													<li class="childlink"><a href="admininsobj.do?opcionbase=todos&soloaplicar=true"><img src="comunes/imagenes/file-check.png" height="18" title="Aplicar estudio">&nbsp;Aplicar</a></li>
 												</ul>
 											</li>
@@ -87,7 +87,7 @@
 												<a id='opciones_link' href="#" title="Otras opciones" onmouseover="this.focus();">Opciones</a>
 												<ul style="display: none;">
 													<li class="childlink">
-														<a id='link_msg' href="mensaje.do"><img src="comunes/imagenes/email.png" height="18" title="Env&iacute;e un correo electr&oacute;nico a un conjunto de personas">&nbsp;Mensaje</a>														
+														<a id='link_msg' href="mensaje.do"><img src="comunes/imagenes/email.png" height="18" title="Env&iacute;e un correo electr&oacute;nico a un conjunto de personas">&nbsp;Mensaje</a>
 													</li>
 													<li class="childlink">
 														<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
@@ -98,7 +98,7 @@
 														<% } 	%>
 													</li>
 													<li class="childlink">
-														<a id='link_salir' href="salir.do" onclick="return confirm('Desea realmente abandonar la aplicacion?');"><img src="comunes/imagenes/exit.png" height="18" title="Cierre su sesi&oacute;n y vuelva a la p&aacute;gina inicial">&nbsp;Salir</a>														
+														<a id='link_salir' href="salir.do" onclick="return confirm('Desea realmente abandonar la aplicacion?');"><img src="comunes/imagenes/exit.png" height="18" title="Cierre su sesi&oacute;n y vuelva a la p&aacute;gina inicial">&nbsp;Salir</a>
 													</li>
 												</ul>
 											</li>

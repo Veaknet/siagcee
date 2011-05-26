@@ -151,7 +151,7 @@ if(request.getParameter("accioninvitar") != null){
 							try{
 								if(_pregAct.getTipoPregunta() < 30){
 									out.print("<td>"+_respActInterna.getRespuestaCerrada().getRespuesta()+"</td>");
-								}else	if(_pregAct.getTipoPregunta() == 30){
+								}else	if(_pregAct.getTipoPregunta() == 30 || _pregAct.getTipoPregunta() == 100){
 									out.print("<td>"+_respActInterna.getRespuestaAbiertaTexto()+"</td>");
 								}else	if(_pregAct.getTipoPregunta() == 31){
 									out.print("<td>"+_respActInterna.getRespuestaAbiertaInt()+"</td>");
@@ -218,17 +218,17 @@ if(request.getParameter("accioninvitar") != null){
 		<% } %>
 		<button value="Procesar estos usuarios" onclick="window.opener.document.getElementById('id_encapsulador').style.display = 'block';window.opener.document.getElementById('hacerpreview').value='falso';window.opener.document.getElementById('email_id_invite').value=document.getElementById('email_id_invite').value;window.opener.document.getElementById('email_id_invite_text').value=document.getElementById('email_id_invite_text').value;window.opener.document.getElementById('formgenerasql').target = '_top';window.opener.document.getElementById('formgenerasql').submit();window.close();">Aceptar y procesar estos usuarios</button>
 		<button value="Cerrar esta ventana" onclick="window.close();">Cancelar y cerrar esta ventana</button>
-	</form>		
+	</form>
 	<% }else{ %>
 	<button value="Cerrar esta ventana" onclick="window.close();">Cerrar esta ventana</button>
     <div style="padding-right:50px;float:right;text-align:right">
         <a href="javascript:void(null);" onclick="$('#accionextra').val('exportapdf');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/pdf.png" alt="Exportar estos datos a PDF" title="Exportar estos datos a PDF"/></a>
-        &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#accionextra').val('exportaword');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/word.png" alt="Exportar estos datos a Word" title="Exportar estos datos a Word"/></a> 
+        &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#accionextra').val('exportaword');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/word.png" alt="Exportar estos datos a Word" title="Exportar estos datos a Word"/></a>
         &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#accionextra').val('exportaexcel');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/excel.png" alt="Exportar estos datos a excel" title="Exportar estos datos a excel"/></a>
     </div>
 	<% } %>
 	<br />
-</td></tr></table>			
+</td></tr></table>
 
 <script type="text/javascript">
 	$(document).ready(function(){

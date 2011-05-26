@@ -353,64 +353,27 @@ public class AplicadorEstudios extends HttpServlet {
 
 					//termino
 				}else if(accion.equals("seleccionarestudio")){
-					//compruebo si tiene valores a solicitar por pantalla... caso contrario solo ejecuto
-					Estudio _miEstudio = null;
 					if(request.getParameter("idestudio") != null){
-						_miEstudio = new Estudio(admin, micon, Integer.valueOf((String)request.getParameter("idestudio")));
-						_miEstudio.validarCodigo();
+						EstudioPerso.resetInstance();
+						EstudioPerso.getInstance().setConexion(micon);
+						EstudioPerso.getInstance().setAdmin(admin);
+						EstudioPerso.getInstance().cargar(Integer.valueOf((String)request.getParameter("idestudio")));
+						EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
+						request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
+						EstudioPerso.getInstance().ejecutaEstudio();
+
+						Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
+
+						request.setAttribute("datos", _listaTiposDeDatos);
+						request.setAttribute("objetoatrabajar", _objetoSeleccionado);
+
+						request.setAttribute("mostrarguardar", false);
+						request.setAttribute("mostrarresultados", true);
+
+						//FALTA ACTUALIZAR LOS CAMPOS!!!!!!
+
 					}
-					request.setAttribute("idestudio", _miEstudio);
-					Vector _datosPorPantalla = _miEstudio.getListadoDatosSolicitados();
-
-					if(_datosPorPantalla.isEmpty()){
-						//antes debo crear la pregunta que almacenara los resultados
-						InstanciaPregunta _insPregTemp = null;
-						//ejecuto
-						_miEstudio.aplicarEstudio(_objetoSeleccionado, new Vector());
-						request.setAttribute("mostrarResultado", "si");
-						request.setAttribute("resultados", _miEstudio.getResultadosEstudio());
-						request.setAttribute("resultadosSinCoincidencias", _miEstudio.getResultadosEstudioSinCoincidencias());
-						request.setAttribute("listadoDeDatosPorPantalla", null);
-
-
-						Graficos _grafica = new Graficos();
-						_grafica.set_titulo(_miEstudio.getTitulo());
-
-						if(request.getParameter("tipo_grafico").equals("barras_horizontales")){
-							_grafica.set_tipo_grafico(Graficos.BARRAS_HORIZONTALES);
-						}else if(request.getParameter("tipo_grafico").equals("barras_verticales")){
-							_grafica.set_tipo_grafico(Graficos.BARRAS_VERTICALES);
-						}else if(request.getParameter("tipo_grafico").equals("torta")){
-							_grafica.set_tipo_grafico(Graficos.TORTA);
-						}else if(request.getParameter("tipo_grafico").equals("lineas_verticales")){
-							_grafica.set_tipo_grafico(Graficos.LINEAS_VERTICALES);
-						}else if(request.getParameter("tipo_grafico").equals("lineas_horizontales")){
-							_grafica.set_tipo_grafico(Graficos.LINEAS_HORIZONTALES);
-						}
-
-						if(request.getParameter("tipo_infor").equals("frecuencia")){
-							_grafica.set_tipo_dataSet(Graficos.FRECUENCIA);
-							_grafica.setDataSet(_miEstudio.getResultadosEstudio());
-						}else if(request.getParameter("tipo_infor").equals("detallado")){
-							_grafica.set_tipo_dataSet(Graficos.DETALLADO);
-							_grafica.setDataSet(_miEstudio.getResultadosEstudioSinCoincidencias());
-						}
-
-						String _dir = getServletContext().getRealPath("/")+"comunes\\graficos\\grafico_"+admin.getUsuarioId()+".jpg";
-						JFreeChart _graifoc = _grafica.graficar();
-						if(_graifoc != null){
-							ChartUtilities.saveChartAsJPEG(new File(_dir), _graifoc, 800, 450);
-							request.setAttribute("imagen", "comunes\\graficos\\grafico_"+admin.getUsuarioId()+".jpg");
-						}else{
-							//error
-							request.setAttribute("imagen", "");
-						}
-
-					}else{
-						request.setAttribute("mostrarResultado", "no");
-						request.setAttribute("listadoDeDatosPorPantalla", _datosPorPantalla);
-					}
-					request.setAttribute("estudioACargar", _miEstudio);
+					view = request.getRequestDispatcher("WEB-INF/vistas/crearestudioperso.jsp");
 				}
 
 				view.forward(request, response);
@@ -432,7 +395,7 @@ public class AplicadorEstudios extends HttpServlet {
 		HttpSession sesion = request.getSession();
 		Connection micon = (Connection) getServletContext().getAttribute("conexion");
 		Administrador admin = (Administrador) sesion.getAttribute("administrador");
-    RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/listarestudiosaaplicar.jsp");
+    	RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/listarestudiosaaplicar.jsp");
 		InstanciaObjeto _objetoSeleccionado = null;
 		if(admin != null){
 			try{
@@ -444,13 +407,23 @@ public class AplicadorEstudios extends HttpServlet {
 					request.setAttribute("objetoatrabajar", null);
 				}
 
-        try{
-          request.setAttribute("listadoDatos", _objetoSeleccionado.getObjetoAsociado().getPreguntas(false));
-        }catch (Exception e1){
-          request.setAttribute("listadoDatos", null);
-        }
+				try{
+				  request.setAttribute("listadoDatos", _objetoSeleccionado.getObjetoAsociado().getPreguntas(false));
+				}catch (Exception e1){
+				  request.setAttribute("listadoDatos", null);
+				}
 
-				request.setAttribute("listadoEstudios", Estudio.obtenerEstudiosDeEstructura(admin, micon, _objetoSeleccionado.getObjetoAsociado(), false));
+				Vector _estudios = EstudioPerso.obtenerEstudiosDeEstructura(admin, micon, _objetoSeleccionado.getObjetoAsociado(), false);
+
+				Vector _listaDeEstudios = new Vector();
+				Enumeration _enu = _estudios.elements();
+				while(_enu.hasMoreElements()){
+					EstudioPerso.getInstance().setAdmin(admin);
+					EstudioPerso.getInstance().setConexion(micon);
+					EstudioPerso.getInstance().cargar((Integer)_enu.nextElement());
+					_listaDeEstudios.add(EstudioPerso.getInstance());
+				}
+				request.setAttribute("listadoEstudios", _listaDeEstudios);
 
 				view.forward(request, response);
 

@@ -23,7 +23,7 @@ public class InstanciaPregunta extends ObjetoBase{
 	String acronimo;
 	Pregunta miPregunta;   //Pregunta
 	Objeto miPadre;
-	Estudio estudioAsociado;
+	EstudioPerso estudioAsociado;
 	boolean campo_clave_unico;
 	boolean campo_identificador;
 	boolean campo_comunicacion_email;
@@ -223,11 +223,11 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.ingresaABd();
 	}
 
-	public Estudio getEstudioAsociado() {
+	public EstudioPerso getEstudioAsociado() {
 		return estudioAsociado;
 	}
 
-	public boolean setEstudioAsociado(Estudio _estudioAsociado) {
+	public boolean setEstudioAsociado(EstudioPerso _estudioAsociado) {
 		//tipo pregunta 100 entonces si permito uso de estudios
 		if(this.getTipoPregunta() == 100){
 			this.estudioAsociado = _estudioAsociado;
@@ -363,7 +363,7 @@ public class InstanciaPregunta extends ObjetoBase{
 						pstmt.setInt(4, this.getPadre().getId());
 						int idEstudio = -1;
 						if(this.getEstudioAsociado() != null){
-						  idEstudio = this.getEstudioAsociado().getId();
+						  idEstudio = this.getEstudioAsociado().get_id();
 						}
 						pstmt.setInt(5, idEstudio);
 						pstmt.setBoolean(6, this.isCampo_clave_unico());
@@ -391,7 +391,7 @@ public class InstanciaPregunta extends ObjetoBase{
 					pstmt.setInt(6, this.getPreguntaAsociada().getId());
 					int idEstudio = -1;
 					if(this.getEstudioAsociado() != null){
-					  idEstudio = this.getEstudioAsociado().getId();
+					  idEstudio = this.getEstudioAsociado().get_id();
 					}
 					pstmt.setInt(7, idEstudio);
 					pstmt.setBoolean(8, this.isCampo_clave_unico());
@@ -455,7 +455,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				this.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				this.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
 				try{
-					this.setEstudioAsociado(new Estudio(this.getUsuario(), this.getConexion(), rs.getInt("id_estudios")));
+					//this.setEstudioAsociado(new EstudioPerso.getInstance());
 				}catch(Exception ee){
 					this.setEstudioAsociado(null);
 				}
@@ -527,7 +527,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				ObjPregTemp.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				ObjPregTemp.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
 				try{
-					ObjPregTemp.estudioAsociado = (new Estudio(_usuario, _miConexion, rs.getInt("id_estudios"), true));
+					//ObjPregTemp.estudioAsociado = (new Estudio(_usuario, _miConexion, rs.getInt("id_estudios"), true));
 				}catch(Exception ee){
 					ObjPregTemp.estudioAsociado = null;
 				}
@@ -596,7 +596,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				_pregunta.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				_pregunta.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
 				try{
-					_pregunta.setEstudioAsociado(new Estudio(_usuario, _miConexion, rs.getInt("id_estudios")));
+					//_pregunta.setEstudioAsociado(new Estudio(_usuario, _miConexion, rs.getInt("id_estudios")));
 				}catch(Exception ee){
 					_pregunta.setEstudioAsociado(null);
 				}
