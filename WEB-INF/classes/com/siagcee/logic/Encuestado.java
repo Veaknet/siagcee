@@ -67,7 +67,7 @@ public class Encuestado extends Usuario{
 	//caso contrario se registra el usuario y se valida posteriormente
 	public boolean Verificar(Connection _miConexion, String _idPoblacion, String _campoClave){
 		ingresaUsuario(_idPoblacion, _campoClave);
-		return iniciarSesion(_idPoblacion, _campoClave);
+		return this.iniciarSesion(_idPoblacion, _campoClave);
 	}
 
 	public void actualizaBD(){
@@ -120,7 +120,8 @@ public class Encuestado extends Usuario{
 				this.validado = false;
 				return false;
 			}
-		}catch(Exception e){e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 			this.validado = false;
 			return false;
 		}

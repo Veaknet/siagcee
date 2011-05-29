@@ -1,6 +1,9 @@
 package com.siagcee.web;
 
-import com.siagcee.logic.*;
+import com.siagcee.logic.Administrador;
+import com.siagcee.logic.EstudioPerso;
+import com.siagcee.logic.Objeto;
+import com.siagcee.logic.Pregunta;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

@@ -1,5 +1,4 @@
-<%@page session="true" import="com.siagcee.logic.*" %>
-<%@ page import="java.util.*" %>
+<%@page session="true" %>
 <%@include file="admininicio.jsp" %>
 
 <!--

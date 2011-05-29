@@ -10,10 +10,7 @@ package com.siagcee.web;
  * Hora: 01:21:48 PM
  */
 
-import com.siagcee.logic.AccesosEncuestados;
-import com.siagcee.logic.Administrador;
-import com.siagcee.logic.InstanciaObjeto;
-import com.siagcee.logic.Objeto;
+import com.siagcee.logic.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Enumeration;
 import java.util.Vector;
 
 public class ImplementObjeto extends HttpServlet{
@@ -122,6 +120,23 @@ public class ImplementObjeto extends HttpServlet{
 									view = request.getRequestDispatcher("WEB-INF/vistas/admininsobj.jsp");
                                 }
 							}
+							//agrego todas las preguntas a editables
+							PreguntaEditable.delPreguntasEditables(admin, micon, _miIns);
+							PreguntaEditable _pregEdit = null;
+							Vector _todasMisPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _miIns.getObjetoAsociado());
+							Enumeration _ueP = _todasMisPreguntas.elements();
+							InstanciaPregunta _instPregn = null;
+							while(_ueP.hasMoreElements()){
+								try{
+									_instPregn = (InstanciaPregunta)_ueP.nextElement();
+									if(_instPregn.getTipoPregunta() == 100){
+										continue;
+									}
+									_pregEdit = new PreguntaEditable(admin, micon);
+									_pregEdit.set_InsObjeto(_miIns);
+									_pregEdit.set_InsPregunta(_instPregn);
+								}catch(Exception ee3){}
+							}
 						}else if (_accion.equals("actualizar")){
 							int _id = Integer.parseInt((String) request.getParameter("id"));
 							_miIns = new InstanciaObjeto(admin, micon, _id);
@@ -142,9 +157,15 @@ public class ImplementObjeto extends HttpServlet{
 								_resltados = _mifecha.split("-");
 								_miIns.setFechaInicio(_resltados[2]+"-"+_resltados[1]+"-"+_resltados[0]);
 							}
-							_miIns.asociaObjeto(_miObjetoAsociado);
+							//_miIns.asociaObjeto(_miObjetoAsociado);
+							request.setAttribute("highlight", _miIns.getId());
 
-							view = request.getRequestDispatcher("WEB-INF/vistas/admininsobj.jsp");
+							//agrego todas las preguntas a editables
+							InstanciaObjeto _obj = _miIns;
+							request.setAttribute("objetoatrabajar", _obj);
+							request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _obj.getObjetoAsociado()));
+							request.setAttribute("preguntasEditables",PreguntaEditable.retornaTodasEditables(admin, micon, _obj));
+							view = request.getRequestDispatcher("WEB-INF/vistas/seteditables.jsp");
 						}
 						if(request.getParameter("poblacion") != null){
 							InstanciaObjeto _poblacionAsociada = new InstanciaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("poblacion")));

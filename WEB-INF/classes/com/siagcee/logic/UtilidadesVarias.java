@@ -23,6 +23,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -128,7 +130,9 @@ public class UtilidadesVarias {
             Enumeration _enu = _preguntas.elements();
             while(_enu.hasMoreElements()){
                 _pregAct = (InstanciaPregunta)_enu.nextElement();
-
+				if((_pregAct.getTipoPregunta() < 30 || _pregAct.getTipoPregunta() >= 100) && _plantilla){
+					continue;
+				}
                 WritableFont times14font = new WritableFont(WritableFont.TIMES, 12, WritableFont.NO_BOLD);
                 WritableCellFormat times14format = new WritableCellFormat (times14font);
                 times14format.setBorder(Border.ALL, jxl.format.BorderLineStyle.MEDIUM, Colour.BLACK);
@@ -136,8 +140,22 @@ public class UtilidadesVarias {
                 times14format.setAlignment(Alignment.LEFT);
                 times14format.setVerticalAlignment(VerticalAlignment.TOP);
                 times14format.setBackground(Colour.SEA_GREEN);
+ 				WritableCellFeatures cellFeatures = new WritableCellFeatures();
+				if(_pregAct.getTipoPregunta() == 33){
+					cellFeatures.setComment("Formato aceptado para fechas: dd-mm-aaaa (dd: dia; mm: mes; aaaa: año");
+				}
+				if(_pregAct.getTipoPregunta() == 32){
+					cellFeatures.setComment("Formato aceptado para este campo: números con decimales separados por coma(,)");
+				}
+				if(_pregAct.getTipoPregunta() == 31){
+					cellFeatures.setComment("Formato aceptado para este campo: números sin decimales");
+				}
+				if(_pregAct.getTipoPregunta() == 30){
+					cellFeatures.setComment("Cualquier valor es aceptado para este campo");
+				}
 
                 Label label = new Label(Col, Fil, _pregAct.getAcronimo(), times14format);
+				label.setCellFeatures(cellFeatures);
                 hoja.addCell(label);
                 Col++;
             }
@@ -195,6 +213,8 @@ public class UtilidadesVarias {
                                     hoja.addCell(number);
                                     Col++;
                                 }else	if(_pregAct.getTipoPregunta() == 33){
+									times14format = new WritableCellFormat (DateFormats.FORMAT2);
+									times14format.setBorder(Border.ALL, jxl.format.BorderLineStyle.THIN, Colour.GREY_80_PERCENT);
                                     String[] _respDate = _respActInterna.getRespuestaAbiertaDate().toString().split("-");
                                     Label label = new Label(Col, Fil, _respDate[2]+"-"+_respDate[1]+"-"+_respDate[0], times14format);
                                     hoja.addCell(label);
@@ -219,10 +239,9 @@ public class UtilidadesVarias {
                     }
                 }
             }
-
-            workbook.write();
-            workbook.close();
-            _resul = true;
+			workbook.write();
+			workbook.close();
+			_resul = true;
 
         }catch (IOException ioe){
             System.out.println("Error creando el archivo de excel.");
@@ -495,13 +514,13 @@ public class UtilidadesVarias {
             Col = 0;
             while(_enu.hasMoreElements()){
                 _pregAct = (InstanciaPregunta)_enu.nextElement();
+				if(_pregAct.getTipoPregunta() == 100 || _pregAct.getTipoPregunta() < 30){
+					continue;
+				}
                 if(_pregAct.isCampo_clave_unico()){
                     _preguntaClave = Col;
                 }
                 Col++;
-                if(_pregAct.getTipoPregunta() == 100){
-                    continue;
-                }
                 _preguntas.add(_pregAct);
             }
 
@@ -518,6 +537,7 @@ public class UtilidadesVarias {
                         valor = celda.getContents();
                         _encu = new Encuestado(micon, String.valueOf(_obj.getId()), valor);
                     }catch(Exception ee3){
+						ee3.printStackTrace();
                         _encu = new Encuestado(micon, String.valueOf(_obj.getId()), "");
                     }
                 }
@@ -545,18 +565,42 @@ public class UtilidadesVarias {
 						try{
 							_resp.setRespuesta(Long.parseLong(valor));
 						}catch (Exception excp){
-							_resp.setRespuesta(Long.parseLong("0"));
+							excp.printStackTrace();
 						}
                     }else if(_pregAct.getTipoPregunta() == 32){
                         if(valor.equals("")){ valor = "0";}
 						try{
 							_resp.setRespuesta(Double.parseDouble(valor));
 						}catch (Exception excp){
-							_resp.setRespuesta(Double.parseDouble("0"));
+							excp.printStackTrace();
 						}
                     }else if(_pregAct.getTipoPregunta() == 33){
-                        //fecha
-                        _resp.setRespuesta(valor);
+						SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+						Date today = null;
+						try {
+							today = df.parse(valor);
+						} catch (ParseException e) {
+							df = new SimpleDateFormat("dd-MM-yy");
+							today = null;
+							try {
+								today = df.parse(valor);
+							} catch (ParseException e1) {
+								df = new SimpleDateFormat("dd/MM/yyyy");
+								today = null;
+								try {
+									today = df.parse(valor);
+								} catch (ParseException e21) {
+									df = new SimpleDateFormat("dd/MM/yy");
+									today = null;
+									try {
+										today = df.parse(valor);
+									} catch (ParseException e41) {
+										e41.printStackTrace();
+									}
+								}
+							}
+						}
+						_resp.setRespuesta(today);
                     }
                 }
                 if(todosVacios){

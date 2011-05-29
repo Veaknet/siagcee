@@ -1,5 +1,4 @@
-<%@page session="true" import="com.siagcee.logic.*" %>
-<%@ page import="java.util.*" %>
+<%@page session="true" import="com.siagcee.logic.InstanciaObjeto" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@include file="admininicio.jsp" %>
 

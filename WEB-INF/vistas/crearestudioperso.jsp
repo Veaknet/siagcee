@@ -1,5 +1,5 @@
-<%@page session="true" import="com.siagcee.logic.*" %>
-<%@page import="java.util.*" %>
+<%@page session="true" import="java.util.Enumeration" %>
+<%@page import="java.util.Vector" %>
 <%@include file="admininicio.jsp" %>
 
 <!--
@@ -398,10 +398,15 @@ $(document).ready(function(){
 				}
 				if(EstudioPerso.getInstance().hayResultado() && !EstudioPerso.getInstance().hayErrores()){
 					String _resul = "";
-					out.print(EstudioPerso.getInstance().firstResultado()+"<br />");
-					while((_resul = EstudioPerso.getInstance().nextResultado()) != null){
-						out.print(_resul+"<br />");
+					if(EstudioPerso.getInstance().get_titulo() != null && !EstudioPerso.getInstance().get_titulo().equals("")){
+						out.print("<h4>"+EstudioPerso.getInstance().get_titulo()+"</h4>");
 					}
+					out.print("<table>");
+					out.print("<tr><td>"+EstudioPerso.getInstance().firstResultado()+"</td></tr>");
+					while((_resul = EstudioPerso.getInstance().nextResultado()) != null){
+						out.print("<tr><td>"+_resul+"</td></tr>");
+					}
+					out.print("</table>");
 				}else if(EstudioPerso.getInstance().hayErrores()){
 					%>
 					<h4>Errores</h4>

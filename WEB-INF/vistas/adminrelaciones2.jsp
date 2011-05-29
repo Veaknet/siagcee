@@ -1,5 +1,5 @@
-<%@page import="com.siagcee.logic.Objeto" %>
-<%@ page import="com.siagcee.logic.OrdenadorObjetos" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Enumeration" %>
 <%@include file="admininicio.jsp" %>
 
 <%@include file="adminheader.jsp" %>
@@ -91,4 +91,3 @@ if(_instanciaObjeto != null && _relacionadaInstancia != null){
 %>
 </td></tr></table>
 <%@include file="adminfooter.jsp" %>
-	

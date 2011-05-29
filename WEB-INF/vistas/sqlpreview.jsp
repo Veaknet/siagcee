@@ -1,6 +1,7 @@
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.Connection" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Vector" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Enumeration" %>
 <%@include file="admininicio.jsp" %>
 
 <script type="text/javascript">

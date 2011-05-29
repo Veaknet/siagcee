@@ -1,5 +1,6 @@
-<%@page session="true" import="com.siagcee.logic.*" %>
-<%@page import="java.util.*" %>
+<%@page session="true" import="com.siagcee.logic.Objeto" %>
+<%@page import="java.util.Enumeration" %>
+<%@ page import="java.util.Vector" %>
 <%@include file="admininicio.jsp" %>
 
 <!--

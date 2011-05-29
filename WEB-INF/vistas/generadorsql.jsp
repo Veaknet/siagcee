@@ -1,3 +1,6 @@
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="java.util.Vector" %>
+<%@ page import="java.util.Collections" %>
 <%@include file="admininicio.jsp" %>
 
 <%
@@ -1021,7 +1024,7 @@ if(!_objetos.isEmpty()){
 		<td>
 		<h2>Filtrar participantes en el instrumento</h2>
 		<form action="generadorsql.do?invitar=<% out.print(request.getParameter("invitar")); %>&soloeste=<% out.print(request.getParameter("soloeste")); %>&accioninvitar=<% out.print(request.getParameter("accioninvitar")); %>" method="post" id="seleccionaform" name="seleccionaform" onsubmit="var _esteSele = document.getElementById('objetoatrabajar').value;if(_esteSele == ''){return false;}">
-		<input type="hidden" value="seleccionar" id="accion" name="accion"> 
+		<input type="hidden" value="seleccionar" id="accion" name="accion">
 		<label>Instrumento:</label><select id="objetoatrabajar" name="objetoatrabajar" onchange="document.seleccionaform.submit();">
 		<option id=""
 		<%

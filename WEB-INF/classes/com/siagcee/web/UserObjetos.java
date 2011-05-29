@@ -49,6 +49,9 @@ public class UserObjetos extends HttpServlet {
 				Vector _respuestasEnBD = Respuesta.todasRespuestas(encuestado, micon, null, _miIns);
 				request.setAttribute("respuestasDadas", _respuestasEnBD);
 
+				request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(encuestado, micon, _miIns.getObjetoAsociado()));
+				request.setAttribute("preguntasEditables",PreguntaEditable.retornaTodasEditables(encuestado, micon, _miIns));
+
 				if(_accion.equals("insertar")){
 					view = request.getRequestDispatcher("WEB-INF/vistas/userobjetos.jsp");
 					Vector _temporalPreguntas = _miIns.getObjetoAsociado().getPreguntas(true);

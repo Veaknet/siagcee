@@ -1,5 +1,7 @@
 <%@page import="com.siagcee.logic.Objeto" %>
-<%@ page import="com.siagcee.logic.OrdenadorObjetos" %>
+<%@ page import="java.util.Vector" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Enumeration" %>
 <%@include file="admininicio.jsp" %>
 
 

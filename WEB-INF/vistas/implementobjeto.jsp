@@ -1,4 +1,7 @@
+<%@ page import="java.util.Collections" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="java.util.Vector" %>
 <%@include file="admininicio.jsp" %>
 
 <script type="text/javascript" charset="UTF-8">

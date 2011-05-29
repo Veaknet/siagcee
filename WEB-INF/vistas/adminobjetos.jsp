@@ -1,5 +1,8 @@
 <%@page import="com.siagcee.logic.Objeto" %>
 <%@ page import="com.siagcee.logic.OrdenadorObjetos" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="java.util.Vector" %>
 <%@include file="admininicio.jsp" %>
 
 <head>
@@ -81,7 +84,7 @@ if (request.getAttribute("resultado") != null) {
 	out.println(request.getAttribute("resultado") + "<br />");
 }
 
-Vector _objetos = new Vector();	
+Vector _objetos = new Vector();
 if(request.getAttribute("listadoObjetos") != null){
 	_objetos = (Vector)request.getAttribute("listadoObjetos");
 	Collections.sort(_objetos, new OrdenadorObjetos(OrdenadorObjetos.OBJETO));
@@ -184,7 +187,7 @@ if(!_mensaje.equals("")){
 							<input type="hidden" name="opcionbase" value="<% out.print(_opcionBase);%>">
 							<label>Seleccione <% out.print(_elemento);%>:<br /></label>
 							<% if(_opcionBase.equals("eliminar") || _opcionBase.equals("revisar")){ %>
-								<select id="objetoseleccionado" name="objetoseleccionado" onchange="abrirInfo();return true;" multiple="multiple" size="<% out.print(_nuevoVector.size() + 2); %>">
+								<select id="objetoseleccionado" name="objetoseleccionado" onchange="abrirInfo();return true;" multiple="multiple" size="<% out.print((_nuevoVector.size()) + 2); %>">
 							<% }else{ %>
 								<select id="objetoseleccionado" name="objetoseleccionado" onchange="document.miformulario.submit()" multiple="multiple" size="<% out.print(_nuevoVector.size() + 2); %>">
 							<% } %>

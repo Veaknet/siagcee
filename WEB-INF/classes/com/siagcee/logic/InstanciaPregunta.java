@@ -438,7 +438,7 @@ public class InstanciaPregunta extends ObjetoBase{
 	}
 
 	//recarga el objeto desde la BD tomando en cuenta el ID de la pregunta
-	public void recargarInstanciaPreguntaDeBD() {
+	public void recargarInstanciaPreguntaDeBD(){
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = this.getConexion().prepareStatement("SELECT * FROM instancia_preguntas WHERE id_instancia_preguntas = ?");

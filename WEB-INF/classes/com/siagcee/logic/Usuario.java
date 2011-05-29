@@ -39,8 +39,8 @@ public class Usuario extends ObjetoBase{
 		super();
 		this.setConexion(_miConexion);
 		usuarioId = -1;
-		Username = new String("");
-		clave = new String("");
+		Username = _usuario;
+		clave = _clave;
 		validado = false;
 		iniciarSesion(_usuario, _clave);
 	}
@@ -68,11 +68,11 @@ public class Usuario extends ObjetoBase{
 	}
 
 	protected void setUsername(String _username){
-		Username = _username;	
+		Username = _username;
 	}
 
 	public void setClave(String _clave){
-		clave = _clave;	
+		clave = _clave;
 	}
 
 	protected void setUsuarioId(int _idUsuario){

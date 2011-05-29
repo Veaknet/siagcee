@@ -1,3 +1,6 @@
+<%@ page import="java.util.Vector" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Enumeration" %>
 <%@include file="admininicio.jsp" %>
 
 <!--

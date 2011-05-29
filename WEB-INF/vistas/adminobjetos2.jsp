@@ -1,4 +1,7 @@
 <%@include file="admininicio.jsp" %>
+<%@page import="java.util.Collections"%>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="java.util.Vector" %>
 
 <head>
 <script type="text/javascript" charset="UTF-8">
@@ -344,7 +347,7 @@ try{
 	while(preguntasComunes.hasMoreElements()){
 		preguntaComun = (Pregunta)preguntasComunes.nextElement();
 		if(preguntaComun.getTipoPregunta() != 100){
-			continue;	
+			continue;
 		}
 		%>
 			array_preguntas_estudios[array_preguntas_estudios.length] = '<% out.print(preguntaComun.getId()); %>';

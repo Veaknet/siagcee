@@ -251,6 +251,15 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>SetEditables</servlet-name>
+		<servlet-class>com.siagcee.web.SetEditables</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SetEditables</servlet-name>
+		<url-pattern>/seteditables</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>SubirExcel</servlet-name>
 		<servlet-class>com.siagcee.web.SubirExcel</servlet-class>
 	</servlet>

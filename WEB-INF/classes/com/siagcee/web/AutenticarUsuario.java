@@ -51,7 +51,11 @@ public class AutenticarUsuario extends HttpServlet{
 				}
 
 				InstanciaObjeto _miObjeto = new InstanciaObjeto(_yo, micon, Integer.parseInt((String)request.getParameter("id_instrumento")));
-				
+
+				request.setAttribute("objetoatrabajar", _miObjeto);
+				request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(new Administrador(), micon, _miObjeto.getObjetoAsociado()));
+				request.setAttribute("preguntasEditables",PreguntaEditable.retornaTodasEditables(new Administrador(), micon, _miObjeto));
+
 				if((_miObjeto.getObjetoAsociado().retornaPreguntaClave(true) != null) && (request.getParameter("campo_clave") == null)){
 					request.setAttribute("InstanciaSeleccionadaPorId", _miObjeto);
 					request.setAttribute("mensaje", "<span style='color:red'>No pudo ser autenticado para acceder a este instrumento.</span>");
@@ -149,7 +153,7 @@ public class AutenticarUsuario extends HttpServlet{
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF8");
-		RequestDispatcher view; 
+		RequestDispatcher view;
 		Connection micon = (Connection) getServletContext().getAttribute("conexion");
 		request.setAttribute("insVector", null);
 		InstanciaObjeto _miObjeto = null;

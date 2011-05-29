@@ -1,6 +1,9 @@
 <%@page session="true" import="com.siagcee.logic.*" %>
-<%@page import="java.util.*"%>
-<%@ page import="java.text.DecimalFormat" %>
+<%@page import="java.text.DecimalFormat"%>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Vector" %>
 <%@include file="userinicio.jsp" %>
 
 
@@ -88,6 +91,16 @@ if(request.getAttribute("seleccionado") != null){
 	}
 }
 
+Vector preguntasTotales = new Vector();
+if(request.getAttribute("preguntasTotales") != null){
+	preguntasTotales = (Vector)request.getAttribute("preguntasTotales");
+}
+
+Vector preguntasEditables = new Vector();
+if(request.getAttribute("preguntasEditables") != null){
+	preguntasEditables = (Vector)request.getAttribute("preguntasEditables");
+}
+
 %>
 <table cellpadding="4" cellspacing="4" class="tablasecundariatitulo">
 	<tr>
@@ -131,6 +144,14 @@ No ha indicado un censo o encuesta para participar.
 		Respuesta miRespDada = new Respuesta();
 		boolean respEncontrada = false;
 
+		HashMap _editable = new HashMap();
+		Enumeration _enu = preguntasEditables.elements();
+		PreguntaEditable _prEd;
+		while(_enu.hasMoreElements()){
+			_prEd = (PreguntaEditable)_enu.nextElement();
+			_editable.put(_prEd.get_InsPregunta().getId(), true);
+		}
+
 		while(_misPreg.hasMoreElements()){
 			//para verificar si se encontro una respuesta guardada previamente
 
@@ -139,7 +160,7 @@ No ha indicado un censo o encuesta para participar.
 			miPreg = (InstanciaPregunta)_misPreg.nextElement();
 
 			//es interna para calculos de estudios.
-			if(miPreg.getTipoPregunta() == 100){
+			if(miPreg.getTipoPregunta() == 100 || (_editable.get(miPreg.getId()) == null && !miPreg.isCampo_clave_unico())){
 				continue;
 			}
 

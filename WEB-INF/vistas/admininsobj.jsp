@@ -1,6 +1,12 @@
-<%@page session="true" import="com.siagcee.logic.*" %>
-<%@ page import="java.util.*" %>
+<%@page session="true" import="com.siagcee.logic.InstanciaObjeto" %>
+<%@ page import="com.siagcee.logic.OrdenadorInstanciaObjetos" %>
+<%@ page import="com.siagcee.logic.Relacion" %>
+<%@ page import="com.siagcee.logic.UtilidadesVarias" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="java.util.Vector" %>
 <%@include file="admininicio.jsp" %>
 
 <!--
@@ -122,7 +128,7 @@ if(_miIns != null){
 				primerPendiente = false;
 				out.println("<h4>Instrumentos Pendientes</h4>");
 				%>
-				<table class="reporte" cellpadding="4" cellspacing="4" border="1" style="max-width:900px;width:900px;" width="900">
+				<table class="reporte" cellpadding="4" cellspacing="4" border="1" style="max-width:950px;width:950px;" width="950">
 					<tr class="reporteTR">
 						<th style="max-width:70px;" width="70" valign="top">
 							Iniciar&aacute;
@@ -149,6 +155,9 @@ if(_miIns != null){
                         </th>
 						<th style="max-width:50px;" valign="top" width="50">
 							Carga desde excel
+						</th>
+						<th style="max-width:50px;" valign="top" width="50">
+							Campos editables
 						</th>
 					</tr>
 				<%
@@ -190,7 +199,8 @@ if(_miIns != null){
 				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/stats.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
 			}
 			out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"autenticarusuario.do?identificador_publico="+miObj.getIdPublico()+"'>Enlace</a></td>");
-			out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td></tr>");
+			out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
+			out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'>Set Editables</td></tr>");
 			todoVacio=false;
 		}
 		if(!vacio){
@@ -211,7 +221,7 @@ if(_miIns != null){
 				primerEjecucion = false;
 				out.println("<h4>Instrumentos En Ejecuci&oacute;n</h4>");
 				%>
-				<table class="reporte" cellpadding="4" cellspacing="4" border="1" style="max-width:900px;width:900px;" width="900">
+				<table class="reporte" cellpadding="4" cellspacing="4" border="1" style="max-width:950px;width:950px;" width="950">
 					<tr class="reporteTR">
 						<th style="max-width:70px;" width="70" valign="top">
 							Iniciado
@@ -241,6 +251,9 @@ if(_miIns != null){
                         </th>
 						<th style="max-width:50px;" valign="top" width="50">
 							Carga desde excel
+						</th>
+						<th style="max-width:50px;" valign="top" width="50">
+							Campos editables
 						</th>
 					</tr>
 				<%
@@ -283,7 +296,8 @@ if(_miIns != null){
 			}
 			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
 			out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"autenticarusuario.do?identificador_publico="+miObj.getIdPublico()+"'>Enlace</a></td>");
-			out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td></tr>");
+			out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
+			out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'>Set Editables</td></tr>");
 			todoVacio=false;
 		}
 		if(!vacio){
@@ -304,7 +318,7 @@ if(_miIns != null){
 				primerFinalizado = false;
 				out.println("<h4>Instrumentos Finalizados</h4>");
 				%>
-				<table class="reporte" id='tabla_finalizado' cellpadding="4" cellspacing="4" border="1" style="max-width:900px;width:900px;" width="900">
+				<table class="reporte" id='tabla_finalizado' cellpadding="4" cellspacing="4" border="1" style="max-width:950px;width:950px;" width="950">
 					<tr class="reporteTR">
 						<th style="max-width:70px;" width="70" valign="top">
 							Iniciado
@@ -399,7 +413,7 @@ if(_miIns != null){
 				primerColeccion = false;
 				out.println("<h4>Colecciones de datos</h4>");
 				%>
-				<table class="reporte" id='tabla_relaciones' cellpadding="4" cellspacing="4" border="1" style="max-width:900px;width:900px;" width="900">
+				<table class="reporte" id='tabla_relaciones' cellpadding="4" cellspacing="4" border="1" style="max-width:950px;width:950px;" width="950">
 					<tr class="reporteTR">
 						<th valign="top">
 							Colecc&oacute;n
@@ -422,7 +436,13 @@ if(_miIns != null){
 							Revisar Datos
 						</th>
 						<th style="max-width:50px;" valign="top" width="50">
+							Enlace
+						</th>
+						<th style="max-width:50px;" valign="top" width="50">
 							Carga desde excel
+						</th>
+						<th style="max-width:50px;" valign="top" width="50">
+							Campos editables
 						</th>
 					</tr>
 				<%
@@ -458,7 +478,13 @@ if(_miIns != null){
 				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/stats.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
 			}
 			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
-			out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td></tr>");
+			out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"autenticarusuario.do?identificador_publico="+miObj.getIdPublico()+"'>Enlace</a></td>");
+			out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
+			if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
+				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'>Set Editables</td></tr>");
+			}else{
+				out.println("<td align='center'>-</td></tr>");
+			}
 			todoVacio=false;
 		}
 		if(!vacio){
@@ -479,7 +505,7 @@ if(_miIns != null){
 				primerFinalizado = false;
 				out.println("<h4>Instrumentos Eliminados</h4>");
 				%>
-				<table class="reporte" id='tabla_finalizado' cellpadding="4" cellspacing="4" border="1" style="max-width:900px;width:900px;" width="900">
+				<table class="reporte" id='tabla_finalizado' cellpadding="4" cellspacing="4" border="1" style="max-width:950px;width:950px;" width="950">
 					<tr class="reporteTR">
 						<th style="max-width:70px;" width="70" valign="top">
 							Iniciado
