@@ -179,15 +179,6 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>GeneradorEstudios</servlet-name>
-    <servlet-class>com.siagcee.web.GeneradorEstudios</servlet-class>
-	</servlet>
-	<servlet-mapping>
-	  <servlet-name>GeneradorEstudios</servlet-name>
-	  <url-pattern>/generadorestudios</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
 		<servlet-name>AplicadorEstudios</servlet-name>
     <servlet-class>com.siagcee.web.AplicadorEstudios</servlet-class>
 	</servlet>

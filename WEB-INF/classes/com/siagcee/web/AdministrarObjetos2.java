@@ -92,9 +92,10 @@ public class AdministrarObjetos2 extends HttpServlet{
 
 							_nuevaInstancia = new InstanciaPregunta(admin, micon, _preguntaSeleccionada);
 
-							Estudio estudioAAsociar = null; 
+							EstudioPerso estudioAAsociar = null;
 							try{
-								estudioAAsociar = new Estudio(admin, micon, Integer.parseInt((String)request.getParameter("tipoestudio")));
+								//estudioAAsociar = new EstudioPerso(admin, micon, Integer.parseInt((String)request.getParameter("tipoestudio")));
+								estudioAAsociar = null;
 							}catch(Exception ee){ee.printStackTrace();estudioAAsociar = null;}
 							_nuevaInstancia.setPadre(_objetoSeleccionado);
 							if(_preguntaAAsociar != null && _preguntaAAsociar.getId() != -1){
@@ -122,9 +123,10 @@ public class AdministrarObjetos2 extends HttpServlet{
 								_orden = Integer.parseInt((String)request.getParameter("orden"));
 							}catch(Exception e){_orden = 0;}
 
-							Estudio estudioAAsociar = null;
+							EstudioPerso estudioAAsociar = null;
 							try{
-								estudioAAsociar = new Estudio(admin, micon, Integer.parseInt((String)request.getParameter("tipoestudio")));
+								//estudioAAsociar = new Estudio(admin, micon, Integer.parseInt((String)request.getParameter("tipoestudio")));
+								estudioAAsociar = null;
 							}catch(Exception e){estudioAAsociar = null;}
 
 							Pregunta _preguntaAAsociar = new Pregunta(admin, micon, _asociaPregunta);

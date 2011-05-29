@@ -50,7 +50,7 @@ function seleccionar(_elem){
 		  }
 		  var _mitemp = document.createElement("div");
 		  _mitemp.style.display = "block";
-		  _mitemp.innerHTML = "<h4>"+array_estudios[i]['titulo']+"</h4>"+array_estudios[i]['descripcion'];
+		  _mitemp.innerHTML = "<h4>"+array_estudios[i]['titulo']+"</h4>";
 		  _descr.appendChild(_mitemp);
 		  var _espacio = document.createElement("br");
 		  _descr.appendChild(_espacio);
@@ -92,21 +92,19 @@ if (request.getAttribute("resultado") != null) {
 Vector _listaDeEstudios = new Vector();
 if(request.getAttribute("listadoEstudios") != null){
 	_listaDeEstudios = (Vector)request.getAttribute("listadoEstudios");
-	Collections.sort(_listaDeEstudios, new OrdenadorEstudios(OrdenadorEstudios.TITULO));
+	//Collections.sort(_listaDeEstudios, new OrdenadorEstudiosPerson(OrdenadorEstudiosPerson.TITULO));
 }
-	
+
 if(objetoatrabajar != null){
 	if(!_listaDeEstudios.isEmpty()){
 		out.println("<script type='text/javascript' charset='utf-8'>");
 		Enumeration _enu_ = _listaDeEstudios.elements();
-		Estudio _est_ = null;
 		int i = 0;
-		while(_enu_.hasMoreElements()){   
-			_est_ = (Estudio)_enu_.nextElement();
+		while(_enu_.hasMoreElements()){
+			EstudioPerso.getInstance().cargar((Integer)_enu_.nextElement());
 			out.println("array_estudios["+i+"] = new Array();");
-			out.println("array_estudios["+i+"]['id'] = '"+_est_.getId()+"';");
-			out.println("array_estudios["+i+"]['titulo'] = '"+UtilidadesVarias.reemplazarCaracteres(UtilidadesVarias.reemplazarCaracteres(_est_.getTitulo(), "\n", "<br>"), "\"", "\\\"")+"';");
-			out.println("array_estudios["+i+"]['descripcion'] = '"+UtilidadesVarias.reemplazarCaracteres(UtilidadesVarias.reemplazarCaracteres(_est_.getDescripcion(), "\n", "<br>"), "\"", "\\\"")+"';");
+			out.println("array_estudios["+i+"]['id'] = '"+EstudioPerso.getInstance().get_id()+"';");
+			out.println("array_estudios["+i+"]['titulo'] = '"+UtilidadesVarias.reemplazarCaracteres(UtilidadesVarias.reemplazarCaracteres(EstudioPerso.getInstance().get_titulo(), "\n", "<br>"), "\"", "\\\"")+"';");
 			i++;
 		}
 		out.println("</script>");
@@ -118,7 +116,7 @@ if(request.getParameter("opcionbase")!=null){
 	_opcionBase = request.getParameter("opcionbase");
 }
 
-String _titulo = "";	
+String _titulo = "";
 if(_opcionBase.equals("crear")){
 	_titulo = "Crear Estudio";
 }else if(_opcionBase.equals("modificar")){
@@ -139,7 +137,6 @@ if(_opcionBase.equals("crear")){
 if(objetoatrabajar != null){
 	if(!_listaDeEstudios.isEmpty()){
 		Enumeration _enu = _listaDeEstudios.elements();
-		Estudio _est = null;
 		%>
 		<table cellspacing="4" cellpadding="4" class='tablasecundaria'>
 			<tr>
@@ -147,15 +144,15 @@ if(objetoatrabajar != null){
 					<h2><% out.print(_titulo); %></h2>
 					<h4>Instrumento Sobre el que se Trabaja:<br /><% out.print(objetoatrabajar.getObjeto());%></h4>
 					<label>Seleccione un estudio</label>
-					<form action="generadorestudios" method="post">
+					<form action="crearestudioperso" method="post">
 						<input type="hidden" value="<% out.print(objetoatrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
 						<input type="hidden" value="seleccionarestudio" id="accion" name="accion">
 						<input type="hidden" value="<% out.print(request.getParameter("opcionbase")); %>" id="opcionbase" name="opcionbase">
 						<select id="idestudio" name="idestudio" onchange="parentNode.submit();" multiple="multiple" size="<% out.print(_listaDeEstudios.size() + 1); %>">
 							<%
-							while(_enu.hasMoreElements()){   
-								_est = (Estudio)_enu.nextElement();
-								out.println("<option value='"+_est.getId()+"'>"+_est.getTitulo()+"&nbsp;&nbsp;</option>");
+							while(_enu.hasMoreElements()){
+								EstudioPerso.getInstance().cargar((Integer)_enu.nextElement());
+								out.println("<option value='"+EstudioPerso.getInstance().get_id()+"'>"+EstudioPerso.getInstance().get_titulo()+"&nbsp;&nbsp;</option>");
 							}
 							%>
 						</select>
@@ -171,11 +168,27 @@ if(objetoatrabajar != null){
 		</table>
 		<%
 	}else{
-		out.println("No existen estudios asociados a la estructura.");
+		%>
+		<table cellspacing="4" cellpadding="4" class='tablasecundaria'>
+			<tr>
+				<td valign="top">
+					<% out.println("No existen estudios asociados a la estructura."); %>
+				</td>
+			</tr>
+		</table>
+	<%
 	}
 }else{
-	out.println("No se indic&oacute; una estructura con la que se pueda trabajar.");
-}
+	%>
+	<table cellspacing="4" cellpadding="4" class='tablasecundaria'>
+		<tr>
+			<td valign="top">
+				<% out.println("No se indic&oacute; una estructura con la que se pueda trabajar."); %>
+			</td>
+		</tr>
+	</table>
+<%
+	}
 %>
 
 <%@include file="adminfooter.jsp" %>

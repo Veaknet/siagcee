@@ -120,7 +120,7 @@ if(request.getParameter("accioninvitar") != null){
 		<%
 			_enu = _respuestas.elements();
 			Respuesta _respAct = null;
-			int id_usuario = -1; 
+			int id_usuario = -1;
 			while(_enu.hasMoreElements()){
 				//para cada usuario
 				_respAct = (Respuesta)_enu.nextElement();
@@ -166,7 +166,7 @@ if(request.getParameter("accioninvitar") != null){
 						}
 					}
 					if(!_respEncon){
-						out.print("<td>No Sabe / No Responde</td>");
+						out.print("<td>&nbsp;</td>");
 					}
 				}
 			}

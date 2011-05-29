@@ -114,7 +114,7 @@ public class ImplementObjeto extends HttpServlet{
 									view = request.getRequestDispatcher("WEB-INF/vistas/correos_a_invitar.jsp");
                                 }else if(_tipoInvitacion == 4){
                                     //carga desde excel
-									request.setAttribute("idobjetodestino", _miIns.getId());
+									request.setAttribute("idobjetodestino", String.valueOf(_miIns.getId()));
 									view = request.getRequestDispatcher("WEB-INF/vistas/cargaexcel.jsp");
 								}else{
                                     //no invitar

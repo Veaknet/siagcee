@@ -279,7 +279,7 @@ while(_misInstanciados99.hasMoreElements()){
 					<label>Tipo de acceso:</label><br /><select name="tipo_acceso" id="tipo_acceso" onchange="modificarTipoInvitacion();">
 						<option value="0" selected="selected">P&uacute;blico</option>
 						<option value="1">Restringido</option>
-                        <option value="2">Uso interno (carga de datos desde excel)</option>  
+                        <option value="2">Uso interno (carga de datos desde excel)</option>
 					</select><p />
 					<span name="span_tipo_invitacion" id="span_tipo_invitacion">
 						<label>Seleccionar o invitar usuarios:</label><br /><select name="tipo_invitacion" id="tipo_invitacion">
@@ -300,7 +300,7 @@ while(_misInstanciados99.hasMoreElements()){
 							Objeto miObj;
 							while(_misObjetos.hasMoreElements()){
 								miObj = (Objeto)_misObjetos.nextElement();
-								if(miObj.getClass().toString().contains("Relacion")){continue;}
+								//if(miObj.getClass().toString().contains("Relacion")){continue;}
 								//solo se hace lo siguiente para mostrarlos por grupos: censos, encuestas y relaciones
 								if(miObj.getClass().toString().contains("EstructuraBase")){
 									continue;
@@ -317,6 +317,9 @@ while(_misInstanciados99.hasMoreElements()){
 									}
 									if(miClase.contains("Encuesta")){
 										miClasePrint = "Encuestas";
+									}
+									if(miClase.contains("Relacion")){
+										miClasePrint = "Colecciones";
 									}
 									%>
 									<optgroup label="<% out.print(miClasePrint); %>">

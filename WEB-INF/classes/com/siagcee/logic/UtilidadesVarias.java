@@ -108,7 +108,11 @@ public class UtilidadesVarias {
         }
 	}
 
-    public static boolean generaExcel(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj){
+	public static boolean generaExcel(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj){
+		return generaExcel(_nombre_archivo, _preguntas, _respuestas, _obj, false);
+	}
+
+    public static boolean generaExcel(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj, boolean _plantilla){
         WritableWorkbook workbook = null;
         String titulo = _obj.getObjeto();
         boolean _resul = false;
@@ -174,7 +178,7 @@ public class UtilidadesVarias {
                             try{
                                 WritableCellFormat times14format = new WritableCellFormat ();
                                 times14format.setBorder(Border.ALL, jxl.format.BorderLineStyle.THIN, Colour.GREY_80_PERCENT);
-                                if(_pregAct.getTipoPregunta() < 30){
+                                if(_pregAct.getTipoPregunta() < 30 && !_plantilla){
                                     Label label = new Label(Col, Fil, _respActInterna.getRespuestaCerrada().getRespuesta(), times14format);
                                     hoja.addCell(label);
                                     Col++;
@@ -195,7 +199,11 @@ public class UtilidadesVarias {
                                     Label label = new Label(Col, Fil, _respDate[2]+"-"+_respDate[1]+"-"+_respDate[0], times14format);
                                     hoja.addCell(label);
                                     Col++;
-                                }
+								}else	if(_pregAct.getTipoPregunta() >= 100 && !_plantilla){
+									Label label = new Label(Col, Fil, _respActInterna.getRespuestaAbiertaTexto(), times14format);
+									hoja.addCell(label);
+									Col++;
+								}
                             }catch (Exception e1){
                                 Label label = new Label(Col, Fil, "Error cargando esta respuesta");
                                 hoja.addCell(label);
@@ -308,6 +316,8 @@ public class UtilidadesVarias {
                                 }else	if(_pregAct.getTipoPregunta() == 33){
                                     String[] _respDate = _respActInterna.getRespuestaAbiertaDate().toString().split("-");
                                     table.addCell(_respDate[2]+"-"+_respDate[1]+"-"+_respDate[0]);
+								}else	if(_pregAct.getTipoPregunta() <= 100){
+									table.addCell(_respActInterna.getRespuestaAbiertaTexto());
                                 }
                             }catch (Exception e1){
                                 table.addCell("Error cargando esta respuesta");
@@ -409,6 +419,8 @@ public class UtilidadesVarias {
                                 }else	if(_pregAct.getTipoPregunta() == 33){
                                     String[] _respDate = _respActInterna.getRespuestaAbiertaDate().toString().split("-");
                                     row2.add(_respDate[2]+"-"+_respDate[1]+"-"+_respDate[0]);
+								}else	if(_pregAct.getTipoPregunta() >= 100){
+									row2.add(_respActInterna.getRespuestaAbiertaTexto());
                                 }
                             }catch (Exception e1){
                                 row2.add("Error cargando esta respuesta");
@@ -470,6 +482,7 @@ public class UtilidadesVarias {
                     Col++;
                     CantPreguntas++;
                 }catch(Exception ee1){
+					ee1.printStackTrace();
                     Fil++;
                     Col = 0;
                     break;
@@ -515,6 +528,7 @@ public class UtilidadesVarias {
                         celda = sheet.getCell(col,Fil);
                         valor = celda.getContents();
                     }catch(Exception eee2){
+						eee2.printStackTrace();
                         valor = "";
                     }
                     if(!(valor.trim().isEmpty() && valor.trim().equals(""))){
@@ -528,10 +542,18 @@ public class UtilidadesVarias {
                         _resp.setRespuesta(valor);
                     }else if(_pregAct.getTipoPregunta() == 31){
                         if(valor.equals("")){ valor = "0";}
-                        _resp.setRespuesta(Long.parseLong(valor));
+						try{
+							_resp.setRespuesta(Long.parseLong(valor));
+						}catch (Exception excp){
+							_resp.setRespuesta(Long.parseLong("0"));
+						}
                     }else if(_pregAct.getTipoPregunta() == 32){
                         if(valor.equals("")){ valor = "0";}
-                        _resp.setRespuesta(Double.parseDouble(valor));
+						try{
+							_resp.setRespuesta(Double.parseDouble(valor));
+						}catch (Exception excp){
+							_resp.setRespuesta(Double.parseDouble("0"));
+						}
                     }else if(_pregAct.getTipoPregunta() == 33){
                         //fecha
                         _resp.setRespuesta(valor);

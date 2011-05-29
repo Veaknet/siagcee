@@ -88,7 +88,7 @@ public class AdministrarObjetos extends HttpServlet{
 					request.setAttribute("listadoPreguntasComunes", _preguntasComunes);
 					request.setAttribute("listadoPreguntas", _misPreguntas);
 					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
-					request.setAttribute("listadoEstudios", Estudio.obtenerEstudiosDeEstructura(admin, micon, _objetoSeleccionado, false));
+					request.setAttribute("listadoEstudios", new Vector());
 					view.forward(request, response);
 				}
 			}catch(Exception e){

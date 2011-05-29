@@ -367,6 +367,20 @@ $(document).ready(function(){
 	$("#link_estudios").css("color","red");
 });
 
+
+<% if((request.getParameter("opcionbase")!= null) && "eliminar".equals((String)request.getParameter("opcionbase"))){ %>
+
+function eliminarEsto(){
+	if(confirm('Realmente desea eliminar este estudio?')){
+		window.location = "crearestudioperso?accion=delete&objetoatrabajar=<% out.print(_objTrabajar.getId());%>&idestudio=<% out.print(EstudioPerso.getInstance().get_id());%>";
+	}
+}
+
+$(document).ready(function(){
+	eliminarEsto();
+});
+<% } %>
+
 </script>
 
 <table class="tablasecundaria" cellpadding="4" cellspacing="4">

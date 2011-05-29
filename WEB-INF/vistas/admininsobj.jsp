@@ -68,6 +68,7 @@ if(_miIns != null){
 	boolean primerFinalizado = true;
 	boolean primerPendiente = true;
 	boolean primerEjecucion = true;
+	boolean primerColeccion = true;
 
 	sesion.setAttribute("retornoDireccion", "admininsobj.do");
 
@@ -146,6 +147,9 @@ if(_miIns != null){
                         <th style="max-width:50px;" valign="top" width="50">
                             Enlace
                         </th>
+						<th style="max-width:50px;" valign="top" width="50">
+							Carga desde excel
+						</th>
 					</tr>
 				<%
 			}
@@ -171,7 +175,7 @@ if(_miIns != null){
 			}
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
-					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?invitar="+miObj.getId()+"'>De otro instrumento</option>");
+					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
 						out.println("<option value='correos_a_invitar.do?_hightlight="+miObj.getId()+"'>Especificando emails</option>");
 					}
@@ -185,7 +189,8 @@ if(_miIns != null){
 			}else{
 				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/stats.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
 			}
-			out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"autenticarusuario.do?identificador_publico="+miObj.getIdPublico()+"'>Enlace</a></td></tr>");
+			out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"autenticarusuario.do?identificador_publico="+miObj.getIdPublico()+"'>Enlace</a></td>");
+			out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td></tr>");
 			todoVacio=false;
 		}
 		if(!vacio){
@@ -234,6 +239,9 @@ if(_miIns != null){
                         <th style="max-width:50px;" valign="top" width="50">
                             Enlace
                         </th>
+						<th style="max-width:50px;" valign="top" width="50">
+							Carga desde excel
+						</th>
 					</tr>
 				<%
 			}
@@ -259,7 +267,7 @@ if(_miIns != null){
 			}
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
-					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?invitar="+miObj.getId()+"'>De otro instrumento</option>");
+					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
 						out.println("<option value='correos_a_invitar.do?_hightlight="+miObj.getId()+"'>Especificando emails</option>");
 					}
@@ -274,7 +282,8 @@ if(_miIns != null){
 				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/stats.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
 			}
 			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
-			out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"autenticarusuario.do?identificador_publico="+miObj.getIdPublico()+"'>Enlace</a></td></tr>");
+			out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"autenticarusuario.do?identificador_publico="+miObj.getIdPublico()+"'>Enlace</a></td>");
+			out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td></tr>");
 			todoVacio=false;
 		}
 		if(!vacio){
@@ -307,9 +316,9 @@ if(_miIns != null){
 							Instrumento
 						</th>
 						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
-						<!-- <th style="max-width:60px;" valign="top" width="45">
+						<th style="max-width:60px;" valign="top" width="45">
 							Reenviar
-						</th> //-->
+						</th>
 						<th style="max-width:45px;" valign="top" width="45">
 							Borrar
 						</th>
@@ -319,6 +328,9 @@ if(_miIns != null){
 						</th>
 						<th style="max-width:55px;" valign="top" width="55">
 							Revisar Datos
+						</th>
+						<th style="max-width:50px;" valign="top" width="50">
+							Carga desde excel
 						</th>
 					</tr>
 				<%
@@ -346,18 +358,17 @@ if(_miIns != null){
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
 
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
-					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?invitar="+miObj.getId()+"'>De otro instrumento</option>");
+					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
 						out.println("<option value='correos_a_invitar.do?_hightlight="+miObj.getId()+"'>Especificando emails</option>");
 					}
 					out.println("</select></td>");
 				}
-				/*
-				if(miObj.getObjetoAsociado().getClass().toString().contains("Censo") && _dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) >= 0){
+				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) >= 0){
 					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Desea volver a ejecutar el instrumento:\\n"+miObj.getObjeto()+"?\")){window.location=\"implementobjeto.do?solo="+miObj.getId()+"\";return true;}else{return false;}' height='24' alt='Actualizar este instrumento y todas las respuestas que posea' title='Actualizar este instrumento y todas las respuestas que posea' /></a></td>");
 				}else{
 					out.println("<td align='center'>-</td>");
-				}*/
+				}
 				out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar el instrumento:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar este instrumento y todas las respuestas que posea' title='Eliminar este instrumento y todas las respuestas que posea' /></a></td>");
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
 			}
@@ -366,14 +377,95 @@ if(_miIns != null){
 			}else{
 				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/stats.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
 			}
-			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td></tr>");
+			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
+			out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td></tr>");
 			todoVacio=false;
 		}
 		if(!vacio){
 			out.println("</table>");
 			vacio = true;
 		}
-	}		
+	}
+
+	if((_mostrarOpcion.equals("todos") || _mostrarOpcion.equals("relaciones"))){
+		_misInstanciados = misRelaciones.elements();
+		if(misRelaciones.isEmpty() && _mostrarOpcion.equals("todos")){
+		  out.println("No existen colecciones de datos.");
+		}
+		while(_misInstanciados.hasMoreElements()){
+			miObj = (InstanciaObjeto)_misInstanciados.nextElement();
+			vacio = false;
+			if(primerColeccion){
+				primerColeccion = false;
+				out.println("<h4>Colecciones de datos</h4>");
+				%>
+				<table class="reporte" id='tabla_relaciones' cellpadding="4" cellspacing="4" border="1" style="max-width:900px;width:900px;" width="900">
+					<tr class="reporteTR">
+						<th valign="top">
+							Colecc&oacute;n
+						</th>
+						<th style="max-width:175px;" valign="top" width="175">
+							Invitar A Nuevos Usuarios
+						</th>
+						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
+						<th style="max-width:60px;" valign="top" width="45">
+							Reenviar
+						</th>
+						<th style="max-width:45px;" valign="top" width="45">
+							Borrar
+						</th>
+						<% } %>
+						<th style="max-width:55px;" valign="top" width="55">
+							Aplicar Estudio
+						</th>
+						<th style="max-width:55px;" valign="top" width="55">
+							Revisar Datos
+						</th>
+						<th style="max-width:50px;" valign="top" width="50">
+							Carga desde excel
+						</th>
+					</tr>
+				<%
+			}
+
+			if((_hightlight > -1) && (_hightlight == miObj.getId())){
+				out.println("<tr class='selectedTR'><td valign='top'>"+miObj.getObjeto()+"</td>");
+			}else{
+				out.println("<tr><td valign='top'>"+miObj.getObjeto()+"</td>");
+			}
+			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
+
+				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
+					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
+					if(miObj.getAcceso() == 0){
+						out.println("<option value='correos_a_invitar.do?_hightlight="+miObj.getId()+"'>Especificando emails</option>");
+					}
+					out.println("</select></td>");
+				}else{
+					out.println("<td align='center'>-</td>");
+				}
+				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) >= 0){
+					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Desea volver a ejecutar la colecci&oacute;n :\\n"+miObj.getObjeto()+"?\")){window.location=\"implementobjeto.do?solo="+miObj.getId()+"\";return true;}else{return false;}' height='24' alt='Actualizar esta colecci&oacute;n y todas las respuestas que posea' title='Actualizar esta colecci&oacute;n y todas las respuestas que posea' /></a></td>");
+				}else{
+					out.println("<td align='center'>-</td>");
+				}
+				out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar la colecci&oacute;n:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar esta colecci&oacute;n y todas las respuestas que posea' title='Eliminar esta colecci&oacute;n y todas las respuestas que posea' /></a></td>");
+				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
+			}
+			if(_dateFormat.format(_hoy).compareTo(miObj.getFechaInicio().toString()) < 0){
+				out.println("<td align='center'>-</td>");
+			}else{
+				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/stats.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
+			}
+			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
+			out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td></tr>");
+			todoVacio=false;
+		}
+		if(!vacio){
+			out.println("</table>");
+			vacio = true;
+		}
+	}
 
 	if(_mostrarOpcion.equals("eliminados")){
 		_misInstanciados = misEliminados.elements();
@@ -439,57 +531,9 @@ if(_miIns != null){
 			out.println("</table>");
 			vacio = true;
 		}
-	}	
+	}
 
-	//elimino el mostrar colecciones de datos en instrumentos generados... si se quiere basta eliminar ese false en el condicional
-	if((_mostrarOpcion.equals("todos") || _mostrarOpcion.equals("relaciones")) && false){
-		Collections.sort(misRelaciones, new OrdenadorInstanciaObjetos(OrdenadorInstanciaObjetos.OBJETO));
-		Enumeration _enu = misRelaciones.elements();
-		InstanciaObjeto _miRelation = null;
-		if(misRelaciones.isEmpty() && _mostrarOpcion.equals("relaciones")){
-		  out.println("No existen colecciones de datos.");
-		}
-		if(_enu.hasMoreElements()){
-			out.println("<h4>Colecciones De Datos</h4>");
-			%>
-			<table class="reporte" cellpadding="4" cellspacing="4" border="1" style="max-width:900px;width:900px;" width="900">
-				<tr class="reporteTR">
-					<th valign="top">
-						Relaci&oacute;n
-					</th>
-					<th style="max-width:45px;" valign="top" width="45">
-						Borrar
-					</th>
-					<th style="max-width:45px;" valign="top" width="45">
-						Aplicar Estudio
-					</th>
-                    <th style="max-width:45px;" valign="top" width="45">
-                        Enlace
-                    </th>
-				</tr>
-			<%
-		}
-		while(_enu.hasMoreElements()){
-			vacio = false;
-			_miRelation = (InstanciaObjeto)_enu.nextElement();
-			if((_hightlight > -1) && (_hightlight == _miRelation.getId())){
-				out.println("<tr class='selectedTR'><td valign='top' align='left'>"+_miRelation.getObjeto()+"</td><td valign='top' align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar la Relacion:\\n"+_miRelation.getObjeto()+"\\n y todas las respuestas asociadas?. \\nEsta accion es permanente no puede ser devuelta.\")){if(confirm(\"Por favor confirme de nuevo la ELIMINACION de TODA la informacion asociada de la Relacion:\\n"+_miRelation.getObjeto()+".\\nRecuerde esta accion no tiene retorno.\")){alert(\"Ha decidido eliminar toda la informacion asociada con la Relacion:\\n"+_miRelation.getObjeto()+"\\nSe procedera a realizarlo.\");window.location=\"admininsobj.do?eliminar="+_miRelation.getId()+"\";}else{return false;}}else{return false;}' height='24' alt='Eliminar esta Relacion y todas las respuestas que posea' title='Eliminar esta Relacion y todas las respuestas que posea' /></a></td>");
-			}else{
-				out.println("<tr><td valign='top' align='left'>"+_miRelation.getObjeto()+"</td><td valign='top' align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar la Relacion:\\n"+_miRelation.getObjeto()+"\\n y todas las respuestas asociadas?. \\nEsta accion es permanente no puede ser devuelta.\")){if(confirm(\"Por favor confirme de nuevo la ELIMINACION de TODA la informacion asociada de la Relacion:\\n"+_miRelation.getObjeto()+".\\nRecuerde esta accion no tiene retorno.\")){alert(\"Ha decidido eliminar toda la informacion asociada con la Relacion:\\n"+_miRelation.getObjeto()+"\\nSe procedera a realizarlo.\");window.location=\"admininsobj.do?eliminar="+_miRelation.getId()+"\";}else{return false;}}else{return false;}' height='24' alt='Eliminar esta Relacion y todas las respuestas que posea' title='Eliminar esta Relacion y todas las respuestas que posea' /></a></td>");
-			}
-			//out.println("<td align='center'><a href='generadorestudios?accion=listarestudios&objetoatrabajar="+_miRelation.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
-			out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+_miRelation.getId()+"'><img src='comunes/imagenes/stats.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td></tr>");
-            out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"autenticarusuario.do?identificador_publico="+miObj.getIdPublico()+"'>Enlace</a></td></tr>");
-			todoVacio=false;
-		}
-		if(!vacio){
-			out.println("</table>");
-			vacio = true;
-		}
-	}
-	}
-%>
-			<%
+}
 			if(todoVacio && _mostrarOpcion.equals("todos")){
 				%>
 					No existen instrumentos.<p />

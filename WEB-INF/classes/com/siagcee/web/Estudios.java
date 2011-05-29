@@ -1,9 +1,6 @@
 package com.siagcee.web;
 
-import com.siagcee.logic.Administrador;
-import com.siagcee.logic.Estudio;
-import com.siagcee.logic.Objeto;
-import com.siagcee.logic.Pregunta;
+import com.siagcee.logic.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,12 +43,14 @@ public class Estudios extends HttpServlet {
 				//generadorestudios?accion=listarestudios&objetoatrabajar="+miObj.getObjetoAsociado().getId()+"
 				Vector _listaTiposDeDatos = Pregunta.preguntasDeObjeto(admin, micon, _miObj);
 
+				EstudioPerso.getInstance().setConexion(micon);
+				EstudioPerso.getInstance().setAdmin(admin);
 				request.setAttribute("listaTipoDeDatos", _listaTiposDeDatos);
 				request.setAttribute("objetoatrabajar", _miObj);
-				request.setAttribute("listadoEstudios", Estudio.obtenerEstudiosDeEstructura(admin, micon, _miObj, true));
+				request.setAttribute("listadoEstudios", EstudioPerso.obtenerEstudiosDeEstructura(admin, micon, _miObj, true));
 				sesion.setAttribute("retornoDireccion", "estudios.do");
 				if(request.getParameter("opcionbase").contains("crear")){
-					view = request.getRequestDispatcher("WEB-INF/vistas/generadorestudios.jsp");
+					view = request.getRequestDispatcher("WEB-INF/vistas/listarestudios.jsp");
 				}else if(request.getParameter("opcionbase").contains("modificar")){
 					view = request.getRequestDispatcher("WEB-INF/vistas/listarestudios.jsp");
 				}else if(request.getParameter("opcionbase").contains("eliminar")){
@@ -81,6 +80,8 @@ public class Estudios extends HttpServlet {
 		Administrador admin = (Administrador) sesion.getAttribute("administrador");
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/estudios.jsp");
 		if(admin != null){
+			EstudioPerso.getInstance().setConexion(micon);
+			EstudioPerso.getInstance().setAdmin(admin);
 			try {
 				Vector _estructuras = Objeto.todosObjetos(admin, micon, 0, true, false);
 				request.setAttribute("estructuras",_estructuras);
