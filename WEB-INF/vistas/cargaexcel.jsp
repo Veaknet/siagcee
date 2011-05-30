@@ -51,10 +51,10 @@ if(!_loaded){
                 %>
                 <form action="subirexcel" enctype="multipart/form-data" method="POST">
                     Indique el archivo a subir: <input type="file" name="file1" size="40"><p />
-                    <input type="hidden" value="<% out.print(idObj); %>" id="idobjetodestino" name="idobjetodestino"><br>
-                    <input type="Submit" value="Cargar archivo"><br>
+                    <input type="hidden" value="<% out.print(idObj); %>" id="idobjetodestino" name="idobjetodestino">
+                    <input type="Submit" value="Cargar archivo"><br >
                 </form>
-				<p />Puede descargar el archivo base en excel para carga de datos haciendo clic <a href="sqlpreview?accionextra=exportaexcel&plantilla=1&opcionmadre=si&objetoatrabajar=<% out.print(idObj); %>">aqu&iacute;</a>.
+				<p /><br >Puede descargar el archivo base en excel para carga de datos haciendo clic <a href="sqlpreview?accionextra=exportaexcel&plantilla=1&opcionmadre=si&objetoatrabajar=<% out.print(idObj); %>">aqu&iacute;</a>.
             </td>
         </tr>
     </table>

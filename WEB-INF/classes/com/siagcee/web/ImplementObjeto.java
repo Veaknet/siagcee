@@ -140,8 +140,6 @@ public class ImplementObjeto extends HttpServlet{
 						}else if (_accion.equals("actualizar")){
 							int _id = Integer.parseInt((String) request.getParameter("id"));
 							_miIns = new InstanciaObjeto(admin, micon, _id);
-							_miIns.setAcceso(_tipoAcceso);
-							_miIns.setObjeto(_miObjeto);
 							String[] _resltados;
 							String _mifecha = (String)request.getParameter("cierre");
 							if(_mifecha.equals("")){

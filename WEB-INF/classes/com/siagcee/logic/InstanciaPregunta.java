@@ -21,7 +21,7 @@ public class InstanciaPregunta extends ObjetoBase{
 	int ordenPregunta;
 	String pregunta;
 	String acronimo;
-	Pregunta miPregunta;   //Pregunta
+	Pregunta miPregunta;
 	Objeto miPadre;
 	EstudioPerso estudioAsociado;
 	boolean campo_clave_unico;

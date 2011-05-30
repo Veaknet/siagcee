@@ -27,7 +27,6 @@ if(request.getAttribute("datos") != null){
 	int i = 0, j = 0;
 	while(_misPreguntas.hasMoreElements()){
 		preg = (InstanciaPregunta)_misPreguntas.nextElement();
-		if(preg.getTipoPregunta() == 100){continue;}
 		out.println("array_preguntas["+i+"] = new Array();");
 		out.println("array_preguntas["+i+"]['id'] = '"+preg.getId()+"';");
 		out.println("array_preguntas["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(preg.getAcronimo(),"'","\\'")+"';");
