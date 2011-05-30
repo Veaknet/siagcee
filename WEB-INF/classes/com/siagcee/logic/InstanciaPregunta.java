@@ -322,7 +322,7 @@ public class InstanciaPregunta extends ObjetoBase{
 			PreparedStatement pstmt = this.getConexion().prepareStatement("SELECT * FROM instancia_preguntas WHERE id_instancia_preguntas = ? AND id_pool_objetos NOT IN(SELECT id_pool_objetos FROM instancia_objetos WHERE id_pool_objetos NOT IN (SELECT id_pool_objetos FROM pool_objetos WHERE tipo_objeto = 3))");
 			pstmt.setInt(1, this.getId());
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			if (rs.next()){
 				return true;
 			}
 		}
@@ -355,7 +355,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				}
 				if (this.getCargadaDeBD()){
 					//ejecuto UPDATE
-					if(this.esEditable()){
+					if(this.getCargadaDeBD()){
 						pstmt = getConexion().prepareStatement("UPDATE instancia_preguntas SET pregunta = ? , orden_pregunta = ? , id_pool_preguntas = ? , id_pool_objetos = ?, id_estudios = ?, campo_clave_unico = ?, campo_identificador = ?, campo_comunicacion_email = ?, campo_comunicacion_telefono = ?, campo_comunicacion_telefono2 = ? , acronimo = ? WHERE id_instancia_preguntas = ?");
 						pstmt.setString(1, this.getTextoPregunta());
 						pstmt.setInt(2, this.getOrden());
