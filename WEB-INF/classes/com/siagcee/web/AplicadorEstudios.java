@@ -360,6 +360,7 @@ public class AplicadorEstudios extends HttpServlet {
 				Vector _listaDeEstudios = new Vector();
 				Enumeration _enu = _estudios.elements();
 				while(_enu.hasMoreElements()){
+					EstudioPerso.resetInstance();
 					EstudioPerso.getInstance().setAdmin(admin);
 					EstudioPerso.getInstance().setConexion(micon);
 					EstudioPerso.getInstance().cargar((Integer)_enu.nextElement());
