@@ -499,6 +499,11 @@ $(document).ready(function(){
 											<option value="<=">Menor o igual que ( <= )</option>
 											<option value="<">Menor estricto que ( < )</option>
 										</optgroup>
+										<optgroup label="Funciones">
+											<option value="promedio( )">Promedio de un dato</option>
+											<option value="sumatoria( )">Sumatoria de un dato</option>
+											<option value="contar( )">Conteo de respuestas de un dato</option>
+										</optgroup>
 									</select>
 								</td>
 								<td width="150" style="max-width:150px;text-align:right;">
