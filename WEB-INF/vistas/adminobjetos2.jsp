@@ -300,7 +300,7 @@ if(request.getAttribute("listadoPreguntas") != null){
 Vector _listadoEstudios = new Vector();
 if(request.getAttribute("listadoEstudios") != null){
 	_listadoEstudios = (Vector)request.getAttribute("listadoEstudios");
-	Collections.sort(_listadoEstudios, new OrdenadorEstudios(OrdenadorEstudios.TITULO));
+	Collections.sort(_listadoEstudios, new OrdenadorEstudiosPerson(OrdenadorEstudiosPerson.TITULO));
 }
 
 Vector _listadoPreguntasComunes = new Vector();
@@ -585,10 +585,10 @@ if(!_mensaje.equals("")){
 										<%
 										try{
 											Enumeration _estudios = _listadoEstudios.elements();
-											Estudio _esEstudio;
+											EstudioPerso _esEstudio;
 											while(_estudios.hasMoreElements()){
-												_esEstudio = (Estudio)_estudios.nextElement();
-												out.println("<option value='"+_esEstudio.getId()+"'>"+_esEstudio.getTitulo()+"</option>");
+												_esEstudio = (EstudioPerso)_estudios.nextElement();
+												out.println("<option value='"+_esEstudio.get_id()+"'>"+_esEstudio.get_titulo()+"</option>");
 											}
 										}catch(Exception e){e.printStackTrace();}
 										%>

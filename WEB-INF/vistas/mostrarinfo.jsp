@@ -50,7 +50,7 @@ if(request.getAttribute("mensaje") != null){
 
 Objeto _miObj = null;
 Pregunta _miPreg = null;
-Estudio _miEst = null;
+EstudioPerso _miEst = null;
 if(accion.equals("mostrarinfodepregunta")){
 	_miPreg = (Pregunta)request.getAttribute("pregunta");
 	out.println("<h3>"+_miPreg.getPregunta()+"</h3>");
@@ -70,8 +70,8 @@ if(accion.equals("mostrarinfodepregunta")){
 		out.println("Estructura base.<p />");
 	}
 }else if(accion.equals("mostrarinfodeestudio")){
-	_miEst = (Estudio)request.getAttribute("estudio");
-	out.println("<h3>"+_miEst.getTitulo()+"</h3>");
+	_miEst = (EstudioPerso)request.getAttribute("estudio");
+	out.println("<h3>"+_miEst.get_titulo()+"</h3>");
 }
 
 if (!mensaje.equals("")) {
@@ -163,12 +163,12 @@ if(_miPreg != null){
 			}
 		}
 	}else{
-		out.println("No se ha encontrado la pregunta deseada.");	
+		out.println("No se ha encontrado la pregunta deseada.");
 	}
 }
 if(_miEst != null){
 	if(_miEst.getCargadaDeBD()){
-		out.println(_miEst.getDescripcion()+"<p />");
+		out.println(_miEst.get_titulo()+"<p />");
 	}else{
 		out.println("No se ha encontrado el estudio deseado.");
 	}

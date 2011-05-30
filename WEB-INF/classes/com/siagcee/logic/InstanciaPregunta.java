@@ -526,11 +526,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				ObjPregTemp.campo_comunicacion_email = rs.getBoolean("campo_comunicacion_email");
 				ObjPregTemp.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				ObjPregTemp.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
-				try{
-					//ObjPregTemp.estudioAsociado = (new Estudio(_usuario, _miConexion, rs.getInt("id_estudios"), true));
-				}catch(Exception ee){
-					ObjPregTemp.estudioAsociado = null;
-				}
+				ObjPregTemp.estudioAsociado = null;
 				ObjPregTemp.cargadaDeBD = true;
 				_lista.add(ObjPregTemp);
 			}
@@ -595,11 +591,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				_pregunta.campo_comunicacion_email = rs.getBoolean("campo_comunicacion_email");
 				_pregunta.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				_pregunta.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
-				try{
-					//_pregunta.setEstudioAsociado(new Estudio(_usuario, _miConexion, rs.getInt("id_estudios")));
-				}catch(Exception ee){
-					_pregunta.setEstudioAsociado(null);
-				}
+				_pregunta.setEstudioAsociado(null);
 				_pregunta.cargadaDeBD = true;
 				break;
 			}

@@ -1,9 +1,6 @@
 package com.siagcee.web;
 
-import com.siagcee.logic.Administrador;
-import com.siagcee.logic.Estudio;
-import com.siagcee.logic.Objeto;
-import com.siagcee.logic.Pregunta;
+import com.siagcee.logic.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -54,7 +51,8 @@ public class MostrarInfo extends HttpServlet {
 						request.setAttribute("pregunta", _miPreg);
 					}else if(_accion.equals("mostrarinfodeestudio")){
 						int _id = Integer.parseInt((String)request.getParameter("id"));
-						Estudio _miEst = new Estudio(admin, micon, _id);
+						EstudioPerso _miEst = EstudioPerso.getInstance();
+						_miEst.cargar(_id);
 						request.setAttribute("accion", _accion);
 						request.setAttribute("estudio", _miEst);
 					}

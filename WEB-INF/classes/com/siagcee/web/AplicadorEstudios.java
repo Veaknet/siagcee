@@ -294,64 +294,7 @@ public class AplicadorEstudios extends HttpServlet {
 					}
 				}
 
-				if(accion.equals("ejecutar")){
-					Estudio _miEstudio = null;
-					try{
-						_miEstudio = new Estudio(admin, micon, Integer.parseInt((String)request.getParameter("idestudio")));
-						_miEstudio.validarCodigo();
-					}catch(Exception eee){_miEstudio = null;}
-					Vector _respuestasDadas = new Vector();
-					Enumeration _enu = _miEstudio.getListadoDatosSolicitados().elements();
-					while(_enu.hasMoreElements()){
-						DatoSolicitadoEstudio _miData = (DatoSolicitadoEstudio)_enu.nextElement();
-						if(request.getParameter(_miData.getAcronimo()) != null){
-							_miData.setRespuesta((String)request.getParameter(_miData.getAcronimo()));
-						}else{
-							_miData.setRespuesta("");
-						}
-						_respuestasDadas.add(_miData);
-					}
-					_miEstudio.aplicarEstudio(_objetoSeleccionado, _respuestasDadas);
-					request.setAttribute("mostrarResultado", "si");
-					request.setAttribute("idestudio", _miEstudio);
-					request.setAttribute("resultados", _miEstudio.getResultadosEstudio());
-					request.setAttribute("resultadosSinCoincidencias", _miEstudio.getResultadosEstudioSinCoincidencias());
-
-					Graficos _grafica = new Graficos();
-					_grafica.set_titulo(_miEstudio.getTitulo());
-
-					if(request.getParameter("tipo_grafico").equals("barras_horizontales")){
-						_grafica.set_tipo_grafico(Graficos.BARRAS_HORIZONTALES);
-					}else if(request.getParameter("tipo_grafico").equals("barras_verticales")){
-						_grafica.set_tipo_grafico(Graficos.BARRAS_VERTICALES);
-					}else if(request.getParameter("tipo_grafico").equals("torta")){
-						_grafica.set_tipo_grafico(Graficos.TORTA);
-					}else if(request.getParameter("tipo_grafico").equals("lineas_verticales")){
-						_grafica.set_tipo_grafico(Graficos.LINEAS_VERTICALES);
-					}else if(request.getParameter("tipo_grafico").equals("lineas_horizontales")){
-						_grafica.set_tipo_grafico(Graficos.LINEAS_HORIZONTALES);
-					}
-
-					if(request.getParameter("tipo_infor").equals("frecuencia")){
-						_grafica.set_tipo_dataSet(Graficos.FRECUENCIA);
-						_grafica.setDataSet(_miEstudio.getResultadosEstudio());
-					}else if(request.getParameter("tipo_infor").equals("detallado")){
-						_grafica.set_tipo_dataSet(Graficos.DETALLADO);
-						_grafica.setDataSet(_miEstudio.getResultadosEstudioSinCoincidencias());
-					}
-
-					String _dir = getServletContext().getRealPath("/")+"comunes\\graficos\\grafico_"+admin.getUsuarioId()+".jpg";
-					JFreeChart _graifoc = _grafica.graficar();
-					if(_graifoc != null){
-						ChartUtilities.saveChartAsJPEG(new File(_dir), _graifoc, 800, 450);
-						request.setAttribute("imagen", "comunes\\graficos\\grafico_"+admin.getUsuarioId()+".jpg");
-					}else{
-						//error
-						request.setAttribute("imagen", "");
-					}
-
-					//termino
-				}else if(accion.equals("seleccionarestudio")){
+				if(accion.equals("seleccionarestudio")){
 					if(request.getParameter("idestudio") != null){
 						EstudioPerso.resetInstance();
 						EstudioPerso.getInstance().setConexion(micon);

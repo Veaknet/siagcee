@@ -124,10 +124,6 @@ public class AdministrarObjetos2 extends HttpServlet{
 							}catch(Exception e){_orden = 0;}
 
 							EstudioPerso estudioAAsociar = null;
-							try{
-								//estudioAAsociar = new Estudio(admin, micon, Integer.parseInt((String)request.getParameter("tipoestudio")));
-								estudioAAsociar = null;
-							}catch(Exception e){estudioAAsociar = null;}
 
 							Pregunta _preguntaAAsociar = new Pregunta(admin, micon, _asociaPregunta);
 							_nuevaInstancia = new InstanciaPregunta(admin, micon, _txtPregunta, _preguntaAAsociar, _objetoSeleccionado);
@@ -188,7 +184,7 @@ public class AdministrarObjetos2 extends HttpServlet{
 					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
 					Vector _objetos = Objeto.todosObjetos(admin, micon, 1, false, true);
 					request.setAttribute("listadoObjetos", _objetos);
-					request.setAttribute("listadoEstudios", Estudio.obtenerEstudiosDeEstructura(admin, micon, _objetoSeleccionado, false));
+					request.setAttribute("listadoEstudios", EstudioPerso.obtenerEstudiosDeEstructura(admin, micon, _objetoSeleccionado, false));
 					RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/adminobjetos2.jsp");
 					view.forward(request, response);
 				}else{
@@ -293,7 +289,7 @@ public class AdministrarObjetos2 extends HttpServlet{
 						request.setAttribute("listadoPreguntas", _misPreguntas);
 						request.setAttribute("listadoPreguntasComunes", _preguntasComunes);
 						request.setAttribute("objetoatrabajar", _objetoSeleccionado);
-						request.setAttribute("listadoEstudios", Estudio.obtenerEstudiosDeEstructura(admin, micon, _objetoSeleccionado, false));
+						request.setAttribute("listadoEstudios", EstudioPerso.obtenerEstudiosDeEstructura(admin, micon, _objetoSeleccionado, false));
 						RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/adminobjetos2.jsp");
 						view.forward(request, response);
 					}

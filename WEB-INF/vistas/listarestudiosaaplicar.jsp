@@ -152,7 +152,7 @@ if(request.getAttribute("resultados") != null){
 Vector _listaDeEstudios = new Vector();
 if(request.getAttribute("listadoEstudios") != null){
 	_listaDeEstudios = (Vector)request.getAttribute("listadoEstudios");
-	//Collections.sort(_listaDeEstudios, new OrdenadorEstudios(OrdenadorEstudios.TITULO));
+	Collections.sort(_listaDeEstudios, new OrdenadorEstudiosPerson(OrdenadorEstudiosPerson.TITULO));
 }
 
 Vector _listaDeDatos = new Vector();

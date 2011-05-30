@@ -140,12 +140,12 @@ public class Objeto extends ObjetoBase{
 
 	//retorna un vector de estudios asociados a la estructura
 	public Vector estudiosAsociados(boolean _paraEdicion){
-		return Estudio.obtenerEstudiosDeEstructura(this.getUsuario(), this.getConexion(), this, _paraEdicion);
+		return EstudioPerso.obtenerEstudiosDeEstructura(this.getUsuario(), this.getConexion(), this, _paraEdicion);
 	}
 
 	//retorna un vector de estudios asociados a la estructura
 	public void eliminarEstudiosAsociados(boolean _forazarDeleteTodos){
-		Estudio.delEstudios(this.getUsuario(), this.getConexion(), this, _forazarDeleteTodos);
+		EstudioPerso.delEstudios(this.getUsuario(), this.getConexion(), this, _forazarDeleteTodos);
 	}
 
 	public void delObjeto(){
