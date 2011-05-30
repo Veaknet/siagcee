@@ -1,5 +1,6 @@
 <%@page session="true" import="java.util.Enumeration" %>
 <%@page import="java.util.Vector" %>
+<%@ page import="java.util.HashMap" %>
 <%@include file="admininicio.jsp" %>
 
 <!--
@@ -401,9 +402,18 @@ $(document).ready(function(){
 						out.print("<h4>"+EstudioPerso.getInstance().get_titulo()+"</h4>");
 					}
 					out.print("<table>");
-					out.print("<tr><td>"+EstudioPerso.getInstance().firstResultado()+"</td></tr>");
-					while((_resul = EstudioPerso.getInstance().nextResultado()) != null){
+					HashMap _resulMostrados = new HashMap();
+					_resul = EstudioPerso.getInstance().firstResultado();
+					if(_resul != null){
+						_resulMostrados.put(_resul, true);
 						out.print("<tr><td>"+_resul+"</td></tr>");
+					}
+					while(EstudioPerso.getInstance().hayMasResultados()){
+						if((_resul = EstudioPerso.getInstance().nextResultado()) != null){
+							if(_resulMostrados.get(_resul) != null){continue;}
+							_resulMostrados.put(_resul, true);
+							out.print("<tr><td>"+_resul+"</td></tr>");
+						}
 					}
 					out.print("</table>");
 				}else if(EstudioPerso.getInstance().hayErrores()){
