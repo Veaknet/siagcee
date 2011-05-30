@@ -161,13 +161,13 @@ if(!_mensaje.equals("")){
 					Vector _nuevoVector = new Vector();
 					while(objetosDisponibles.hasMoreElements()){
 						miObjeto	= (Objeto)objetosDisponibles.nextElement();
-						if((miObjeto.getPublico() && _opcionBase.equals("modificar")) && (!_tipoinstrumento.equals("relacion"))){
+						/*if((miObjeto.getPublico() && _opcionBase.equals("modificar")) && (!_tipoinstrumento.equals("relacion"))){
 							continue;
 						}else if(miObjeto.getPublico() && _opcionBase.equals("crear")){
 							continue;
 						//}else if(!miObjeto.getPublico() && _opcionBase.equals("revisar")){
 						//	continue;
-						}else{
+						}else{*/
 							if(_tipoinstrumento.equals("estructura")){
 								if(miObjeto.getClass().toString().contains("EstructuraBase")){_nuevoVector.add(miObjeto);}
 							}
@@ -177,7 +177,7 @@ if(!_mensaje.equals("")){
 							if((!_tipoinstrumento.equals("estructura")) && (!_tipoinstrumento.equals("relacion"))){
 								if(!miObjeto.getClass().toString().contains("EstructuraBase") && !miObjeto.getClass().toString().contains("Relacion")){_nuevoVector.add(miObjeto);}
 							}
-						}
+						//}
 					}
 					if(!_nuevoVector.isEmpty()){
 					%>

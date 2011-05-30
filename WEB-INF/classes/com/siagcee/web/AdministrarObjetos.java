@@ -117,6 +117,9 @@ public class AdministrarObjetos extends HttpServlet{
 					if((request.getParameter("opcionbase") != null) && ((String)request.getParameter("opcionbase")).equals("revisar")){
 						noinstanciadas = 0;
 					}
+					if((request.getParameter("opcionbase") != null) && ((String)request.getParameter("opcionbase")).equals("modificar")){
+						noinstanciadas = 0;
+					}
 					if(((String)request.getParameter("tipoinstrumento")).equals("relacion")){
 						noinstanciadas = 0;
 						_visible = true;
