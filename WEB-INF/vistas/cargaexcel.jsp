@@ -54,7 +54,7 @@ if(!_loaded){
                     <input type="hidden" value="<% out.print(idObj); %>" id="idobjetodestino" name="idobjetodestino">
                     <input type="Submit" value="Cargar archivo"><br >
                 </form>
-				<p /><br >Puede descargar el archivo base en excel para carga de datos haciendo clic <a href="sqlpreview?accionextra=exportaexcel&plantilla=1&opcionmadre=si&objetoatrabajar=<% out.print(idObj); %>">aqu&iacute;</a>.
+				<p /><br ><a href="sqlpreview?accionextra=exportaexcel&plantilla=1&opcionmadre=si&objetoatrabajar=<% out.print(idObj); %>">Descargar Estructura Base</a>.
             </td>
         </tr>
     </table>

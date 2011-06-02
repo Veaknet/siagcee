@@ -20,7 +20,7 @@ if(request.getAttribute("objetoatrabajar") != null){
 }
 
 Vector _objetos = new Vector();
-if(request.getAttribute("objetosInstanciados") != null){	
+if(request.getAttribute("objetosInstanciados") != null){
 	_objetos = (Vector)request.getAttribute("objetosInstanciados");
 	Collections.sort(_objetos, new OrdenadorInstanciaObjetos(OrdenadorInstanciaObjetos.CLASS));
 }
@@ -49,7 +49,7 @@ function validarDouble(_nombreElem){
   }else{
 	  alert("Solo pueden ingresarse numeros con o sin decimales.");
 	  mielem.value = "0.0";
-	  mielem.focus();	  
+	  mielem.focus();
 		hacerPreview();
 	  return false;
   }
@@ -180,7 +180,7 @@ function creaSelectOperadores(_id, _nombre, _preguntaPadreId){
 		for(var j = 0; j < array_operadores.length ;j++){
 			if(!_extendido){
 				if(j > _noextendido){
-					break;					
+					break;
 				}
 			}
 			if(j == 2 && (_tipoPregunta == 31 || _tipoPregunta == 32 || _tipoPregunta == 33)){
@@ -349,8 +349,8 @@ function creaSelectRespuestas(_id, _nombre, _preguntaPadreId){
 		}else{
 			_select = document.createElement("select");
 			_select.multiple = false;
-			var _temp = new Option("No sabe / No responde", "-1", true, true);
-			_select.options[_select.options.length] = _temp;
+			//var _temp = new Option("No sabe / No responde", "-1", true, true);
+			//_select.options[_select.options.length] = _temp;
 			for(var j = 0; j < array_preguntas[i]["respuestas"].length ;j++){
 				_temp = new Option(array_preguntas[i]["respuestas"][j]["respuesta"], array_preguntas[i]["respuestas"][j]["id"]);
 				_select.options[_select.options.length] = _temp;
@@ -967,7 +967,7 @@ $(document).ready(function(){
 											<li class="childlink"><a href="admininsobj.do?opcionbase=enejecucion"><img src="comunes/imagenes/file-ejecucion.png" height="18" title="Mostrar s&oacute;lo censos o encuestas actualmente en ejecuci&oacute;n">&nbsp;En Ejecuci&oacute;n</a></li>
 											<li class="childlink"><a href="admininsobj.do?opcionbase=finalizados"><img src="comunes/imagenes/file-finalizado.png" height="18" title="Mostrar s&oacute;lo censos o encuestas finalizados">&nbsp;Finalizados</a></li>
 											<li class="childlink"><a href="admininsobj.do?opcionbase=todos"><img src="comunes/imagenes/file-todos.png" height="18" title="Mostrar censos o encuestas pendientes, actualmente en ejecuci&oacute;n y finalizados">&nbsp;Todos</a></li>
-											<li class="childlink"><a href="admininsobj.do?opcionbase=eliminados"><img src="comunes/imagenes/delete.png" height="18" title="Mostrar s&oacute;lo censos o encuestas eliminados">&nbsp;Eliminados</a></li>
+											<!-- <li class="childlink"><a href="admininsobj.do?opcionbase=eliminados"><img src="comunes/imagenes/delete.png" height="18" title="Mostrar s&oacute;lo censos o encuestas eliminados">&nbsp;Eliminados</a></li> //-->
 										</ul>
 									</li>
 									<li class="headlink">
@@ -980,7 +980,7 @@ $(document).ready(function(){
 										</ul>
 									</li>
 									<li class="headlink">
-										<a id='link_colecciones_de_datos' href="#" title="Arme, modifique y elimine agrupaci&oacute;n de datos entre censos y/o encuestas" onmouseover="this.focus();">Colecciones De Datos</a>
+										<a id='link_colecciones_de_datos' href="#" title="Arme, modifique y elimine agrupaci&oacute;n de datos entre censos y/o encuestas" onmouseover="this.focus();">Colecciones de Datos</a>
 										<ul style="display: none;">
 											<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=relacion&opcionbase=armar"><img src="comunes/imagenes/file-add.png" height="18" title="Crear colecci&oacute;n de datos">&nbsp;Crear</a></li>
 											<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=relacion&opcionbase=modificar"><img src="comunes/imagenes/file-edit.png" height="18" title="Modificar colecci&oacute;n de datos">&nbsp;Modificar</a></li>
@@ -1025,8 +1025,9 @@ if(!_objetos.isEmpty()){
 		<h2>Filtrar participantes en el instrumento</h2>
 		<form action="generadorsql.do?invitar=<% out.print(request.getParameter("invitar")); %>&soloeste=<% out.print(request.getParameter("soloeste")); %>&accioninvitar=<% out.print(request.getParameter("accioninvitar")); %>" method="post" id="seleccionaform" name="seleccionaform" onsubmit="var _esteSele = document.getElementById('objetoatrabajar').value;if(_esteSele == ''){return false;}">
 		<input type="hidden" value="seleccionar" id="accion" name="accion">
-		<label>Instrumento:</label><select id="objetoatrabajar" name="objetoatrabajar" onchange="document.seleccionaform.submit();">
-		<option id=""
+		<label>Instrumento:</label>
+		<select id="objetoatrabajar" name="objetoatrabajar" onchange="if(this.options[this.selectedIndex].value == ''){return false;}document.seleccionaform.submit();">
+		<option value=""
 		<%
 			if(objetoatrabajar == null){
 				out.print(" selected='selected'");

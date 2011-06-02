@@ -285,6 +285,7 @@ caption {
   </tr>
   <tr>
     <td valign="top" align="left">
+		<a href='crearestudioperso?objetoatrabajar=<% out.print(objetoatrabajar.getId()); %>'>Crear nuevo estudio</a>.<p />
       <%
       if(objetoatrabajar != null){
       %>
@@ -381,7 +382,6 @@ caption {
           </table>
         </form>
       <p />
-      Si desea crear un nuevo estudio haga clic <a href='crearestudioperso?objetoatrabajar=<% out.print(objetoatrabajar.getId()); %>'>aqu&iacute;</a>.
       <%
       }else{
         out.println("No se indic&oacute; una estructura con la que se pueda trabajar.");

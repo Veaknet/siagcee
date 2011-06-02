@@ -74,7 +74,7 @@ if(request.getParameter("accioninvitar") != null){
 		<input type="hidden" value="<% out.print(_objetoatrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
 		<input type="hidden" value="<% out.print(_accioninvitar); %>" id="accioninvitar" name="accioninvitar">
         <input type="hidden" value="" id="accionextra" name="accionextra">
-        <label>Indique que preguntas desea revisar:</label><br />
+        <label>Indique que datos desea revisar:</label><br />
 		<select multiple="multiple" id="preguntasdeseadas" name="preguntasdeseadas" size="8">
 			<%
 				Enumeration _enu = _listadoPreguntas.elements();
@@ -221,7 +221,6 @@ if(request.getParameter("accioninvitar") != null){
 		<button value="Cerrar esta ventana" onclick="window.close();">Cancelar y cerrar esta ventana</button>
 	</form>
 	<% }else{ %>
-	<button value="Cerrar esta ventana" onclick="window.close();">Cerrar esta ventana</button>
     <div style="padding-right:50px;float:right;text-align:right">
         <a href="javascript:void(null);" onclick="$('#accionextra').val('exportapdf');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/pdf.png" alt="Exportar estos datos a PDF" title="Exportar estos datos a PDF"/></a>
         &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#accionextra').val('exportaword');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/word.png" alt="Exportar estos datos a Word" title="Exportar estos datos a Word"/></a>
@@ -230,7 +229,6 @@ if(request.getParameter("accioninvitar") != null){
 	<% } %>
 	<br />
 </td></tr></table>
-
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#myTable").tablesorter();
@@ -242,4 +240,5 @@ if(request.getParameter("accioninvitar") != null){
 	}
 %>
 
+<p /><button value="Cerrar esta ventana" onclick="window.close();">Cerrar esta ventana</button>
 <%@include file="adminfooter.jsp" %>

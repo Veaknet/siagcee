@@ -89,19 +89,19 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 30){
 							//abierta texto
 							try{
-                if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){continue;}
+								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){miResp.delRespuesta();continue;}
 								miResp.setRespuesta((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())));
 							}catch(Exception e){e.printStackTrace();}
 						}else if(miPreg.getTipoPregunta() == 31){
 							//abierta int
 							try{
-                if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){continue;}
+								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){miResp.delRespuesta();continue;}
 								miResp.setRespuesta(Long.parseLong((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))));
 							}catch(Exception e){e.printStackTrace();}
 						}else if(miPreg.getTipoPregunta() == 32){
 							//abierta Double
 							try{
-                if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){continue;}
+								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){miResp.delRespuesta();continue;}
 								miResp.setRespuesta(Double.parseDouble((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))));
 							}catch(Exception e){e.printStackTrace();}
 						}else if(miPreg.getTipoPregunta() == 33){
@@ -112,8 +112,9 @@ public class UserObjetos extends HttpServlet {
 									String[] _fechaFormateada = ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).split("-");
 									miResp.setRespuesta(_temp.parse(_fechaFormateada[2]+"-"+_fechaFormateada[1]+"-"+_fechaFormateada[0]));
 								}else{
-                  continue;
-                }
+									miResp.delRespuesta();
+									continue;
+								}
 							}catch(Exception e){e.printStackTrace();}
 						}
 					}

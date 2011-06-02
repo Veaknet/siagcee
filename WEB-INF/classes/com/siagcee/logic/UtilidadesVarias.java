@@ -182,7 +182,7 @@ public class UtilidadesVarias {
                 Enumeration _enu2 = _preguntas.elements();
                 _pregAct = null;
 
-                while(_enu2.hasMoreElements()){
+                while(_enu2.hasMoreElements() && !_plantilla){
                     //para cada pregunta
                     _pregAct = (InstanciaPregunta)_enu2.nextElement();
                     Enumeration _enuInterno = _respuestas.elements();
@@ -554,6 +554,7 @@ public class UtilidadesVarias {
                     if(!(valor.trim().isEmpty() && valor.trim().equals(""))){
                         todosVacios = false;
                     }
+					if(valor.equals("")){continue;}
 					_resp = new Respuesta(_encu, micon);
 				    _resp.asociarInstanciaObjeto(_obj);
 					_resp.asociarInstanciaPregunta(_pregAct);
@@ -561,14 +562,14 @@ public class UtilidadesVarias {
                     if(_pregAct.getTipoPregunta() == 30){
                         _resp.setRespuesta(valor);
                     }else if(_pregAct.getTipoPregunta() == 31){
-                        if(valor.equals("")){ valor = "0";}
+                        if(valor.equals("")){ valor = "";}
 						try{
 							_resp.setRespuesta(Long.parseLong(valor));
 						}catch (Exception excp){
 							excp.printStackTrace();
 						}
                     }else if(_pregAct.getTipoPregunta() == 32){
-                        if(valor.equals("")){ valor = "0";}
+                        if(valor.equals("")){ valor = "";}
 						try{
 							_resp.setRespuesta(Double.parseDouble(valor));
 						}catch (Exception excp){

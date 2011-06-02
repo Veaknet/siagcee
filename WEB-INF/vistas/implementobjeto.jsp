@@ -220,7 +220,9 @@ function modificarTipoInvitacion(){
         _tipoinvitacion.options[_tipoinvitacion.options.length] = _temp;
 	}else{
         _inicio.disabled = true;
+		_inicio.value = '';
         _cierre.disabled = true;
+		_cierre.value = '';
         _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
         _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
         _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
