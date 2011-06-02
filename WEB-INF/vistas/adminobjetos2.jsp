@@ -257,7 +257,7 @@ function habilitadeshabilitaestudios(){
 }
 
 var array_preguntas_estudios = new Array();
-	
+
 </script>
 </head>
 
@@ -276,7 +276,7 @@ String _tipoinstrumento = "";
 if(request.getParameter("tipoinstrumento")!=null){
 	_tipoinstrumento = request.getParameter("tipoinstrumento");
 }
-	
+
 String _mensaje = "";
 if (request.getAttribute("mensaje") != null) {
 	_mensaje = (String)request.getAttribute("mensaje");
@@ -509,7 +509,7 @@ if(!_mensaje.equals("")){
 							<%
 							try{
 								if(_opcionBase.equals("eliminar")){
-								%>									
+								%>
 									Para eliminar <% if(_elemento.equals("estructura")){out.print("esta estructura");}else if(_elemento.equals("colecci&oacute;n de datos")){out.print("esta colecci&oacute;n de datos");}else{out.print("este instrumento");} %> haga clic <a alt="Eliminar <% out.print(_elemento);%>" href="adminobjetos2.do?tipoinstrumento=<% out.print(_tipoinstrumento);%>&opcionbase=<% out.print(_opcionBase);%>&accionobjeto=eliminar&objetoseleccionado=<% out.print(objetoatrabajar.getId());%>" onclick="return confirm('Realmente desea eliminar <% out.print(objetoatrabajar.getObjeto()); %> y las preguntas asociadas?');">aqu&iacute;</a>
 								<% } %>
 							<% }catch (Exception ee){} %>
@@ -650,12 +650,15 @@ if(!_mensaje.equals("")){
 										InstanciaPregunta miPregunta;
 										while(preguntasDisponibles.hasMoreElements()){
 											miPregunta = (InstanciaPregunta)preguntasDisponibles.nextElement();
+											if(miPregunta.getTipoPregunta() == 100 && !objetoatrabajar.getClass().toString().contains("Relacion")){
+												continue;
+											}
 											%>
 											<tr>
 												<% if(objetoatrabajar.getClass().toString().contains("Relacion")){ %>
 													<td align="left" valign="top"><a href="adminobjetos2.do?tipoinstrumento=<% out.print(_tipoinstrumento);%>&opcionbase=<% out.print(_opcionBase); %>&<% if(request.getParameter("relacionid") != null){out.print("relacionid="+(String)request.getParameter("relacionid")+"&");} %>accion=eliminar&preguntaseleccionada=<% out.print(miPregunta.getId()); %>&objetoseleccionado=<% out.print(objetoatrabajar.getId());%>" onclick="return confirm('Realmente desea eliminar esta pregunta y las respuestas asociadas?');"><img src="comunes/imagenes/delete.png" alt="Eliminar Pregunta" title="Eliminar Pregunta" height="24" /></a></td>
 													<td align="left" valign="top"><a href="#" onclick="habilitarUpdateDivParaRelacion(<% out.print(miPregunta.getId()); %>,'<% out.print(miPregunta.getAcronimo()); %>','<% out.print(UtilidadesVarias.reemplazarCaracteres(UtilidadesVarias.reemplazarCaracteres(miPregunta.getAcronimo(), "'", "\\'"), "\"", "\\'")); %>',<% out.print(miPregunta.getOrden()); %>, <% out.print(miPregunta.getPreguntaAsociada().getId()); %>, -1, <% if(miPregunta.isCampo_clave_unico()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_identificador()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_email()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_telefono()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_telefono2()){out.print("true");}else{out.print("false");}%>);habilitadeshabilitaestudios();"><img src="comunes/imagenes/modify.png" alt="Modificar Pregunta" title="Modificar Pregunta" height="24" /></a></td>
-												<% }else{ %>
+												<% }else if(!objetoatrabajar.getPublico()){ %>
 													<td align="left" valign="top"><a href="adminobjetos2.do?tipoinstrumento=<% out.print(_tipoinstrumento);%>&opcionbase=<% out.print(_opcionBase); %>&accion=eliminar&preguntaseleccionada=<% out.print(miPregunta.getId()); %>&objetoseleccionado=<% out.print(objetoatrabajar.getId());%>" onclick="return confirm('Realmente desea eliminar esta pregunta?');"><img src="comunes/imagenes/delete.png" alt="Eliminar Pregunta" title="Eliminar Pregunta" height="24" /></a></td>
 													<td align="left" valign="top"><a href="#" onclick="habilitarUpdateDiv(<% out.print(miPregunta.getId()); %>,'<% out.print(miPregunta.getAcronimo()); %>','<% out.print(UtilidadesVarias.reemplazarCaracteres(UtilidadesVarias.reemplazarCaracteres(miPregunta.getTextoPregunta(), "'", "\\'"), "\"", "\\'")); %>',<% out.print(miPregunta.getOrden()); %>, <% out.print(miPregunta.getPreguntaAsociada().getId()); %>, -1, <% if(miPregunta.isCampo_clave_unico()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_identificador()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_email()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_telefono()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_telefono2()){out.print("true");}else{out.print("false");}%>);habilitadeshabilitaestudios();"><img src="comunes/imagenes/modify.png" alt="Modificar Pregunta" title="Modificar Pregunta" height="24" /></a></td>
 												<% } %>
@@ -670,7 +673,11 @@ if(!_mensaje.equals("")){
 												<% if(objetoatrabajar.getClass().toString().contains("Relacion")){ %>
 													<td align="left" valign="top" width="100%"><a href="#" title="Haga clic aqu&iacute; para modificar esta pregunta" onclick="habilitarUpdateDivParaRelacion(<% out.print(miPregunta.getId()); %>,'<% out.print(miPregunta.getAcronimo()); %>','<% out.print(UtilidadesVarias.reemplazarCaracteres(UtilidadesVarias.reemplazarCaracteres(miPregunta.getTextoPregunta(), "'", "\\'"), "\"", "\\'")); %>',<% out.print(miPregunta.getOrden()); %>, <% out.print(miPregunta.getPreguntaAsociada().getId()); %>, -1, <% if(miPregunta.isCampo_clave_unico()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_identificador()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_email()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_telefono()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_telefono2()){out.print("true");}else{out.print("false");}%>);habilitadeshabilitaestudios();"><% out.print(miPregunta.getAcronimo()); %></a></td>
 												<% }else{ %>
-													<td align="left" valign="top" width="100%"><a href="#" title="Haga clic aqu&iacute; para modificar esta pregunta" onclick="habilitarUpdateDiv(<% out.print(miPregunta.getId()); %>,'<% out.print(miPregunta.getAcronimo()); %>','<% out.print(UtilidadesVarias.reemplazarCaracteres(UtilidadesVarias.reemplazarCaracteres(miPregunta.getTextoPregunta(), "'", "\\'"), "\"", "\\'")); %>',<% out.print(miPregunta.getOrden()); %>, <% out.print(miPregunta.getPreguntaAsociada().getId()); %>, -1, <% if(miPregunta.isCampo_clave_unico()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_identificador()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_email()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_telefono()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_telefono2()){out.print("true");}else{out.print("false");}%>);habilitadeshabilitaestudios();"><% out.print(miPregunta.getTextoPregunta()); %></a></td>
+													<% if(objetoatrabajar.getPublico()){ %>
+														<td align="left" valign="top" width="100%"><% out.print(miPregunta.getTextoPregunta()); %></td>
+													<% }else{ %>
+														<td align="left" valign="top" width="100%"><a href="#" title="Haga clic aqu&iacute; para modificar esta pregunta" onclick="habilitarUpdateDiv(<% out.print(miPregunta.getId()); %>,'<% out.print(miPregunta.getAcronimo()); %>','<% out.print(UtilidadesVarias.reemplazarCaracteres(UtilidadesVarias.reemplazarCaracteres(miPregunta.getTextoPregunta(), "'", "\\'"), "\"", "\\'")); %>',<% out.print(miPregunta.getOrden()); %>, <% out.print(miPregunta.getPreguntaAsociada().getId()); %>, -1, <% if(miPregunta.isCampo_clave_unico()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_identificador()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_email()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_telefono()){out.print("true");}else{out.print("false");}%>, <% if(miPregunta.isCampo_comunicacion_telefono2()){out.print("true");}else{out.print("false");}%>);habilitadeshabilitaestudios();"><% out.print(miPregunta.getTextoPregunta()); %></a></td>
+													<% } %>
 												<% } %>
 											</tr>
 											<%
@@ -695,7 +702,7 @@ if(!_mensaje.equals("")){
 <%
 	try{
 	if(request.getParameter("ContinuarPreguntando")!=null && request.getParameter("ContinuarPreguntando").equals("si")){
-		%>  
+		%>
 		<script type="text/javascript" >
 			$(document).ready(function(){
 				habilitarInsertDiv();
