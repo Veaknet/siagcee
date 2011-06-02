@@ -278,7 +278,7 @@ public class InstanciaPregunta extends ObjetoBase{
 	private void setId(int _idPregunta){
 		this.idInstanciaPregunta = _idPregunta;
 	}
-	
+
 	//id de la instancia de pregunta
 	public int getId(){
 		return this.idInstanciaPregunta;
@@ -455,7 +455,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				this.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				this.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
 				try{
-					//this.setEstudioAsociado(new EstudioPerso.getInstance());
+					//this.setEstudioAsociado(EstudioPerso.getInstance().cargar(rs.getInt("campo_comunicacion_telefono2")));
 				}catch(Exception ee){
 					this.setEstudioAsociado(null);
 				}
@@ -495,7 +495,7 @@ public class InstanciaPregunta extends ObjetoBase{
 			e.printStackTrace();
 		}
 	}
-	
+
 	//retorna todas las instancias de preguntas para un objeto padre (censo, encuesta, etc)
 	//si _soloPublicas entonces solo buscara las preguntas para el encuestado
 	//caso contrario busca las preguntas disponibles para edicion
@@ -505,7 +505,7 @@ public class InstanciaPregunta extends ObjetoBase{
 
 	//retorna todas las instancias de preguntas para un objeto padre (censo, encuesta, etc)
 	//si _soloPublicas entonces solo buscara las preguntas para el encuestado
-	//caso contrario busca las preguntas disponibles para edicion 
+	//caso contrario busca las preguntas disponibles para edicion
 	public static Vector todasPreguntasInstanciadas(Usuario _usuario, Connection _miConexion, Objeto _padre, boolean _soloPublicas){
 		Vector _lista = new Vector();
 		ResultSet rs = null;

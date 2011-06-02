@@ -512,6 +512,8 @@ $(document).ready(function(){
 											<option value="promedio( )">Promedio de un dato</option>
 											<option value="sumatoria( )">Sumatoria de un dato</option>
 											<option value="contar( )">Conteo de respuestas de un dato</option>
+											<option value="max( )">M&aacute;ximo valor de un dato</option>
+											<option value="min( )">M&iacute;nimo valor de un dato</option>
 										</optgroup>
 									</select>
 								</td>

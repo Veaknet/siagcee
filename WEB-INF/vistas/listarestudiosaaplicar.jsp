@@ -47,6 +47,12 @@ function seleccionardato(_elem){
   var _selec_datos = $("#datovisualizacion");
   var _selec_datos_txt = $("#datovisualizaciontxt");
 
+	if($("#idestudio").val() != '_default_histo'){
+		_selec_datos.css("display","none");
+		_selec_datos_txt.css("display","none");
+		return;
+	}
+
   if(_id == -1){
     _selec_datos.css("display","none");
     _selec_datos_txt.css("display","none");
@@ -74,11 +80,36 @@ function seleccionar(_elem){
 	var _selec_datos_txt = $("#datoseleccionadotxt");
 	var _grafic = $("#tipo_grafico");
 	var _grafic_txt = $("#tipo_grafico_txt");
-	if(_id.indexOf('_default_') == 0){
+	if(_id.indexOf('_default_histo') === 0){
 		_selec_datos.css("display","block");
 		_selec_datos_txt.css("display","block");
 		_grafic_txt.css("display","block");
 		_grafic.css("display","block");
+	}else if(_id.indexOf('_default_promedio') === 0){
+		_selec_datos.css("display","block");
+		_selec_datos_txt.css("display","block");
+		_grafic_txt.css("display","none");
+		_grafic.css("display","none");
+	}else if(_id.indexOf('_default_sumatoria') === 0){
+		_selec_datos.css("display","block");
+		_selec_datos_txt.css("display","block");
+		_grafic_txt.css("display","none");
+		_grafic.css("display","none");
+	}else if(_id.indexOf('_default_maximo') === 0){
+		_selec_datos.css("display","block");
+		_selec_datos_txt.css("display","block");
+		_grafic_txt.css("display","none");
+		_grafic.css("display","none");
+	}else if(_id.indexOf('_default_minimo') === 0){
+		_selec_datos.css("display","block");
+		_selec_datos_txt.css("display","block");
+		_grafic_txt.css("display","none");
+		_grafic.css("display","none");
+	}else if(_id.indexOf('_default_listar') === 0){
+		_selec_datos.css("display","block");
+		_selec_datos_txt.css("display","block");
+		_grafic_txt.css("display","none");
+		_grafic.css("display","none");
 	}else{
 		_selec_datos.css("display","none");
 		_selec_datos_txt.css("display","none");
@@ -94,6 +125,7 @@ function seleccionar(_elem){
 			_descr.innerHTML = "<h4>Estudio:"+array_estudios[i]['titulo']+"</h4>Descripci&oacute;n:<br />"+array_estudios[i]['descripcion'];
 		}
 	}
+	seleccionardato(document.getElementById('datoseleccionado'));
 }
 
 function validarForm(){
@@ -103,7 +135,7 @@ function validarForm(){
 	if(_id == '-1'){
 		alert("No ha indicado el estudio a aplicar");
 		return false;
-	}else if(_id.indexOf('_default_') == 0){
+	}else if(_id.indexOf('_default_histo') == 0){
 		if(_selec_datos != -1){
 			var tipo_Pre = 30;
 			for(var i=0;i<_totalDatosInstr;i++){
@@ -129,10 +161,49 @@ function validarForm(){
 		  alert("No ha indicado el campo sobre el que se realizara el estudio");
 		  return false;
 		}
+	}else if(_id.indexOf('_default_promedio') == 0){
+		if(_selec_datos != -1){
+			_idForm.val('aplicarpromedio');
+			return true;
+		}else{
+		  alert("No ha indicado el campo sobre el que se realizara el estudio");
+		  return false;
+		}
+	}else if(_id.indexOf('_default_sumatoria') == 0){
+		if(_selec_datos != -1){
+			_idForm.val('aplicarsumatoria');
+			return true;
+		}else{
+		  alert("No ha indicado el campo sobre el que se realizara el estudio");
+		  return false;
+		}
+	}else if(_id.indexOf('_default_maximo') == 0){
+		if(_selec_datos != -1){
+			_idForm.val('aplicarmaximo');
+			return true;
+		}else{
+		  alert("No ha indicado el campo sobre el que se realizara el estudio");
+		  return false;
+		}
+	}else if(_id.indexOf('_default_minimo') == 0){
+		if(_selec_datos != -1){
+			_idForm.val('aplicarminimo');
+			return true;
+		}else{
+		  alert("No ha indicado el campo sobre el que se realizara el estudio");
+		  return false;
+		}
+	}else if(_id.indexOf('_default_listar') == 0){
+		if(_selec_datos != -1){
+			_idForm.val('aplicarlistar');
+			return true;
+		}else{
+		  alert("No ha indicado el campo sobre el que se realizara el estudio");
+		  return false;
+		}
 	}else{
 		return true;
 	}
-	alert("Debe revisar los datos provistos para continuar.");
 	return false;
 }
 
@@ -192,6 +263,7 @@ if(request.getAttribute("objetoatrabajar") != null){
 
 	$(document).ready(function(){
 		$("#link_estudios").css("color","red");
+		seleccionar(document.getElementById('idestudio'));
 	});
 </script>
 <%
@@ -302,6 +374,11 @@ caption {
                   <option value="-1">Seleccione...</option>
                   <optgroup label="Estudios predefinidos">
                     <option value="_default_histo">Histograma de frecuencia</option>
+					  <option value="_default_listar">Listar</option>
+				    <option value="_default_promedio">Promedio</option>
+					  <option value="_default_sumatoria">Sumatoria</option>
+					  <option value="_default_maximo">M&aacute;ximo</option>
+					  <option value="_default_minimo">M&iacute;nimo</option>
                   </optgroup>
                   <%
                     if(!_listaDeEstudios.isEmpty()){
@@ -326,20 +403,6 @@ caption {
                 </select>
               </td>
             </tr>
-			  <tr>
-				  <td style="text-align:right;">
-					  <label id="tipo_grafico_txt" style="display:none">Tipo de Gr&aacute;fico:</label>
-				  </td>
-				  <td style="text-align:left;">
-					  <select id="tipo_grafico" name="tipo_grafico" style="display:none">
-						  <option value="barras_horizontales" selected="selected">Barras Horizontales</option>
-						  <option value="barras_verticales">Barras Verticales</option>
-						  <option value="torta">Torta</option>
-						  <option value="lineas_horizontales">Linea Vertical</option>
-						  <option value="lineas_verticales">Linea Horizontal</option>
-					  </select>
-				  </td>
-			  </tr>
             <tr>
               <td style="text-align:right;width:200px">
                 <label id="datoseleccionadotxt" style="display:none">Sobre el campo:</label>
@@ -363,6 +426,20 @@ caption {
                 </select>
               </td>
             </tr>
+			  <tr>
+				  <td style="text-align:right;">
+					  <label id="tipo_grafico_txt" style="display:none">Tipo de Gr&aacute;fico:</label>
+				  </td>
+				  <td style="text-align:left;">
+					  <select id="tipo_grafico" name="tipo_grafico" style="display:none">
+						  <option value="barras_horizontales" selected="selected">Barras Horizontales</option>
+						  <option value="barras_verticales">Barras Verticales</option>
+						  <option value="torta">Torta</option>
+						  <option value="lineas_horizontales">Linea Vertical</option>
+						  <option value="lineas_verticales">Linea Horizontal</option>
+					  </select>
+				  </td>
+			  </tr>
             <tr>
               <td style="text-align:right;width:200px">
                 <label id="datovisualizaciontxt" style="display:none">Cantidad de intervalos:</label>

@@ -64,6 +64,7 @@ public class CrearEstudioPerso extends HttpServlet{
 						InstanciaPregunta _insPreg = new InstanciaPregunta(admin, micon, _titulo, _pre, _objObjeto.getObjetoAsociado());
 						_insPreg.setAcronimo(_acronimo);
 						_insPreg.setOrden(1000);
+						_insPreg.setEstudioAsociado(EstudioPerso.getInstance());
 
 						_objObjeto.getObjetoAsociado().agregarInstanciaPregunta(_insPreg);
 
