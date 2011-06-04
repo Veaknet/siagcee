@@ -357,7 +357,6 @@ caption {
   </tr>
   <tr>
     <td valign="top" align="left">
-		<a href='crearestudioperso?objetoatrabajar=<% out.print(objetoatrabajar.getId()); %>'>Crear nuevo estudio</a>.<p />
       <%
       if(objetoatrabajar != null){
       %>
@@ -373,8 +372,8 @@ caption {
                 <select id="idestudio" name="idestudio" onchange="seleccionar(this);">
                   <option value="-1">Seleccione...</option>
                   <optgroup label="Estudios predefinidos">
-                    <option value="_default_histo">Histograma de frecuencia</option>
-					  <option value="_default_listar">Listar</option>
+                    <option value="_default_histo">Histograma de Frecuencia</option>
+					  <option value="_default_listar">Listar Dato</option>
 				    <option value="_default_promedio">Promedio</option>
 					  <option value="_default_sumatoria">Sumatoria</option>
 					  <option value="_default_maximo">M&aacute;ximo</option>
@@ -453,7 +452,8 @@ caption {
                 &nbsp;
               </td>
               <td style="text-align:left;">
-                <input type="submit" value="Ejecutar" id="enviar" name="enviar">
+                <input type="submit" value="Ejecutar" id="enviar" name="enviar"><p />
+				<input type="button" value="Crear Nuevo Estudio" id="nuevoEst" name="nuevoEst" onclick="javascript:window.location='crearestudioperso?objetoatrabajar=<% out.print(objetoatrabajar.getId()); %>'"><p />
               </td>
             </tr>
           </table>
