@@ -394,6 +394,88 @@ public class AplicadorEstudios extends HttpServlet {
 					view = request.getRequestDispatcher("WEB-INF/vistas/crearestudioperso.jsp");
 				}
 
+				if(accion.equals("aplicarmayorque")){
+					InstanciaPregunta _dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
+					EstudioPerso.resetInstance();
+					EstudioPerso.getInstance().setConexion(micon);
+					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
+
+					String _comparador = "";
+					if(request.getParameter("datovisualizacion") != null){
+						_comparador = (String)request.getParameter("datovisualizacion");
+					}
+
+					String _cod = "si([" + _dato.getAcronimo() + "] > \""+_comparador+"\"; obtener [" + _dato.getAcronimo() + "])";
+					EstudioPerso.getInstance().ejecutaEstudio(_cod);
+
+					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
+
+					request.setAttribute("datos", _listaTiposDeDatos);
+					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
+
+					request.setAttribute("mostrarguardar", false);
+					request.setAttribute("mostrarresultados", true);
+
+					view = request.getRequestDispatcher("WEB-INF/vistas/crearestudioperso.jsp");
+				}
+
+				if(accion.equals("aplicarmenorque")){
+					InstanciaPregunta _dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
+					EstudioPerso.resetInstance();
+					EstudioPerso.getInstance().setConexion(micon);
+					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
+
+					String _comparador = "";
+					if(request.getParameter("datovisualizacion") != null){
+						_comparador = (String)request.getParameter("datovisualizacion");
+					}
+
+					String _cod = "si([" + _dato.getAcronimo() + "] < \""+_comparador+"\"; obtener [" + _dato.getAcronimo() + "])";
+					EstudioPerso.getInstance().ejecutaEstudio(_cod);
+
+					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
+
+					request.setAttribute("datos", _listaTiposDeDatos);
+					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
+
+					request.setAttribute("mostrarguardar", false);
+					request.setAttribute("mostrarresultados", true);
+
+					view = request.getRequestDispatcher("WEB-INF/vistas/crearestudioperso.jsp");
+				}
+
+				if(accion.equals("aplicarentre")){
+					InstanciaPregunta _dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
+					EstudioPerso.resetInstance();
+					EstudioPerso.getInstance().setConexion(micon);
+					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
+
+					String _comparador = "";
+					if(request.getParameter("datovisualizacion") != null){
+						_comparador = (String)request.getParameter("datovisualizacion");
+					}
+					String _comparador2 = "";
+					if(request.getParameter("datovisualizacion2") != null){
+						_comparador2 = (String)request.getParameter("datovisualizacion2");
+					}
+
+					String _cod = "si((([" + _dato.getAcronimo() + "] > \""+_comparador+"\") Y (["+ _dato.getAcronimo() +"] < \""+_comparador2+"\")); obtener [" + _dato.getAcronimo() + "])";
+					EstudioPerso.getInstance().ejecutaEstudio(_cod);
+
+					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
+
+					request.setAttribute("datos", _listaTiposDeDatos);
+					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
+
+					request.setAttribute("mostrarguardar", false);
+					request.setAttribute("mostrarresultados", true);
+
+					view = request.getRequestDispatcher("WEB-INF/vistas/crearestudioperso.jsp");
+				}
+
 				if(accion.equals("seleccionarestudio")){
 					if(request.getParameter("idestudio") != null){
 						EstudioPerso.resetInstance();

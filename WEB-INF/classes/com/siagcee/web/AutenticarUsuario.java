@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
+import java.util.Enumeration;
 import java.util.Vector;
 
 public class AutenticarUsuario extends HttpServlet{
@@ -158,6 +159,10 @@ public class AutenticarUsuario extends HttpServlet{
 		request.setAttribute("insVector", null);
 		InstanciaObjeto _miObjeto = null;
 
+		//_miObjeto = null;
+		//Vector _soloInsVector = InstanciaObjeto.todosObjetosInstanciados(null, micon, true, 1);
+		//request.setAttribute("insVector", _soloInsVector);
+
 		if(request.getParameter("identificador_publico") != null){
 			int _id = InstanciaObjeto.cargaInsObj(request.getParameter("identificador_publico"), micon);
 			if(_id > -1){
@@ -170,9 +175,23 @@ public class AutenticarUsuario extends HttpServlet{
 				_miObjeto = null;
 			}
 		}else{
-			_miObjeto = null;
-			Vector _soloInsVector = InstanciaObjeto.todosObjetosInstanciados(null, micon, true, 1);
-			request.setAttribute("insVector", _soloInsVector);
+			//no viene por identificador publico viene por enlace?nombre
+			Enumeration _e = request.getParameterNames();
+			String _elemento = "";
+			while(_e.hasMoreElements()){
+				_elemento = (String)_e.nextElement();
+				int _id = InstanciaObjeto.cargaInsObj(_elemento, micon);
+				if(_id > -1){
+					if(request.getParameter("campo_clave") == null){
+						_miObjeto = new InstanciaObjeto(null, micon, _id);
+						break;
+					}else{
+						_miObjeto = null;
+					}
+				}else{
+					_miObjeto = null;
+				}
+			}
 		}
 		request.setAttribute("InstanciaSeleccionadaPorId", _miObjeto);
 		view = request.getRequestDispatcher("WEB-INF/vistas/userform.jsp");

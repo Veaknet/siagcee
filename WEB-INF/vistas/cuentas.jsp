@@ -45,11 +45,6 @@ if(request.getAttribute("mensaje") != null){
 </script>
 <table cellspacing="4" cellpadding="4" class="tablasecundaria">
 	<tr>
-		<td style="text-align:right" valign="top">
-			<img height="24" src="comunes/imagenes/info-about.png" title="Mostrar ayuda sobre este t&oacute;pico" alt="Mostrar ayuda sobre este t&oacute;pico" onclick='window.open("ayuda.do?tema=administradores","ayuda","width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO");'>
-		</td>
-	</tr>
-	<tr>
 		<td>
 <%
 	if(_accion.equals("listarTodos")){
@@ -94,7 +89,7 @@ if(request.getAttribute("mensaje") != null){
 			if(_usuario.getTipoUsuario().equals("regular")){
 				out.println(" selected='selected' ");
 			}
-			out.println(">Administrador Regular</option>");			
+			out.println(">Administrador Regular</option>");
 			out.println("</select></td></tr>");
 		}
 		out.println("<tr><td><label>Nueva clave:</label></td><td><input type='password' id='clave' name='clave' value=''>&nbsp;*Solo si desea modificar la clave.</td></tr>");

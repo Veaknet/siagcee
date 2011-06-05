@@ -349,7 +349,7 @@ No ha indicado un censo o encuesta para participar.
 		out.println(_pregResp);
 		%>
 		<p />
-		<input type='submit' value='Finalizar' onclick="alert('Gracias por su participacion.');return true;">
+		<input type='submit' value='Finalizar'>
 		</form>
 		<iframe name='gToday:contrast:agenda.js' id='gToday:contrast:agenda.js' src='Contrast/ipopeng.htm' style='visibility: visible; z-index: 999; position: absolute; top: -500px; left: -500px;' scrolling='no' frameborder='0' height='142' width='132'>
 		</iframe>

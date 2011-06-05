@@ -125,6 +125,15 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>AutenticarUsuario2</servlet-name>
+    <servlet-class>com.siagcee.web.AutenticarUsuario</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>AutenticarUsuario2</servlet-name>
+	  <url-pattern>/enlace</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>UserObjetos</servlet-name>
     <servlet-class>com.siagcee.web.UserObjetos</servlet-class>
 	</servlet>

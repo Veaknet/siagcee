@@ -16,62 +16,87 @@
 <script type="text/javascript" charset="UTF-8">
 function validarEntero(_nombreElem){
 	var mielem = document.getElementById(_nombreElem);
-  var er = /^[-]*[0-9]+$/;
-  if(mielem.value.match(er) && mielem.value > 0){
-	  return true;
-  }else{
-	  alert("Solo pueden ingresarse numeros enteros mayores a 0.");
-	  mielem.value = "1";
-	  mielem.focus();
-	  return false;
-  }
+	var er = /^[-]*[0-9]+$/;
+	if(mielem.value.match(er) && mielem.value > 0){
+		return true;
+	}else{
+		alert("Solo pueden ingresarse numeros enteros mayores a 0.");
+		mielem.value = "1";
+		mielem.focus();
+		return false;
+	}
 }
 
 function validarDouble(_nombreElem){
 	var mielem = document.getElementById(_nombreElem);
-  var er = /^[-+]?[0-9]+(\.[0-9]+)?$/;
-  if(mielem.value.match(er)){
-	  return true;
-  }else{
-	  alert("Solo pueden ingresarse numeros con o sin decimales.");
-	  mielem.value = "0.0";
-	  mielem.focus();
-	  return false;
-  }
+	var er = /^[-+]?[0-9]+(\.[0-9]+)?$/;
+	if(mielem.value.match(er)){
+		return true;
+	}else{
+		alert("Solo pueden ingresarse numeros con o sin decimales.");
+		mielem.value = "0.0";
+		mielem.focus();
+		return false;
+	}
 }
 
 var array_estudios = new Array();
 
 function seleccionardato(_elem){
-  var _id = _elem.value;
-  var _selec_datos = $("#datovisualizacion");
-  var _selec_datos_txt = $("#datovisualizaciontxt");
+	var _id = _elem.value;
+	var _selec_datos = $("#datovisualizacion");
+	var _selec_datos_txt = $("#datovisualizaciontxt");
+	var _selec_datos2 = $("#datovisualizacion2");
+	var _selec_datos_txt2 = $("#datovisualizaciontxt2");
 
-	if($("#idestudio").val() != '_default_histo'){
+	if(($("#idestudio").val() != '_default_histo') && ($("#idestudio").val() != '_default_menor_que') && ($("#idestudio").val() != '_default_mayor_que') && ($("#idestudio").val() != '_default_entre')){
+		_id = -1;
+	}
+
+	if(_id == -1){
 		_selec_datos.css("display","none");
 		_selec_datos_txt.css("display","none");
-		return;
-	}
-
-  if(_id == -1){
-    _selec_datos.css("display","none");
-    _selec_datos_txt.css("display","none");
-  }else{
-	for(var i=0;i<_totalDatosInstr;i++){
-	  if(_id == _listaDatos[i]["id"]){
-		if(_listaDatos[i]["tipopregunta"] == 31 || _listaDatos[i]["tipopregunta"] == 32){
-		  _selec_datos.css("display","block");
-		  _selec_datos_txt.css("display","block");
-		}else{
-		  _selec_datos.css("display","none");
-		  _selec_datos_txt.css("display","none");
+		_selec_datos2.css("display","none");
+		_selec_datos_txt2.css("display","none");
+	}else{
+		for(var i=0;i<_totalDatosInstr;i++){
+			if(_id == _listaDatos[i]["id"]){
+				if(($("#idestudio").val() == '_default_histo') && (_listaDatos[i]["tipopregunta"] == 31 || _listaDatos[i]["tipopregunta"] == 32)){
+					_selec_datos.val("1");
+					_selec_datos.css("display","block");
+					_selec_datos_txt.text("Cantidad de Intervalos:");
+					_selec_datos_txt.css("display","block");
+					_selec_datos2.css("display","none");
+					_selec_datos_txt2.css("display","none");
+				}else if($("#idestudio").val() == '_default_menor_que' || $("#idestudio").val() == '_default_mayor_que'){
+					_selec_datos_txt.text("Valor:");
+					_selec_datos.val("");
+					_selec_datos.css("display","block");
+					_selec_datos_txt.css("display","block");
+					_selec_datos2.css("display","none");
+					_selec_datos2.val("");
+					_selec_datos_txt2.css("display","none");
+				}else if($("#idestudio").val() == '_default_entre'){
+					_selec_datos_txt.text("Mayor a:");
+					_selec_datos.val("");
+					_selec_datos2.val("");
+					_selec_datos.css("display","block");
+					_selec_datos_txt.css("display","block");
+					_selec_datos2.css("display","block");
+					_selec_datos_txt2.css("display","block");
+					_selec_datos_txt2.text("Menor a:");
+				}else{
+					_selec_datos.css("display","none");
+					_selec_datos_txt.css("display","none");
+					_selec_datos2.css("display","none");
+					_selec_datos_txt2.css("display","none");
+				}
+				break;
+			}else{
+				continue;
+			}
 		}
-		break;
-	  }else{
-		continue;
-	  }
 	}
-  }
 }
 
 function seleccionar(_elem){
@@ -110,6 +135,21 @@ function seleccionar(_elem){
 		_selec_datos_txt.css("display","block");
 		_grafic_txt.css("display","none");
 		_grafic.css("display","none");
+	}else if(_id.indexOf('_default_mayor_que') === 0){
+		_selec_datos.css("display","block");
+		_selec_datos_txt.css("display","block");
+		_grafic_txt.css("display","none");
+		_grafic.css("display","none");
+	}else if(_id.indexOf('_default_menor_que') === 0){
+		_selec_datos.css("display","block");
+		_selec_datos_txt.css("display","block");
+		_grafic_txt.css("display","none");
+		_grafic.css("display","none");
+	}else if(_id.indexOf('_default_entre') === 0){
+		_selec_datos.css("display","block");
+		_selec_datos_txt.css("display","block");
+		_grafic_txt.css("display","none");
+		_grafic.css("display","none");
 	}else{
 		_selec_datos.css("display","none");
 		_selec_datos_txt.css("display","none");
@@ -131,22 +171,25 @@ function seleccionar(_elem){
 function validarForm(){
 	var _id = $("#idestudio").val();
 	var _selec_datos = $("#datoseleccionado").val();
+	var _inputData = $("#datovisualizacion");
+	var _inputData2 = $("#datovisualizacion2");
 	var _idForm = $("#accion");
+
 	if(_id == '-1'){
 		alert("No ha indicado el estudio a aplicar");
 		return false;
 	}else if(_id.indexOf('_default_histo') == 0){
 		if(_selec_datos != -1){
-			var tipo_Pre = 30;
+			var tipo_Pre = '30';
 			for(var i=0;i<_totalDatosInstr;i++){
-				if(_id == _listaDatos[i]["id"]){
+				if(_selec_datos == _listaDatos[i]["id"]){
 					tipo_Pre = _listaDatos[i]["tipopregunta"];
 					break;
 				}else{
 					continue;
 				}
 			}
-			if(tipo_Pre == 31 || tipo_Pre == 32){
+			if(tipo_Pre == '31' || tipo_Pre == '32'){
 				if(validarEntero("datovisualizacion")){
 					_idForm.val('aplicarhistograma');
 					return true;
@@ -201,6 +244,44 @@ function validarForm(){
 		  alert("No ha indicado el campo sobre el que se realizara el estudio");
 		  return false;
 		}
+	}else if(_id.indexOf('_default_menor_que') == 0 || _id.indexOf('_default_mayor_que') == 0){
+		if(_selec_datos != -1){
+			if(_inputData.val() != ''){
+				if(_id.indexOf('_default_menor_que') == 0){
+					_idForm.val('aplicarmenorque');
+				}else{
+					_idForm.val('aplicarmayorque');
+				}
+				return true;
+			}else{
+				alert("No ha indicado el valor sobre el que se realizara el estudio");
+				_inputData.focus();
+				return false;
+			}
+		}else{
+		  alert("No ha indicado el campo sobre el que se realizara el estudio");
+		  return false;
+		}
+	}else if(_id.indexOf('_default_entre') == 0){
+		if(_selec_datos != -1){
+			if(_inputData.val() != ''){
+				if(_inputData2.val() != ''){
+					_idForm.val('aplicarentre');
+					return true;
+				}else{
+					alert("No ha indicado el valor máximo para realizar la comparación");
+					_inputData2.focus();
+					return false;
+				}
+			}else{
+				alert("No ha indicado el valor mínimo para realizar la comparación");
+				_inputData.focus();
+				return false;
+			}
+		}else{
+		  alert("No ha indicado el campo sobre el que se realizara el estudio");
+		  return false;
+		}
 	}else{
 		return true;
 	}
@@ -241,24 +322,24 @@ if(request.getAttribute("objetoatrabajar") != null){
 <%@include file="adminheader.jsp" %>
 
 <script type="text/javascript">
-  var _listaDatos = new Array();
-  var _totalDatosInstr = 0;
+var _listaDatos = new Array();
+var _totalDatosInstr = 0;
  <%
-  if(!_listaDeDatos.isEmpty()){
-    Enumeration _enu2 = _listaDeDatos.elements();
-    InstanciaPregunta _prg = null;
-    int _cont = 0;
-    while (_enu2.hasMoreElements()){
-      _prg = (InstanciaPregunta)_enu2.nextElement();
-      out.println("_listaDatos["+_cont+"] = new Array();");
-      out.println("_listaDatos["+_cont+"]['id'] = '"+_prg.getId()+"';");
-      out.println("_listaDatos["+_cont+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_prg.getAcronimo(), "'", "\"")+"';");
-      out.println("_listaDatos["+_cont+"]['tipopregunta'] = '"+_prg.getTipoPregunta()+"';");
-      out.println("_listaDatos["+_cont+"]['ordenpregunta'] = '"+_prg.getOrden()+"';");
-      _cont++;
-    }
-    out.println("_totalDatosInstr = "+_cont+";");
-  }
+	if(!_listaDeDatos.isEmpty()){
+		Enumeration _enu2 = _listaDeDatos.elements();
+		InstanciaPregunta _prg = null;
+		int _cont = 0;
+		while (_enu2.hasMoreElements()){
+			_prg = (InstanciaPregunta)_enu2.nextElement();
+			out.println("_listaDatos["+_cont+"] = new Array();");
+			out.println("_listaDatos["+_cont+"]['id'] = '"+_prg.getId()+"';");
+			out.println("_listaDatos["+_cont+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_prg.getAcronimo(), "'", "\"")+"';");
+			out.println("_listaDatos["+_cont+"]['tipopregunta'] = '"+_prg.getTipoPregunta()+"';");
+			out.println("_listaDatos["+_cont+"]['ordenpregunta'] = '"+_prg.getOrden()+"';");
+			_cont++;
+		}
+		out.println("_totalDatosInstr = "+_cont+";");
+	}
  %>
 
 	$(document).ready(function(){
@@ -366,23 +447,26 @@ caption {
           <table cellpadding="4" cellspacing="4">
             <tr>
               <td style="text-align:right;width:200px">
-                <label>Estudio a aplicar:</label>
+                <label>Estudio a Aplicar:</label>
               </td>
               <td style="text-align:left;">
                 <select id="idestudio" name="idestudio" onchange="seleccionar(this);">
                   <option value="-1">Seleccione...</option>
-                  <optgroup label="Estudios predefinidos">
+                  <optgroup label="Estudios Predefinidos">
                     <option value="_default_histo">Histograma de Frecuencia</option>
 					  <option value="_default_listar">Listar Dato</option>
 				    <option value="_default_promedio">Promedio</option>
 					  <option value="_default_sumatoria">Sumatoria</option>
 					  <option value="_default_maximo">M&aacute;ximo</option>
 					  <option value="_default_minimo">M&iacute;nimo</option>
+					  <option value="_default_mayor_que">Mayor que</option>
+					  <option value="_default_menor_que">Menor que</option>
+					  <option value="_default_entre">Entre valores definidos</option>
                   </optgroup>
                   <%
                     if(!_listaDeEstudios.isEmpty()){
                       %>
-                        <optgroup label="Estudios creados por el usuario">
+                        <optgroup label="Estudios Creados por el Usuario">
                       <%
                     }
                     if(!_listaDeEstudios.isEmpty()){
@@ -404,7 +488,7 @@ caption {
             </tr>
             <tr>
               <td style="text-align:right;width:200px">
-                <label id="datoseleccionadotxt" style="display:none">Sobre el campo:</label>
+                <label id="datoseleccionadotxt" style="display:none">Sobre el Campo:</label>
               </td>
               <td style="text-align:left;">
                 <select id="datoseleccionado" name="datoseleccionado" onchange="seleccionardato(this);" style="display:none;">
@@ -415,9 +499,6 @@ caption {
 							InstanciaPregunta _prg = null;
 							while(_enu.hasMoreElements()){
 								_prg = (InstanciaPregunta)_enu.nextElement();
-								if(_prg.getTipoPregunta() == 100){
-									continue;
-								}
 								out.println("<option value='"+_prg.getId()+"'>"+_prg.getAcronimo()+"</option>");
 							}
 						}
@@ -441,12 +522,20 @@ caption {
 			  </tr>
             <tr>
               <td style="text-align:right;width:200px">
-                <label id="datovisualizaciontxt" style="display:none">Cantidad de intervalos:</label>
+                <label id="datovisualizaciontxt" style="display:none">Cantidad de Intervalos:</label>
               </td>
               <td style="text-align:left;">
-                <input size="8" type="text" value="1" name="datovisualizacion" id="datovisualizacion" onchange="return validarEntero('datovisualizacion');" style="display:none">
+                <input size="8" type="text" value="1" name="datovisualizacion" id="datovisualizacion" style="display:none">
               </td>
             </tr>
+			  <tr>
+				<td style="text-align:right;width:200px">
+				  <label id="datovisualizaciontxt2" style="display:none">Valor m&aacute;ximo:</label>
+				</td>
+				<td style="text-align:left;">
+				  <input size="8" type="text" value="1" name="datovisualizacion2" id="datovisualizacion2" style="display:none">
+				</td>
+			  </tr>
             <tr>
               <td>
                 &nbsp;
