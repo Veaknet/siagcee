@@ -455,9 +455,14 @@ public class InstanciaPregunta extends ObjetoBase{
 				this.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				this.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
 				try{
-					//this.setEstudioAsociado(EstudioPerso.getInstance().cargar(rs.getInt("campo_comunicacion_telefono2")));
+					EstudioPerso.getInstance().cargar(rs.getInt("id_estudios"));
+					if(EstudioPerso.getInstance().get_id() == -1){
+						this.estudioAsociado = null;
+					}else{
+						this.estudioAsociado = EstudioPerso.getInstance();
+					}
 				}catch(Exception ee){
-					this.setEstudioAsociado(null);
+					this.estudioAsociado = null;
 				}
 				if(this.miPregunta != null){
 					if(this.miPregunta.getId() != rs.getInt("id_pool_preguntas")){
