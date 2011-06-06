@@ -47,7 +47,7 @@ public class ImplementObjeto extends HttpServlet{
 					request.setAttribute("highlight", _miIns_1.getId());
 					view = request.getRequestDispatcher("WEB-INF/vistas/admininsobj.jsp");
 				}else{
-					if (request.getParameter("accion") != null) {
+					if (request.getParameter("accion") != null){
 						String _miObjeto = "";
 						if (request.getParameter("objeto") != null) {
 							_miObjeto = (String) request.getParameter("objeto");
@@ -63,9 +63,15 @@ public class ImplementObjeto extends HttpServlet{
 						if (request.getParameter("tipo_acceso") != null) {
 							_tipoAcceso = Integer.parseInt((String) request.getParameter("tipo_acceso"));
 						}
+
 						int _tipoInvitacion = 0;
 						if (request.getParameter("tipo_invitacion") != null){
 							_tipoInvitacion = Integer.parseInt((String) request.getParameter("tipo_invitacion"));
+						}
+
+						String _enlace = "";
+						if (request.getParameter("enlace") != null){
+							_enlace = (String)request.getParameter("enlace");
 						}
 
 						String _accion = (String)request.getParameter("accion");
@@ -120,6 +126,8 @@ public class ImplementObjeto extends HttpServlet{
 									view = request.getRequestDispatcher("WEB-INF/vistas/admininsobj.jsp");
                                 }
 							}
+							_miIns.setIdPublico(_enlace);
+
 							//agrego todas las preguntas a editables
 							PreguntaEditable.delPreguntasEditables(admin, micon, _miIns);
 							PreguntaEditable _pregEdit = null;
@@ -155,6 +163,8 @@ public class ImplementObjeto extends HttpServlet{
 								_resltados = _mifecha.split("-");
 								_miIns.setFechaInicio(_resltados[2]+"-"+_resltados[1]+"-"+_resltados[0]);
 							}
+							_miIns.setIdPublico(_enlace);
+
 							//_miIns.asociaObjeto(_miObjetoAsociado);
 							request.setAttribute("highlight", _miIns.getId());
 
@@ -179,7 +189,7 @@ public class ImplementObjeto extends HttpServlet{
 				}
 
 				Vector _objetos = Objeto.todosObjetos(admin, micon, 0, true, false);
-				Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon);
+				Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0);
 
 				request.setAttribute("objetosDisponibles", _objetos);
 				request.setAttribute("objetosInstanciados", _instanciados);
@@ -245,7 +255,7 @@ public class ImplementObjeto extends HttpServlet{
 					}
 
 					Vector _objetos = Objeto.todosObjetos(admin, micon, 0, true, false);
-					Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon);
+					Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0);
 
 					request.setAttribute("objetosDisponibles", _objetos);
 					request.setAttribute("objetosInstanciados", _instanciados);

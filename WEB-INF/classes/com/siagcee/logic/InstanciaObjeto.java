@@ -242,7 +242,11 @@ public class InstanciaObjeto extends ObjetoBase{
 
 	//ingresamos un String que identifica al objeto
 	//principalmente usado para enlaces web ej:  censo.do?id=aaasig8432nsjnvnaiq7827
-	protected void setIdPublico(String _id){
+	public void setIdPublico(String _id){
+		if(_id.equals("")){
+			this.idPublico = this.generaIdPublico();
+			return;
+		}
 		this.idPublico = _id;
 		if(this.cargadaDeBD){
 			this.ingresaABd();

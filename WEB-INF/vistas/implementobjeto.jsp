@@ -6,6 +6,8 @@
 
 <script type="text/javascript" charset="UTF-8">
 var array_censos = new Array();
+var array_enlaces = new Array();
+var instactual = "";
 
 function compruebaPoblacion(){
 	var _poblacion = document.getElementById("divPoblacion");
@@ -99,6 +101,38 @@ function compruebaNoVacioNoLimitativo(elem){
 	return false;
 }
 
+
+function compruebaEnlace(elem){
+	if(elem){
+		if(elem.value != "" || elem.disabled){
+			if(!elem.value.match(/^[a-zA-Z0-9]{6,}$/)){
+				alert("Debe usar letras y números sin caracteres especiales ni espacios en blanco. Mínimo 6 caracteres.");
+				elem.focus();
+				elem.style.backgroundColor = 'yellow';
+				elem.onkeyup = function(){
+					elem.style.backgroundColor = '';
+				};
+				return false;
+			}
+			for(var i=0;i<array_enlaces.length;i++){
+				if((array_enlaces[i] == elem.value) && (instactual != elem.value)){
+					alert("Nombre del enlace no disponible, por favor indique otro.");
+					elem.focus();
+					elem.style.backgroundColor = 'yellow';
+					elem.onkeyup = function(){
+						elem.style.backgroundColor = '';
+					};
+					return false;
+				}
+			}
+			return true;
+		}else{
+			return confirm("No ha indicado un nombre de enlace para el instrumento. Se proporcionará uno automaticamente. Desea continuar?.");
+		}
+	}
+	return false;
+}
+
 function compruebaNoVacio(elem){
 	if(elem){
 		if(elem.value != ""){
@@ -151,7 +185,7 @@ function habilitarInsertDiv(){
 	}
 	objeto.focus();
 }
-function habilitarUpdateDiv(_id, _objeto, _inicio, _cierre, _tipoacceso, _objetoasociado, _habilitaCambioDeEstructura){
+function habilitarUpdateDiv(_id, _objeto, _inicio, _cierre, _tipoacceso, _objetoasociado, _habilitaCambioDeEstructura, _enlace){
 	var formularioPregunta = document.getElementById("miDiv");
 	//var subtitulo = document.getElementById("subtitulo");
 	var miid = document.getElementById("id");
@@ -161,6 +195,7 @@ function habilitarUpdateDiv(_id, _objeto, _inicio, _cierre, _tipoacceso, _objeto
 	var objetoasociado = document.getElementById("objeto_asociado");
 	var inicio = document.getElementById("inicio");
 	var cierre = document.getElementById("cierre");
+	var enlace = document.getElementById("enlace");
 	var boton = document.getElementById("miboton");
 	var accion = document.getElementById("accion");
 	var _info = document.getElementById("infoEstructuras");
@@ -182,6 +217,8 @@ function habilitarUpdateDiv(_id, _objeto, _inicio, _cierre, _tipoacceso, _objeto
 	cierre.value = __fecha[2]+"-"+__fecha[1]+"-"+__fecha[0];
 	tipoacceso.value = _tipoacceso;
 	tipoacceso.disabled = true;
+	enlace.value = _enlace;
+	enlace.readonly = true;
 	objetoasociado.value = _objetoasociado;
 	objetoasociado.disabled = false;
 	boton.value = "Guardar Cambios";
@@ -231,8 +268,6 @@ function modificarTipoInvitacion(){
 	}
 }
 
-</script>
-
 <%
 boolean showForm = false;
 
@@ -246,9 +281,18 @@ Collections.sort(_objetos, new OrdenadorObjetos(OrdenadorObjetos.CLASS));
 Vector _instanciados = (Vector)request.getAttribute("objetosInstanciados");
 Collections.sort(_instanciados, new OrdenadorInstanciaObjetos(OrdenadorInstanciaObjetos.CLASS));
 
+Enumeration _insInst = _instanciados.elements();
+int con = 0;
+while(_insInst.hasMoreElements()){
+	InstanciaObjeto _objTem = (InstanciaObjeto)_insInst.nextElement();
+	out.println("array_enlaces["+con+"] = '"+_objTem.getIdPublico()+"'");
+	con++;
+}
+
 %>
-<script type="text/javascript">
+
 var unico_contador = 0;
+
 <%
 Enumeration _misInstanciados99 = _objetos.elements();
 Objeto miObj99;
@@ -337,10 +381,13 @@ while(_misInstanciados99.hasMoreElements()){
 						</optgroup>
 					</select>
 					<span style="display:none;" id="infoEstructuras"><a href="#" title="Revisar Instrumento Seleccionado" alt="Revisar Instrumento Seleccionado" onclick="$('#id_encapsulador').show('slow');revisarEstructura();"><img src="comunes/imagenes/search.png" height="18">Revisar Instrumento Seleccionado</a></span><p />
+					<p />
+					<label>Nombre del enlace: </label><input id="enlace" name="enlace" value="" size="30" >
+					<p />
 					<label>Fecha de Inicio: </label><input gtbfieldid="1" class="plain" id="inicio"  name="inicio" value="" size="9" readonly="readonly" onkeyup="if(self.gfPop)gfPop.fStartPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;" onclick="if(self.gfPop)gfPop.fStartPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;">&nbsp;&nbsp;&nbsp;
 					<label>Fecha de Cierre: </label><input gtbfieldid="2" class="plain" id="cierre" name="cierre" value="" size="9" readonly="readonly" onkeyup="if(self.gfPop)gfPop.fEndPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;" onclick="if(self.gfPop)gfPop.fEndPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;">
 					<p />
-					<input type="submit" value="Publicar" name="miboton" id="miboton" onclick="return (compruebaNoVacio(getElementById('objeto'))&&compruebaSeleccionado(getElementById('objeto_asociado'))&&compruebaNoVacioNoLimitativo(getElementById('cierre'))&&compruebaNoVacioNoLimitativo(getElementById('inicio')));">
+					<input type="submit" value="Publicar" name="miboton" id="miboton" onclick="return (compruebaEnlace(getElementById('enlace'))&&compruebaNoVacio(getElementById('objeto'))&&compruebaSeleccionado(getElementById('objeto_asociado'))&&compruebaNoVacioNoLimitativo(getElementById('cierre'))&&compruebaNoVacioNoLimitativo(getElementById('inicio')));">
 					<input type="reset" value="Borrar">
 				</form>
 			</div>
@@ -362,8 +409,9 @@ while(_misInstanciados99.hasMoreElements()){
 				%>
 				<script type="text/javascript">
 					$(document).ready(function(){
-						habilitarUpdateDiv(<% out.print(miObjxx.getId()); %>,'<% out.print(miObjxx.getObjeto()); %>','<% out.print(miObjxx.getFechaInicio()); %>', '<% out.print(miObjxx.getFechaCierre()); %>', <% out.print(miObjxx.getAcceso()); %>, <% out.print(miObjxx.getObjetoAsociado().getId()); %>, <% if(miObjxx.getFechaCierre().compareTo(new Date()) <= -1){out.print(1);}else{out.print(2);} %>);
-						$("#objeto_asociado").attr('disabled',true);;
+						habilitarUpdateDiv(<% out.print(miObjxx.getId()); %>,'<% out.print(miObjxx.getObjeto()); %>','<% out.print(miObjxx.getFechaInicio()); %>', '<% out.print(miObjxx.getFechaCierre()); %>', <% out.print(miObjxx.getAcceso()); %>, <% out.print(miObjxx.getObjetoAsociado().getId()); %>, <% if(miObjxx.getFechaCierre().compareTo(new Date()) <= -1){out.print(1);}else{out.print(2);} %>,'<% out.print(UtilidadesVarias.reemplazarCaracteres(miObjxx.getIdPublico(), "'", "\\'")); %>');
+						$("#objeto_asociado").attr('disabled',true);
+						instactual = '<% out.print(miObjxx.getIdPublico()); %>';
 					});
 				</script>
 				<%
