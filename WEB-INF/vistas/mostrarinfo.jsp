@@ -127,7 +127,7 @@ if(_miObj != null){
 			}
 		}
 	}else{
-	  out.println("No se ha encontrado la estructura deseada.");	
+	  out.println("No se ha encontrado la estructura deseada.");
 	}
 }
 if(_miPreg != null){
@@ -192,8 +192,12 @@ if(_miEst != null){
 					</tr>
 				</table>
 				<script type="text/javascript" >
-					$(document).ready(function(){
+					function limpiarMsj(){
 						window.opener.document.getElementById('id_encapsulador').style.display = 'none';
+					}
+					$(document).ready(function(){
+						limpiarMsj();
+						setTimeout(limpiarMsj,1000);
 					});
 				</script>
 <%

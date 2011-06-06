@@ -91,7 +91,12 @@ public class AdministraInstanciaObjeto extends HttpServlet {
 					sesion.setAttribute("generadorSql_cancelarAndGoTo", "");
 					sesion.setAttribute("generadorSql_finalizarAndGoTo", "");
 
-					Vector _insObj = InstanciaObjeto.todosObjetosInstanciados(admin, micon, false, 0);
+					Vector _insObj = null;
+					if(admin.getTipoUsuario().equals("superadministrador")){
+						_insObj = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0);
+					}else{
+						_insObj = InstanciaObjeto.todosObjetosInstanciados(admin, micon, false, 0);
+					}
 					request.setAttribute("objetosInstanciados", _insObj);
 					view = request.getRequestDispatcher("WEB-INF/vistas/admininsobj.jsp");
 
@@ -104,13 +109,13 @@ public class AdministraInstanciaObjeto extends HttpServlet {
 
 						InstanciaObjeto _miIns = new InstanciaObjeto(admin, micon, _idIns);
 						sesion.setAttribute("generadorSql_instanciaObjeto", _miIns);
-						
+
 						if(_miIns.getObjetoAsociado().getClass().toString().contains("Censo")){
 							sesion.setAttribute("generadorSql_poblacionAsociada", null);
 						}else{
 							sesion.setAttribute("generadorSql_poblacionAsociada", _miIns.getPoblacion_asociada());
 						}
-                        
+
 						view = request.getRequestDispatcher("generadorsql.do");
 
 					}else{
@@ -123,7 +128,6 @@ public class AdministraInstanciaObjeto extends HttpServlet {
 							/*  NO LO PERMITIRÉ POR AHORA
 							Objeto _oT = null;
 							if(_t.getObjetoAsociado().getClass().toString().equals(Relacion.class.toString())){
-
 								_oT = _t.getObjetoAsociado();
 							}
 							*/
@@ -148,12 +152,20 @@ public class AdministraInstanciaObjeto extends HttpServlet {
 							ee.printStackTrace();
 							eliminados = "ninguno";
 						}
-						
-						Vector _insObj = new Vector();
+
+						Vector _insObj = null;
 						if(eliminados.contains("eliminados")){
-							_insObj = InstanciaObjeto.todosObjetosInstanciados(admin, micon, false, 0, true);
+							if(admin.getTipoUsuario().equals("superadministrador")){
+								_insObj = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0, true);
+							}else{
+								_insObj = InstanciaObjeto.todosObjetosInstanciados(admin, micon, false, 0, true);
+							}
 						}else{
-							_insObj = InstanciaObjeto.todosObjetosInstanciados(admin, micon, false, 0, false);
+							if(admin.getTipoUsuario().equals("superadministrador")){
+								_insObj = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0, false);
+							}else{
+								_insObj = InstanciaObjeto.todosObjetosInstanciados(admin, micon, false, 0, false);
+							}
 						}
 						request.setAttribute("objetosInstanciados", _insObj);
 						view = request.getRequestDispatcher("WEB-INF/vistas/admininsobj.jsp");

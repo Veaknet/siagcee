@@ -62,7 +62,9 @@
 													<li class="childlink"><a href="admininsobj.do?opcionbase=enejecucion"><img src="comunes/imagenes/file-ejecucion.png" height="18" title="Mostrar s&oacute;lo censos o encuestas actualmente en ejecuci&oacute;n">&nbsp;En Ejecuci&oacute;n</a></li>
 													<li class="childlink"><a href="admininsobj.do?opcionbase=finalizados"><img src="comunes/imagenes/file-finalizado.png" height="18" title="Mostrar s&oacute;lo censos o encuestas finalizados">&nbsp;Finalizados</a></li>
 													<li class="childlink"><a href="admininsobj.do?opcionbase=todos"><img src="comunes/imagenes/file-todos.png" height="18" title="Mostrar censos o encuestas pendientes, actualmente en ejecuci&oacute;n y finalizados">&nbsp;Todos</a></li>
-													<!-- <li class="childlink"><a href="admininsobj.do?opcionbase=eliminados"><img src="comunes/imagenes/delete.png" height="18" title="Mostrar s&oacute;lo censos o encuestas eliminados">&nbsp;Eliminados</a></li> //-->
+													<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
+														<li class="childlink"><a href="admininsobj.do?opcionbase=eliminados"><img src="comunes/imagenes/delete.png" height="18" title="Mostrar s&oacute;lo censos o encuestas eliminados">&nbsp;Eliminados</a></li>
+													<% } 	%>
 												</ul>
 											</li>
 											<li class="headlink">

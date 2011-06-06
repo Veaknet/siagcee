@@ -163,7 +163,7 @@ public class InstanciaObjeto extends ObjetoBase{
 	public String getObjeto(){
 		return this.objeto;
 	}
-	
+
 	//dado un String se crea un objeto Date...
 	//Lanza una exception
 	public void setFechaInicio(String _fecha){
@@ -260,7 +260,7 @@ public class InstanciaObjeto extends ObjetoBase{
 	//0 = carga sin importar cierre o inicio
 	public void recargaDeBd(Date _fecha, int _selectivo){
 		ResultSet rs = null;
-		PreparedStatement pstmt = null; 
+		PreparedStatement pstmt = null;
 		try {
 			if(_selectivo == 1){
 				pstmt = this.getConexion().prepareStatement("SELECT * FROM instancia_objetos WHERE id_instancia_objetos = ? AND fecha_cierre >= ? AND fecha_inicio <= ?");
@@ -297,7 +297,7 @@ public class InstanciaObjeto extends ObjetoBase{
 				this.setCargadaDeBD(false);
 			}
 		}
-		catch (Exception e) {e.printStackTrace();}		
+		catch (Exception e) {e.printStackTrace();}
 	}
 
 	public void ingresaABd(){
@@ -421,7 +421,12 @@ public class InstanciaObjeto extends ObjetoBase{
 				if((eliminados && !rs.getBoolean("eliminado")) || (!eliminados && rs.getBoolean("eliminado"))){
 					continue;
 				}
-				ObjTemp = new InstanciaObjeto(_usuario, _miConexion);
+				if(_publico){
+					Administrador _user = new Administrador(_miConexion, rs.getInt("creado_por"));
+					ObjTemp = new InstanciaObjeto(_user, _miConexion);
+				}else{
+					ObjTemp = new InstanciaObjeto(_usuario, _miConexion);
+				}
 				ObjTemp.objeto = rs.getString("objeto");
 				ObjTemp.fecha_inicio = rs.getDate("fecha_inicio");
 				ObjTemp.fecha_cierre = rs.getDate("fecha_cierre");
