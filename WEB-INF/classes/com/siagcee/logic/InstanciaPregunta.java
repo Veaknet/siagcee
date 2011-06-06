@@ -454,16 +454,6 @@ public class InstanciaPregunta extends ObjetoBase{
 				this.campo_comunicacion_email = rs.getBoolean("campo_comunicacion_email");
 				this.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				this.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
-				try{
-					EstudioPerso.getInstance().cargar(rs.getInt("id_estudios"));
-					if(EstudioPerso.getInstance().get_id() == -1){
-						this.estudioAsociado = null;
-					}else{
-						this.estudioAsociado = EstudioPerso.getInstance();
-					}
-				}catch(Exception ee){
-					this.estudioAsociado = null;
-				}
 				if(this.miPregunta != null){
 					if(this.miPregunta.getId() != rs.getInt("id_pool_preguntas")){
 						//creo un nuevo objeto cuando ya este esta asociado
@@ -479,6 +469,20 @@ public class InstanciaPregunta extends ObjetoBase{
 					}
 				}else{
 					this.miPadre = new Objeto(this.getUsuario(), this.getConexion(), rs.getInt("id_pool_objetos"));
+				}
+				try{
+					EstudioPerso.resetInstance();
+					EstudioPerso.getInstance().setConexion(this.getConexion());
+					EstudioPerso.getInstance().setUsuario(this.getUsuario());
+					EstudioPerso.getInstance().set_obj_simple(this.getPadre());
+					EstudioPerso.getInstance().cargar(rs.getInt("id_estudios"));
+					if(EstudioPerso.getInstance().get_id() == -1){
+						this.estudioAsociado = null;
+					}else{
+						this.estudioAsociado = EstudioPerso.getInstance();
+					}
+				}catch(Exception ee){
+					this.estudioAsociado = null;
 				}
 				this.setCargadaDeBD(true);
 			}else{

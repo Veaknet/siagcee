@@ -6,5 +6,10 @@ WEB-INF/tmp/*
 comunes/documentos/*
 comunes/subidos/*
 comunes/graficos/*
-siagcee*
 out/*
+siagcee.ids
+siagcee.ipr
+siagcee.iws
+siagcee.properties
+siagcee.xml
+
