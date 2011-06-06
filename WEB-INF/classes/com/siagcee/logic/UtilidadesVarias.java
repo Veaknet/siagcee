@@ -110,13 +110,29 @@ public class UtilidadesVarias {
         }
 	}
 
+	public static boolean generaExcel(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj, boolean _plantilla){
+		return generaExcel(_nombre_archivo, _preguntas, _respuestas, _obj.getObjeto(), _plantilla);
+	}
+
 	public static boolean generaExcel(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj){
+		return generaExcel(_nombre_archivo, _preguntas, _respuestas, _obj.getObjeto(), false);
+	}
+
+	public static boolean generaExcel(String _nombre_archivo, Vector _preguntas, Vector _respuestas, String _obj){
 		return generaExcel(_nombre_archivo, _preguntas, _respuestas, _obj, false);
 	}
 
-    public static boolean generaExcel(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj, boolean _plantilla){
+	public static boolean generaPDF(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj){
+		return generaPDF(_nombre_archivo, _preguntas, _respuestas, _obj.getObjeto());
+	}
+
+	public static boolean generaWord(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj){
+		return generaWord(_nombre_archivo, _preguntas, _respuestas, _obj.getObjeto());
+	}
+
+    public static boolean generaExcel(String _nombre_archivo, Vector _preguntas, Vector _respuestas, String _obj, boolean _plantilla){
         WritableWorkbook workbook = null;
-        String titulo = _obj.getObjeto();
+        String titulo = _obj;
         boolean _resul = false;
         try{
             workbook = Workbook.createWorkbook(new File(_nombre_archivo));
@@ -255,9 +271,9 @@ public class UtilidadesVarias {
         return _resul;
     }
 
-    public static boolean generaPDF(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj){
+    public static boolean generaPDF(String _nombre_archivo, Vector _preguntas, Vector _respuestas, String _obj){
         Document documento = new Document(PageSize.LEGAL.rotate());
-        String titulo = _obj.getObjeto();
+        String titulo = _obj;
         boolean _resul = false;
         try{
             PdfWriter.getInstance(documento, new FileOutputStream(_nombre_archivo));
@@ -367,8 +383,8 @@ public class UtilidadesVarias {
         return _resul;
     }
 
-    public static boolean generaWord(String _nombre_archivo, Vector _preguntas, Vector _respuestas, InstanciaObjeto _obj){
-        String titulo = _obj.getObjeto();
+    public static boolean generaWord(String _nombre_archivo, Vector _preguntas, Vector _respuestas, String _obj){
+        String titulo = _obj;
 
         boolean _resul = false;
         try{

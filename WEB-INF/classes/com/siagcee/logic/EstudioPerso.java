@@ -398,6 +398,18 @@ public class EstudioPerso extends ObjetoBase{
 		}
 	}
 
+	public InstanciaPregunta retornaPreguntaAsociada(){
+		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getUsuario(), this.getConexion(), this.get_obj_simple(), true).elements();
+		InstanciaPregunta _temp;
+		while(_enu.hasMoreElements()){
+			_temp = (InstanciaPregunta)_enu.nextElement();
+			if((_temp.getEstudioAsociado() != null) && (_temp.getEstudioAsociado() == this.get_id())){
+				return _temp;
+			}
+		}
+		return null;
+	}
+
 	//FUNCIONES PARA FUNCIONAMIENTO INTERNO DEL ESTUDIO
 	//las variables vienen: [acronimo]
 	public String getContarField(String _campo){

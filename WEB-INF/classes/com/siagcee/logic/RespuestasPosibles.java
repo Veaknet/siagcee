@@ -145,7 +145,7 @@ public class RespuestasPosibles extends ObjetoBase{
 			return false;
 		}
 		return false;
-	}	
+	}
 
 	//se asocia una pregunta a esta respuesta
 	public void asociarPregunta(Pregunta _padre){
@@ -224,7 +224,6 @@ public class RespuestasPosibles extends ObjetoBase{
 			}
 		}
 		catch (Exception e) {
-			System.out.println(pstmt.toString());
 			e.printStackTrace();
 		}
 	}

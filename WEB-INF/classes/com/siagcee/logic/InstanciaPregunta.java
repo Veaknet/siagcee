@@ -532,7 +532,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				ObjPregTemp.campo_comunicacion_email = rs.getBoolean("campo_comunicacion_email");
 				ObjPregTemp.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				ObjPregTemp.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
-				ObjPregTemp.estudioAsociado = null;
+				ObjPregTemp.estudioAsociado = rs.getInt("id_estudios");
 				ObjPregTemp.cargadaDeBD = true;
 				_lista.add(ObjPregTemp);
 			}
@@ -597,7 +597,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				_pregunta.campo_comunicacion_email = rs.getBoolean("campo_comunicacion_email");
 				_pregunta.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				_pregunta.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
-				_pregunta.setEstudioAsociado(-1);
+				_pregunta.estudioAsociado = rs.getInt("id_estudios");
 				_pregunta.cargadaDeBD = true;
 				break;
 			}

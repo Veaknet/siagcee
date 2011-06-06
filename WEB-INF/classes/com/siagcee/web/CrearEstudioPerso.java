@@ -22,10 +22,9 @@ public class CrearEstudioPerso extends HttpServlet{
 		HttpSession sesion = request.getSession();
 		Connection micon = (Connection) getServletContext().getAttribute("conexion");
 		Administrador admin = (Administrador) sesion.getAttribute("administrador");
-		RequestDispatcher view = request.getRequestDispatcher("adminobjetos.do");
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/crearestudioperso.jsp");
 		if(admin != null){
 			try{
-
 				if(request.getParameter("objetoatrabajar") != null){
 
 					InstanciaObjeto _objObjeto  = new InstanciaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoatrabajar")));
@@ -49,6 +48,89 @@ public class CrearEstudioPerso extends HttpServlet{
 					EstudioPerso.getInstance().setUsuario(admin);
 					EstudioPerso.getInstance().set_obj(_objObjeto);
 					EstudioPerso.getInstance().ejecutaEstudio(_cod);
+
+					//exportar resultados
+					if(request.getParameter("exportar") != null && !(request.getParameter("exportar")).equals("")){
+						String _titSt = "Resultados Estudio";
+						if(EstudioPerso.getInstance().getCargadaDeBD()){
+							_titSt = _titSt+": "+EstudioPerso.getInstance().get_titulo();
+						}
+						//ins Preg
+						InstanciaPregunta _insPre;
+						Pregunta _pre = null;
+						Vector _tempVec2 = new Vector();
+						if(EstudioPerso.getInstance().getCargadaDeBD()){
+							_insPre = EstudioPerso.getInstance().retornaPreguntaAsociada();
+						}else{
+							_pre = new Pregunta(admin, micon);
+							_pre.setTipoPregunta(100);
+							_insPre = new InstanciaPregunta(admin, micon);
+							_insPre.setAcronimo("estudio");
+							_insPre.setTextoPregunta("estudio");
+							_insPre.asociarPregunta(_pre);
+						}
+						_tempVec2.add(_insPre);
+
+						//resp
+						HashMap _resulMostrados = new HashMap();
+						Vector _tempVec = new Vector();
+						HashMap _respuestas = EstudioPerso.getInstance().getHashMapResultados();
+						Iterator _ite = _respuestas.entrySet().iterator();
+						while(_ite.hasNext()){
+							Map.Entry _temp = (Map.Entry)_ite.next();
+							int encuestado = (Integer)(_temp.getKey());
+							if(_temp.getValue() == null){continue;}
+							String resultad = (String)(_temp.getValue());
+
+							if(_resulMostrados.get(resultad) != null){
+								continue;
+							}
+							_resulMostrados.put(resultad, true);
+							Respuesta _respNueva = new Respuesta(new Encuestado(micon, encuestado),  micon);
+							_respNueva.setElaborado_por(encuestado);
+							_respNueva.asociarInstanciaPregunta(_insPre);
+							_insPre.setEstudioAsociado(EstudioPerso.getInstance());
+							_respNueva.asociarInstanciaObjeto(_objObjeto);
+							_respNueva.setRespuesta(resultad);
+							_tempVec.add(_respNueva);
+						}
+
+						if((request.getParameter("exportar")).equals("exportaexcel")){
+							String _nombreArchivo = getServletContext().getRealPath("/")+"comunes/documentos/res_est"+_objObjeto.getId()+".xls";
+
+							UtilidadesVarias.generaExcel(_nombreArchivo, _tempVec2, _tempVec, _titSt);
+
+							view = request.getRequestDispatcher("comunes/documentos/res_est"+_objObjeto.getId()+".xls");
+						}
+
+						//es para exportar a PDF
+						if((request.getParameter("exportar")).equals("exportapdf")){
+
+							String _nombreArchivo = getServletContext().getRealPath("/")+"comunes/documentos/res_est"+_objObjeto.getId()+".pdf";
+
+							UtilidadesVarias.generaPDF(_nombreArchivo, _tempVec2, _tempVec, _titSt);
+
+							view = request.getRequestDispatcher("comunes/documentos/res_est"+_objObjeto.getId()+".pdf");
+						}
+
+						//es para exportar a word
+						if((request.getParameter("exportar")).equals("exportaword")){
+
+							String _nombreArchivo = getServletContext().getRealPath("/")+"comunes/documentos/res_est"+_objObjeto.getId();
+
+							UtilidadesVarias.generaWord(_nombreArchivo, _tempVec2, _tempVec, _titSt);
+
+							view = request.getRequestDispatcher("comunes/documentos/res_est"+_objObjeto.getId()+".docx");
+						}
+
+						//por salud, borro pregunta temporal
+						if(!EstudioPerso.getInstance().getCargadaDeBD()){
+							_insPre.delPregunta();
+							if(_pre != null){
+								_pre.delPregunta();
+							}
+						}
+					}
 
 					//guardar estudio
 					if(request.getParameter("guardar") != null && (request.getParameter("guardar")).equals("true")){
@@ -94,8 +176,6 @@ public class CrearEstudioPerso extends HttpServlet{
 						}
 					}
 				}
-
-				view = request.getRequestDispatcher("WEB-INF/vistas/crearestudioperso.jsp");
 				view.forward(request, response);
 			}catch(Exception e){
 				//error voy a pantalla principal de objetos

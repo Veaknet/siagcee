@@ -401,21 +401,32 @@ $(document).ready(function(){
 					if(EstudioPerso.getInstance().get_titulo() != null && !EstudioPerso.getInstance().get_titulo().equals("")){
 						out.print("<h4>"+EstudioPerso.getInstance().get_titulo()+"</h4>");
 					}
-					out.print("<table>");
+					out.println("<table id=\"_myTable\" class=\"tablesorter\"  style=\"min-width:100px;max-width:940px;width:100px\">");
+					out.println("<tr><th>Resultado(s)</th></tr><tbody>");
 					HashMap _resulMostrados = new HashMap();
 					_resul = EstudioPerso.getInstance().firstResultado();
 					if(_resul != null){
 						_resulMostrados.put(_resul, true);
-						out.print("<tr><td>"+_resul+"</td></tr>");
+						out.print("<tr><td nowrap>"+_resul+"</td></tr>");
 					}
 					while(EstudioPerso.getInstance().hayMasResultados()){
 						if((_resul = EstudioPerso.getInstance().nextResultado()) != null){
 							if(_resulMostrados.get(_resul) != null){continue;}
 							_resulMostrados.put(_resul, true);
-							out.print("<tr><td>"+_resul+"</td></tr>");
+							out.print("<tr><td nowrap>"+_resul+"</td></tr>");
 						}
 					}
-					out.print("</table>");
+					out.print("</tbody></table>");
+					%>
+					<form id="expor" method="post" action="#" target="_blank">
+					<input type="hidden" value="" id="exportar" name="exportar">
+					<input type="hidden" value="<% out.print(_objTrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
+					<input type="hidden" value="<% out.print(_codigo); %>" id="codigoestudio" name="codigoestudio">
+					<a href="javascript:void(null);" onclick="$('#expor').attr('action', 'est_archivo.pdf');$('#exportar').val('exportapdf');$('#guardar').val('');$('#expor').submit();"><img height="24" src="comunes/imagenes/pdf.png" alt="Exportar estos datos a pdf" title="Exportar estos datos a pdf"/></a>
+					&nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#expor').attr('action', 'est_archivo.docx');$('#exportar').val('exportaword');$('#guardar').val('');$('#expor').submit();"><img height="24" src="comunes/imagenes/word.png" alt="Exportar estos datos a word" title="Exportar estos datos a word"/></a>
+					&nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#expor').attr('action', 'est_archivo.xls');$('#exportar').val('exportaexcel');$('#guardar').val('');$('#expor').submit();"><img height="24" src="comunes/imagenes/excel.png" alt="Exportar estos datos a excel" title="Exportar estos datos a excel"/></a>
+					</form><p />
+					<%
 				}else if(EstudioPerso.getInstance().hayErrores()){
 					%>
 					<h4>Errores</h4>
@@ -453,7 +464,7 @@ $(document).ready(function(){
 							</tr>
 						</table>
 						<input type="submit" value="Guardar" />
-					</form>
+					</form><p />
 					<%
 				}
 			}else{

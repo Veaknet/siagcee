@@ -97,7 +97,7 @@ public class SqlPreview extends HttpServlet{
 					if(request.getParameter("plantilla") != null && request.getParameter("plantilla").equals("1")){
 						UtilidadesVarias.generaExcel(_nombreArchivo, _tempVec2, _tempVec, _objetoatrabajar, true);
 					}else{
-						UtilidadesVarias.generaExcel(_nombreArchivo, _tempVec2, _tempVec, _objetoatrabajar, false);
+						UtilidadesVarias.generaExcel(_nombreArchivo, _tempVec2, _tempVec, _objetoatrabajar);
 					}
 
                     view = request.getRequestDispatcher("comunes/documentos/"+_objetoatrabajar.getId()+".xls");

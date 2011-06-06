@@ -234,11 +234,65 @@
 
 	<servlet>
 		<servlet-name>SqlPreview</servlet-name>
-    <servlet-class>com.siagcee.web.SqlPreview</servlet-class>
+    	<servlet-class>com.siagcee.web.SqlPreview</servlet-class>
 	</servlet>
 	<servlet-mapping>
-	  <servlet-name>SqlPreview</servlet-name>
-	  <url-pattern>/sqlpreview</url-pattern>
+		<servlet-name>SqlPreview</servlet-name>
+		<url-pattern>/sqlpreview</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ExportaPDF</servlet-name>
+    	<servlet-class>com.siagcee.web.SqlPreview</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExportaPDF</servlet-name>
+		<url-pattern>/archivo.pdf</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ExportaDOC</servlet-name>
+    	<servlet-class>com.siagcee.web.SqlPreview</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExportaDOC</servlet-name>
+		<url-pattern>/archivo.docx</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ExportaXLS</servlet-name>
+    	<servlet-class>com.siagcee.web.SqlPreview</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExportaXLS</servlet-name>
+		<url-pattern>/archivo.xls</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ExportaXLS2</servlet-name>
+    	<servlet-class>com.siagcee.web.CrearEstudioPerso</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExportaXLS2</servlet-name>
+		<url-pattern>/est_archivo.xls</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ExportaPDF2</servlet-name>
+    	<servlet-class>com.siagcee.web.CrearEstudioPerso</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExportaPDF2</servlet-name>
+		<url-pattern>/est_archivo.pdf</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ExportaDOC2</servlet-name>
+    	<servlet-class>com.siagcee.web.CrearEstudioPerso</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExportaDOC2</servlet-name>
+		<url-pattern>/est_archivo.docx</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

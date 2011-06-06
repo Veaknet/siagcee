@@ -98,7 +98,7 @@ if(request.getParameter("accioninvitar") != null){
 				}
 			%>
 		</select><br />
-		<input type="submit" value="Revisar" onclick="$('#accionextra').val('');if($('#preguntasdeseadas').attr('value') == ''){alert('Debe indicar las preguntas que desea revisar');return false;}return true;">
+		<input type="submit" value="Revisar" onclick="$('#formPreguntas').attr('action', 'sqlpreview');$('#accionextra').val('');if($('#preguntasdeseadas').attr('value') == ''){alert('Debe indicar las preguntas que desea revisar');return false;}return true;">
 	</form>
 <%
 	if(!_preguntas.isEmpty()){
@@ -217,14 +217,14 @@ if(request.getParameter("accioninvitar") != null){
 		<% }else{ %>
 			 <input type="hidden" value="" id="email_id_invite_text" name="email_id_invite_text">
 		<% } %>
-		<button value="Procesar estos usuarios" onclick="window.opener.document.getElementById('id_encapsulador').style.display = 'block';window.opener.document.getElementById('hacerpreview').value='falso';window.opener.document.getElementById('email_id_invite').value=document.getElementById('email_id_invite').value;window.opener.document.getElementById('email_id_invite_text').value=document.getElementById('email_id_invite_text').value;window.opener.document.getElementById('formgenerasql').target = '_top';window.opener.document.getElementById('formgenerasql').submit();window.close();">Aceptar y procesar estos usuarios</button>
+		<button value="Procesar estos usuarios" onclick="window.opener.document.getElementById('id_encapsulador').style.display = 'block';window.opener.document.getElementById('hacerpreview').value='falso';window.opener.document.getElementById('email_id_invite').value=document.getElementById('email_id_invite').value;window.opener.document.getElementById('email_id_invite_text').value=document.getElementById('email_id_invite_text').value;window.opener.document.getElementById('formgenerasql').target = '_top';window.opener.document.getElementById('formgenerasql').submit();window.opener.document.getElementById('formgenerasql').action = '#';window.close();">Aceptar y procesar estos usuarios</button>
 		<button value="Cerrar esta ventana" onclick="window.close();">Cancelar y cerrar esta ventana</button>
 	</form>
 	<% }else{ %>
     <div style="padding-right:50px;float:right;text-align:right">
-        <a href="javascript:void(null);" onclick="$('#accionextra').val('exportapdf');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/pdf.png" alt="Exportar estos datos a PDF" title="Exportar estos datos a PDF"/></a>
-        &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#accionextra').val('exportaword');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/word.png" alt="Exportar estos datos a Word" title="Exportar estos datos a Word"/></a>
-        &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#accionextra').val('exportaexcel');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/excel.png" alt="Exportar estos datos a excel" title="Exportar estos datos a excel"/></a>
+        <a href="javascript:void(null);" onclick="$('#formPreguntas').attr('action', 'archivo.pdf');$('#accionextra').val('exportapdf');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/pdf.png" alt="Exportar estos datos a PDF" title="Exportar estos datos a PDF"/></a>
+        &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#formPreguntas').attr('action', 'archivo.docx');$('#accionextra').val('exportaword');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/word.png" alt="Exportar estos datos a Word" title="Exportar estos datos a Word"/></a>
+        &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#formPreguntas').attr('action', 'archivo.xls');$('#accionextra').val('exportaexcel');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/excel.png" alt="Exportar estos datos a excel" title="Exportar estos datos a excel"/></a>
     </div>
 	<% } %>
 	<br />

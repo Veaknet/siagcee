@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -300,10 +301,10 @@ public class AplicadorEstudios extends HttpServlet {
 					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
 					EstudioPerso.getInstance().ejecutaEstudio("obtener [" + _dato.getAcronimo() + "]\n");
 
-					System.out.println(EstudioPerso.getInstance().getHashMapResultados());
-					System.out.println(EstudioPerso.getInstance().get_cod());
-
 					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
+
+					//usado para exportar a excel, pdf y word
+					request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
 
 					request.setAttribute("datos", _listaTiposDeDatos);
 					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
@@ -325,6 +326,9 @@ public class AplicadorEstudios extends HttpServlet {
 
 					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
 
+					//usado para exportar a excel, pdf y word
+					request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
+
 					request.setAttribute("datos", _listaTiposDeDatos);
 					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
 
@@ -344,6 +348,9 @@ public class AplicadorEstudios extends HttpServlet {
 					EstudioPerso.getInstance().ejecutaEstudio(_cod);
 
 					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
+
+					//usado para exportar a excel, pdf y word
+					request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
 
 					request.setAttribute("datos", _listaTiposDeDatos);
 					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
@@ -365,6 +372,9 @@ public class AplicadorEstudios extends HttpServlet {
 
 					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
 
+					//usado para exportar a excel, pdf y word
+					request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
+
 					request.setAttribute("datos", _listaTiposDeDatos);
 					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
 
@@ -384,6 +394,9 @@ public class AplicadorEstudios extends HttpServlet {
 					EstudioPerso.getInstance().ejecutaEstudio(_cod);
 
 					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
+
+					//usado para exportar a excel, pdf y word
+					request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
 
 					request.setAttribute("datos", _listaTiposDeDatos);
 					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
@@ -411,6 +424,9 @@ public class AplicadorEstudios extends HttpServlet {
 
 					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
 
+					//usado para exportar a excel, pdf y word
+					request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
+
 					request.setAttribute("datos", _listaTiposDeDatos);
 					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
 
@@ -436,6 +452,9 @@ public class AplicadorEstudios extends HttpServlet {
 					EstudioPerso.getInstance().ejecutaEstudio(_cod);
 
 					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
+
+					//usado para exportar a excel, pdf y word
+					request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
 
 					request.setAttribute("datos", _listaTiposDeDatos);
 					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
@@ -467,6 +486,9 @@ public class AplicadorEstudios extends HttpServlet {
 
 					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
 
+					//usado para exportar a excel, pdf y word
+					request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
+
 					request.setAttribute("datos", _listaTiposDeDatos);
 					request.setAttribute("objetoatrabajar", _objetoSeleccionado);
 
@@ -488,15 +510,40 @@ public class AplicadorEstudios extends HttpServlet {
 
 						Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);
 
+						//usado para exportar a excel, pdf y word
+						request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
+
 						request.setAttribute("datos", _listaTiposDeDatos);
 						request.setAttribute("objetoatrabajar", _objetoSeleccionado);
 
 						request.setAttribute("mostrarguardar", false);
 						request.setAttribute("mostrarresultados", true);
 
-						//FALTA ACTUALIZAR LOS CAMPOS
-						//NECESARIO ES CARGAR LA LISTA DE INS PREG PARA SABER A PREG ASOCIADA
-						//OJO INS PREG NO ESTA CARGANDO DE BD EL ID DEL ESTUDIO ASOCIADO
+						//actualizo las respuestas
+						InstanciaPregunta _insPreg = EstudioPerso.getInstance().retornaPreguntaAsociada();
+
+						HashMap _respuestas = EstudioPerso.getInstance().getHashMapResultados();
+						Iterator _ite = _respuestas.entrySet().iterator();
+						PreparedStatement pstmt = null;
+						while(_ite.hasNext()){
+							Map.Entry _temp = (Map.Entry)_ite.next();
+							int encuestado = (Integer)(_temp.getKey());
+							if(_temp.getValue() == null){continue;}
+							String resultad = (String)(_temp.getValue());
+
+							pstmt = micon.prepareStatement("UPDATE respuestas SET respuesta_string = ? WHERE elaborado_por = ? AND id_instancia_objetos = ? AND id_instancia_preguntas = ?");
+							pstmt.setString(1, resultad);
+							pstmt.setInt(2, encuestado);
+							pstmt.setInt(3, EstudioPerso.getInstance().get_obj().getId());
+							if(_insPreg != null){
+								pstmt.setInt(4, _insPreg.getId());
+							}else{
+								pstmt.setInt(4, -1);
+							}
+
+							pstmt.execute();
+						}
+
 					}
 					view = request.getRequestDispatcher("WEB-INF/vistas/crearestudioperso.jsp");
 				}
