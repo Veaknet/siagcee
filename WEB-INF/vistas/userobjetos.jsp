@@ -1,9 +1,7 @@
 <%@page session="true" import="com.siagcee.logic.*" %>
 <%@page import="java.text.DecimalFormat"%>
-<%@ page import="java.util.Collections" %>
-<%@ page import="java.util.Enumeration" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Vector" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.*" %>
 <%@include file="userinicio.jsp" %>
 
 
@@ -337,8 +335,10 @@ No ha indicado un censo o encuesta para participar.
 						_pregResp.append(" value='' ");
 					}else{
 						//si encontré respuesta
+						SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
 						String[] _respDate = miRespDada.getRespuestaAbiertaDate().toString().split("-");
-						_pregResp.append(" value='"+_respDate[2]+"-"+_respDate[1]+"-"+_respDate[0]+"' ");
+						_pregResp.append(" value='"+df.format(miRespDada.getRespuestaAbiertaDate())+"' ");
 					}
 					_pregResp.append(" readonly onclick='if(self.gfPop)gfPop.fPopCalendar(document.getElementById(\"pregunta_"+miPreg.getId()+"\"));return false;'>");
 				}

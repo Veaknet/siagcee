@@ -11,7 +11,10 @@ options {
 @header {
 package com.siagcee.logic;
 
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Date;
 }
 
 @members {
@@ -52,23 +55,63 @@ condicional[boolean accionar]
 proposicion returns [String valor]
 	:	^('<' a=expr b=expr)
 			{
-				$valor = ($b.valor.toLowerCase().compareTo($a.valor.toLowerCase()) > 0)?"1":"0";
-				//$valor = (Double.parseDouble($a.valor) < Double.parseDouble($b.valor))?"1":"0";
+				try{
+					SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+					Date _aDate = df.parse($a.valor);
+					Date _bDate = df.parse($b.valor);
+					$valor = (_bDate.compareTo(_aDate) > 0) ? "1":"0";
+				}catch(Exception fechas){
+					try{
+						$valor = (Double.parseDouble($a.valor) < Double.parseDouble($b.valor))?"1":"0";
+					}catch(Exception numerica){
+						$valor = ($b.valor.toLowerCase().compareTo($a.valor.toLowerCase()) > 0)?"1":"0";
+					}
+				}
 			}
 	|	^('<=' a=expr b=expr)
 			{
-				$valor = (($b.valor.toLowerCase().compareTo($a.valor.toLowerCase()) > 0) || ($b.valor.toLowerCase().compareTo($a.valor.toLowerCase()) == 0))?"1":"0";
-				//$valor = (Double.parseDouble($a.valor) <= Double.parseDouble($b.valor))?"1":"0";
+				try{
+					SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+					Date _aDate = df.parse($a.valor);
+					Date _bDate = df.parse($b.valor);
+					$valor = (_bDate.compareTo(_aDate) > 0 || _aDate.compareTo(_bDate) == 0 ) ? "1":"0";
+				}catch(Exception fechas){
+					try{
+						$valor = (Double.parseDouble($a.valor) <= Double.parseDouble($b.valor))?"1":"0";
+					}catch(Exception numerica){
+						$valor = (($b.valor.toLowerCase().compareTo($a.valor.toLowerCase()) > 0) || ($b.valor.toLowerCase().compareTo($a.valor.toLowerCase()) == 0))?"1":"0";
+					}
+				}
 			}
 	|	^('>' a=expr b=expr)
 			{
-				$valor = ($a.valor.toLowerCase().compareTo($b.valor.toLowerCase()) > 0)?"1":"0";
-				//$valor = (Double.parseDouble($a.valor) > Double.parseDouble($b.valor))?"1":"0";
+				try{
+					SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+					Date _aDate = df.parse($a.valor);
+					Date _bDate = df.parse($b.valor);
+					$valor = (_aDate.compareTo(_bDate) > 0) ? "1":"0";
+				}catch(Exception fechas){
+					try{
+						$valor = (Double.parseDouble($a.valor) > Double.parseDouble($b.valor))?"1":"0";
+					}catch(Exception numerica){
+						$valor = ($a.valor.toLowerCase().compareTo($b.valor.toLowerCase()) > 0)?"1":"0";
+					}
+				}
 			}
 	|	^('>=' a=expr b=expr)
 			{
-				$valor = (($a.valor.toLowerCase().compareTo($b.valor.toLowerCase()) > 0) || ($a.valor.toLowerCase().compareTo($b.valor.toLowerCase()) == 0))?"1":"0";
-				//$valor = (Double.parseDouble($a.valor) >= Double.parseDouble($b.valor))?"1":"0";
+				try{
+					SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+					Date _aDate = df.parse($a.valor);
+					Date _bDate = df.parse($b.valor);
+					$valor = (_aDate.compareTo(_bDate) > 0 || _bDate.compareTo(_aDate) == 0 ) ? "1":"0";
+				}catch(Exception fechas){
+					try{
+						$valor = (Double.parseDouble($a.valor) >= Double.parseDouble($b.valor))?"1":"0";
+					}catch(Exception numerica){
+						$valor = (($a.valor.toLowerCase().compareTo($b.valor.toLowerCase()) > 0) || ($a.valor.toLowerCase().compareTo($b.valor.toLowerCase()) == 0))?"1":"0";
+					}
+				}
 			}
 	|	^('==' a=expr b=expr)
 			{

@@ -1,6 +1,5 @@
 package com.siagcee.web;
 
-import com.caucho.vfs.Syslog;
 import com.siagcee.logic.*;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
@@ -408,7 +407,6 @@ public class AplicadorEstudios extends HttpServlet {
 					}
 
 					String _cod = "si([" + _dato.getAcronimo() + "] > \""+_comparador+"\"; obtener [" + _dato.getAcronimo() + "])";
-					System.out.println(_cod);
 					EstudioPerso.getInstance().ejecutaEstudio(_cod);
 
 					Vector _listaTiposDeDatos = _objetoSeleccionado.getObjetoAsociado().getPreguntas(true);

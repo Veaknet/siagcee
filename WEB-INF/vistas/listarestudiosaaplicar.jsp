@@ -53,6 +53,11 @@ function seleccionardato(_elem){
 		_id = -1;
 	}
 
+	_selec_datos.unbind("click");
+	_selec_datos2.unbind("click");
+	_selec_datos.attr("readonly", false);
+	_selec_datos2.attr("readonly", false);
+
 	if(_id == -1){
 		_selec_datos.css("display","none");
 		_selec_datos_txt.css("display","none");
@@ -76,6 +81,12 @@ function seleccionardato(_elem){
 					_selec_datos2.css("display","none");
 					_selec_datos2.val("");
 					_selec_datos_txt2.css("display","none");
+					if(_listaDatos[i]["tipopregunta"] == 33){
+						_selec_datos.click(function(){
+							if(self.gfPop)gfPop.fPopCalendar(document.getElementById("datovisualizacion"));
+						});
+						_selec_datos.attr("readonly", true);
+					}
 				}else if($("#idestudio").val() == '_default_entre'){
 					_selec_datos_txt.text("Mayor a:");
 					_selec_datos.val("");
@@ -85,6 +96,16 @@ function seleccionardato(_elem){
 					_selec_datos2.css("display","block");
 					_selec_datos_txt2.css("display","block");
 					_selec_datos_txt2.text("Menor a:");
+					if(_listaDatos[i]["tipopregunta"] == 33){
+						_selec_datos.click(function(){
+							if(self.gfPop)gfPop.fPopCalendar(document.getElementById("datovisualizacion"));
+						});
+						_selec_datos2.click(function(){
+							if(self.gfPop)gfPop.fPopCalendar(document.getElementById("datovisualizacion2"));
+						});
+						_selec_datos.attr("readonly", true);
+						_selec_datos2.attr("readonly", true);
+					}
 				}else{
 					_selec_datos.css("display","none");
 					_selec_datos_txt.css("display","none");
@@ -556,6 +577,8 @@ caption {
     </td>
   </tr>
 </table>
+<iframe name='gToday:contrast:agenda.js' id='gToday:contrast:agenda.js' src='Contrast/ipopeng.htm' style='visibility: visible; z-index: 999; position: absolute; top: -500px; left: -500px;' scrolling='no' frameborder='0' height='142' width='132'>
+</iframe>
 
 <%
 }

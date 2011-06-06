@@ -23,7 +23,7 @@ public class InstanciaPregunta extends ObjetoBase{
 	String acronimo;
 	Pregunta miPregunta;
 	Objeto miPadre;
-	EstudioPerso estudioAsociado;
+	Integer estudioAsociado;
 	boolean campo_clave_unico;
 	boolean campo_identificador;
 	boolean campo_comunicacion_email;
@@ -38,7 +38,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.acronimo = "";
 		this.miPregunta = null;
 		this.miPadre = null;
-		this.estudioAsociado = null;
+		this.estudioAsociado = -1;
 		this.campo_clave_unico = false;
 		this.campo_identificador = false;
 		this.campo_comunicacion_email = false;
@@ -55,7 +55,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.acronimo = "";
 		this.miPregunta = null;
 		this.miPadre = null;
-		this.estudioAsociado = null;
+		this.estudioAsociado = -1;
 		this.campo_clave_unico = false;
 		this.campo_identificador = false;
 		this.campo_comunicacion_email = false;
@@ -73,7 +73,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.acronimo = "";
 		this.miPregunta = null;
 		this.miPadre = null;
-		this.estudioAsociado = null;
+		this.estudioAsociado = -1;
 		this.campo_clave_unico = false;
 		this.campo_identificador = false;
 		this.campo_comunicacion_email = false;
@@ -92,7 +92,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.acronimo = _pregunta;
 		this.miPregunta = null;
 		this.miPadre = null;
-		this.estudioAsociado = null;
+		this.estudioAsociado = -1;
 		this.campo_clave_unico = false;
 		this.campo_identificador = false;
 		this.campo_comunicacion_email = false;
@@ -110,7 +110,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.acronimo = _acronimo;
 		this.miPregunta = null;
 		this.miPadre = null;
-		this.estudioAsociado = null;
+		this.estudioAsociado = -1;
 		this.campo_clave_unico = false;
 		this.campo_identificador = false;
 		this.campo_comunicacion_email = false;
@@ -130,7 +130,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.miPregunta = _miPregunta;
 		this.miPadre = _padre;
 		this.cargadaDeBD = false;
-		this.estudioAsociado = null;
+		this.estudioAsociado = -1;
 		this.campo_clave_unico = false;
 		this.campo_identificador = false;
 		this.campo_comunicacion_email = false;
@@ -223,11 +223,21 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.ingresaABd();
 	}
 
-	public EstudioPerso getEstudioAsociado() {
+	public Integer getEstudioAsociado() {
 		return estudioAsociado;
 	}
 
 	public boolean setEstudioAsociado(EstudioPerso _estudioAsociado) {
+		//tipo pregunta 100 entonces si permito uso de estudios
+		if(this.getTipoPregunta() == 100){
+			this.estudioAsociado = _estudioAsociado.get_id();
+			this.ingresaABd();
+			return true;
+		}
+		return false;
+	}
+
+	public boolean setEstudioAsociado(Integer _estudioAsociado) {
 		//tipo pregunta 100 entonces si permito uso de estudios
 		if(this.getTipoPregunta() == 100){
 			this.estudioAsociado = _estudioAsociado;
@@ -362,8 +372,8 @@ public class InstanciaPregunta extends ObjetoBase{
 						pstmt.setInt(3, this.getPreguntaAsociada().getId());
 						pstmt.setInt(4, this.getPadre().getId());
 						int idEstudio = -1;
-						if(this.getEstudioAsociado() != null){
-						  idEstudio = this.getEstudioAsociado().get_id();
+						if(this.getEstudioAsociado() != -1){
+						  idEstudio = this.getEstudioAsociado();
 						}
 						pstmt.setInt(5, idEstudio);
 						pstmt.setBoolean(6, this.isCampo_clave_unico());
@@ -390,8 +400,8 @@ public class InstanciaPregunta extends ObjetoBase{
 					pstmt.setInt(5, this.getPadre().getId());
 					pstmt.setInt(6, this.getPreguntaAsociada().getId());
 					int idEstudio = -1;
-					if(this.getEstudioAsociado() != null){
-					  idEstudio = this.getEstudioAsociado().get_id();
+					if(this.getEstudioAsociado() != -1){
+					  idEstudio = this.getEstudioAsociado();
 					}
 					pstmt.setInt(7, idEstudio);
 					pstmt.setBoolean(8, this.isCampo_clave_unico());
@@ -423,7 +433,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				this.pregunta = null;
 				this.idInstanciaPregunta = -1;
 				this.miPadre = null;
-				this.setEstudioAsociado(null);
+				this.setEstudioAsociado(-1);
 				this.setCargadaDeBD(false);
 				this.campo_clave_unico = false;
 				this.campo_identificador = false;
@@ -470,20 +480,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				}else{
 					this.miPadre = new Objeto(this.getUsuario(), this.getConexion(), rs.getInt("id_pool_objetos"));
 				}
-				try{
-					EstudioPerso.resetInstance();
-					EstudioPerso.getInstance().setConexion(this.getConexion());
-					EstudioPerso.getInstance().setUsuario(this.getUsuario());
-					EstudioPerso.getInstance().set_obj_simple(this.getPadre());
-					EstudioPerso.getInstance().cargar(rs.getInt("id_estudios"));
-					if(EstudioPerso.getInstance().get_id() == -1){
-						this.estudioAsociado = null;
-					}else{
-						this.estudioAsociado = EstudioPerso.getInstance();
-					}
-				}catch(Exception ee){
-					this.estudioAsociado = null;
-				}
+				this.estudioAsociado = rs.getInt("id_estudios");
 				this.setCargadaDeBD(true);
 			}else{
 				this.pregunta = "";
@@ -491,7 +488,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				this.ordenPregunta = 0;
 				this.setId(-1);
 				this.miPregunta = null;
-				this.setEstudioAsociado(null);
+				this.setEstudioAsociado(-1);
 				this.setCargadaDeBD(false);
 				this.campo_clave_unico = false;
 				this.campo_identificador = false;
@@ -600,7 +597,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				_pregunta.campo_comunicacion_email = rs.getBoolean("campo_comunicacion_email");
 				_pregunta.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				_pregunta.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
-				_pregunta.setEstudioAsociado(null);
+				_pregunta.setEstudioAsociado(-1);
 				_pregunta.cargadaDeBD = true;
 				break;
 			}

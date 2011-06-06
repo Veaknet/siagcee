@@ -1,8 +1,11 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g 2011-06-06 10:38:23
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g 2011-06-06 12:39:32
 
 package com.siagcee.logic;
 
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Date;
 
 
 import org.antlr.runtime.*;
@@ -71,15 +74,15 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "prog"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:21:1: prog : ( stat[true] )+ ;
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:24:1: prog : ( stat[true] )+ ;
     public final void prog() throws RecognitionException {
         int prog_StartIndex = input.index();
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 1) ) { return ; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:21:6: ( ( stat[true] )+ )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:21:8: ( stat[true] )+
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:24:6: ( ( stat[true] )+ )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:24:8: ( stat[true] )+
             {
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:21:8: ( stat[true] )+
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:24:8: ( stat[true] )+
             int cnt1=0;
             loop1:
             do {
@@ -131,7 +134,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "stat"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:23:1: stat[boolean accionar] : ( condicional[accionar] | ^( 'obtener' proposicion ) | ^( '=' ID proposicion ) );
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:26:1: stat[boolean accionar] : ( condicional[accionar] | ^( 'obtener' proposicion ) | ^( '=' ID proposicion ) );
     public final void stat(boolean accionar) throws RecognitionException {
         int stat_StartIndex = input.index();
         CommonTree ID2=null;
@@ -142,7 +145,7 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return ; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:24:2: ( condicional[accionar] | ^( 'obtener' proposicion ) | ^( '=' ID proposicion ) )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:27:2: ( condicional[accionar] | ^( 'obtener' proposicion ) | ^( '=' ID proposicion ) )
             int alt2=3;
             switch ( input.LA(1) ) {
             case 12:
@@ -170,7 +173,7 @@ public class SigeceneTree extends TreeParser {
 
             switch (alt2) {
                 case 1 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:24:4: condicional[accionar]
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:27:4: condicional[accionar]
                     {
                     pushFollow(FOLLOW_condicional_in_stat71);
                     condicional(accionar);
@@ -181,7 +184,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 2 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:25:4: ^( 'obtener' proposicion )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:28:4: ^( 'obtener' proposicion )
                     {
                     match(input,11,FOLLOW_11_in_stat78); if (state.failed) return ;
 
@@ -204,7 +207,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 3 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:31:4: ^( '=' ID proposicion )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:34:4: ^( '=' ID proposicion )
                     {
                     match(input,10,FOLLOW_10_in_stat93); if (state.failed) return ;
 
@@ -243,7 +246,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "condicional"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:39:1: condicional[boolean accionar] : ^( 'si' cond= proposicion ( stat[accionar] )+ ) ;
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:42:1: condicional[boolean accionar] : ^( 'si' cond= proposicion ( stat[accionar] )+ ) ;
     public final void condicional(boolean accionar) throws RecognitionException {
         int condicional_StartIndex = input.index();
         String cond = null;
@@ -251,8 +254,8 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return ; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:40:2: ( ^( 'si' cond= proposicion ( stat[accionar] )+ ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:40:4: ^( 'si' cond= proposicion ( stat[accionar] )+ )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:43:2: ( ^( 'si' cond= proposicion ( stat[accionar] )+ ) )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:43:4: ^( 'si' cond= proposicion ( stat[accionar] )+ )
             {
             match(input,12,FOLLOW_12_in_condicional116); if (state.failed) return ;
 
@@ -271,7 +274,7 @@ public class SigeceneTree extends TreeParser {
               				}
               			
             }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:48:4: ( stat[accionar] )+
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:51:4: ( stat[accionar] )+
             int cnt3=0;
             loop3:
             do {
@@ -285,7 +288,7 @@ public class SigeceneTree extends TreeParser {
 
                 switch (alt3) {
             	case 1 :
-            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:48:5: stat[accionar]
+            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:51:5: stat[accionar]
             	    {
             	    pushFollow(FOLLOW_stat_in_condicional132);
             	    stat(accionar);
@@ -325,7 +328,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "proposicion"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:52:1: proposicion returns [String valor] : ( ^( '<' a= expr b= expr ) | ^( '<=' a= expr b= expr ) | ^( '>' a= expr b= expr ) | ^( '>=' a= expr b= expr ) | ^( '==' a= expr b= expr ) | ^( '<>' a= expr b= expr ) | ^( 'Y' a= proposicion b= proposicion ) | ^( 'O' a= proposicion b= proposicion ) | ^( 'NO' a= proposicion ) | BOOLEAN | expr );
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:55:1: proposicion returns [String valor] : ( ^( '<' a= expr b= expr ) | ^( '<=' a= expr b= expr ) | ^( '>' a= expr b= expr ) | ^( '>=' a= expr b= expr ) | ^( '==' a= expr b= expr ) | ^( '<>' a= expr b= expr ) | ^( 'Y' a= proposicion b= proposicion ) | ^( 'O' a= proposicion b= proposicion ) | ^( 'NO' a= proposicion ) | BOOLEAN | expr );
     public final String proposicion() throws RecognitionException {
         String valor = null;
         int proposicion_StartIndex = input.index();
@@ -339,7 +342,7 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return valor; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:53:2: ( ^( '<' a= expr b= expr ) | ^( '<=' a= expr b= expr ) | ^( '>' a= expr b= expr ) | ^( '>=' a= expr b= expr ) | ^( '==' a= expr b= expr ) | ^( '<>' a= expr b= expr ) | ^( 'Y' a= proposicion b= proposicion ) | ^( 'O' a= proposicion b= proposicion ) | ^( 'NO' a= proposicion ) | BOOLEAN | expr )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:56:2: ( ^( '<' a= expr b= expr ) | ^( '<=' a= expr b= expr ) | ^( '>' a= expr b= expr ) | ^( '>=' a= expr b= expr ) | ^( '==' a= expr b= expr ) | ^( '<>' a= expr b= expr ) | ^( 'Y' a= proposicion b= proposicion ) | ^( 'O' a= proposicion b= proposicion ) | ^( 'NO' a= proposicion ) | BOOLEAN | expr )
             int alt4=11;
             switch ( input.LA(1) ) {
             case 21:
@@ -418,7 +421,7 @@ public class SigeceneTree extends TreeParser {
 
             switch (alt4) {
                 case 1 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:53:4: ^( '<' a= expr b= expr )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:56:4: ^( '<' a= expr b= expr )
                     {
                     match(input,21,FOLLOW_21_in_proposicion155); if (state.failed) return valor;
 
@@ -437,15 +440,25 @@ public class SigeceneTree extends TreeParser {
                     match(input, Token.UP, null); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
 
-                      				valor = (b.toLowerCase().compareTo(a.toLowerCase()) > 0)?"1":"0";
-                      				//valor = (Double.parseDouble(a) < Double.parseDouble(b))?"1":"0";
+                      				try{
+                      					SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                      					Date _aDate = df.parse(a);
+                      					Date _bDate = df.parse(b);
+                      					valor = (_bDate.compareTo(_aDate) > 0) ? "1":"0";
+                      				}catch(Exception fechas){
+                      					try{
+                      						valor = (Double.parseDouble(a) < Double.parseDouble(b))?"1":"0";
+                      					}catch(Exception numerica){
+                      						valor = (b.toLowerCase().compareTo(a.toLowerCase()) > 0)?"1":"0";
+                      					}
+                      				}
                       			
                     }
 
                     }
                     break;
                 case 2 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:58:4: ^( '<=' a= expr b= expr )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:71:4: ^( '<=' a= expr b= expr )
                     {
                     match(input,22,FOLLOW_22_in_proposicion175); if (state.failed) return valor;
 
@@ -464,15 +477,25 @@ public class SigeceneTree extends TreeParser {
                     match(input, Token.UP, null); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
 
-                      				valor = ((b.toLowerCase().compareTo(a.toLowerCase()) > 0) || (b.toLowerCase().compareTo(a.toLowerCase()) == 0))?"1":"0";
-                      				//valor = (Double.parseDouble(a) <= Double.parseDouble(b))?"1":"0";
+                      				try{
+                      					SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                      					Date _aDate = df.parse(a);
+                      					Date _bDate = df.parse(b);
+                      					valor = (_bDate.compareTo(_aDate) > 0 || _aDate.compareTo(_bDate) == 0 ) ? "1":"0";
+                      				}catch(Exception fechas){
+                      					try{
+                      						valor = (Double.parseDouble(a) <= Double.parseDouble(b))?"1":"0";
+                      					}catch(Exception numerica){
+                      						valor = ((b.toLowerCase().compareTo(a.toLowerCase()) > 0) || (b.toLowerCase().compareTo(a.toLowerCase()) == 0))?"1":"0";
+                      					}
+                      				}
                       			
                     }
 
                     }
                     break;
                 case 3 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:63:4: ^( '>' a= expr b= expr )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:86:4: ^( '>' a= expr b= expr )
                     {
                     match(input,19,FOLLOW_19_in_proposicion195); if (state.failed) return valor;
 
@@ -491,15 +514,25 @@ public class SigeceneTree extends TreeParser {
                     match(input, Token.UP, null); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
 
-                      				valor = (a.toLowerCase().compareTo(b.toLowerCase()) > 0)?"1":"0";
-                      				//valor = (Double.parseDouble(a) > Double.parseDouble(b))?"1":"0";
+                      				try{
+                      					SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                      					Date _aDate = df.parse(a);
+                      					Date _bDate = df.parse(b);
+                      					valor = (_aDate.compareTo(_bDate) > 0) ? "1":"0";
+                      				}catch(Exception fechas){
+                      					try{
+                      						valor = (Double.parseDouble(a) > Double.parseDouble(b))?"1":"0";
+                      					}catch(Exception numerica){
+                      						valor = (a.toLowerCase().compareTo(b.toLowerCase()) > 0)?"1":"0";
+                      					}
+                      				}
                       			
                     }
 
                     }
                     break;
                 case 4 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:68:4: ^( '>=' a= expr b= expr )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:101:4: ^( '>=' a= expr b= expr )
                     {
                     match(input,20,FOLLOW_20_in_proposicion215); if (state.failed) return valor;
 
@@ -518,15 +551,25 @@ public class SigeceneTree extends TreeParser {
                     match(input, Token.UP, null); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
 
-                      				valor = ((a.toLowerCase().compareTo(b.toLowerCase()) > 0) || (a.toLowerCase().compareTo(b.toLowerCase()) == 0))?"1":"0";
-                      				//valor = (Double.parseDouble(a) >= Double.parseDouble(b))?"1":"0";
+                      				try{
+                      					SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                      					Date _aDate = df.parse(a);
+                      					Date _bDate = df.parse(b);
+                      					valor = (_aDate.compareTo(_bDate) > 0 || _bDate.compareTo(_aDate) == 0 ) ? "1":"0";
+                      				}catch(Exception fechas){
+                      					try{
+                      						valor = (Double.parseDouble(a) >= Double.parseDouble(b))?"1":"0";
+                      					}catch(Exception numerica){
+                      						valor = ((a.toLowerCase().compareTo(b.toLowerCase()) > 0) || (a.toLowerCase().compareTo(b.toLowerCase()) == 0))?"1":"0";
+                      					}
+                      				}
                       			
                     }
 
                     }
                     break;
                 case 5 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:73:4: ^( '==' a= expr b= expr )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:116:4: ^( '==' a= expr b= expr )
                     {
                     match(input,23,FOLLOW_23_in_proposicion235); if (state.failed) return valor;
 
@@ -552,7 +595,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 6 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:77:4: ^( '<>' a= expr b= expr )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:120:4: ^( '<>' a= expr b= expr )
                     {
                     match(input,24,FOLLOW_24_in_proposicion255); if (state.failed) return valor;
 
@@ -578,7 +621,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 7 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:81:4: ^( 'Y' a= proposicion b= proposicion )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:124:4: ^( 'Y' a= proposicion b= proposicion )
                     {
                     match(input,16,FOLLOW_16_in_proposicion275); if (state.failed) return valor;
 
@@ -604,7 +647,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 8 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:85:4: ^( 'O' a= proposicion b= proposicion )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:128:4: ^( 'O' a= proposicion b= proposicion )
                     {
                     match(input,17,FOLLOW_17_in_proposicion295); if (state.failed) return valor;
 
@@ -630,7 +673,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 9 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:89:4: ^( 'NO' a= proposicion )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:132:4: ^( 'NO' a= proposicion )
                     {
                     match(input,18,FOLLOW_18_in_proposicion315); if (state.failed) return valor;
 
@@ -655,7 +698,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 10 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:97:4: BOOLEAN
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:140:4: BOOLEAN
                     {
                     BOOLEAN4=(CommonTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_proposicion330); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
@@ -670,7 +713,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 11 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:104:4: expr
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:147:4: expr
                     {
                     pushFollow(FOLLOW_expr_in_proposicion341);
                     expr5=expr();
@@ -701,7 +744,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "expr"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:110:1: expr returns [String valor] : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | funcPredefinidas | ID | DOUBLE | STRING );
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:153:1: expr returns [String valor] : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | funcPredefinidas | ID | DOUBLE | STRING );
     public final String expr() throws RecognitionException {
         String valor = null;
         int expr_StartIndex = input.index();
@@ -717,7 +760,7 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return valor; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:111:2: ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | funcPredefinidas | ID | DOUBLE | STRING )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:154:2: ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | funcPredefinidas | ID | DOUBLE | STRING )
             int alt5=8;
             switch ( input.LA(1) ) {
             case 25:
@@ -774,7 +817,7 @@ public class SigeceneTree extends TreeParser {
 
             switch (alt5) {
                 case 1 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:111:4: ^( '+' a= expr b= expr )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:154:4: ^( '+' a= expr b= expr )
                     {
                     match(input,25,FOLLOW_25_in_expr363); if (state.failed) return valor;
 
@@ -800,7 +843,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 2 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:115:4: ^( '-' a= expr b= expr )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:158:4: ^( '-' a= expr b= expr )
                     {
                     match(input,26,FOLLOW_26_in_expr384); if (state.failed) return valor;
 
@@ -826,7 +869,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 3 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:119:4: ^( '*' a= expr b= expr )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:162:4: ^( '*' a= expr b= expr )
                     {
                     match(input,27,FOLLOW_27_in_expr404); if (state.failed) return valor;
 
@@ -852,7 +895,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 4 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:123:4: ^( '/' a= expr b= expr )
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:166:4: ^( '/' a= expr b= expr )
                     {
                     match(input,28,FOLLOW_28_in_expr424); if (state.failed) return valor;
 
@@ -878,7 +921,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 5 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:127:4: funcPredefinidas
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:170:4: funcPredefinidas
                     {
                     pushFollow(FOLLOW_funcPredefinidas_in_expr443);
                     funcPredefinidas6=funcPredefinidas();
@@ -894,7 +937,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 6 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:131:4: ID
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:174:4: ID
                     {
                     ID7=(CommonTree)match(input,ID,FOLLOW_ID_in_expr453); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
@@ -911,7 +954,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 7 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:140:4: DOUBLE
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:183:4: DOUBLE
                     {
                     DOUBLE8=(CommonTree)match(input,DOUBLE,FOLLOW_DOUBLE_in_expr464); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
@@ -923,7 +966,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 8 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:144:4: STRING
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:187:4: STRING
                     {
                     STRING9=(CommonTree)match(input,STRING,FOLLOW_STRING_in_expr475); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
@@ -952,7 +995,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "funcPredefinidas"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:153:1: funcPredefinidas returns [String valor] : ( promedio | sumatoria | contar | max | min );
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:196:1: funcPredefinidas returns [String valor] : ( promedio | sumatoria | contar | max | min );
     public final String funcPredefinidas() throws RecognitionException {
         String valor = null;
         int funcPredefinidas_StartIndex = input.index();
@@ -969,7 +1012,7 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 6) ) { return valor; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:154:2: ( promedio | sumatoria | contar | max | min )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:197:2: ( promedio | sumatoria | contar | max | min )
             int alt6=5;
             switch ( input.LA(1) ) {
             case 29:
@@ -1007,7 +1050,7 @@ public class SigeceneTree extends TreeParser {
 
             switch (alt6) {
                 case 1 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:154:4: promedio
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:197:4: promedio
                     {
                     pushFollow(FOLLOW_promedio_in_funcPredefinidas497);
                     promedio10=promedio();
@@ -1023,7 +1066,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 2 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:158:4: sumatoria
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:201:4: sumatoria
                     {
                     pushFollow(FOLLOW_sumatoria_in_funcPredefinidas507);
                     sumatoria11=sumatoria();
@@ -1039,7 +1082,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 3 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:162:4: contar
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:205:4: contar
                     {
                     pushFollow(FOLLOW_contar_in_funcPredefinidas517);
                     contar12=contar();
@@ -1055,7 +1098,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 4 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:166:4: max
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:209:4: max
                     {
                     pushFollow(FOLLOW_max_in_funcPredefinidas527);
                     max13=max();
@@ -1071,7 +1114,7 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 5 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:170:4: min
+                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:213:4: min
                     {
                     pushFollow(FOLLOW_min_in_funcPredefinidas537);
                     min14=min();
@@ -1102,7 +1145,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "promedio"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:176:1: promedio returns [String valor] : ^( 'promedio' ID ) ;
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:219:1: promedio returns [String valor] : ^( 'promedio' ID ) ;
     public final String promedio() throws RecognitionException {
         String valor = null;
         int promedio_StartIndex = input.index();
@@ -1110,8 +1153,8 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 7) ) { return valor; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:177:2: ( ^( 'promedio' ID ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:177:4: ^( 'promedio' ID )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:220:2: ( ^( 'promedio' ID ) )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:220:4: ^( 'promedio' ID )
             {
             match(input,29,FOLLOW_29_in_promedio558); if (state.failed) return valor;
 
@@ -1151,7 +1194,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "sumatoria"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:193:1: sumatoria returns [String valor] : ^( 'sumatoria' ID ) ;
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:236:1: sumatoria returns [String valor] : ^( 'sumatoria' ID ) ;
     public final String sumatoria() throws RecognitionException {
         String valor = null;
         int sumatoria_StartIndex = input.index();
@@ -1159,8 +1202,8 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 8) ) { return valor; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:194:2: ( ^( 'sumatoria' ID ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:194:4: ^( 'sumatoria' ID )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:237:2: ( ^( 'sumatoria' ID ) )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:237:4: ^( 'sumatoria' ID )
             {
             match(input,30,FOLLOW_30_in_sumatoria581); if (state.failed) return valor;
 
@@ -1200,7 +1243,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "contar"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:210:1: contar returns [String valor] : ^( 'contar' ID ) ;
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:253:1: contar returns [String valor] : ^( 'contar' ID ) ;
     public final String contar() throws RecognitionException {
         String valor = null;
         int contar_StartIndex = input.index();
@@ -1208,8 +1251,8 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 9) ) { return valor; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:211:2: ( ^( 'contar' ID ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:211:4: ^( 'contar' ID )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:254:2: ( ^( 'contar' ID ) )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:254:4: ^( 'contar' ID )
             {
             match(input,31,FOLLOW_31_in_contar604); if (state.failed) return valor;
 
@@ -1249,7 +1292,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "max"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:227:1: max returns [String valor] : ^( 'max' ID ) ;
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:270:1: max returns [String valor] : ^( 'max' ID ) ;
     public final String max() throws RecognitionException {
         String valor = null;
         int max_StartIndex = input.index();
@@ -1257,8 +1300,8 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 10) ) { return valor; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:228:2: ( ^( 'max' ID ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:228:4: ^( 'max' ID )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:271:2: ( ^( 'max' ID ) )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:271:4: ^( 'max' ID )
             {
             match(input,32,FOLLOW_32_in_max627); if (state.failed) return valor;
 
@@ -1298,7 +1341,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "min"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:244:1: min returns [String valor] : ^( 'min' ID ) ;
+    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:287:1: min returns [String valor] : ^( 'min' ID ) ;
     public final String min() throws RecognitionException {
         String valor = null;
         int min_StartIndex = input.index();
@@ -1306,8 +1349,8 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return valor; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:245:2: ( ^( 'min' ID ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:245:4: ^( 'min' ID )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:288:2: ( ^( 'min' ID ) )
+            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:288:4: ^( 'min' ID )
             {
             match(input,33,FOLLOW_33_in_min650); if (state.failed) return valor;
 
