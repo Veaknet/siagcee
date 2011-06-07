@@ -543,7 +543,7 @@ if(!_mensaje.equals("")){
 								<!--// <input type="checkbox" id="campo_telefono2" name="campo_telefono2" onclick="if(this.checked){$('#campo_email').removeAttr('checked');}"><label>Establecer como elemento de comunicaci&oacute;n por tel&eacute;fono 2</label><p /> //-->
 								<p />
 								<% if(objetoatrabajar.getClass().toString().contains("Relacion")){ %>
-									<label>pregunta creada a utilizar:</label><br />
+									<label>Pregunta creada a utilizar:</label><br />
 									<select name="tipopregunta" id="tipopregunta" disabled="1" onchange="habilitadeshabilitaestudios();">
 										<option value="-1" selected="selected">Seleccione...</option>
 										<%

@@ -13,9 +13,9 @@
 -->
 
 <%
-Objeto objetoatrabajar = null;
+InstanciaObjeto objetoatrabajar = null;
 if(request.getAttribute("objetoatrabajar") != null){
-	objetoatrabajar = (Objeto)request.getAttribute("objetoatrabajar");
+	objetoatrabajar = (InstanciaObjeto)request.getAttribute("objetoatrabajar");
 }
 
 
@@ -36,7 +36,7 @@ function seleccionar(_elem){
 		_descr.style.display = "none";
 		_boto.disabled = true;
 	}
-	
+
 	//var _span = document.getElementById('span_delete');
 	//_span.innerHTML = "";
 
@@ -86,10 +86,6 @@ function seleccionar(_elem){
 <%@include file="adminheader.jsp" %>
 
 <%
-
-if (request.getAttribute("resultado") != null) {
-	out.println(request.getAttribute("resultado") + "<br />");
-}
 
 Vector _listaDeEstudios = new Vector();
 if(request.getAttribute("listadoEstudios") != null){
@@ -144,11 +140,10 @@ if(objetoatrabajar != null){
 			<tr>
 				<td valign="top">
 					<h2><% out.print(_titulo); %></h2>
-					<h4>Instrumento Sobre el que se Trabaja:<br /><% out.print(objetoatrabajar.getObjeto());%></h4>
-					<label>Seleccione un estudio</label>
-					<form action="crearestudioperso" method="post">
+					<h4>Instrumento sobre el que se trabaja:<br /><% out.print(objetoatrabajar.getObjeto());%></h4>
+					<label>Seleccione un estudio:</label>
+					<form action="crearestudioperso" method="get">
 						<input type="hidden" value="<% out.print(objetoatrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
-						<input type="hidden" value="seleccionarestudio" id="accion" name="accion">
 						<input type="hidden" value="<% out.print(request.getParameter("opcionbase")); %>" id="opcionbase" name="opcionbase">
 						<select id="idestudio" name="idestudio" onchange="parentNode.submit();" multiple="multiple" size="<% out.print(_listaDeEstudios.size() + 1); %>">
 							<%

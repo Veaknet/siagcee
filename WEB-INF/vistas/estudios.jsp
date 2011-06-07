@@ -35,27 +35,35 @@ if(request.getAttribute("estructuras") != null){
 			if(_estructuras.isEmpty()){
 				out.println("No existen estructuras disponibles para crear un estudio.");
 			}else{
+				if(request.getParameter("opcionbase") != null && request.getParameter("opcionbase").equals("crear")){
+					%>
+					<form action="crearestudioperso" method="get">
+					<%
+				}else{
+					%>
+					<form action="estudios.do" method="post">
+					<%
+				}
 				%>
-			  <form action="estudios.do" method="post">
-				  <label>Indique el instrumento con el que trabajar&aacute;:</label><br />
-				  <input type="hidden" value="<% out.print(request.getAttribute("opcionbase")); %>" id="opcionbase" name="opcionbase">
-				  <select id="estructura" name="estructura" multiple="multiple" size="<% out.print(_estructuras.size() + 3); %>" onchange="if(this.value != -1){this.parentNode.submit();return true;}else{alert('Debe seleccionar un instrumento.');return false;}">
+					<label>Indique el instrumento con el que trabajar&aacute;:</label><br />
+					<input type="hidden" value="<% out.print(request.getAttribute("opcionbase")); %>" id="opcionbase" name="opcionbase">
+					<select id="objetoatrabajar" name="objetoatrabajar" multiple="multiple" size="<% out.print(_estructuras.size() + 3); %>" onchange="if(this.value != -1){this.parentNode.submit();return true;}else{alert('Debe seleccionar un instrumento.');return false;}">
 						<%
 							try{
 								String miClase = "";
 								String miClasePrint = "";
 								Enumeration _misObjetos = _estructuras.elements();
-								Objeto miObj;
+								InstanciaObjeto miObj;
 								while(_misObjetos.hasMoreElements()){
-									miObj = (Objeto)_misObjetos.nextElement();
-									if(miObj.getClass().toString().contains("EstructuraBase")){continue;}
+									miObj = (InstanciaObjeto)_misObjetos.nextElement();
+									if(miObj.getObjetoAsociado().getClass().toString().contains("EstructuraBase")){continue;}
 									//solo se hace lo siguiente para mostrarlos por grupos: censos, encuestas y relaciones
-									if(!miClase.equals(miObj.getClass().toString())){
+									if(!miClase.equals(miObj.getObjetoAsociado().getClass().toString())){
 										if(!miClase.equals("")){
 											out.print("</optgroup>");
 										}
 
-										miClase = miObj.getClass().toString();
+										miClase = miObj.getObjetoAsociado().getClass().toString();
 
 										if(miClase.contains("Censo")){
 											miClasePrint = "Censos";
@@ -73,7 +81,7 @@ if(request.getAttribute("estructuras") != null){
 							}catch(Exception e){e.printStackTrace();}
 							out.print("</optgroup>");
 						%>
-				  </select>
+					</select>
 				</form>
 				<%
 			}

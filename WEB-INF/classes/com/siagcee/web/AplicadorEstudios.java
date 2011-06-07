@@ -319,7 +319,7 @@ public class AplicadorEstudios extends HttpServlet {
 					InstanciaPregunta _dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
 					EstudioPerso.resetInstance();
 					EstudioPerso.getInstance().setConexion(micon);
-					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().setAdmin(admin);
 					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
 					String _cod = "obtener promedio([" + _dato.getAcronimo() + "])";
 					EstudioPerso.getInstance().ejecutaEstudio(_cod);
@@ -342,7 +342,7 @@ public class AplicadorEstudios extends HttpServlet {
 					InstanciaPregunta _dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
 					EstudioPerso.resetInstance();
 					EstudioPerso.getInstance().setConexion(micon);
-					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().setAdmin(admin);
 					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
 					String _cod = "obtener sumatoria([" + _dato.getAcronimo() + "])";
 					EstudioPerso.getInstance().ejecutaEstudio(_cod);
@@ -365,7 +365,7 @@ public class AplicadorEstudios extends HttpServlet {
 					InstanciaPregunta _dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
 					EstudioPerso.resetInstance();
 					EstudioPerso.getInstance().setConexion(micon);
-					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().setAdmin(admin);
 					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
 					String _cod = "obtener max([" + _dato.getAcronimo() + "])";
 					EstudioPerso.getInstance().ejecutaEstudio(_cod);
@@ -388,7 +388,7 @@ public class AplicadorEstudios extends HttpServlet {
 					InstanciaPregunta _dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
 					EstudioPerso.resetInstance();
 					EstudioPerso.getInstance().setConexion(micon);
-					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().setAdmin(admin);
 					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
 					String _cod = "obtener min([" + _dato.getAcronimo() + "])";
 					EstudioPerso.getInstance().ejecutaEstudio(_cod);
@@ -411,7 +411,7 @@ public class AplicadorEstudios extends HttpServlet {
 					InstanciaPregunta _dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
 					EstudioPerso.resetInstance();
 					EstudioPerso.getInstance().setConexion(micon);
-					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().setAdmin(admin);
 					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
 
 					String _comparador = "";
@@ -440,7 +440,7 @@ public class AplicadorEstudios extends HttpServlet {
 					InstanciaPregunta _dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
 					EstudioPerso.resetInstance();
 					EstudioPerso.getInstance().setConexion(micon);
-					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().setAdmin(admin);
 					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
 
 					String _comparador = "";
@@ -469,7 +469,7 @@ public class AplicadorEstudios extends HttpServlet {
 					InstanciaPregunta _dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
 					EstudioPerso.resetInstance();
 					EstudioPerso.getInstance().setConexion(micon);
-					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().setAdmin(admin);
 					EstudioPerso.getInstance().set_obj(_objetoSeleccionado);
 
 					String _comparador = "";

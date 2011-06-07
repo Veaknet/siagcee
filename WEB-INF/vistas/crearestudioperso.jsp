@@ -56,7 +56,7 @@ if(request.getAttribute("objetoatrabajar") != null){
 	_objTrabajar = (InstanciaObjeto)request.getAttribute("objetoatrabajar");
 }
 
-String _codigo = null;
+String _codigo = "";
 if(request.getAttribute("codigoestudio") != null){
 	_codigo = (String)request.getAttribute("codigoestudio");
 }
@@ -541,7 +541,7 @@ $(document).ready(function(){
 							</tr>
 						</table>
 						<p />
-						<center><textarea rows="25" cols="130" style="width:700px;height:200px" id="codigoestudio" name="codigoestudio"></textarea>
+						<center><textarea rows="25" cols="130" style="width:700px;height:200px" id="codigoestudio" name="codigoestudio"><% out.print(_codigo); %></textarea>
 						<p /><input type="submit" value="Procesar" /></center>
 					</form>
 					<div id="errores" style="color:red">

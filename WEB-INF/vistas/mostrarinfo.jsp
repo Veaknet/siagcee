@@ -58,16 +58,16 @@ if(accion.equals("mostrarinfodepregunta")){
 	_miObj = (Objeto)request.getAttribute("objeto");
 	out.println("<h3>"+_miObj.getObjeto()+"</h3>");
 	if(_miObj.getClass().toString().contains("Censo")){
-		out.println("Instrumento para censos.<p />");
+		out.println("Instrumento para Censos.<p />");
 	}
 	if(_miObj.getClass().toString().contains("Encuesta")){
-		out.println("Instrumento para encuestas.<p />");
+		out.println("Instrumento para Encuestas.<p />");
 	}
 	if(_miObj.getClass().toString().contains("Relacion")){
-		out.println("Colecci&oacute;n de datos.<p />");
+		out.println("Colecci&oacute;n de Datos.<p />");
 	}
 	if(_miObj.getClass().toString().contains("EstructuraBase")){
-		out.println("Estructura base.<p />");
+		out.println("Estructura Base.<p />");
 	}
 }else if(accion.equals("mostrarinfodeestudio")){
 	_miEst = (EstudioPerso)request.getAttribute("estudio");

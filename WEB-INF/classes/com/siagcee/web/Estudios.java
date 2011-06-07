@@ -1,9 +1,6 @@
 package com.siagcee.web;
 
-import com.siagcee.logic.Administrador;
-import com.siagcee.logic.EstudioPerso;
-import com.siagcee.logic.Objeto;
-import com.siagcee.logic.Pregunta;
+import com.siagcee.logic.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,7 +30,7 @@ public class Estudios extends HttpServlet {
 		Administrador admin = (Administrador) sesion.getAttribute("administrador");
 		RequestDispatcher view;
 		if(admin != null){
-			request.setAttribute("estructura", (String)request.getParameter("estructura"));
+			request.setAttribute("objetoatrabajar", (String)request.getParameter("objetoatrabajar"));
 			request.setAttribute("opcionprincipal", "estudios");
 			request.setAttribute("opcionbase",request.getParameter("opcionbase"));
 			request.setAttribute("listaTipoDeDatos", null);
@@ -41,24 +38,19 @@ public class Estudios extends HttpServlet {
 			request.setAttribute("listadoEstudios", null);
 			request.setAttribute("_todas_preguntas_estaticas", Pregunta.todasPreguntas(admin, micon, 0, true, false));
 			try{
-				Objeto _miObj = null;
-				_miObj = Objeto.retornaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("estructura")));
+				InstanciaObjeto _miObj = new InstanciaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoatrabajar")));
 				//generadorestudios?accion=listarestudios&objetoatrabajar="+miObj.getObjetoAsociado().getId()+"
-				Vector _listaTiposDeDatos = Pregunta.preguntasDeObjeto(admin, micon, _miObj);
+				Vector _listaTiposDeDatos = Pregunta.preguntasDeObjeto(admin, micon, _miObj.getObjetoAsociado());
 
 				EstudioPerso.getInstance().setConexion(micon);
 				EstudioPerso.getInstance().setAdmin(admin);
 				request.setAttribute("listaTipoDeDatos", _listaTiposDeDatos);
 				request.setAttribute("objetoatrabajar", _miObj);
-				request.setAttribute("listadoEstudios", EstudioPerso.obtenerEstudiosDeEstructura(admin, micon, _miObj, true));
-				sesion.setAttribute("retornoDireccion", "estudios.do");
-				if(request.getParameter("opcionbase").contains("crear")){
-					view = request.getRequestDispatcher("WEB-INF/vistas/listarestudios.jsp");
-				}else if(request.getParameter("opcionbase").contains("modificar")){
+				request.setAttribute("listadoEstudios", EstudioPerso.obtenerEstudiosDeEstructura(admin, micon, _miObj.getObjetoAsociado(), true));
+
+				if(request.getParameter("opcionbase").contains("modificar")){
 					view = request.getRequestDispatcher("WEB-INF/vistas/listarestudios.jsp");
 				}else if(request.getParameter("opcionbase").contains("eliminar")){
-					view = request.getRequestDispatcher("WEB-INF/vistas/listarestudios.jsp");
-				}else if(request.getParameter("opcionbase").contains("aplicar")){
 					view = request.getRequestDispatcher("WEB-INF/vistas/listarestudios.jsp");
 				}else{
 					view = request.getRequestDispatcher("autenticar.do");
@@ -86,7 +78,12 @@ public class Estudios extends HttpServlet {
 			EstudioPerso.getInstance().setConexion(micon);
 			EstudioPerso.getInstance().setAdmin(admin);
 			try {
-				Vector _estructuras = Objeto.todosObjetos(admin, micon, 0, true, false);
+				Vector _estructuras;
+				if(admin.getTipoUsuario().equals("superadministrador")){
+					_estructuras = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0, false);
+				}else{
+					_estructuras = InstanciaObjeto.todosObjetosInstanciados(admin, micon, false, 0, false);
+				}
 				request.setAttribute("estructuras",_estructuras);
 				request.setAttribute("opcionbase",request.getParameter("opcionbase"));
 			}catch(Exception e) {

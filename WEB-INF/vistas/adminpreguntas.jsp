@@ -112,7 +112,7 @@ if(request.getAttribute("preguntas") != null){
 
 Pregunta preguntaatrabajar = (Pregunta)request.getAttribute("preguntaatrabajar");
 
-String _titulo = "";	
+String _titulo = "";
 if(_opcionBase.equals("crear")){
 	_titulo = "Crear Pregunta";
 }else if(_opcionBase.equals("modificar")){
@@ -147,7 +147,7 @@ try{
 	function abrirInfo(){
 		var _id = $("#preguntaseleccionada").attr("value");
 		if(_id != ''){
-			$('#id_encapsulador').show('slow');			
+			$('#id_encapsulador').show('slow');
 			var ventana = window.open('mostrarinfo.do?opcionbase=<% out.print(_opcionBase); %>&accion=mostrarinfodepregunta&perohaz=eliminar&id='+_id,'mostrarInfo','width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO');
 			ventana.focus();
 		}
@@ -167,7 +167,7 @@ try{
 					out.print("No existen preguntas creadas por este usuario a "+_opcionBase);
 				}else{
 				%>
-					<label>Seleccione una pregunta:</label><br />
+					<label>Seleccione una Pregunta:</label><br />
 					<form name="miformulario" action="adminpreguntas.do" method="post">
 						<input type="hidden" name="accion" value="<% if(_opcionBase.equals("modificar")){ out.print("seleccionar");}else if(_opcionBase.equals("eliminar")){ out.print("eliminar");}else if(_opcionBase.equals("revisar")){ out.print("revisar");}%>">
 						<input type="hidden" name="opcionbase" value="<% if(_opcionBase.equals("revisar")){ out.print("revisar");}%>">
@@ -201,7 +201,7 @@ try{
 				if((request.getParameter("accion")).equals("revisar")){
 					showForm = false;
 				}
-			}catch (Exception e){}				
+			}catch (Exception e){}
 			if(showForm){
 			%>
 			<div style='display:block;text-align:left' name="formularioPregunta" id="formularioPregunta">
@@ -216,8 +216,8 @@ try{
 				<form action="adminpreguntas.do" method="post">
 					<input type="hidden" value="<% if(preguntaatrabajar != null){out.print(preguntaatrabajar.getId());}else{%>-1<%} %>" name="preguntaseleccionada" id="preguntaseleccionada">
 					<input type="hidden" value="<% if(preguntaatrabajar != null){%>actualizar<%}else{%>insertar<%} %>" name="accion" id="accion">
-					<label>Nombre de la pregunta:</label><br /><input type="text" value="<% if(preguntaatrabajar != null){out.print(preguntaatrabajar.getPregunta());} %>" name="valor" id="valor" size="50" onkeyup="this.style.backgroundColor = '';$('#boton').removeAttr('disabled');"><p />
-					<label>Tipo de pregunta:</label><br />
+					<label>Nombre de la Pregunta:</label><br /><input type="text" value="<% if(preguntaatrabajar != null){out.print(preguntaatrabajar.getPregunta());} %>" name="valor" id="valor" size="50" onkeyup="this.style.backgroundColor = '';$('#boton').removeAttr('disabled');"><p />
+					<label>Tipo de Pregunta:</label><br />
 					<select name="tipopregunta" id="tipopregunta" onchange="$('#boton').removeAttr('disabled');">
 						<option value="1" <% if(preguntaatrabajar != null){if(preguntaatrabajar.getTipoPregunta() == 1){%>selected="selected"<%}}else{%>selected="selected"<%} %>>Selecci&oacute;n simple</option>
 						<option value="2" <% if(preguntaatrabajar != null){if(preguntaatrabajar.getTipoPregunta() == 2){%>selected="selected"<%}}%>>Selecci&oacute;n m&uacute;ltiple</option>
@@ -327,7 +327,7 @@ try{
 					<%
 				}
 			}catch(Exception e){}
-%>			
+%>
 		</td>
 		</tr>
 	</table>

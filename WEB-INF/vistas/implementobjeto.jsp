@@ -324,7 +324,7 @@ while(_misInstanciados99.hasMoreElements()){
 				<form action="implementobjeto.do?soloeste=false&accioninvitar=true" method="post" name="formimplementar" id="formimplementar">
 					<input type="hidden" name="id" id="id" value="-1"><p />
 					<input type="hidden" name="accion" id="accion" value="insertar"><p />
-					<label>t&iacute;tulo:</label><br /><input type="text" name="objeto" id="objeto" value="" size="50"><p />
+					<label>T&iacute;tulo:</label><br /><input type="text" name="objeto" id="objeto" value="" size="50"><p />
 					<label>Tipo de acceso:</label><br /><select name="tipo_acceso" id="tipo_acceso" onchange="modificarTipoInvitacion();">
 						<option value="0" selected="selected">P&uacute;blico</option>
 						<option value="1">Restringido</option>
@@ -332,9 +332,9 @@ while(_misInstanciados99.hasMoreElements()){
 					</select><p />
 					<span name="span_tipo_invitacion" id="span_tipo_invitacion">
 						<label>Seleccionar o invitar usuarios:</label><br /><select name="tipo_invitacion" id="tipo_invitacion">
-							<option value="1">A Traves De Otro Instrumento</option>
-							<option value="2">Cargando Correo Electronico Manualmente</option>
-							<option value="3" selected="selected">No Invitar</option>
+							<option value="1">A traves de otro instrumento</option>
+							<option value="2">Cargando correo electronico manualmente</option>
+							<option value="3" selected="selected">No invitar</option>
 						</select>
 					</span>
 					<p />
@@ -384,8 +384,8 @@ while(_misInstanciados99.hasMoreElements()){
 					<p />
 					<label>Nombre del enlace: </label><input id="enlace" name="enlace" value="" size="30" >
 					<p />
-					<label>Fecha de Inicio: </label><input gtbfieldid="1" class="plain" id="inicio"  name="inicio" value="" size="9" readonly="readonly" onkeyup="if(self.gfPop)gfPop.fStartPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;" onclick="if(self.gfPop)gfPop.fStartPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;">&nbsp;&nbsp;&nbsp;
-					<label>Fecha de Cierre: </label><input gtbfieldid="2" class="plain" id="cierre" name="cierre" value="" size="9" readonly="readonly" onkeyup="if(self.gfPop)gfPop.fEndPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;" onclick="if(self.gfPop)gfPop.fEndPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;">
+					<label>Fecha de inicio: </label><input gtbfieldid="1" class="plain" id="inicio"  name="inicio" value="" size="9" readonly="readonly" onkeyup="if(self.gfPop)gfPop.fStartPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;" onclick="if(self.gfPop)gfPop.fStartPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;">&nbsp;&nbsp;&nbsp;
+					<label>Fecha de cierre: </label><input gtbfieldid="2" class="plain" id="cierre" name="cierre" value="" size="9" readonly="readonly" onkeyup="if(self.gfPop)gfPop.fEndPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;" onclick="if(self.gfPop)gfPop.fEndPop(document.formimplementar.inicio,document.formimplementar.cierre);return false;">
 					<p />
 					<input type="submit" value="Publicar" name="miboton" id="miboton" onclick="return (compruebaEnlace(getElementById('enlace'))&&compruebaNoVacio(getElementById('objeto'))&&compruebaSeleccionado(getElementById('objeto_asociado'))&&compruebaNoVacioNoLimitativo(getElementById('cierre'))&&compruebaNoVacioNoLimitativo(getElementById('inicio')));">
 					<input type="reset" value="Borrar">

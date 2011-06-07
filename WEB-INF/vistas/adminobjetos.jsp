@@ -69,7 +69,7 @@ String _opcionBase = "armar";
 if(request.getParameter("opcionbase")!=null){
 	_opcionBase = request.getParameter("opcionbase");
 }
-	
+
 String _tipoinstrumento = "";
 if(request.getParameter("tipoinstrumento")!=null){
 	_tipoinstrumento = request.getParameter("tipoinstrumento");
@@ -107,13 +107,13 @@ if(_opcionBase.equals("armar")){
 String _elemento = "";
 if(_tipoinstrumento.equals("estructura")){
 	_titulo = _titulo+"Estructura Base";
-	_elemento = "estructura";
+	_elemento = "Estructura";
 }else	if(_tipoinstrumento.equals("relacion")){
 	_titulo = _titulo+"Colecci&oacute;n de Datos";
-	_elemento = "colecci&oacute;n de datos";
+	_elemento = "Colecci&oacute;n de Datos";
 }else{
 	_titulo = _titulo+"Instrumento";
-	_elemento = "instrumento";
+	_elemento = "Instrumento";
 }
 
 sesion.setAttribute("dirRetorno", "");

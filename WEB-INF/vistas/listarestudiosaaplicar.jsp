@@ -69,7 +69,7 @@ function seleccionardato(_elem){
 				if(($("#idestudio").val() == '_default_histo') && (_listaDatos[i]["tipopregunta"] == 31 || _listaDatos[i]["tipopregunta"] == 32)){
 					_selec_datos.val("1");
 					_selec_datos.css("display","block");
-					_selec_datos_txt.text("Cantidad de Intervalos:");
+					_selec_datos_txt.text("Cantidad de intervalos:");
 					_selec_datos_txt.css("display","block");
 					_selec_datos2.css("display","none");
 					_selec_datos_txt2.css("display","none");
@@ -468,7 +468,7 @@ caption {
           <table cellpadding="4" cellspacing="4">
             <tr>
               <td style="text-align:right;width:200px">
-                <label>Estudio a Aplicar:</label>
+                <label>Estudio a aplicar:</label>
               </td>
               <td style="text-align:left;">
                 <select id="idestudio" name="idestudio" onchange="seleccionar(this);">
@@ -509,7 +509,7 @@ caption {
             </tr>
             <tr>
               <td style="text-align:right;width:200px">
-                <label id="datoseleccionadotxt" style="display:none">Sobre el Campo:</label>
+                <label id="datoseleccionadotxt" style="display:none">Sobre el campo:</label>
               </td>
               <td style="text-align:left;">
                 <select id="datoseleccionado" name="datoseleccionado" onchange="seleccionardato(this);" style="display:none;">
@@ -529,7 +529,7 @@ caption {
             </tr>
 			  <tr>
 				  <td style="text-align:right;">
-					  <label id="tipo_grafico_txt" style="display:none">Tipo de Gr&aacute;fico:</label>
+					  <label id="tipo_grafico_txt" style="display:none">Tipo de gr&aacute;fico:</label>
 				  </td>
 				  <td style="text-align:left;">
 					  <select id="tipo_grafico" name="tipo_grafico" style="display:none">
@@ -543,7 +543,7 @@ caption {
 			  </tr>
             <tr>
               <td style="text-align:right;width:200px">
-                <label id="datovisualizaciontxt" style="display:none">Cantidad de Intervalos:</label>
+                <label id="datovisualizaciontxt" style="display:none">Cantidad de intervalos:</label>
               </td>
               <td style="text-align:left;">
                 <input size="8" type="text" value="1" name="datovisualizacion" id="datovisualizacion" style="display:none">

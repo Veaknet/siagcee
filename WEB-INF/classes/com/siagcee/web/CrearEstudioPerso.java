@@ -45,7 +45,7 @@ public class CrearEstudioPerso extends HttpServlet{
 
 					EstudioPerso.resetInstance();
 					EstudioPerso.getInstance().setConexion(micon);
-					EstudioPerso.getInstance().setUsuario(admin);
+					EstudioPerso.getInstance().setAdmin(admin);
 					EstudioPerso.getInstance().set_obj(_objObjeto);
 					EstudioPerso.getInstance().ejecutaEstudio(_cod);
 
@@ -197,12 +197,28 @@ public class CrearEstudioPerso extends HttpServlet{
 		RequestDispatcher view = request.getRequestDispatcher("autenticar.do");
 		if(admin != null){
 			try{
-				int idObj = -1;
 				if(request.getParameter("objetoatrabajar") != null){
 					InstanciaObjeto _objObjeto = new InstanciaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoatrabajar")));
 					Vector _listaTiposDeDatos = _objObjeto.getObjetoAsociado().getPreguntas(true);
 					request.setAttribute("datos", _listaTiposDeDatos);
 					request.setAttribute("objetoatrabajar", _objObjeto);
+					if(request.getParameter("idestudio") != null){
+						try{
+							EstudioPerso.resetInstance();
+							EstudioPerso.getInstance().setAdmin(admin);
+							EstudioPerso.getInstance().setConexion(micon);
+							EstudioPerso.getInstance().cargar(Integer.parseInt(request.getParameter("idestudio")));
+							if(request.getParameter("accion") != null && request.getParameter("accion").equals("delete")){
+								EstudioPerso.getInstance().delEstudio();
+								view = request.getRequestDispatcher("estudios.do?opcionbase=eliminar");
+								view.forward(request, response);
+							}else{
+								request.setAttribute("codigoestudio", EstudioPerso.getInstance().get_cod());
+							}
+						}catch (Exception eeee){
+							request.setAttribute("codigoestudio", "");
+						}
+					}
 				}
 				view = request.getRequestDispatcher("WEB-INF/vistas/crearestudioperso.jsp");
 				view.forward(request, response);
