@@ -191,7 +191,7 @@ No ha indicado un censo o encuesta para participar.
 				}
 				if(!respEncontrada || miRespDada.getRespuestaCerrada().getId() < 0){
 					//si no encontré respuesta este option va
-					//_pregResp.append("<option value='-1' selected='selected'>Seleccione...</option>");
+					_pregResp.append("<option value='-1' selected='selected'>Seleccione...</option>");
 				}else{
 					//si encontré respuesta este option va
 					//_pregResp.append("<option value='-1'>No s&eacute;/No respondo</option>");
@@ -237,7 +237,7 @@ No ha indicado un censo o encuesta para participar.
 				}
 				if(!respEncontrada || miRespDada.getRespuestaCerrada().getId() < 0){
 					//si no encontré respuesta este option va
-					//_pregResp.append("<option value='-1' selected='selected'>Seleccione...</option>");
+					_pregResp.append("<option value='-1' selected='selected'>Seleccione...</option>");
 				}else{
 					//si encontré respuesta este option va
 					//_pregResp.append("<option value='-1'>No s&eacute;/No respondo</option>");
