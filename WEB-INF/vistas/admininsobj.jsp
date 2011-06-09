@@ -63,7 +63,7 @@ if(request.getAttribute("highlight") != null){
 <table class="tablasecundaria" cellpadding="4" cellspacing="4">
 	<tr>
 		<td>
-			<h2>Instrumentos Generados</h2>
+			<h2>Instrumentos Publicados</h2>
 
 <%
 boolean todoVacio = true;
