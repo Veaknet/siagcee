@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g 2011-06-06 10:38:15
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g 2011-06-11 16:08:56
 
 package com.siagcee.logic;
 
@@ -80,7 +80,7 @@ public class SigeceneGramParser extends Parser {
     }
 
     public String[] getTokenNames() { return SigeceneGramParser.tokenNames; }
-    public String getGrammarFileName() { return "X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g"; }
+    public String getGrammarFileName() { return "Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g"; }
 
 
     	public void displayRecognitionError(String[] tokenNames, RecognitionException e){
@@ -104,7 +104,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "prog"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:57:1: prog : ( stat )+ ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:57:1: prog : ( stat )+ ;
     public final SigeceneGramParser.prog_return prog() throws RecognitionException {
         SigeceneGramParser.prog_return retval = new SigeceneGramParser.prog_return();
         retval.start = input.LT(1);
@@ -117,12 +117,12 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 1) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:57:6: ( ( stat )+ )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:57:8: ( stat )+
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:57:6: ( ( stat )+ )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:57:8: ( stat )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:57:8: ( stat )+
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:57:8: ( stat )+
             int cnt1=0;
             loop1:
             do {
@@ -136,7 +136,7 @@ public class SigeceneGramParser extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:0:0: stat
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:0:0: stat
             	    {
             	    pushFollow(FOLLOW_stat_in_prog73);
             	    stat1=stat();
@@ -186,7 +186,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "stat"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:60:1: stat : ( ID '=' proposicion -> ^( '=' ID proposicion ) | condicional | 'obtener' proposicion -> ^( 'obtener' proposicion ) | NEWLINE ->);
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:60:1: stat : ( ID '=' proposicion -> ^( '=' ID proposicion ) | condicional | 'obtener' proposicion -> ^( 'obtener' proposicion ) | NEWLINE ->);
     public final SigeceneGramParser.stat_return stat() throws RecognitionException {
         SigeceneGramParser.stat_return retval = new SigeceneGramParser.stat_return();
         retval.start = input.LT(1);
@@ -215,7 +215,7 @@ public class SigeceneGramParser extends Parser {
         RewriteRuleSubtreeStream stream_proposicion=new RewriteRuleSubtreeStream(adaptor,"rule proposicion");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:60:6: ( ID '=' proposicion -> ^( '=' ID proposicion ) | condicional | 'obtener' proposicion -> ^( 'obtener' proposicion ) | NEWLINE ->)
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:60:6: ( ID '=' proposicion -> ^( '=' ID proposicion ) | condicional | 'obtener' proposicion -> ^( 'obtener' proposicion ) | NEWLINE ->)
             int alt2=4;
             switch ( input.LA(1) ) {
             case ID:
@@ -248,7 +248,7 @@ public class SigeceneGramParser extends Parser {
 
             switch (alt2) {
                 case 1 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:60:8: ID '=' proposicion
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:60:8: ID '=' proposicion
                     {
                     ID2=(Token)match(input,ID,FOLLOW_ID_in_stat85); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_ID.add(ID2);
@@ -265,7 +265,7 @@ public class SigeceneGramParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: proposicion, ID, 10
+                    // elements: ID, 10, proposicion
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -278,7 +278,7 @@ public class SigeceneGramParser extends Parser {
                     root_0 = (CommonTree)adaptor.nil();
                     // 60:27: -> ^( '=' ID proposicion )
                     {
-                        // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:60:30: ^( '=' ID proposicion )
+                        // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:60:30: ^( '=' ID proposicion )
                         {
                         CommonTree root_1 = (CommonTree)adaptor.nil();
                         root_1 = (CommonTree)adaptor.becomeRoot(stream_10.nextNode(), root_1);
@@ -295,7 +295,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:61:4: condicional
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:61:4: condicional
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -309,7 +309,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:62:4: 'obtener' proposicion
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:62:4: 'obtener' proposicion
                     {
                     string_literal6=(Token)match(input,11,FOLLOW_11_in_stat109); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_11.add(string_literal6);
@@ -323,7 +323,7 @@ public class SigeceneGramParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: 11, proposicion
+                    // elements: proposicion, 11
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -336,7 +336,7 @@ public class SigeceneGramParser extends Parser {
                     root_0 = (CommonTree)adaptor.nil();
                     // 62:26: -> ^( 'obtener' proposicion )
                     {
-                        // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:62:29: ^( 'obtener' proposicion )
+                        // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:62:29: ^( 'obtener' proposicion )
                         {
                         CommonTree root_1 = (CommonTree)adaptor.nil();
                         root_1 = (CommonTree)adaptor.becomeRoot(stream_11.nextNode(), root_1);
@@ -352,7 +352,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:63:4: NEWLINE
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:63:4: NEWLINE
                     {
                     NEWLINE8=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_stat124); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_NEWLINE.add(NEWLINE8);
@@ -406,7 +406,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "condicional"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:66:1: condicional : 'si' '(' cond= proposicion ';' ( ( stat )+ ) ')' ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:66:1: condicional : 'si' '(' cond= proposicion ';' ( ( stat )+ ) ')' ;
     public final SigeceneGramParser.condicional_return condicional() throws RecognitionException {
         SigeceneGramParser.condicional_return retval = new SigeceneGramParser.condicional_return();
         retval.start = input.LT(1);
@@ -429,8 +429,8 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:67:2: ( 'si' '(' cond= proposicion ';' ( ( stat )+ ) ')' )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:67:4: 'si' '(' cond= proposicion ';' ( ( stat )+ ) ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:67:2: ( 'si' '(' cond= proposicion ';' ( ( stat )+ ) ')' )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:67:4: 'si' '(' cond= proposicion ';' ( ( stat )+ ) ')'
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -447,10 +447,10 @@ public class SigeceneGramParser extends Parser {
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, cond.getTree());
             char_literal11=(Token)match(input,14,FOLLOW_14_in_condicional149); if (state.failed) return retval;
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:67:37: ( ( stat )+ )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:67:38: ( stat )+
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:67:37: ( ( stat )+ )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:67:38: ( stat )+
             {
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:67:38: ( stat )+
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:67:38: ( stat )+
             int cnt3=0;
             loop3:
             do {
@@ -464,7 +464,7 @@ public class SigeceneGramParser extends Parser {
 
                 switch (alt3) {
             	case 1 :
-            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:0:0: stat
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:0:0: stat
             	    {
             	    pushFollow(FOLLOW_stat_in_condicional153);
             	    stat12=stat();
@@ -518,7 +518,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "proposicion"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:70:1: proposicion : ( ( NEWLINE )* ) negacion ( ( 'Y' | 'O' ) negacion )* ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:70:1: proposicion : ( ( NEWLINE )* ) negacion ( ( 'Y' | 'O' ) negacion )* ;
     public final SigeceneGramParser.proposicion_return proposicion() throws RecognitionException {
         SigeceneGramParser.proposicion_return retval = new SigeceneGramParser.proposicion_return();
         retval.start = input.LT(1);
@@ -539,15 +539,15 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:2: ( ( ( NEWLINE )* ) negacion ( ( 'Y' | 'O' ) negacion )* )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:4: ( ( NEWLINE )* ) negacion ( ( 'Y' | 'O' ) negacion )*
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:2: ( ( ( NEWLINE )* ) negacion ( ( 'Y' | 'O' ) negacion )* )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:4: ( ( NEWLINE )* ) negacion ( ( 'Y' | 'O' ) negacion )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:4: ( ( NEWLINE )* )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:5: ( NEWLINE )*
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:4: ( ( NEWLINE )* )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:5: ( NEWLINE )*
             {
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:5: ( NEWLINE )*
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:5: ( NEWLINE )*
             loop4:
             do {
                 int alt4=2;
@@ -560,7 +560,7 @@ public class SigeceneGramParser extends Parser {
 
                 switch (alt4) {
             	case 1 :
-            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:6: NEWLINE
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:6: NEWLINE
             	    {
             	    NEWLINE14=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_proposicion170); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -585,7 +585,7 @@ public class SigeceneGramParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, negacion15.getTree());
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:27: ( ( 'Y' | 'O' ) negacion )*
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:27: ( ( 'Y' | 'O' ) negacion )*
             loop6:
             do {
                 int alt6=2;
@@ -598,9 +598,9 @@ public class SigeceneGramParser extends Parser {
 
                 switch (alt6) {
             	case 1 :
-            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:28: ( 'Y' | 'O' ) negacion
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:28: ( 'Y' | 'O' ) negacion
             	    {
-            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:28: ( 'Y' | 'O' )
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:28: ( 'Y' | 'O' )
             	    int alt5=2;
             	    int LA5_0 = input.LA(1);
 
@@ -619,7 +619,7 @@ public class SigeceneGramParser extends Parser {
             	    }
             	    switch (alt5) {
             	        case 1 :
-            	            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:29: 'Y'
+            	            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:29: 'Y'
             	            {
             	            char_literal16=(Token)match(input,16,FOLLOW_16_in_proposicion180); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -630,7 +630,7 @@ public class SigeceneGramParser extends Parser {
             	            }
             	            break;
             	        case 2 :
-            	            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:34: 'O'
+            	            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:71:34: 'O'
             	            {
             	            char_literal17=(Token)match(input,17,FOLLOW_17_in_proposicion183); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -686,7 +686,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "negacion"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:74:1: negacion : ( 'NO' comparacion | comparacion );
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:74:1: negacion : ( 'NO' comparacion | comparacion );
     public final SigeceneGramParser.negacion_return negacion() throws RecognitionException {
         SigeceneGramParser.negacion_return retval = new SigeceneGramParser.negacion_return();
         retval.start = input.LT(1);
@@ -703,7 +703,7 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:74:9: ( 'NO' comparacion | comparacion )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:74:9: ( 'NO' comparacion | comparacion )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -722,7 +722,7 @@ public class SigeceneGramParser extends Parser {
             }
             switch (alt7) {
                 case 1 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:74:11: 'NO' comparacion
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:74:11: 'NO' comparacion
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -741,7 +741,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:75:4: comparacion
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:75:4: comparacion
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -781,7 +781,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "comparacion"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:78:1: comparacion : ( BOOLEAN | factorStr ( ( '>' | '>=' | '<' | '<=' | '==' | '<>' ) factorStr )? );
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:78:1: comparacion : ( BOOLEAN | factorStr ( ( '>' | '>=' | '<' | '<=' | '==' | '<>' ) factorStr )? );
     public final SigeceneGramParser.comparacion_return comparacion() throws RecognitionException {
         SigeceneGramParser.comparacion_return retval = new SigeceneGramParser.comparacion_return();
         retval.start = input.LT(1);
@@ -810,7 +810,7 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 6) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:79:2: ( BOOLEAN | factorStr ( ( '>' | '>=' | '<' | '<=' | '==' | '<>' ) factorStr )? )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:79:2: ( BOOLEAN | factorStr ( ( '>' | '>=' | '<' | '<=' | '==' | '<>' ) factorStr )? )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -829,7 +829,7 @@ public class SigeceneGramParser extends Parser {
             }
             switch (alt10) {
                 case 1 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:79:4: BOOLEAN
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:79:4: BOOLEAN
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -842,7 +842,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:4: factorStr ( ( '>' | '>=' | '<' | '<=' | '==' | '<>' ) factorStr )?
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:4: factorStr ( ( '>' | '>=' | '<' | '<=' | '==' | '<>' ) factorStr )?
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -852,7 +852,7 @@ public class SigeceneGramParser extends Parser {
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, factorStr23.getTree());
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:14: ( ( '>' | '>=' | '<' | '<=' | '==' | '<>' ) factorStr )?
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:14: ( ( '>' | '>=' | '<' | '<=' | '==' | '<>' ) factorStr )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -861,9 +861,9 @@ public class SigeceneGramParser extends Parser {
                     }
                     switch (alt9) {
                         case 1 :
-                            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:15: ( '>' | '>=' | '<' | '<=' | '==' | '<>' ) factorStr
+                            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:15: ( '>' | '>=' | '<' | '<=' | '==' | '<>' ) factorStr
                             {
-                            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:15: ( '>' | '>=' | '<' | '<=' | '==' | '<>' )
+                            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:15: ( '>' | '>=' | '<' | '<=' | '==' | '<>' )
                             int alt8=6;
                             switch ( input.LA(1) ) {
                             case 19:
@@ -906,7 +906,7 @@ public class SigeceneGramParser extends Parser {
 
                             switch (alt8) {
                                 case 1 :
-                                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:16: '>'
+                                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:16: '>'
                                     {
                                     char_literal24=(Token)match(input,19,FOLLOW_19_in_comparacion226); if (state.failed) return retval;
                                     if ( state.backtracking==0 ) {
@@ -917,7 +917,7 @@ public class SigeceneGramParser extends Parser {
                                     }
                                     break;
                                 case 2 :
-                                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:21: '>='
+                                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:21: '>='
                                     {
                                     string_literal25=(Token)match(input,20,FOLLOW_20_in_comparacion229); if (state.failed) return retval;
                                     if ( state.backtracking==0 ) {
@@ -928,7 +928,7 @@ public class SigeceneGramParser extends Parser {
                                     }
                                     break;
                                 case 3 :
-                                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:27: '<'
+                                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:27: '<'
                                     {
                                     char_literal26=(Token)match(input,21,FOLLOW_21_in_comparacion232); if (state.failed) return retval;
                                     if ( state.backtracking==0 ) {
@@ -939,7 +939,7 @@ public class SigeceneGramParser extends Parser {
                                     }
                                     break;
                                 case 4 :
-                                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:32: '<='
+                                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:32: '<='
                                     {
                                     string_literal27=(Token)match(input,22,FOLLOW_22_in_comparacion235); if (state.failed) return retval;
                                     if ( state.backtracking==0 ) {
@@ -950,7 +950,7 @@ public class SigeceneGramParser extends Parser {
                                     }
                                     break;
                                 case 5 :
-                                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:38: '=='
+                                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:38: '=='
                                     {
                                     string_literal28=(Token)match(input,23,FOLLOW_23_in_comparacion238); if (state.failed) return retval;
                                     if ( state.backtracking==0 ) {
@@ -961,7 +961,7 @@ public class SigeceneGramParser extends Parser {
                                     }
                                     break;
                                 case 6 :
-                                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:44: '<>'
+                                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:80:44: '<>'
                                     {
                                     string_literal29=(Token)match(input,24,FOLLOW_24_in_comparacion241); if (state.failed) return retval;
                                     if ( state.backtracking==0 ) {
@@ -1016,7 +1016,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "factorStr"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:83:1: factorStr : ( STRING | expr );
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:83:1: factorStr : ( STRING | expr );
     public final SigeceneGramParser.factorStr_return factorStr() throws RecognitionException {
         SigeceneGramParser.factorStr_return retval = new SigeceneGramParser.factorStr_return();
         retval.start = input.LT(1);
@@ -1031,7 +1031,7 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 7) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:84:2: ( STRING | expr )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:84:2: ( STRING | expr )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1050,7 +1050,7 @@ public class SigeceneGramParser extends Parser {
             }
             switch (alt11) {
                 case 1 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:84:4: STRING
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:84:4: STRING
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1063,7 +1063,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:85:4: expr
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:85:4: expr
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1103,7 +1103,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "expr"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:1: expr : producto ( ( '+' | '-' ) producto )* ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:1: expr : producto ( ( '+' | '-' ) producto )* ;
     public final SigeceneGramParser.expr_return expr() throws RecognitionException {
         SigeceneGramParser.expr_return retval = new SigeceneGramParser.expr_return();
         retval.start = input.LT(1);
@@ -1122,8 +1122,8 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 8) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:6: ( producto ( ( '+' | '-' ) producto )* )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:8: producto ( ( '+' | '-' ) producto )*
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:6: ( producto ( ( '+' | '-' ) producto )* )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:8: producto ( ( '+' | '-' ) producto )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -1133,7 +1133,7 @@ public class SigeceneGramParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, producto33.getTree());
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:17: ( ( '+' | '-' ) producto )*
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:17: ( ( '+' | '-' ) producto )*
             loop13:
             do {
                 int alt13=2;
@@ -1146,9 +1146,9 @@ public class SigeceneGramParser extends Parser {
 
                 switch (alt13) {
             	case 1 :
-            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:18: ( '+' | '-' ) producto
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:18: ( '+' | '-' ) producto
             	    {
-            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:18: ( '+' | '-' )
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:18: ( '+' | '-' )
             	    int alt12=2;
             	    int LA12_0 = input.LA(1);
 
@@ -1167,7 +1167,7 @@ public class SigeceneGramParser extends Parser {
             	    }
             	    switch (alt12) {
             	        case 1 :
-            	            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:19: '+'
+            	            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:19: '+'
             	            {
             	            char_literal34=(Token)match(input,25,FOLLOW_25_in_expr277); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -1178,7 +1178,7 @@ public class SigeceneGramParser extends Parser {
             	            }
             	            break;
             	        case 2 :
-            	            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:24: '-'
+            	            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:88:24: '-'
             	            {
             	            char_literal35=(Token)match(input,26,FOLLOW_26_in_expr280); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -1234,7 +1234,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "producto"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:1: producto : factor ( ( '*' | '/' ) factor )* ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:1: producto : factor ( ( '*' | '/' ) factor )* ;
     public final SigeceneGramParser.producto_return producto() throws RecognitionException {
         SigeceneGramParser.producto_return retval = new SigeceneGramParser.producto_return();
         retval.start = input.LT(1);
@@ -1253,8 +1253,8 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 9) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:9: ( factor ( ( '*' | '/' ) factor )* )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:11: factor ( ( '*' | '/' ) factor )*
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:9: ( factor ( ( '*' | '/' ) factor )* )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:11: factor ( ( '*' | '/' ) factor )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -1264,7 +1264,7 @@ public class SigeceneGramParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, factor37.getTree());
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:18: ( ( '*' | '/' ) factor )*
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:18: ( ( '*' | '/' ) factor )*
             loop15:
             do {
                 int alt15=2;
@@ -1277,9 +1277,9 @@ public class SigeceneGramParser extends Parser {
 
                 switch (alt15) {
             	case 1 :
-            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:19: ( '*' | '/' ) factor
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:19: ( '*' | '/' ) factor
             	    {
-            	    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:19: ( '*' | '/' )
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:19: ( '*' | '/' )
             	    int alt14=2;
             	    int LA14_0 = input.LA(1);
 
@@ -1298,7 +1298,7 @@ public class SigeceneGramParser extends Parser {
             	    }
             	    switch (alt14) {
             	        case 1 :
-            	            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:20: '*'
+            	            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:20: '*'
             	            {
             	            char_literal38=(Token)match(input,27,FOLLOW_27_in_producto299); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -1309,7 +1309,7 @@ public class SigeceneGramParser extends Parser {
             	            }
             	            break;
             	        case 2 :
-            	            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:25: '/'
+            	            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:91:25: '/'
             	            {
             	            char_literal39=(Token)match(input,28,FOLLOW_28_in_producto302); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -1365,7 +1365,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "factor"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:94:1: factor : ( DOUBLE | ID | funcPredefinidas | '(' proposicion ')' );
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:94:1: factor : ( DOUBLE | ID | funcPredefinidas | '(' proposicion ')' );
     public final SigeceneGramParser.factor_return factor() throws RecognitionException {
         SigeceneGramParser.factor_return retval = new SigeceneGramParser.factor_return();
         retval.start = input.LT(1);
@@ -1388,7 +1388,7 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 10) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:94:8: ( DOUBLE | ID | funcPredefinidas | '(' proposicion ')' )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:94:8: ( DOUBLE | ID | funcPredefinidas | '(' proposicion ')' )
             int alt16=4;
             switch ( input.LA(1) ) {
             case DOUBLE:
@@ -1425,7 +1425,7 @@ public class SigeceneGramParser extends Parser {
 
             switch (alt16) {
                 case 1 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:94:10: DOUBLE
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:94:10: DOUBLE
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1438,7 +1438,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:95:4: ID
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:95:4: ID
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1451,7 +1451,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:96:4: funcPredefinidas
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:96:4: funcPredefinidas
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1465,7 +1465,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:97:4: '(' proposicion ')'
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:97:4: '(' proposicion ')'
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1507,7 +1507,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "funcPredefinidas"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:101:1: funcPredefinidas : ( promedio | sumatoria | contar | max | min );
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:101:1: funcPredefinidas : ( promedio | sumatoria | contar | max | min );
     public final SigeceneGramParser.funcPredefinidas_return funcPredefinidas() throws RecognitionException {
         SigeceneGramParser.funcPredefinidas_return retval = new SigeceneGramParser.funcPredefinidas_return();
         retval.start = input.LT(1);
@@ -1528,7 +1528,7 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:102:2: ( promedio | sumatoria | contar | max | min )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:102:2: ( promedio | sumatoria | contar | max | min )
             int alt17=5;
             switch ( input.LA(1) ) {
             case 29:
@@ -1566,7 +1566,7 @@ public class SigeceneGramParser extends Parser {
 
             switch (alt17) {
                 case 1 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:102:4: promedio
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:102:4: promedio
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1580,7 +1580,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:103:4: sumatoria
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:103:4: sumatoria
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1594,7 +1594,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:104:4: contar
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:104:4: contar
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1608,7 +1608,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:105:4: max
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:105:4: max
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1622,7 +1622,7 @@ public class SigeceneGramParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:106:4: min
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:106:4: min
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1662,7 +1662,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "promedio"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:109:1: promedio : 'promedio' '(' ID ')' -> ^( 'promedio' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:109:1: promedio : 'promedio' '(' ID ')' -> ^( 'promedio' ID ) ;
     public final SigeceneGramParser.promedio_return promedio() throws RecognitionException {
         SigeceneGramParser.promedio_return retval = new SigeceneGramParser.promedio_return();
         retval.start = input.LT(1);
@@ -1685,8 +1685,8 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 12) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:109:9: ( 'promedio' '(' ID ')' -> ^( 'promedio' ID ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:109:11: 'promedio' '(' ID ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:109:9: ( 'promedio' '(' ID ')' -> ^( 'promedio' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:109:11: 'promedio' '(' ID ')'
             {
             string_literal52=(Token)match(input,29,FOLLOW_29_in_promedio381); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_29.add(string_literal52);
@@ -1716,7 +1716,7 @@ public class SigeceneGramParser extends Parser {
             root_0 = (CommonTree)adaptor.nil();
             // 109:33: -> ^( 'promedio' ID )
             {
-                // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:109:36: ^( 'promedio' ID )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:109:36: ^( 'promedio' ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_29.nextNode(), root_1);
@@ -1756,7 +1756,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "sumatoria"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:112:1: sumatoria : 'sumatoria' '(' ID ')' -> ^( 'sumatoria' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:112:1: sumatoria : 'sumatoria' '(' ID ')' -> ^( 'sumatoria' ID ) ;
     public final SigeceneGramParser.sumatoria_return sumatoria() throws RecognitionException {
         SigeceneGramParser.sumatoria_return retval = new SigeceneGramParser.sumatoria_return();
         retval.start = input.LT(1);
@@ -1779,8 +1779,8 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 13) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:113:2: ( 'sumatoria' '(' ID ')' -> ^( 'sumatoria' ID ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:113:4: 'sumatoria' '(' ID ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:113:2: ( 'sumatoria' '(' ID ')' -> ^( 'sumatoria' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:113:4: 'sumatoria' '(' ID ')'
             {
             string_literal56=(Token)match(input,30,FOLLOW_30_in_sumatoria406); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_30.add(string_literal56);
@@ -1797,7 +1797,7 @@ public class SigeceneGramParser extends Parser {
 
 
             // AST REWRITE
-            // elements: ID, 30
+            // elements: 30, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1810,7 +1810,7 @@ public class SigeceneGramParser extends Parser {
             root_0 = (CommonTree)adaptor.nil();
             // 113:27: -> ^( 'sumatoria' ID )
             {
-                // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:113:30: ^( 'sumatoria' ID )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:113:30: ^( 'sumatoria' ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_30.nextNode(), root_1);
@@ -1850,7 +1850,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "contar"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:1: contar : 'contar' '(' ID ')' -> ^( 'contar' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:1: contar : 'contar' '(' ID ')' -> ^( 'contar' ID ) ;
     public final SigeceneGramParser.contar_return contar() throws RecognitionException {
         SigeceneGramParser.contar_return retval = new SigeceneGramParser.contar_return();
         retval.start = input.LT(1);
@@ -1873,8 +1873,8 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 14) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:8: ( 'contar' '(' ID ')' -> ^( 'contar' ID ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:10: 'contar' '(' ID ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:8: ( 'contar' '(' ID ')' -> ^( 'contar' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:10: 'contar' '(' ID ')'
             {
             string_literal60=(Token)match(input,31,FOLLOW_31_in_contar430); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_31.add(string_literal60);
@@ -1891,7 +1891,7 @@ public class SigeceneGramParser extends Parser {
 
 
             // AST REWRITE
-            // elements: ID, 31
+            // elements: 31, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1904,7 +1904,7 @@ public class SigeceneGramParser extends Parser {
             root_0 = (CommonTree)adaptor.nil();
             // 116:30: -> ^( 'contar' ID )
             {
-                // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:33: ^( 'contar' ID )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:33: ^( 'contar' ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_31.nextNode(), root_1);
@@ -1944,7 +1944,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "max"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:1: max : 'max' '(' ID ')' -> ^( 'max' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:1: max : 'max' '(' ID ')' -> ^( 'max' ID ) ;
     public final SigeceneGramParser.max_return max() throws RecognitionException {
         SigeceneGramParser.max_return retval = new SigeceneGramParser.max_return();
         retval.start = input.LT(1);
@@ -1967,8 +1967,8 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 15) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:5: ( 'max' '(' ID ')' -> ^( 'max' ID ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:7: 'max' '(' ID ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:5: ( 'max' '(' ID ')' -> ^( 'max' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:7: 'max' '(' ID ')'
             {
             string_literal64=(Token)match(input,32,FOLLOW_32_in_max454); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_32.add(string_literal64);
@@ -1998,7 +1998,7 @@ public class SigeceneGramParser extends Parser {
             root_0 = (CommonTree)adaptor.nil();
             // 119:24: -> ^( 'max' ID )
             {
-                // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:27: ^( 'max' ID )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:27: ^( 'max' ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_32.nextNode(), root_1);
@@ -2038,7 +2038,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "min"
-    // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:1: min : 'min' '(' ID ')' -> ^( 'min' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:1: min : 'min' '(' ID ')' -> ^( 'min' ID ) ;
     public final SigeceneGramParser.min_return min() throws RecognitionException {
         SigeceneGramParser.min_return retval = new SigeceneGramParser.min_return();
         retval.start = input.LT(1);
@@ -2061,8 +2061,8 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 16) ) { return retval; }
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:5: ( 'min' '(' ID ')' -> ^( 'min' ID ) )
-            // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:7: 'min' '(' ID ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:5: ( 'min' '(' ID ')' -> ^( 'min' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:7: 'min' '(' ID ')'
             {
             string_literal68=(Token)match(input,33,FOLLOW_33_in_min478); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_33.add(string_literal68);
@@ -2079,7 +2079,7 @@ public class SigeceneGramParser extends Parser {
 
 
             // AST REWRITE
-            // elements: ID, 33
+            // elements: 33, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2092,7 +2092,7 @@ public class SigeceneGramParser extends Parser {
             root_0 = (CommonTree)adaptor.nil();
             // 122:24: -> ^( 'min' ID )
             {
-                // X:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:27: ^( 'min' ID )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:27: ^( 'min' ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_33.nextNode(), root_1);

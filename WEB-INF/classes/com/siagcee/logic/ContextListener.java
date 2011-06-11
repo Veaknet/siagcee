@@ -18,25 +18,30 @@ import java.sql.DriverManager;
 
 public class ContextListener implements ServletContextListener{
 
-  public void contextInitialized(ServletContextEvent evento){
-    ServletContext sc = evento.getServletContext();
-    Connection micon = this.obtenerConexion();
-    sc.setAttribute("conexion", micon);
-  }
+	Connection _cnn = null;
 
-  public Connection obtenerConexion() {
-    Connection conn = null;
-    try {
-      String URL_DB = "jdbc:postgresql://127.0.0.1:5432/db_siagcee";
-      Class.forName("org.postgresql.Driver");
-      conn = DriverManager.getConnection(URL_DB,"usr_siagcee","siagcee");
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return conn;
-  }
+	public void contextInitialized(ServletContextEvent evento){
+		ServletContext sc = evento.getServletContext();
+		Connection micon = this.obtenerConexion();
+		sc.setAttribute("conexion", micon);
+	}
 
-  public void contextDestroyed(ServletContextEvent evento){
-    //nada aun
-  }
+	public Connection obtenerConexion() {
+		try {
+			String URL_DB = "jdbc:postgresql://127.0.0.1:5432/db_siagcee";
+			Class.forName("org.postgresql.Driver");
+			_cnn = DriverManager.getConnection(URL_DB,"usr_siagcee","siagcee");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return _cnn;
+	}
+
+	public void contextDestroyed(ServletContextEvent evento){
+		try {
+			_cnn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
