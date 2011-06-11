@@ -1,12 +1,12 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g 2011-06-11 16:08:56
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g 2011-06-11 16:15:32
 
 package com.siagcee.logic;
 
 /**
- * Creado por Fábio Pereira.
- * Bajo la tutoría del Prof. Francisco Mirabal.
+ * Creado por Fabio Pereira.
+ * Bajo la tutoria del Prof. Francisco Mirabal.
  * Trabajo Especial De Grado.
- * Licenciatura de Computación.
+ * Licenciatura de Computacion.
  * Universidad Central de Venezuela.
  */
 
@@ -265,7 +265,7 @@ public class SigeceneGramParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: ID, 10, proposicion
+                    // elements: proposicion, 10, ID
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -323,7 +323,7 @@ public class SigeceneGramParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: proposicion, 11
+                    // elements: 11, proposicion
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1985,7 +1985,7 @@ public class SigeceneGramParser extends Parser {
 
 
             // AST REWRITE
-            // elements: ID, 32
+            // elements: 32, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 

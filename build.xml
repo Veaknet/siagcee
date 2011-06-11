@@ -79,8 +79,8 @@
 
   <property name="compiler.args.web-inf" value="${compiler.args}"/>
 
-  <property name="web-inf.output.dir" value="${module.web-inf.basedir}/WEB-INF"/>
-  <property name="web-inf.testoutput.dir" value="${module.web-inf.basedir}/WEB-INF"/>
+  <property name="web-inf.output.dir" value="${module.web-inf.basedir}/WEB-INF/classes" />
+  <property name="web-inf.testoutput.dir" value="${module.web-inf.basedir}/WEB-INF/classes" />
 
   <path id="web-inf.module.bootclasspath">
     <!-- Paths to be included in compilation bootclasspath -->

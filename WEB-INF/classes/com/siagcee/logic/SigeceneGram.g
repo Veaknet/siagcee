@@ -24,10 +24,10 @@ package com.siagcee.logic;
 package com.siagcee.logic;
 
 /**
- * Creado por Fábio Pereira.
- * Bajo la tutoría del Prof. Francisco Mirabal.
+ * Creado por Fabio Pereira.
+ * Bajo la tutoria del Prof. Francisco Mirabal.
  * Trabajo Especial De Grado.
- * Licenciatura de Computación.
+ * Licenciatura de Computacion.
  * Universidad Central de Venezuela.
  */
 }
