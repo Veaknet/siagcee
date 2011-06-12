@@ -15,7 +15,7 @@ Vector _todasPreguntas = null;
 InstanciaObjeto objetoatrabajar = null;
 if(request.getAttribute("objetoatrabajar") != null){
 	objetoatrabajar = (InstanciaObjeto)request.getAttribute("objetoatrabajar");
-	_todasPreguntas = objetoatrabajar.getObjetoAsociado().getPreguntas();
+	_todasPreguntas = objetoatrabajar.getObjetoAsociado().getPreguntas(true);
 	Collections.sort(_todasPreguntas, new OrdenadorInstanciaPreguntas(OrdenadorInstanciaPreguntas.ORDEN_PREGUNTA));
 }
 
@@ -590,13 +590,13 @@ function ruedaLineasArriba(linea){
 
 		$("#parentesisabierto_"+i).val($("#parentesisabierto_"+(i+1)).val());
 		$("#parentesisabierto_"+i).css("display",$("#parentesisabierto_"+(i+1)).css("display"));
-		
+
 		$("#parentesisabiertoinput_"+i).val($("#parentesisabiertoinput_"+(i+1)).val());
 		$("#parentesisabiertoinput_"+i).css("display", $("#parentesisabiertoinput_"+(i+1)).css("display"));
 
 		$("#pregunta_"+i).val($("#pregunta_"+(i+1)).val());
 		$("#pregunta_"+i).css("display", $("#pregunta_"+(i+1)).css("display"));
-		
+
 		creaSelectOperadores(i, i, "pregunta_"+i);
 		creaSelectRespuestas(i, i, "pregunta_"+i);
 
@@ -756,7 +756,7 @@ function hacerPreview(){
 	var tipoPregunta = 30;
 	var _temp;
 	var _elempregunta;
-	
+
 	//vacio la pantalla.
 	_output.innerHTML = "";
 

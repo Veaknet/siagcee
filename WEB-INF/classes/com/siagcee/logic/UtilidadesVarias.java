@@ -525,7 +525,7 @@ public class UtilidadesVarias {
             }
 
             InstanciaPregunta _pregAct;
-            Enumeration _enu = _obj.getObjetoAsociado().getPreguntas().elements();
+            Enumeration _enu = _obj.getObjetoAsociado().getPreguntas(true).elements();
             Vector _preguntas = new Vector();
             Col = 0;
             while(_enu.hasMoreElements()){

@@ -81,7 +81,7 @@ if (!mensaje.equals("")) {
 if(_miObj != null){
 	if(_miObj.getCargadaDeBD()){
 		//muestro toda la info publica del objeto
-		Vector _misPregs = _miObj.getPreguntas();
+		Vector _misPregs = _miObj.getPreguntas(true);
 		Collections.sort(_misPregs, new OrdenadorInstanciaPreguntas());
 		Enumeration _misPregsEnu = _misPregs.elements();
 		while(_misPregsEnu.hasMoreElements()){

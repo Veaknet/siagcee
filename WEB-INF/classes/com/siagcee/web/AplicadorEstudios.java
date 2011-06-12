@@ -580,7 +580,7 @@ public class AplicadorEstudios extends HttpServlet {
 				}
 
 				try{
-				  request.setAttribute("listadoDatos", _objetoSeleccionado.getObjetoAsociado().getPreguntas(false));
+				  request.setAttribute("listadoDatos", _objetoSeleccionado.getObjetoAsociado().getPreguntas(true));
 				}catch (Exception e1){
 				  request.setAttribute("listadoDatos", null);
 				}

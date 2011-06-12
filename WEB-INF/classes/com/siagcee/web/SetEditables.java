@@ -50,7 +50,7 @@ public class SetEditables extends HttpServlet {
 					}
 
 					Vector _objetos = Objeto.todosObjetos(admin, micon, 0, true, false);
-					Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon);
+					Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0);
 
 					request.setAttribute("objetosDisponibles", _objetos);
 					request.setAttribute("objetosInstanciados", _instanciados);
@@ -82,7 +82,7 @@ public class SetEditables extends HttpServlet {
 				if(request.getParameter("objetoatrabajar") != null){
 					_obj = new InstanciaObjeto(admin, micon, Integer.parseInt(request.getParameter("objetoatrabajar")));
 					request.setAttribute("objetoatrabajar", _obj);
-					request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _obj.getObjetoAsociado()));
+					request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _obj.getObjetoAsociado(), true));
 					request.setAttribute("preguntasEditables",PreguntaEditable.retornaTodasEditables(admin, micon, _obj));
 					view = request.getRequestDispatcher("WEB-INF/vistas/seteditables.jsp");
 					view.forward(request, response);

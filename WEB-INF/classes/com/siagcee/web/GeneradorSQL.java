@@ -74,7 +74,7 @@ public class GeneradorSQL extends HttpServlet{
 						}
 						request.setAttribute("respuestas", _tempVec);
 						view = request.getRequestDispatcher("WEB-INF/vistas/sqlpreview.jsp");
-						
+
 					}else if(_miaccion.equals("procesar") && ((String)request.getParameter("hacerpreview")).equals("falso")){
 						InstanciaObjeto _objetoseleccionado = new InstanciaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoatrabajar")));
 						request.setAttribute("objetoatrabajar", _objetoseleccionado);
@@ -88,10 +88,10 @@ public class GeneradorSQL extends HttpServlet{
 					}
 				}
 
-				Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon);
+				Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0);
 				request.setAttribute("objetosInstanciados", _instanciados);
 				view.forward(request, response);
-				
+
 			}catch(Exception e){
 				e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
@@ -100,7 +100,7 @@ public class GeneradorSQL extends HttpServlet{
 		}else{
 			//sesion no iniciada
 			view = request.getRequestDispatcher("autenticar.do");
-			view.forward(request, response);			
+			view.forward(request, response);
 		}
 	}
 
@@ -125,7 +125,7 @@ public class GeneradorSQL extends HttpServlet{
 					}
 				}
 
-				Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon);
+				Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0);
 
 				request.setAttribute("objetosInstanciados", _instanciados);
 
@@ -133,7 +133,7 @@ public class GeneradorSQL extends HttpServlet{
 				view.forward(request, response);
 			}catch(Exception e){
 				e.printStackTrace();
-				Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon);
+				Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0);
 				request.setAttribute("objetosInstanciados", _instanciados);
 				RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/generadorsql.jsp");
 				view.forward(request, response);
@@ -151,7 +151,7 @@ public class GeneradorSQL extends HttpServlet{
 		StringBuffer _sqlFinal = new StringBuffer("(");
 		StringBuffer _sqltmp = new StringBuffer();
 		Integer _totalLineas = Integer.parseInt((String)request.getParameter("total_lineas"));
-		InstanciaObjeto _objetoseleccionado = new InstanciaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoatrabajar")));		
+		InstanciaObjeto _objetoseleccionado = new InstanciaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoatrabajar")));
 		InstanciaPregunta _insPregunta;
 		String _temporal = "";
 		String _operador = "";
@@ -199,7 +199,7 @@ public class GeneradorSQL extends HttpServlet{
 				//las condiciones siempre van en pares
 				_sqltmp.append(" elaborado_por IN (SELECT elaborado_por FROM respuestas WHERE ");
 				_sqltmp.append(" id_instancia_preguntas = ");
-				_sqltmp.append(_insPregunta.getId());				
+				_sqltmp.append(_insPregunta.getId());
 				_sqltmp.append(" AND ");
 
 				if((_insPregunta.getTipoPregunta() == 1) || (_insPregunta.getTipoPregunta() == 2)){

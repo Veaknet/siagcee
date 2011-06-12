@@ -49,7 +49,7 @@ public class UserObjetos extends HttpServlet {
 				Vector _respuestasEnBD = Respuesta.todasRespuestas(encuestado, micon, null, _miIns);
 				request.setAttribute("respuestasDadas", _respuestasEnBD);
 
-				request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(encuestado, micon, _miIns.getObjetoAsociado()));
+				request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(encuestado, micon, _miIns.getObjetoAsociado(), true));
 				request.setAttribute("preguntasEditables",PreguntaEditable.retornaTodasEditables(encuestado, micon, _miIns));
 
 				if(_accion.equals("insertar")){

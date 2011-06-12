@@ -134,7 +134,7 @@ if(request.getAttribute("insVector") != null){
 			if(_opcion == 0){
                 if(true){
                     out.println("Puede ahora cerrar esta ventana haciendo clic en la 'X' de la ventana o pestaña de su navegador.");
-                    out.println("<script>window.close();</script>");
+                    out.println("<script>if(opener){alert('Gracias por su participacion.');window.close();}</script>");
                 }else{
                     //por petición del tutor estas lineas quedan deshabilitadas
                     if(!_insVector.isEmpty()){

@@ -35,7 +35,7 @@ InstanciaObjeto _objetoatrabajar = null;
 Vector _listadoPreguntas = new Vector();
 if(request.getAttribute("objetoatrabajar")!=null){
 	_objetoatrabajar = (InstanciaObjeto)request.getAttribute("objetoatrabajar");
-	_listadoPreguntas = (Vector)_objetoatrabajar.getObjetoAsociado().getPreguntas();
+	_listadoPreguntas = (Vector)_objetoatrabajar.getObjetoAsociado().getPreguntas(true);
 	Collections.sort(_listadoPreguntas, new OrdenadorInstanciaPreguntas());
 }
 

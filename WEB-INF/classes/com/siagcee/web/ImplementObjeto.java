@@ -131,7 +131,7 @@ public class ImplementObjeto extends HttpServlet{
 							//agrego todas las preguntas a editables
 							PreguntaEditable.delPreguntasEditables(admin, micon, _miIns);
 							PreguntaEditable _pregEdit = null;
-							Vector _todasMisPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _miIns.getObjetoAsociado());
+							Vector _todasMisPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _miIns.getObjetoAsociado(), true);
 							Enumeration _ueP = _todasMisPreguntas.elements();
 							InstanciaPregunta _instPregn = null;
 							while(_ueP.hasMoreElements()){
