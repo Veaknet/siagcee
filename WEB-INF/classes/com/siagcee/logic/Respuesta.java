@@ -296,7 +296,7 @@ public class Respuesta extends ObjetoBase{
 					this.intRespuesta = rs.getLong("respuesta_int");
 					this.dateRespuesta = rs.getDate("respuesta_date");
 				}else{
-					//cerrada					
+					//cerrada
 					this.respuestaDada = new RespuestasPosibles(this.getUsuario(), this.getConexion(), Integer.parseInt(rs.getString("id_respuestas_posibles")));
 				}
 				this.cargadaDeBD = true;

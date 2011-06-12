@@ -463,7 +463,7 @@ public class InstanciaObjeto extends ObjetoBase{
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = null;
-			if(_publico){
+			if(_publico || _usuario.getTipoUsuario().equals("superadministrador")){
 				if(_selectivo == 1){
 					pstmt = _miConexion.prepareStatement("SELECT * FROM instancia_objetos WHERE fecha_cierre > ? AND fecha_inicio <= ?");
 					pstmt.setDate(1, new java.sql.Date((new Date()).getTime()));

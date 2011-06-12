@@ -343,6 +343,10 @@ public class EstudioPerso extends ObjetoBase{
 		}
 	}
 
+	public static Vector obtenerEstudiosDeEstructura(Administrador _usuario, Connection _micon, Objeto _miEstructura, boolean _paraEdicion){
+		return obtenerEstudiosDeEstructura((Usuario)_usuario, _micon, _miEstructura, _paraEdicion);
+	}
+
 	public static Vector obtenerEstudiosDeEstructura(Usuario _usuario, Connection _micon, Objeto _miEstructura, boolean _paraEdicion){
 		Vector _misEstudios = new Vector();
 		ResultSet rs = null;
@@ -377,9 +381,14 @@ public class EstudioPerso extends ObjetoBase{
 				pstmt = _micon.prepareStatement("DELETE FROM estudios WHERE id_pool_objetos = ?");
 				pstmt.setInt(1, _miEstructura.getId());
 			}else{
-				pstmt = _micon.prepareStatement("DELETE FROM estudios WHERE id_pool_objetos = ? AND creado_por = ?");
-				pstmt.setInt(1, _miEstructura.getId());
-				pstmt.setInt(2, _usuario.getUsuarioId());
+				if(_usuario.getTipoUsuario().equals("superadministrador")){
+					pstmt = _micon.prepareStatement("DELETE FROM estudios WHERE id_pool_objetos = ?");
+					pstmt.setInt(1, _miEstructura.getId());
+				}else{
+					pstmt = _micon.prepareStatement("DELETE FROM estudios WHERE id_pool_objetos = ? AND creado_por = ?");
+					pstmt.setInt(1, _miEstructura.getId());
+					pstmt.setInt(2, _usuario.getUsuarioId());
+				}
 			}
 			pstmt.execute();
 		}catch (Exception e) {
@@ -406,7 +415,7 @@ public class EstudioPerso extends ObjetoBase{
 	}
 
 	public InstanciaPregunta retornaPreguntaAsociada(){
-		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple(), true).elements();
+		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple()).elements();
 		InstanciaPregunta _temp;
 		while(_enu.hasMoreElements()){
 			_temp = (InstanciaPregunta)_enu.nextElement();
@@ -442,7 +451,7 @@ public class EstudioPerso extends ObjetoBase{
 
 	public String getSumatoriaField(String _campo){
 		double resultado = 0;
-		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple(), true).elements();
+		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple()).elements();
 		while(_enu.hasMoreElements()){
 			InstanciaPregunta _insPre = (InstanciaPregunta)_enu.nextElement();
 			String _acrno = "["+_insPre.getAcronimo()+"]";
@@ -474,7 +483,7 @@ public class EstudioPerso extends ObjetoBase{
 		Date resultado2 = null;
 		String resultado3 = "";
 		String resultadoFinal = "";
-		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple(), true).elements();
+		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple()).elements();
 		while(_enu.hasMoreElements()){
 			InstanciaPregunta _insPre = (InstanciaPregunta)_enu.nextElement();
 			String _acrno = "["+_insPre.getAcronimo()+"]";
@@ -534,7 +543,7 @@ public class EstudioPerso extends ObjetoBase{
 		Date resultado2 = null;
 		String resultado3 = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
 		String resultadoFinal = "";
-		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple(), true).elements();
+		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple()).elements();
 		while(_enu.hasMoreElements()){
 			InstanciaPregunta _insPre = (InstanciaPregunta)_enu.nextElement();
 			String _acrno = "["+_insPre.getAcronimo()+"]";
