@@ -99,7 +99,7 @@ InstanciaObjeto seleccionado = null;
 if(request.getAttribute("InstanciaSeleccionadaPorId") != null){
 	seleccionado = (InstanciaObjeto)request.getAttribute("InstanciaSeleccionadaPorId");
 	_opcion = 1;
-	_titulo = "Identifiquese para Acceder ";
+	_titulo = "Identif&iacute;quese para Acceder ";
 	if(seleccionado.getObjetoAsociado().getClass().toString().contains("Censo")){
 		_titulo = _titulo + "al Censo";
 	}else{

@@ -506,7 +506,7 @@ public class InstanciaObjeto extends ObjetoBase{
 			pstmt = _miConexion.prepareStatement("SELECT * FROM instancia_objetos WHERE identificador_publico = ?");
 			pstmt.setString(1, _id);
 			rs = pstmt.executeQuery();
-			while (rs.next()){
+			if(rs.next()){
 				_miIns = rs.getInt("id_instancia_objetos");
 			}
 		}catch(Exception e){

@@ -147,13 +147,11 @@ public class PreguntaEditable extends ObjetoBase{
 			try{
 				if (this.getCargadaDeBD()){
 					//ejecuto UPDATE
-					if(this.getCargadaDeBD()){
-						pstmt = getConexion().prepareStatement("UPDATE campos_editables SET id_instancia_objetos = ? , id_instancia_preguntas = ? WHERE id_campos_editables = ?");
-						pstmt.setInt(1, this.get_InsObjeto().getId());
-						pstmt.setInt(2, this.get_InsPregunta().getId());
-						pstmt.setInt(3, this.get_id());
-						pstmt.execute();
-					}
+					pstmt = getConexion().prepareStatement("UPDATE campos_editables SET id_instancia_objetos = ? , id_instancia_preguntas = ? WHERE id_campos_editables = ?");
+					pstmt.setInt(1, this.get_InsObjeto().getId());
+					pstmt.setInt(2, this.get_InsPregunta().getId());
+					pstmt.setInt(3, this.get_id());
+					pstmt.execute();
 				}else{
 					//ejecuto INSERT
 					PreparedStatement _pstmt = getConexion().prepareStatement("SELECT nextval('seq_campos_editables') AS numero");
