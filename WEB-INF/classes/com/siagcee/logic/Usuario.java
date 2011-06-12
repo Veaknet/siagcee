@@ -18,7 +18,7 @@ public class Usuario extends ObjetoBase{
 	String Username;
 	String clave;
 	boolean validado;
-	
+
 	public Usuario(){
 		usuarioId = -1;
 		Username = new String("");
@@ -43,6 +43,10 @@ public class Usuario extends ObjetoBase{
 		clave = _clave;
 		validado = false;
 		iniciarSesion(_usuario, _clave);
+	}
+
+	public String getTipoUsuario(){
+		return "usuario";
 	}
 
 	//metodo a ser implementado en las clases heredadas

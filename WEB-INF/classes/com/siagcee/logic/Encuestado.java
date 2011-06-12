@@ -63,6 +63,10 @@ public class Encuestado extends Usuario{
 		return this.clave;
 	}
 
+	public String getTipoUsuario(){
+		return "encuestado";
+	}
+
 	//si _valida solo se valida
 	//caso contrario se registra el usuario y se valida posteriormente
 	public boolean Verificar(Connection _miConexion, String _idPoblacion, String _campoClave){
@@ -103,7 +107,7 @@ public class Encuestado extends Usuario{
 		}
 		catch (Exception e) {e.printStackTrace();}
 	}
-	
+
 	public boolean iniciarSesion(String _idPoblacion, String _campoClave){
 		try{
 			PreparedStatement pstmt = this.getConexion().prepareStatement("SELECT * FROM usuarios where id_poblacion = ? and campo_clave = ?");

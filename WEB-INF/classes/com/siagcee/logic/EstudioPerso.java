@@ -343,7 +343,7 @@ public class EstudioPerso extends ObjetoBase{
 		}
 	}
 
-	public static Vector obtenerEstudiosDeEstructura(Administrador _usuario, Connection _micon, Objeto _miEstructura, boolean _paraEdicion){
+	public static Vector obtenerEstudiosDeEstructura(Usuario _usuario, Connection _micon, Objeto _miEstructura, boolean _paraEdicion){
 		Vector _misEstudios = new Vector();
 		ResultSet rs = null;
 		PreparedStatement pstmt;
@@ -370,7 +370,7 @@ public class EstudioPerso extends ObjetoBase{
 		return _misEstudios;
 	}
 
-	public static void delEstudios(Administrador _usuario, Connection _micon, Objeto _miEstructura, boolean forzarDeleteTodos){
+	public static void delEstudios(Usuario _usuario, Connection _micon, Objeto _miEstructura, boolean forzarDeleteTodos){
 		try {
 			PreparedStatement pstmt ;
 			if(forzarDeleteTodos){
@@ -420,7 +420,7 @@ public class EstudioPerso extends ObjetoBase{
 	//FUNCIONES PARA FUNCIONAMIENTO INTERNO DEL ESTUDIO
 	//las variables vienen: [acronimo]
 	public String getContarField(String _campo){
-		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple()).elements();
+		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple(), true).elements();
 		while(_enu.hasMoreElements()){
 			InstanciaPregunta _insPre = (InstanciaPregunta)_enu.nextElement();
 			String _acrno = "["+_insPre.getAcronimo()+"]";
@@ -442,7 +442,7 @@ public class EstudioPerso extends ObjetoBase{
 
 	public String getSumatoriaField(String _campo){
 		double resultado = 0;
-		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple()).elements();
+		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple(), true).elements();
 		while(_enu.hasMoreElements()){
 			InstanciaPregunta _insPre = (InstanciaPregunta)_enu.nextElement();
 			String _acrno = "["+_insPre.getAcronimo()+"]";
@@ -474,7 +474,7 @@ public class EstudioPerso extends ObjetoBase{
 		Date resultado2 = null;
 		String resultado3 = "";
 		String resultadoFinal = "";
-		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple()).elements();
+		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple(), true).elements();
 		while(_enu.hasMoreElements()){
 			InstanciaPregunta _insPre = (InstanciaPregunta)_enu.nextElement();
 			String _acrno = "["+_insPre.getAcronimo()+"]";
@@ -534,7 +534,7 @@ public class EstudioPerso extends ObjetoBase{
 		Date resultado2 = null;
 		String resultado3 = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
 		String resultadoFinal = "";
-		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple()).elements();
+		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple(), true).elements();
 		while(_enu.hasMoreElements()){
 			InstanciaPregunta _insPre = (InstanciaPregunta)_enu.nextElement();
 			String _acrno = "["+_insPre.getAcronimo()+"]";
