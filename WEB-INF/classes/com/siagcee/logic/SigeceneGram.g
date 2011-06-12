@@ -104,6 +104,8 @@ funcPredefinidas
 	|	contar
 	|	max
 	|	min
+	|	redondea
+	|	diff_fechas
 	;
 	
 promedio:	'promedio' '(' ID ')'	->	^('promedio' ID)
@@ -120,6 +122,13 @@ max	:	'max' '(' ID ')'	->	^('max' ID)
 	;
 
 min	:	'min' '(' ID ')'	->	^('min' ID)
+	;
+
+redondea:	'redondea' '(' expr ')'	->	^('redondea' expr)
+	;
+
+diff_fechas
+	:	'diff_fechas' '(' factorStr ',' factorStr ')'	->	^('diff_fechas' factorStr factorStr)
 	;
 //fin funciones predefinidas
 

@@ -598,4 +598,19 @@ public class EstudioPerso extends ObjetoBase{
 		return resultadoFinal;
 	}
 
+	public String diff_fechas(String _campo1, String _campo2){
+		Double resul = 0d;
+		Double MILLIS_PER_YEAR = 365 * 24 * 3600 * 1000d;
+		try{
+			SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+			Date _aDate = df.parse(_campo1);
+			Date _bDate = df.parse(_campo2);
+			resul = (_bDate.getTime() - _aDate.getTime()) / (MILLIS_PER_YEAR);
+			resul = Math.abs(resul);
+		}catch(Exception proEx){
+			proEx.printStackTrace();
+			resul = 0d;
+		}
+		return String.valueOf(resul);
+	}
 }

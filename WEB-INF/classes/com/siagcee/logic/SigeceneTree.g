@@ -151,7 +151,7 @@ proposicion returns [String valor]
 	;
 
 expr returns [String valor]
-	:	^('+' a=expr b=expr)	
+	:	^('+' a=expr b=expr)
 			{
 				$valor = String.valueOf(Double.parseDouble($a.valor) + Double.parseDouble($b.valor));
 			}
@@ -213,6 +213,14 @@ funcPredefinidas returns [String valor]
 	|	min
 			{
 				$valor = $min.valor;
+			}
+	|	redondea
+			{
+				$valor = $redondea.valor;
+			}
+	|	diff_fechas
+			{
+				$valor = $diff_fechas.valor;
 			}
 	;
 
@@ -301,4 +309,24 @@ min returns [String valor]
 		}
 	;
 
+redondea returns [String valor]
+	:	^('redondea' expr)
+		{
+			try{
+				$valor = String.valueOf(Math.round(Double.parseDouble($expr.valor)));
+			}catch(Exception proEx){
+				throw new RecognitionException();
+			}
+		}
+	;
 
+diff_fechas returns [String valor]
+	:	^('diff_fechas' a=expr b=expr)
+		{
+			try{
+				$valor = EstudioPerso.getInstance().diff_fechas($a.valor, $b.valor);
+			}catch(Exception proEx){
+				throw new RecognitionException();
+			}
+		}
+	;
