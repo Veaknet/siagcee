@@ -444,6 +444,9 @@ if(_miIns != null){
 							Reenviar
 						</th>
 						<th style="max-width:50px;" valign="top" width="50">
+							Borrar
+						</th>
+						<th style="max-width:50px;" valign="top" width="50">
 							Enlace
 						</th>
 						<!-- <th style="max-width:50px;" valign="top" width="50">
