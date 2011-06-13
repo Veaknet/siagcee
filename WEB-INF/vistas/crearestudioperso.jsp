@@ -527,7 +527,7 @@ $(document).ready(function(){
 											<option value="min( )">M&iacute;nimo valor de un dato</option>
 											<option value="redondea( )">Redondea un valor</option>
 										<optgroup label="Funciones Utilitarias">
-											<option value="diff_fechas( , )">Calcula diferencia entre fechas en años</option>
+											<option value="diff_fechas( , )">Calcula diferencia entre fechas en a&ntilde;os</option>
 										</optgroup>
 										</optgroup>
 									</select>
