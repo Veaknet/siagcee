@@ -62,8 +62,8 @@
     </fileset>
   </path>
 
-  <path id="library.resin.classpath">
-    <fileset dir="/usr/local/resin/lib">
+  <path id="library.tomcat.classpath">
+    <fileset dir="/usr/local/tomcat/lib">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
@@ -88,26 +88,26 @@
 
   <path id="web-inf.module.production.classpath">
     <path refid="library.apache.classpath"/>
-    <path refid="library.resin.classpath"/>
+    <path refid="library.tomcat.classpath"/>
   </path>
 
   <path id="web-inf.runtime.production.module.classpath">
     <pathelement location="${web-inf.output.dir}"/>
     <path refid="library.apache.classpath"/>
-    <path refid="library.resin.classpath"/>
+    <path refid="library.tomcat.classpath"/>
   </path>
 
   <path id="web-inf.module.classpath">
     <pathelement location="${web-inf.output.dir}"/>
     <path refid="library.apache.classpath"/>
-    <path refid="library.resin.classpath"/>
+    <path refid="library.tomcat.classpath"/>
   </path>
 
   <path id="web-inf.runtime.module.classpath">
     <pathelement location="${web-inf.testoutput.dir}"/>
     <pathelement location="${web-inf.output.dir}"/>
     <path refid="library.apache.classpath"/>
-    <path refid="library.resin.classpath"/>
+    <path refid="library.tomcat.classpath"/>
   </path>
 
 

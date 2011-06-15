@@ -81,7 +81,7 @@ public class AdministrarObjetos extends HttpServlet{
 					}
 
 					Vector _preguntasComunes = Pregunta.todasPreguntas(admin, micon, true, false);
-					Vector _misPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionado);
+					Vector _misPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionado, true);
 
 					//solo me interesa el objeto a trabajar y sus preguntas asociadas
 					//el restante de objetos disponibles no serán de importancia para adminobjetos2

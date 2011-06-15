@@ -24,7 +24,7 @@ import java.util.Vector;
  */
 
 public class AdministrarObjetos2 extends HttpServlet{
-	                                                                                       
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		request.setCharacterEncoding("UTF8");
 		HttpSession sesion = request.getSession();
@@ -59,7 +59,7 @@ public class AdministrarObjetos2 extends HttpServlet{
 							Objeto _miTemp = _objetoSeleccionado.setTipo(Integer.parseInt((String)request.getParameter("tipoobjeto")));
 							if(_miTemp != null){
 								_objetoSeleccionado = _miTemp;
-								if((_objetoSeleccionado.getClass().toString().contains("Censo")) && (_objetoSeleccionado.retornaPreguntaClave() == null)){
+								if((_objetoSeleccionado.getClass().toString().contains("Censo")) && (_objetoSeleccionado.retornaPreguntaClave(true) == null)){
 									Vector _preg = _objetoSeleccionado.getPreguntas();
 									if(!_preg.isEmpty()){
 										((InstanciaPregunta)_preg.firstElement()).setCampo_clave_unico(true);
@@ -135,7 +135,7 @@ public class AdministrarObjetos2 extends HttpServlet{
 						//ahora indico si la pregunta es de tipo clave, o demás
 						InstanciaPregunta _temporalPreg = null;
 						if(request.getParameter("campo_clave") != null){
-							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaClave();
+							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaClave(true);
 							if(_temporalPreg != null){
 								_temporalPreg.setCampo_clave_unico(false);
 							}
@@ -144,7 +144,7 @@ public class AdministrarObjetos2 extends HttpServlet{
 							_nuevaInstancia.setCampo_clave_unico(false);
 						}
 						if(request.getParameter("campo_email") != null){
-							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaComunicacionEmail();
+							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaComunicacionEmail(true);
 							if(_temporalPreg != null){
 								_temporalPreg.setCampo_comunicacion_email(false);
 							}
@@ -154,21 +154,21 @@ public class AdministrarObjetos2 extends HttpServlet{
 						}
 						if(request.getParameter("campo_identificador") != null){
 							_nuevaInstancia.setCampo_identificador(true);
-							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaIdentificador();
+							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaIdentificador(true);
 							_temporalPreg.setCampo_identificador(false);
 						}else{
 							_nuevaInstancia.setCampo_identificador(false);
 						}
 						if(request.getParameter("campo_telefono") != null){
 							_nuevaInstancia.setCampo_comunicacion_telefono(true);
-							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaComunicacionTelefono();
+							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaComunicacionTelefono(true);
 							_temporalPreg.setCampo_comunicacion_telefono(false);
 						}else{
 							_nuevaInstancia.setCampo_comunicacion_telefono(false);
 						}
 						if(request.getParameter("campo_telefono2") != null){
 							_nuevaInstancia.setCampo_comunicacion_telefono2(true);
-							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaComunicacionTelefono2();
+							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaComunicacionTelefono2(true);
 							_temporalPreg.setCampo_comunicacion_telefono2(false);
 						}else{
 							_nuevaInstancia.setCampo_comunicacion_telefono2(false);
@@ -177,7 +177,7 @@ public class AdministrarObjetos2 extends HttpServlet{
 
 
 					Vector _preguntasComunes = Pregunta.todasPreguntas(admin, micon, true, false);
-					Vector _misPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionado);
+					Vector _misPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionado, true);
 
 					request.setAttribute("listadoPreguntas", _misPreguntas);
 					request.setAttribute("listadoPreguntasComunes", _preguntasComunes);
@@ -280,11 +280,11 @@ public class AdministrarObjetos2 extends HttpServlet{
 								_nuevaInstancia.delPregunta();
 							}
 						}
-						
+
 						//no hay accion solo se muestra el objetoSeleccionado
 						_objetoSeleccionado = Objeto.retornaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoseleccionado")));
 						Vector _preguntasComunes = Pregunta.todasPreguntas(admin, micon, true, false);
-						Vector _misPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionado);
+						Vector _misPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionado, true);
 
 						request.setAttribute("listadoPreguntas", _misPreguntas);
 						request.setAttribute("listadoPreguntasComunes", _preguntasComunes);

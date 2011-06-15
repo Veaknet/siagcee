@@ -41,7 +41,7 @@ public class AdministrarObjetos3 extends HttpServlet{
 					if(request.getParameter("objetoseleccionadoexterno") != null){
 						Objeto _objetoSeleccionadoExterno = Objeto.retornaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoseleccionadoexterno")));
 						request.setAttribute("objetoexterno", _objetoSeleccionadoExterno);
-						Vector _preguntasExternas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionadoExterno);
+						Vector _preguntasExternas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionadoExterno, true);
 						request.setAttribute("listadoPreguntasExternas", _preguntasExternas);
 					}
 
@@ -52,7 +52,7 @@ public class AdministrarObjetos3 extends HttpServlet{
 					request.setAttribute("objetosexternos", _objetosExternos);
 
 					RequestDispatcher view;
-					
+
 					if(request.getParameter("accion") != null){
 						if(((String)request.getParameter("accion")).equals("agregarPreguntas")){
 							//agrego las preguntas
@@ -70,7 +70,7 @@ public class AdministrarObjetos3 extends HttpServlet{
 							}
 						}
 						Vector _preguntasComunes = Pregunta.todasPreguntas(admin, micon, true, false);
-						Vector _misPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionado);
+						Vector _misPreguntas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionado, true);
 						request.setAttribute("listadoPreguntas", _misPreguntas);
 						request.setAttribute("listadoPreguntasComunes", _preguntasComunes);
 
@@ -111,7 +111,7 @@ public class AdministrarObjetos3 extends HttpServlet{
 					if(request.getParameter("objetoseleccionadoexterno") != null){
 						Objeto _objetoSeleccionadoExterno = Objeto.retornaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoseleccionadoexterno")));
 						request.setAttribute("objetoexterno", _objetoSeleccionadoExterno);
-						Vector _preguntasExternas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionadoExterno);
+						Vector _preguntasExternas = InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _objetoSeleccionadoExterno, true);
 						request.setAttribute("listadoPreguntasExternas", _preguntasExternas);
 					}
 

@@ -171,7 +171,7 @@ public class ImplementObjeto extends HttpServlet{
 							//agrego todas las preguntas a editables
 							InstanciaObjeto _obj = _miIns;
 							request.setAttribute("objetoatrabajar", _obj);
-							request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _obj.getObjetoAsociado()));
+							request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(admin, micon, _obj.getObjetoAsociado(), true));
 							request.setAttribute("preguntasEditables",PreguntaEditable.retornaTodasEditables(admin, micon, _obj));
 							view = request.getRequestDispatcher("WEB-INF/vistas/seteditables.jsp");
 						}

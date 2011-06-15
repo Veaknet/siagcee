@@ -106,7 +106,7 @@ function compruebaEnlace(elem){
 	if(elem){
 		if(elem.value != "" || elem.disabled){
 			if(!elem.value.match(/^[a-zA-Z0-9]{6,}$/)){
-				alert("Debe usar letras y números sin caracteres especiales ni espacios en blanco. Mínimo 6 caracteres.");
+				alert("Debe usar letras y numeros sin caracteres especiales ni espacios en blanco. Minimo 6 caracteres.");
 				elem.focus();
 				elem.style.backgroundColor = 'yellow';
 				elem.onkeyup = function(){
@@ -127,7 +127,7 @@ function compruebaEnlace(elem){
 			}
 			return true;
 		}else{
-			return confirm("No ha indicado un nombre de enlace para el instrumento. Se proporcionará uno automaticamente. Desea continuar?.");
+			return confirm("No ha indicado un nombre de enlace para el instrumento. Se proporcionara uno automaticamente. Desea continuar?.");
 		}
 	}
 	return false;

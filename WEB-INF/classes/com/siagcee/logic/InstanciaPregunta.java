@@ -13,6 +13,7 @@ package com.siagcee.logic;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Enumeration;
 import java.util.Vector;
 
 public class InstanciaPregunta extends ObjetoBase{
@@ -184,7 +185,15 @@ public class InstanciaPregunta extends ObjetoBase{
 		return campo_clave_unico;
 	}
 
-	public void setCampo_clave_unico(boolean _campo_clave_unico) {
+	public void setCampo_clave_unico(boolean _campo_clave_unico){
+		if(_campo_clave_unico){
+			//todos los demas en false
+			Enumeration _ee = this.getPadre().getPreguntas(true).elements();
+			while(_ee.hasMoreElements()){
+				InstanciaPregunta nuevaInstaPre = (InstanciaPregunta)_ee.nextElement();
+				nuevaInstaPre.setCampo_clave_unico(false);
+			}
+		}
 		this.campo_clave_unico = _campo_clave_unico;
 		this.ingresaABd();
 	}
@@ -194,6 +203,14 @@ public class InstanciaPregunta extends ObjetoBase{
 	}
 
 	public void setCampo_identificador(boolean _campo_identificador) {
+		if(_campo_identificador){
+			//todos los demas en false
+			Enumeration _ee = this.getPadre().getPreguntas(true).elements();
+			while(_ee.hasMoreElements()){
+				InstanciaPregunta nuevaInstaPre = (InstanciaPregunta)_ee.nextElement();
+				nuevaInstaPre.setCampo_identificador(false);
+			}
+		}
 		this.campo_identificador = _campo_identificador;
 		this.ingresaABd();
 	}
@@ -205,6 +222,12 @@ public class InstanciaPregunta extends ObjetoBase{
 	public void setCampo_comunicacion_email(boolean _campo_comunicacion_email) {
 		this.campo_comunicacion_email = _campo_comunicacion_email;
 		if(_campo_comunicacion_email){
+			//todos los demas en false
+			Enumeration _ee = this.getPadre().getPreguntas(true).elements();
+			while(_ee.hasMoreElements()){
+				InstanciaPregunta nuevaInstaPre = (InstanciaPregunta)_ee.nextElement();
+				nuevaInstaPre.setCampo_comunicacion_email(false);
+			}
 			this.setCampo_comunicacion_telefono(false);
 			this.setCampo_comunicacion_telefono2(false);
 		}
