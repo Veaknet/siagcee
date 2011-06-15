@@ -224,7 +224,7 @@ public class RespuestasPosibles extends ObjetoBase{
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			System.out.println(pstmt.toString());
 		}
 	}

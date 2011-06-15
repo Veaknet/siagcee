@@ -973,10 +973,10 @@ $(document).ready(function(){
 									<li class="headlink">
 										<a id='link_estudios' href="#" title="Cree, modifique y elimine estudios asociados a un censos, encuestas o colecci&oacute;nes de datos" onmouseover="this.focus();">Estudios</a>
 										<ul style="display: none;">
-											<!-- <li class="childlink"><a href="estudios.do?opcionbase=crear"><img src="comunes/imagenes/file-add.png" height="18" title="Crear estudio">&nbsp;Crear</a></li>
-											<li class="childlink"><a href="estudios.do?opcionbase=modificar"><img src="comunes/imagenes/file-edit.png" height="18" title="Modificar estudio">&nbsp;Modificar</a></li>
-											<li class="childlink"><a href="estudios.do?opcionbase=eliminar"><img src="comunes/imagenes/file-delete.png" height="18" title="Eliminar estudio">&nbsp;Eliminar</a></li>  //-->
+											<li class="childlink"><a href="estudios.do?opcionbase=crear"><img src="comunes/imagenes/file-add.png" height="18" title="Crear estudio">&nbsp;Crear</a></li>
 											<li class="childlink"><a href="admininsobj.do?opcionbase=todos&soloaplicar=true"><img src="comunes/imagenes/file-check.png" height="18" title="Aplicar estudio">&nbsp;Aplicar</a></li>
+											<li class="childlink"><a href="estudios.do?opcionbase=modificar"><img src="comunes/imagenes/file-edit.png" height="18" title="Modificar estudio">&nbsp;Modificar</a></li>
+											<li class="childlink"><a href="estudios.do?opcionbase=eliminar"><img src="comunes/imagenes/file-delete.png" height="18" title="Eliminar estudio">&nbsp;Eliminar</a></li>
 										</ul>
 									</li>
 									<li class="headlink">

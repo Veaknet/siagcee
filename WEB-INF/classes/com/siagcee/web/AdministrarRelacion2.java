@@ -113,7 +113,7 @@ public class AdministrarRelacion2 extends HttpServlet {
 				view.forward(request, response);
 			}catch(Exception e){
 				//error voy a pantalla principal
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}
@@ -135,7 +135,7 @@ public class AdministrarRelacion2 extends HttpServlet {
 
 			}catch(Exception e){
 				//error voy a pantalla principal
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}

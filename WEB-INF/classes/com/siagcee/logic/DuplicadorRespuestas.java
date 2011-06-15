@@ -207,7 +207,7 @@ public class DuplicadorRespuestas extends ObjetoBase{
 			}
 			pstmt.execute();
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return DuplicadorRespuestas.ERROR_NO_ESPECIFICADO;
 		}
 		return DuplicadorRespuestas.CORRECTO;
@@ -325,7 +325,7 @@ public class DuplicadorRespuestas extends ObjetoBase{
 							____pstmt.execute();
 						}
 					}
-				}               				
+				}
 			}else{
 				//crea a todos los usuarios
 				pstmt = this.getConexion().prepareStatement("SELECT * FROM usuarios WHERE id_poblacion = ? AND id_usuarios IN (SELECT elaborado_por as id_usuarios FROM respuestas_temp WHERE id_instancia_objetos = ?)");
@@ -390,7 +390,7 @@ public class DuplicadorRespuestas extends ObjetoBase{
 			}catch (Exception e){
 			}
 		}catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return DuplicadorRespuestas.ERROR_NO_ESPECIFICADO;
 		}
 		return DuplicadorRespuestas.CORRECTO;
@@ -404,7 +404,7 @@ public class DuplicadorRespuestas extends ObjetoBase{
 			pstmt.setInt(1, this.getObjetoDestino().getId());
 			pstmt.execute();
 		}catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return DuplicadorRespuestas.ERROR_NO_ESPECIFICADO;
 		}
 		return DuplicadorRespuestas.CORRECTO;
@@ -450,7 +450,7 @@ public class DuplicadorRespuestas extends ObjetoBase{
 			pstmt.setInt(1, this.getObjetoDestino().getId());
 			pstmt.execute();
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return DuplicadorRespuestas.ERROR_NO_ESPECIFICADO;
 		}
 		return DuplicadorRespuestas.CORRECTO;
@@ -468,7 +468,7 @@ public class DuplicadorRespuestas extends ObjetoBase{
 			pstmt.setInt(1, this.getObjetoDestino().getId());
 			pstmt.execute();
 		}catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return DuplicadorRespuestas.ERROR_NO_ESPECIFICADO;
 		}
 		return DuplicadorRespuestas.CORRECTO;

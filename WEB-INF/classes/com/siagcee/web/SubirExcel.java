@@ -113,11 +113,11 @@ public class SubirExcel extends HttpServlet {
                 }catch(FileUploadException ex){
                     request.setAttribute("mensaje", "<span style='color:red'>Error cargando el archivo.</span>");
                     view = request.getRequestDispatcher("WEB-INF/vistas/cargaexcel.jsp");
-                    ex.printStackTrace();
+                    //ex.printStackTrace();
                 } catch(Exception ex) {
                     request.setAttribute("mensaje", "<span style='color:red'>Error cargando el archivo</span>");
                     view = request.getRequestDispatcher("WEB-INF/vistas/cargaexcel.jsp");
-                    ex.printStackTrace();
+                    //ex.printStackTrace();
                 }
 
                 //finalmente lo borro si se puede
@@ -126,13 +126,13 @@ public class SubirExcel extends HttpServlet {
                         file.delete();
                     }
                 }catch (Exception bor){
-                    bor.printStackTrace();
+                    //bor.printStackTrace();
                 }
 
                 request.setAttribute("loaded", true);
 
             }catch(Exception e){
-                e.printStackTrace();
+                //e.printStackTrace();
                 request.setAttribute("mensaje", "<span style='color:red'>Error cargando el archivo...</span>");
                 view = request.getRequestDispatcher("WEB-INF/vistas/cargaexcel.jsp");
             }finally {

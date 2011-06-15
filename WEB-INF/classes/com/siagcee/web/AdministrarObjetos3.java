@@ -130,7 +130,7 @@ public class AdministrarObjetos3 extends HttpServlet{
 				}
 			}catch(Exception e){
 				//error voy a pantalla principal de objetos
-				e.printStackTrace();
+				//e.printStackTrace();
 				RequestDispatcher view = request.getRequestDispatcher("adminobjetos.do");
 				view.forward(request, response);
 			}

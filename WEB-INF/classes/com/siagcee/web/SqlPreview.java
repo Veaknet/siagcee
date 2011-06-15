@@ -124,7 +124,7 @@ public class SqlPreview extends HttpServlet{
 				}
 
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 			}finally {
                 view.forward(request, response);
@@ -149,7 +149,7 @@ public class SqlPreview extends HttpServlet{
 			try{
 				view.forward(request, response);
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}

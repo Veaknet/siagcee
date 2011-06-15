@@ -40,7 +40,9 @@ public class GeneradorSQL extends HttpServlet{
 			try{
 				sesion.setAttribute("generadorSql_cancelarAndGoTo", (String)sesion.getAttribute("generadorSql_cancelarAndGoTo"));
 				sesion.setAttribute("generadorSql_finalizarAndGoTo", (String)sesion.getAttribute("generadorSql_finalizarAndGoTo"));
-			}catch(Exception e){e.printStackTrace();}
+			}catch(Exception e){
+				//e.printStackTrace();
+			}
 
 			try{
 
@@ -93,7 +95,7 @@ public class GeneradorSQL extends HttpServlet{
 				view.forward(request, response);
 
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}
@@ -113,7 +115,9 @@ public class GeneradorSQL extends HttpServlet{
 			try{
 				sesion.setAttribute("generadorSql_cancelarAndGoTo", (String)sesion.getAttribute("generadorSql_cancelarAndGoTo"));
 				sesion.setAttribute("generadorSql_finalizarAndGoTo", (String)sesion.getAttribute("generadorSql_finalizarAndGoTo"));
-			}catch(Exception e){e.printStackTrace();}
+			}catch(Exception e){
+				//e.printStackTrace();
+			}
 
 			try{
 				if(request.getParameter("accion") != null){
@@ -132,7 +136,7 @@ public class GeneradorSQL extends HttpServlet{
 				RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/generadorsql.jsp");
 				view.forward(request, response);
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0);
 				request.setAttribute("objetosInstanciados", _instanciados);
 				RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/generadorsql.jsp");
@@ -250,7 +254,9 @@ public class GeneradorSQL extends HttpServlet{
 				_temporal = (String)request.getParameter("parentesiscerradoinput_"+i);
 				_sqltmp.append(" " + _temporal+ " ");
 
-			}catch(Exception e){e.printStackTrace();}
+			}catch(Exception e){
+				//e.printStackTrace();
+			}
 			_sqlFinal.append(_sqltmp);
 
 

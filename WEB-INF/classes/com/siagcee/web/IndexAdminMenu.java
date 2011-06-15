@@ -89,12 +89,12 @@ public class IndexAdminMenu extends HttpServlet{
 				view.forward(request, response);
 			}
 		}catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			//no se pudieron mostrar las preguntas editables. entonces no se muestra nada
 			request.setAttribute("mensaje", "Error procesando la solicitud.");
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/adminindex.jsp");
 			view.forward(request, response);
 		}
 	}
-	
+
 }

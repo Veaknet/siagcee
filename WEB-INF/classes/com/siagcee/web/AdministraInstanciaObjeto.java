@@ -47,7 +47,7 @@ public class AdministraInstanciaObjeto extends HttpServlet {
 				}
 
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				//error voy a pantalla principal
 				RequestDispatcher view = request.getRequestDispatcher("admininsobj.do");
 				view.forward(request, response);
@@ -149,7 +149,7 @@ public class AdministraInstanciaObjeto extends HttpServlet {
 						try{
 							eliminados = (String)request.getParameter("opcionbase");
 						}catch(Exception ee){
-							ee.printStackTrace();
+							//ee.printStackTrace();
 							eliminados = "ninguno";
 						}
 
@@ -174,7 +174,7 @@ public class AdministraInstanciaObjeto extends HttpServlet {
 
 				view.forward(request, response);
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				//error voy a pantalla principal
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);

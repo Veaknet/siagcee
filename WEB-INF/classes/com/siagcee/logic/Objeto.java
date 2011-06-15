@@ -181,7 +181,7 @@ public class Objeto extends ObjetoBase{
 				this.setCargadaDeBD(false);
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 	}

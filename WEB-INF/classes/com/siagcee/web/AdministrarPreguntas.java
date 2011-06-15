@@ -30,7 +30,7 @@ public class AdministrarPreguntas extends HttpServlet {
 		Connection micon = (Connection) getServletContext().getAttribute("conexion");
 		Administrador admin = (Administrador) sesion.getAttribute("administrador");
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/adminpreguntas.jsp");
-		
+
 		if(admin != null){
 			try {
 				//cargo todas las preguntas editables
@@ -94,7 +94,7 @@ public class AdministrarPreguntas extends HttpServlet {
 						_preguntaATrabajar.setPublico(_miVisible);
 
 						request.setAttribute("preguntaatrabajar", _preguntaATrabajar);
-						
+
 						_preguntas = Pregunta.todasPreguntas(admin, micon, 1, false, true);
 						request.setAttribute("preguntas", _preguntas);
 						if(!_preguntaATrabajar.getCargadaDeBD()){
@@ -195,7 +195,7 @@ public class AdministrarPreguntas extends HttpServlet {
 				view.forward(request, response);
 			}
 		}catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			//no se pudieron mostrar las preguntas editables. entonces no se muestra nada
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/adminpreguntas.jsp");
 			view.forward(request, response);

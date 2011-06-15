@@ -179,7 +179,7 @@ public class CrearEstudioPerso extends HttpServlet{
 				view.forward(request, response);
 			}catch(Exception e){
 				//error voy a pantalla principal de objetos
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("adminobjetos.do");
 				view.forward(request, response);
 			}
@@ -224,7 +224,7 @@ public class CrearEstudioPerso extends HttpServlet{
 				view.forward(request, response);
 			}catch(Exception e){
 				//error voy a pantalla principal de objetos
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}

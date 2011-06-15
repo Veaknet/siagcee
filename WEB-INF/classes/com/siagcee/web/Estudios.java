@@ -58,7 +58,7 @@ public class Estudios extends HttpServlet {
 			}catch(Exception e){
 				//si algun error ocurrio ubicando las respuestas
 				//entonces intento mostrar solo las preguntas.
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 			}
 		}else{
@@ -89,7 +89,7 @@ public class Estudios extends HttpServlet {
 			}catch(Exception e) {
 				//si algun error ocurrio ubicando las respuestas
 				//entonces intento mostrar solo las preguntas.
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 			}
 			view.forward(request, response);

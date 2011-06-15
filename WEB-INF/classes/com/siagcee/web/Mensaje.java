@@ -49,7 +49,7 @@ public class Mensaje extends HttpServlet {
 					if(sesion.getAttribute("titulo") != null){
 						_titulo = (String)sesion.getAttribute("titulo");
 					}
-					
+
 					int _id_pregunta_email = -1;
 					if(request.getAttribute("generadorSql_campoEmail") != null){
 						_id_pregunta_email = (Integer)request.getAttribute("generadorSql_campoEmail");
@@ -72,7 +72,9 @@ public class Mensaje extends HttpServlet {
 								break;
 							}
 						}
-					}catch (Exception eee){eee.printStackTrace();}
+					}catch (Exception eee){
+						//eee.printStackTrace();
+					}
 
 					//despues de procesar limpio la sesion
 					sesion.setAttribute("generadorSql_cancelarAndGoTo", "");
@@ -151,7 +153,7 @@ public class Mensaje extends HttpServlet {
 				view.forward(request, response);
 			}catch (Exception e){
 				//sesion no iniciada
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}
@@ -171,7 +173,7 @@ public class Mensaje extends HttpServlet {
 			try {
 				view.forward(request, response);
 			}catch (Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}

@@ -15,8 +15,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
-public class AccesosEncuestados extends ObjetoBase{ 
-	
+public class AccesosEncuestados extends ObjetoBase{
+
 	private int idInterno;
 	private Encuestado miEncuestado;
 	private InstanciaObjeto miObjeto;
@@ -28,7 +28,7 @@ public class AccesosEncuestados extends ObjetoBase{
 		miObjeto = null;
 		this.cargadaDeBD = false;
 	}
-	
+
 	public AccesosEncuestados(Usuario _usuario, Connection _miConexion){
 		super(_usuario, _miConexion);
 		idInterno = -1;
@@ -62,7 +62,7 @@ public class AccesosEncuestados extends ObjetoBase{
 		miObjeto = _miIns;
 		this.cargadaDeBD = false;
 	}
-	
+
 	public AccesosEncuestados(Connection _miConexion, Encuestado _miEnc, InstanciaObjeto _miIns){
 		super();
 		this.setConexion(_miConexion);
@@ -110,7 +110,7 @@ public class AccesosEncuestados extends ObjetoBase{
 				return true;
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return false;
 		}
 	}
@@ -135,7 +135,9 @@ public class AccesosEncuestados extends ObjetoBase{
 					this.setCargadaDeBD(false);
 				}
 			}
-			catch (Exception e) {e.printStackTrace();}
+			catch (Exception e) {
+				//e.printStackTrace();
+			}
 		}else{
 			if(this.getEncuestado() != null && this.getObjetoAsociado() != null){
 				try{
@@ -155,7 +157,9 @@ public class AccesosEncuestados extends ObjetoBase{
 						this.setCargadaDeBD(false);
 					}
 				}
-				catch (Exception e) {e.printStackTrace();}
+				catch (Exception e) {
+					//e.printStackTrace();
+				}
 			}else{
 				this.setCargadaDeBD(false);
 			}
@@ -172,7 +176,9 @@ public class AccesosEncuestados extends ObjetoBase{
 			this.cargadaDeBD = false;
 			this.miObjeto = null;
 			this.miEncuestado = null;
-		}catch(Exception e){e.printStackTrace();}
+		}catch(Exception e){
+			//e.printStackTrace();
+		}
 	}
 
 	//eliminar completamente este acceso de la BD
@@ -181,7 +187,9 @@ public class AccesosEncuestados extends ObjetoBase{
 			PreparedStatement pstmt = _micon.prepareStatement("DELETE FROM accesos_encuestados WHERE id_instancia_objetos = ?");
 			pstmt.setInt(1, _obj.getId());
 			pstmt.execute();
-		}catch(Exception e){e.printStackTrace();}
+		}catch(Exception e){
+			//e.printStackTrace();
+		}
 	}
 
 	//inserta en la BD la nueva condicion de acceso a objetos
@@ -200,7 +208,10 @@ public class AccesosEncuestados extends ObjetoBase{
 				}else{
 					return null;
 				}
-			}catch(Exception e){e.printStackTrace(); return null;}
+			}catch(Exception e){
+				//e.printStackTrace();
+				return null;
+			}
 		}
 		return null;
 	}
@@ -250,7 +261,7 @@ public class AccesosEncuestados extends ObjetoBase{
 									break;
 								}
 							}catch (Exception eee){
-								eee.printStackTrace();
+								//eee.printStackTrace();
 							}
 						}
 					}else{
@@ -262,7 +273,7 @@ public class AccesosEncuestados extends ObjetoBase{
                             try{
                                 Respuesta _re = new Respuesta(new Encuestado(_micon, rs.getInt("elaborado_por")), _micon, rs2.getInt("id_respuestas"));
                             }catch (Exception eee){
-                                eee.printStackTrace();
+                               // eee.printStackTrace();
                             }
                         }
                     }
@@ -270,7 +281,7 @@ public class AccesosEncuestados extends ObjetoBase{
 				}
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 				return new Vector();
 			}
 		}
@@ -300,7 +311,7 @@ public class AccesosEncuestados extends ObjetoBase{
 				//no hay nada
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return new Vector();
 		}
 		return _miVector;

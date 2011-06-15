@@ -311,8 +311,9 @@ public class Respuesta extends ObjetoBase{
 				this.respuestaDada = null;
 				this.cargadaDeBD = false;
 			}
+		}catch (Exception e) {
+			//e.printStackTrace();
 		}
-		catch (Exception e) {e.printStackTrace();}
 	}
 
 	public void ingresaABd(){
@@ -375,8 +376,9 @@ public class Respuesta extends ObjetoBase{
 						this.setCargadaDeBD(true);
 						this.setId(siguiente);
 					}
+				}catch (Exception e) {
+					//e.printStackTrace();
 				}
-				catch (Exception e) {e.printStackTrace();}
 			}
 		}
 	}
@@ -395,8 +397,9 @@ public class Respuesta extends ObjetoBase{
 					pstmt.setInt(2, _insPreg.getId());
 					pstmt.setInt(3, _user.getUsuarioId());
 					pstmt.execute();
+				}catch (Exception e){
+					//e.printStackTrace();
 				}
-				catch (Exception e){e.printStackTrace();}
 			}
 		}
 	}
@@ -407,8 +410,9 @@ public class Respuesta extends ObjetoBase{
             pstmt.setInt(1, _insObj.getId());
             pstmt.setInt(2, _user.getUsuarioId());
             pstmt.execute();
-        }
-        catch (Exception e){e.printStackTrace();}
+        }catch (Exception e){
+			//e.printStackTrace();
+		}
     }
 
 	//eliminar completamente este acceso de la BD
@@ -417,7 +421,9 @@ public class Respuesta extends ObjetoBase{
 			PreparedStatement pstmt = _micon.prepareStatement("DELETE FROM respuestas WHERE id_instancia_objetos = ?");
 			pstmt.setInt(1, _obj.getId());
 			pstmt.execute();
-		}catch(Exception e){e.printStackTrace();}
+		}catch(Exception e){
+			//e.printStackTrace();
+		}
 	}
 
 	//eliminar completamente este acceso de la BD
@@ -427,7 +433,9 @@ public class Respuesta extends ObjetoBase{
 			pstmt.setInt(1, _obj.getId());
 			pstmt.setInt(2, _insPregunta.getId());
 			pstmt.execute();
-		}catch(Exception e){e.printStackTrace();}
+		}catch(Exception e){
+			//e.printStackTrace();
+		}
 	}
 
 	//limpia la BD de todas las respuestas del usuario, instancia_objeto e instancia_pregunta asociado a esta respuesta
@@ -445,7 +453,9 @@ public class Respuesta extends ObjetoBase{
 					pstmt.setInt(3, this.getUsuario().getUsuarioId());
 					pstmt.execute();
 				}
-				catch (Exception e){e.printStackTrace();}
+				catch (Exception e){
+					//e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -466,7 +476,9 @@ public class Respuesta extends ObjetoBase{
 			this.respuestaDada = null;
 			this.setCargadaDeBD(false);
 		}
-		catch (Exception e){e.printStackTrace();}
+		catch (Exception e){
+			//e.printStackTrace();
+		}
 	}
 
 	//retorna todas las respuestas
@@ -499,7 +511,7 @@ public class Respuesta extends ObjetoBase{
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return new Vector();
 		}
 		return _lista;
@@ -549,7 +561,7 @@ public class Respuesta extends ObjetoBase{
 			}
 			rs = pstmt.executeQuery();
 		}catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return null;
 		}
 		return rs;

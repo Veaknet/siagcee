@@ -105,7 +105,9 @@ public class Encuestado extends Usuario{
 				this.clave = _campoClave;
 			}
 		}
-		catch (Exception e) {e.printStackTrace();}
+		catch (Exception e) {
+			//e.printStackTrace();
+		}
 	}
 
 	public boolean iniciarSesion(String _idPoblacion, String _campoClave){
@@ -125,7 +127,7 @@ public class Encuestado extends Usuario{
 				return false;
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			this.validado = false;
 			return false;
 		}
@@ -146,7 +148,8 @@ public class Encuestado extends Usuario{
 				this.validado = false;
 				return false;
 			}
-		}catch(Exception e){e.printStackTrace();
+		}catch(Exception e){
+			//e.printStackTrace();
 			this.validado = false;
 			return false;
 		}
@@ -159,7 +162,7 @@ public class Encuestado extends Usuario{
 			pstmt.setInt(1, this.getUsuarioId());
 			pstmt.execute();
 		}catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
@@ -176,7 +179,7 @@ public class Encuestado extends Usuario{
 				return false;
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return false;
 		}
 	}

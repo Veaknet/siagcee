@@ -202,7 +202,7 @@ public class ImplementObjeto extends HttpServlet{
 				view.forward(request, response);
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 				Vector _objetos = Objeto.todosObjetos(admin, micon, 0, true, false);
 				Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon);
 
@@ -270,7 +270,7 @@ public class ImplementObjeto extends HttpServlet{
 				}
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}else{
 			//sesion no iniciada

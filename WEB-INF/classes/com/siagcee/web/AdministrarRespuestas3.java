@@ -120,7 +120,7 @@ public class AdministrarRespuestas3 extends HttpServlet{
 				}
 			}catch(Exception e){
 				//error voy a pantalla principal de objetos
-				e.printStackTrace();
+				//e.printStackTrace();
 				RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/adminrespuestas.do");
 				view.forward(request, response);
 			}

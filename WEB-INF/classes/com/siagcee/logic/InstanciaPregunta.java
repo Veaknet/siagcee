@@ -360,7 +360,7 @@ public class InstanciaPregunta extends ObjetoBase{
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return false;
 		}
 		return false;
@@ -438,7 +438,7 @@ public class InstanciaPregunta extends ObjetoBase{
 					this.setId(siguiente);
 				}
 			}catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 	}
@@ -465,7 +465,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				this.campo_comunicacion_telefono2 = false;
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 	}
@@ -521,7 +521,7 @@ public class InstanciaPregunta extends ObjetoBase{
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 

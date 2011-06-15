@@ -97,7 +97,7 @@ public class UtilidadesVarias {
                 }
 			}
 		}catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
@@ -261,11 +261,11 @@ public class UtilidadesVarias {
 
         }catch (IOException ioe){
             System.out.println("Error creando el archivo de excel.");
-            ioe.printStackTrace();
+            //ioe.printStackTrace();
             _resul = false;
         }catch (Exception e){
             System.out.println("Error no especificado.");
-            e.printStackTrace();
+            //e.printStackTrace();
             _resul = false;
         }
         return _resul;
@@ -373,11 +373,11 @@ public class UtilidadesVarias {
 
         }catch (IOException ioe){
             System.out.println("Error creando el archivo pdf.");
-            ioe.printStackTrace();
+            //ioe.printStackTrace();
             _resul = false;
         }catch (Exception e){
             System.out.println("Error no especificado.");
-            e.printStackTrace();
+            //e.printStackTrace();
             _resul = false;
         }
         return _resul;
@@ -485,7 +485,7 @@ public class UtilidadesVarias {
 
         }catch (Exception e){
             System.out.println("Error no especificado.");
-            e.printStackTrace();
+            //e.printStackTrace();
             _resul = false;
         }
         return _resul;
@@ -517,7 +517,7 @@ public class UtilidadesVarias {
                     Col++;
                     CantPreguntas++;
                 }catch(Exception ee1){
-					ee1.printStackTrace();
+					//ee1.printStackTrace();
                     Fil++;
                     Col = 0;
                     break;
@@ -553,7 +553,7 @@ public class UtilidadesVarias {
                         valor = celda.getContents();
                         _encu = new Encuestado(micon, String.valueOf(_obj.getId()), valor);
                     }catch(Exception ee3){
-						ee3.printStackTrace();
+						//ee3.printStackTrace();
                         _encu = new Encuestado(micon, String.valueOf(_obj.getId()), "");
                     }
                 }
@@ -564,7 +564,7 @@ public class UtilidadesVarias {
                         celda = sheet.getCell(col,Fil);
                         valor = celda.getContents();
                     }catch(Exception eee2){
-						eee2.printStackTrace();
+						//eee2.printStackTrace();
                         valor = "";
                     }
                     if(!(valor.trim().isEmpty() && valor.trim().equals(""))){
@@ -582,14 +582,14 @@ public class UtilidadesVarias {
 						try{
 							_resp.setRespuesta(Long.parseLong(valor));
 						}catch (Exception excp){
-							excp.printStackTrace();
+							//excp.printStackTrace();
 						}
                     }else if(_pregAct.getTipoPregunta() == 32){
                         if(valor.equals("")){ valor = "";}
 						try{
 							_resp.setRespuesta(Double.parseDouble(valor));
 						}catch (Exception excp){
-							excp.printStackTrace();
+							//excp.printStackTrace();
 						}
                     }else if(_pregAct.getTipoPregunta() == 33){
 						SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
@@ -612,7 +612,7 @@ public class UtilidadesVarias {
 									try {
 										today = df.parse(valor);
 									} catch (ParseException e41) {
-										e41.printStackTrace();
+										//e41.printStackTrace();
 									}
 								}
 							}
@@ -633,11 +633,11 @@ public class UtilidadesVarias {
 
         }catch (IOException ioe){
             System.out.println("Error creando el archivo de excel.");
-            ioe.printStackTrace();
+            //ioe.printStackTrace();
             _resul = false;
         }catch (Exception e){
             System.out.println("Error no especificado.");
-            e.printStackTrace();
+            //e.printStackTrace();
             _resul = false;
         }
         return _resul;

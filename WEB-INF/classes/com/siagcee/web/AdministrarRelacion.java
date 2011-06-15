@@ -207,7 +207,7 @@ public class AdministrarRelacion extends HttpServlet {
 							//error
 						}else{
 							//correcto
-							//Paso a respuestas y cierro 
+							//Paso a respuestas y cierro
 							if(_dP.cambiarPreguntaID() == DuplicadorRespuestas.CORRECTO){
 								//bien
 								_dP.deTempAProduccion();
@@ -375,7 +375,7 @@ public class AdministrarRelacion extends HttpServlet {
 
 			}catch(Exception e){
 				//error voy a pantalla principal de objetos
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}
@@ -407,10 +407,10 @@ public class AdministrarRelacion extends HttpServlet {
 				request.setAttribute("objetoseleccionado",((Relacion)_miRelacion));
 				request.setAttribute("instrumentoseleccionado",null);
 				view.forward(request, response);
-				
+
 			}catch(Exception e){
 				//error voy a pantalla principal de objetos
-				e.printStackTrace();
+				//e.printStackTrace();
 				request.setAttribute("mensaje","<span style='color:red'>Error procesando la solicitud</span>");
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);

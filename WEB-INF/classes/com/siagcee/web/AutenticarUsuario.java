@@ -79,7 +79,9 @@ public class AutenticarUsuario extends HttpServlet{
 								//seleccion simple
 								try{
 									miResp.setRespuesta(new RespuestasPosibles(_yo, micon, Integer.parseInt((String)request.getParameter("campo_clave"))));
-								}catch(Exception e){e.printStackTrace();}
+								}catch(Exception e){
+									//e.printStackTrace();
+								}
 							}else if(_miObjeto.getObjetoAsociado().retornaPreguntaClave(true).getTipoPregunta() == 2){
 								//seleccion multiple
 								String[] _listadoRespuestas = request.getParameterValues(request.getParameter("campo_clave"));
@@ -96,17 +98,23 @@ public class AutenticarUsuario extends HttpServlet{
 								//abierta texto
 								try{
 									miResp.setRespuesta((String)request.getParameter(request.getParameter("campo_clave")));
-								}catch(Exception e){e.printStackTrace();}
+								}catch(Exception e){
+									//e.printStackTrace();
+								}
 							}else if(_miObjeto.getObjetoAsociado().retornaPreguntaClave(true).getTipoPregunta() == 31){
 								//abierta int
 								try{
 									miResp.setRespuesta(Long.parseLong(request.getParameter("campo_clave")));
-								}catch(Exception e){e.printStackTrace();}
+								}catch(Exception e){
+									//e.printStackTrace();
+								}
 							}else if(_miObjeto.getObjetoAsociado().retornaPreguntaClave(true).getTipoPregunta() == 32){
 								//abierta Double
 								try{
 									miResp.setRespuesta(Double.parseDouble((String)request.getParameter(request.getParameter("campo_clave"))));
-								}catch(Exception e){e.printStackTrace();}
+								}catch(Exception e){
+									//e.printStackTrace();
+								}
 							}else if(_miObjeto.getObjetoAsociado().retornaPreguntaClave(true).getTipoPregunta() == 33){
 								//abierta date
 								try{
@@ -114,7 +122,9 @@ public class AutenticarUsuario extends HttpServlet{
 										SimpleDateFormat _temp = new SimpleDateFormat("yyyy-MM-dd");
 										miResp.setRespuesta(_temp.parse(request.getParameter("campo_clave")));
 									}
-								}catch(Exception e){e.printStackTrace();}
+								}catch(Exception e){
+									//e.printStackTrace();
+								}
 							}
 							view = request.getRequestDispatcher("WEB-INF/vistas/userobjetos.jsp");
 
@@ -142,7 +152,7 @@ public class AutenticarUsuario extends HttpServlet{
 				view.forward(request, response);
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			Vector _soloInsVector = InstanciaObjeto.todosObjetosInstanciados(null, micon, true, 1);
 			request.setAttribute("insVector", _soloInsVector);
 			request.setAttribute("InstanciaSeleccionadaPorId", null);

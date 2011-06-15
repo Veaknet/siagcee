@@ -63,7 +63,9 @@ public class EstructuraBase extends Objeto{
 				this.publico = true;
 				this.setCargadaDeBD(false);
 			}
-		}catch (Exception e) {e.printStackTrace();}
+		}catch (Exception e) {
+			//e.printStackTrace();
+		}
 	}
 
 	private void ingresaABd(){
@@ -96,7 +98,9 @@ public class EstructuraBase extends Objeto{
 					this.setId(siguiente);
 				}
 			}
-			catch (Exception e) {e.printStackTrace();}
+			catch (Exception e) {
+				//e.printStackTrace();
+			}
 		}
 	}
 
@@ -167,7 +171,7 @@ public class EstructuraBase extends Objeto{
 			}
 			rs = pstmt.executeQuery();
 		}catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return null;
 		}
 		return rs;

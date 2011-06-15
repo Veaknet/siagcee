@@ -22,7 +22,7 @@ public class Encuesta extends Objeto{
 	}
 
 	public Encuesta(Usuario _usuario, Connection _miConexion){
-		super(_usuario, _miConexion);		
+		super(_usuario, _miConexion);
 	}
 
 	public Encuesta(Usuario _usuario, Connection _miConexion, String _encuesta){
@@ -63,7 +63,9 @@ public class Encuesta extends Objeto{
 				this.publico = true;
 				this.setCargadaDeBD(false);
 			}
-		}catch (Exception e) {e.printStackTrace();}
+		}catch (Exception e) {
+			//e.printStackTrace();
+		}
 	}
 
 	private void ingresaABd(){
@@ -96,7 +98,9 @@ public class Encuesta extends Objeto{
 					this.setId(siguiente);
 				}
 			}
-			catch (Exception e) {e.printStackTrace();}
+			catch (Exception e) {
+				//e.printStackTrace();
+			}
 		}
 	}
 

@@ -138,21 +138,21 @@ public class EstudioPerso extends ObjetoBase{
 			SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 			_resultados.put(_usuarioCorriente, df.format(__resul));
 		}catch (Exception e1){
-			e1.printStackTrace();
+			//e1.printStackTrace();
 			try{
 				DecimalFormat df = new DecimalFormat("###################");
 				_resultados.put(_usuarioCorriente, df.format(Long.valueOf((String) __resul)));
 			}catch (Exception e12){
-				e12.printStackTrace();
+				//e12.printStackTrace();
 				try{
 					DecimalFormat df = new DecimalFormat("################.###############");
 					_resultados.put(_usuarioCorriente, df.format(Double.valueOf((String) __resul)));
 				}catch (Exception e13){
-					e13.printStackTrace();
+					//e13.printStackTrace();
 					try{
 						_resultados.put(_usuarioCorriente, (String) __resul);
 					}catch (Exception e14){
-						e14.printStackTrace();
+						//e14.printStackTrace();
 					}
 				}
 			}
@@ -268,13 +268,13 @@ public class EstudioPerso extends ObjetoBase{
 				}
 			}catch (Exception e) {
 				this.addError("Error iniciando ejecucion de estudio");
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 
 		}catch(RecognitionException gramEx){
-			gramEx.printStackTrace();
+			//gramEx.printStackTrace();
 		}catch (Exception gramEx){
-			gramEx.printStackTrace();
+			//gramEx.printStackTrace();
 		}
 	}
 
@@ -310,7 +310,7 @@ public class EstudioPerso extends ObjetoBase{
 					this.set_id(siguiente);
 				}
 			}catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 	}
@@ -339,7 +339,7 @@ public class EstudioPerso extends ObjetoBase{
 			}
 		}
 		catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
@@ -368,7 +368,7 @@ public class EstudioPerso extends ObjetoBase{
 				}
 			}
 			catch (Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 		return _misEstudios;
@@ -392,7 +392,7 @@ public class EstudioPerso extends ObjetoBase{
 			}
 			pstmt.execute();
 		}catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
@@ -410,7 +410,7 @@ public class EstudioPerso extends ObjetoBase{
 			}
 			resetInstance();
 		}catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
@@ -608,7 +608,7 @@ public class EstudioPerso extends ObjetoBase{
 			resul = (_bDate.getTime() - _aDate.getTime()) / (MILLIS_PER_YEAR);
 			resul = Math.abs(resul);
 		}catch(Exception proEx){
-			proEx.printStackTrace();
+			//proEx.printStackTrace();
 			resul = 0d;
 		}
 		return String.valueOf(resul);

@@ -69,10 +69,10 @@ public class PreguntaEditable extends ObjetoBase{
 					_pregEdit.add(_prgEdit);
 				}
 			}catch (Exception e1){
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return _pregEdit;
 	}
@@ -89,7 +89,7 @@ public class PreguntaEditable extends ObjetoBase{
 				this.setCargadaDeBD(false);
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 	}
@@ -106,7 +106,7 @@ public class PreguntaEditable extends ObjetoBase{
 			pstmt.execute();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
@@ -128,12 +128,12 @@ public class PreguntaEditable extends ObjetoBase{
 						this.setCargadaDeBD(false);
 					}
 				}catch (Exception e1){
-					e1.printStackTrace();
+					//e1.printStackTrace();
 					this._id = -1;
 					this.setCargadaDeBD(false);
 				}
 			}catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 				this._id = -1;
 				this.setCargadaDeBD(false);
 			}
@@ -168,7 +168,7 @@ public class PreguntaEditable extends ObjetoBase{
 					this.set_id(siguiente);
 				}
 			}catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 	}

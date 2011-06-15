@@ -174,7 +174,7 @@ public class InstanciaObjeto extends ObjetoBase{
 			try{
 				this.fecha_inicio = _temp.parse(_fecha);
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				this.fecha_inicio = null;
 			}
 		}
@@ -202,7 +202,7 @@ public class InstanciaObjeto extends ObjetoBase{
 			try{
 				this.fecha_cierre = _temp.parse(_fecha);
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				this.fecha_cierre = null;
 			}
 		}
@@ -300,8 +300,9 @@ public class InstanciaObjeto extends ObjetoBase{
 				poblacion_asociada = null;
 				this.setCargadaDeBD(false);
 			}
+		}catch (Exception e) {
+			//e.printStackTrace();
 		}
-		catch (Exception e) {e.printStackTrace();}
 	}
 
 	public void ingresaABd(){
@@ -358,7 +359,9 @@ public class InstanciaObjeto extends ObjetoBase{
 					this.cargadaDeBD = true;
 					this.setId(siguiente);
 				}
-			}catch (Exception e) {e.printStackTrace();}
+			}catch (Exception e) {
+				//e.printStackTrace();
+			}
 		}
 	}
 
@@ -399,8 +402,9 @@ public class InstanciaObjeto extends ObjetoBase{
 				this.idPublico = "";
 				this.setIdPublico(this.generaIdPublico());
 				this.setCargadaDeBD(false);
+			}catch (Exception e) {
+				//e.printStackTrace();
 			}
-			catch (Exception e) {e.printStackTrace();}
 		}
 	}
 

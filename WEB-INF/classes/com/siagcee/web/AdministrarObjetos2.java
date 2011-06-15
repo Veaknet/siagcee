@@ -96,7 +96,10 @@ public class AdministrarObjetos2 extends HttpServlet{
 							try{
 								//estudioAAsociar = new EstudioPerso(admin, micon, Integer.parseInt((String)request.getParameter("tipoestudio")));
 								estudioAAsociar = null;
-							}catch(Exception ee){ee.printStackTrace();estudioAAsociar = null;}
+							}catch(Exception ee){
+								//ee.printStackTrace();
+								estudioAAsociar = null;
+							}
 							_nuevaInstancia.setPadre(_objetoSeleccionado);
 							if(_preguntaAAsociar != null && _preguntaAAsociar.getId() != -1){
 								_nuevaInstancia.asociarPregunta(_preguntaAAsociar);
@@ -217,13 +220,15 @@ public class AdministrarObjetos2 extends HttpServlet{
 					if((request.getParameter("opcionbase") != null) && ((String)request.getParameter("opcionbase")).equals("revisar")){
 						noinstanciadas = 0;
 					}
-				}catch (Exception ee){ee.printStackTrace();}
+				}catch (Exception ee){
+					//ee.printStackTrace();
+				}
 				if(request.getParameter("objetoseleccionado") != null){
 					Objeto _objetoSeleccionado = null;
 					try{
 						_objetoSeleccionado = Objeto.retornaObjeto(admin, micon, Integer.parseInt((String)request.getParameter("objetoseleccionado")));
 					}catch (Exception ee){
-						ee.printStackTrace();
+						//ee.printStackTrace();
 					}
 					if(request.getParameter("accionobjeto") != null){
 						if(((String)request.getParameter("accionobjeto")).equals("eliminar")){
@@ -300,7 +305,7 @@ public class AdministrarObjetos2 extends HttpServlet{
 					view.forward(request, response);
 				}
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				//error voy a pantalla principal de objetos
 				RequestDispatcher view = request.getRequestDispatcher("adminobjetos.do");
 				view.forward(request, response);

@@ -64,7 +64,7 @@ public class CorreosAInvitar extends HttpServlet {
 
 					request.setAttribute("objetosDisponibles", _objetos);
 					request.setAttribute("objetosInstanciados", _instanciados);
-					
+
 					request.setAttribute("hightlight", _miIns.getId());
 					request.setAttribute("_hightlight", _miIns.getId());
 					view = request.getRequestDispatcher("WEB-INF/vistas/admininsobj.jsp");
@@ -76,7 +76,7 @@ public class CorreosAInvitar extends HttpServlet {
 
 			}catch (Exception e){
 				//sesion no iniciada
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}
@@ -106,7 +106,7 @@ public class CorreosAInvitar extends HttpServlet {
 					view.forward(request, response);
 				}
 			}catch (Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}

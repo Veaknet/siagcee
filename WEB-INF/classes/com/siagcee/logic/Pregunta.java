@@ -136,7 +136,7 @@ public class Pregunta extends ObjetoBase{
 				this.setCargadaDeBD(false);
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 	}
@@ -220,7 +220,7 @@ public class Pregunta extends ObjetoBase{
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return false;
 		}
 		return false;
@@ -286,7 +286,7 @@ public class Pregunta extends ObjetoBase{
 				}
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 	}
@@ -386,7 +386,7 @@ public class Pregunta extends ObjetoBase{
 				_retorno.add(ObjPregTemp);
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return new Vector();
 		}
 		return _retorno;

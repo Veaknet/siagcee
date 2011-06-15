@@ -47,7 +47,7 @@ public class Autenticar extends HttpServlet {
 				view.forward(request, response);
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			request.setAttribute("accion", "mostrarForm");
 			request.setAttribute("mensaje", "");
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/adminform.jsp");

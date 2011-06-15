@@ -59,7 +59,7 @@ public class Administrador extends Usuario{
 		tipoUsuario = "";
 		nombre = "";
 		email = "";
-		Verificar(_miConexion, _usuario, _clave, _valida);	
+		Verificar(_miConexion, _usuario, _clave, _valida);
 	}
 
 	public boolean Verificar(Connection _miConexion, String _usuario, String _clave, boolean _valida){
@@ -162,8 +162,9 @@ public class Administrador extends Usuario{
 					this.clave = _clave;
 				}
 			}
+		}catch (Exception e) {
+			//e.printStackTrace();
 		}
-		catch (Exception e) {e.printStackTrace();}
 	}
 
 	public boolean iniciarSesion(String _usuario, String _clave){
@@ -186,7 +187,7 @@ public class Administrador extends Usuario{
 				return false;
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			this.validado = false;
 			return false;
 		}
@@ -215,7 +216,7 @@ public class Administrador extends Usuario{
 				this.validado = false;
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			this.validado = false;
 		}
 	}
@@ -233,7 +234,7 @@ public class Administrador extends Usuario{
 			this.tipoUsuario = "";
 			this.validado = false;
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			this.validado = false;
 		}
 	}
@@ -255,7 +256,7 @@ public class Administrador extends Usuario{
 				_usuarios.add(_temp);
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return new Vector();
 		}
 		return _usuarios;

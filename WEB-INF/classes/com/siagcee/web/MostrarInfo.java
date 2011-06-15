@@ -60,7 +60,7 @@ public class MostrarInfo extends HttpServlet {
 				RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/mostrarinfo.jsp");
 				view.forward(request, response);
 			}catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 				request.setAttribute("mensaje", "<span style='color:red'>Error procesando su solicitud</span>");
 				RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/mostrarinfo.jsp");
 				view.forward(request, response);

@@ -247,7 +247,10 @@ public class Graficos {
 				_dataset = dataset;
 
 			}
-		}catch (Exception e){e.printStackTrace();_dataset = null;}
+		}catch(Exception e){
+			//e.printStackTrace();
+			_dataset = null;
+		}
 	}
 
 	private AbstractDataset getDataSet(){
@@ -301,10 +304,10 @@ public class Graficos {
 
 			}
 		}catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return null;
 		}
-		
+
 		return chart;
 	}
 }

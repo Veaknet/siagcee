@@ -73,7 +73,9 @@ public class UserObjetos extends HttpServlet {
 						  //seleccion simple
 							try{
 								miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())))));
-							}catch(Exception e){e.printStackTrace();}
+							}catch(Exception e){
+								//e.printStackTrace();
+							}
 						}else if(miPreg.getTipoPregunta() == 2){
 							//seleccion multiple
 							String[] _listadoRespuestas = request.getParameterValues("pregunta_"+String.valueOf(miPreg.getId()));
@@ -91,19 +93,25 @@ public class UserObjetos extends HttpServlet {
 							try{
 								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){miResp.delRespuesta();continue;}
 								miResp.setRespuesta((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())));
-							}catch(Exception e){e.printStackTrace();}
+							}catch(Exception e){
+								//e.printStackTrace();
+							}
 						}else if(miPreg.getTipoPregunta() == 31){
 							//abierta int
 							try{
 								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){miResp.delRespuesta();continue;}
 								miResp.setRespuesta(Long.parseLong((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))));
-							}catch(Exception e){e.printStackTrace();}
+							}catch(Exception e){
+								//e.printStackTrace();
+							}
 						}else if(miPreg.getTipoPregunta() == 32){
 							//abierta Double
 							try{
 								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){miResp.delRespuesta();continue;}
 								miResp.setRespuesta(Double.parseDouble((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))));
-							}catch(Exception e){e.printStackTrace();}
+							}catch(Exception e){
+								//e.printStackTrace();
+							}
 						}else if(miPreg.getTipoPregunta() == 33){
 							//abierta date
 							try{
@@ -115,7 +123,9 @@ public class UserObjetos extends HttpServlet {
 									miResp.delRespuesta();
 									continue;
 								}
-							}catch(Exception e){e.printStackTrace();}
+							}catch(Exception e){
+								//e.printStackTrace();
+							}
 						}
 					}
 					request.setAttribute("mensaje", "<span style='color:green'>Gracias por su participaci&oacute;n</span>");
@@ -129,7 +139,7 @@ public class UserObjetos extends HttpServlet {
 					view.forward(request, response);
 				}
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticarusuario.do");
 				view.forward(request, response);
 			}
@@ -163,7 +173,7 @@ public class UserObjetos extends HttpServlet {
 				try{
 					id_poblacional = Integer.parseInt(_id_poblacion);
 				}catch(Exception e){
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 
 				Vector _insObj = new Vector();

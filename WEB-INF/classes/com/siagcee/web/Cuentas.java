@@ -58,11 +58,11 @@ public class Cuentas extends HttpServlet {
 				request.setAttribute("mensaje", mensaje);
 
 				request.setAttribute("usuario", _temp);
-				
+
 				view.forward(request, response);
 
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}
@@ -116,7 +116,7 @@ public class Cuentas extends HttpServlet {
 				view.forward(request, response);
 
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}

@@ -93,7 +93,7 @@ public class AdministrarObjetos extends HttpServlet{
 				}
 			}catch(Exception e){
 				//error voy a pantalla principal de objetos
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("WEB-INF/vistas/adminobjetos.jsp");
 				view.forward(request, response);
 			}
@@ -124,13 +124,15 @@ public class AdministrarObjetos extends HttpServlet{
 						noinstanciadas = 0;
 						_visible = true;
 					}
-				}catch (Exception ee){ee.printStackTrace();}
+				}catch (Exception ee){
+					//ee.printStackTrace();
+				}
 				Vector _objetos = Objeto.todosObjetos(admin, micon, noinstanciadas, _visible, true);
 				request.setAttribute("listadoObjetos", _objetos);
 				RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/adminobjetos.jsp");
 				view.forward(request, response);
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				RequestDispatcher view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}

@@ -66,7 +66,7 @@ public class Relacion extends Objeto{
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
@@ -99,8 +99,9 @@ public class Relacion extends Objeto{
 					this.setCargadaDeBD(true);
 					this.setId(siguiente);
 				}
+			}catch (Exception e) {
+				//e.printStackTrace();
 			}
-			catch (Exception e) {e.printStackTrace();}
 		}
 	}
 

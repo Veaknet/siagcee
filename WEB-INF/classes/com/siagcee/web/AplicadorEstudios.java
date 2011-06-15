@@ -54,7 +54,7 @@ public class AplicadorEstudios extends HttpServlet {
 					try{
 						_dato = new InstanciaPregunta(admin, micon, Integer.parseInt((String)request.getParameter("datoseleccionado")));
 					}catch (Exception e1){
-						e1.printStackTrace();
+						//e1.printStackTrace();
 					}
 					if(_dato != null){
 						Graficos _grafica = new Graficos();
@@ -551,7 +551,7 @@ public class AplicadorEstudios extends HttpServlet {
 				view.forward(request, response);
 
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}
@@ -601,7 +601,7 @@ public class AplicadorEstudios extends HttpServlet {
 				view.forward(request, response);
 
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}

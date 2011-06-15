@@ -19,7 +19,7 @@ import java.util.Vector;
 public class Censo extends Objeto{
 
 	public Censo(){
-		super();		
+		super();
 	}
 
 	public Censo(Usuario _usuario, Connection _miConexion){
@@ -45,7 +45,7 @@ public class Censo extends Objeto{
 	public void setObjeto(String _objeto){
 		this.objeto = _objeto;
 		ingresaABd();
-	}	
+	}
 
 	private void recargaDeBd(){
 		ResultSet rs = null;
@@ -66,10 +66,10 @@ public class Censo extends Objeto{
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
-	
+
 	private void ingresaABd() {
 		//si no se ha provisto de un nombre amistoso para la pregunta no es posible insertarla en la BD
 		if(!(this.getObjeto()).equals("")){
@@ -100,7 +100,9 @@ public class Censo extends Objeto{
 					this.setId(siguiente);
 				}
 			}
-			catch (Exception e) {e.printStackTrace();}
+			catch (Exception e) {
+				//e.printStackTrace();
+			}
 		}
 	}
 
