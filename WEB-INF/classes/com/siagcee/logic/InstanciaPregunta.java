@@ -577,7 +577,7 @@ public class InstanciaPregunta extends ObjetoBase{
 			}else{
 				if(_usuario.getTipoUsuario().equals("superadministrador")){
 					pstmt = _miConexion.prepareStatement("SELECT * FROM instancia_preguntas WHERE id_pool_objetos = ? ORDER BY orden_pregunta");
-					pstmt.setInt(2, _padre.getId());
+					pstmt.setInt(1, _padre.getId());
 				}else{
 					pstmt = _miConexion.prepareStatement("SELECT * FROM instancia_preguntas WHERE creado_por = ? AND id_pool_objetos = ? ORDER BY orden_pregunta");
 					pstmt.setInt(1, _usuario.getUsuarioId());

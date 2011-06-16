@@ -3,6 +3,8 @@
 <%@ page import="com.siagcee.logic.RespuestasPosibles" %>
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="java.util.Vector" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" session="true" %>
 
 <html>
@@ -184,57 +186,66 @@ if(request.getAttribute("insVector") != null){
                         }
                     }
 				}else{
-					//solicito campo_clave
-					InstanciaPregunta _miPreguntaClave = seleccionado.getObjetoAsociado().retornaPreguntaClave(true);
-					if(_miPreguntaClave != null){
-						out.println("<form action='autenticarusuario.do' method='post' autocomplete='off'>");
-						out.println("<input type='hidden' value='"+seleccionado.getId()+"' id='id_instrumento' name='id_instrumento'>");
-						out.println("<label>"+_miPreguntaClave.getTextoPregunta()+"</label><br />");
-						if(_miPreguntaClave.getTipoPregunta() == 1){
-							out.println("<select id='campo_clave' name='campo_clave'>");
-							out.println("<option value=''>Seleccione...</option>");
-							try{
-								Enumeration _misResp = _miPreguntaClave.getPreguntaAsociada().retornaRespuestasPosibles(true).elements();
-								RespuestasPosibles __misResp;
-								while(_misResp.hasMoreElements()){
-									__misResp = (RespuestasPosibles)_misResp.nextElement();
-									out.println("<option value='"+__misResp.getId()+"'>"+__misResp.getRespuesta()+"</option>");
-								}
-							}catch(Exception e){
-								e.printStackTrace();
-							}finally{
-								out.println("</select>");
-							}
-						}else if(_miPreguntaClave.getTipoPregunta() == 30){
-							out.println("<input type='text' id='campo_clave2' name='campo_clave2'>");
-							out.println("<input type='hidden' id='campo_clave' name='campo_clave'>");
-						}else if(_miPreguntaClave.getTipoPregunta() == 31){
-							out.println("<input type='text' id='campo_clave2' name='campo_clave2' onblur='validarEntero(\"campo_clave2\");'>");
-							out.println("<input type='hidden' id='campo_clave' name='campo_clave'>");
-						}else if(_miPreguntaClave.getTipoPregunta() == 32){
-							out.println("<input type='text' id='campo_clave2' name='campo_clave2' onblur='validarDouble(\"campo_clave2\");'>");
-							out.println("<input type='hidden' id='campo_clave' name='campo_clave'>");
-						}else if(_miPreguntaClave.getTipoPregunta() == 33){
-							out.println("<input type='text' id='campo_clave2' name='campo_clave2' readonly onclick='if(self.gfPop)gfPop.fPopCalendar(document.getElementById(\"campo_clave2\"));return false;'>");
-							out.println("<input type='hidden' id='campo_clave' name='campo_clave'>");
-						}else{
-							out.println("No es posible identificarlo como miembro de la poblaci&oacute;n por error en la definici&oacute;n por parte del administrador. disculpe.");
-						}
-						out.println("<input type='submit' value='Acceder' onclick='return validarForm();'>");
-						out.println("</form>");
+					SimpleDateFormat _dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					Date _hoy = new Date();
+
+					if(_dateFormat.format(_hoy).compareTo(_dateFormat.format(seleccionado.getFechaCierre())) >= 0){
+						out.println("Disculpe el censo o encuesta requerido ya ha finalizado.");
+					}else if(_dateFormat.format(_hoy).compareTo(_dateFormat.format(seleccionado.getFechaInicio())) < 0){
+						out.println("Disculpe el censo o encuesta requerido no ha sido publicado a&uacute;n.");
 					}else{
-						out.println("Redireccionando hacia el Censo o la Encuesta.");
-						%>
-							<form action="autenticarusuario.do" method="post">
-								<% out.println("<input type='hidden' value='"+seleccionado.getId()+"' id='id_instrumento' name='id_instrumento'>"); %>
-								<a style='display:none' id='link_censo' href='' onclick="if(this.value != -1){this.parentNode.submit();}">aqu&iacute;</a>
-							</form>
-							<script type="text/javascript">
-								$(document).ready(function(){
-									$("#link_censo").click();
-								});
-							</script>
-						<%
+						//solicito campo_clave
+						InstanciaPregunta _miPreguntaClave = seleccionado.getObjetoAsociado().retornaPreguntaClave(true);
+						if(_miPreguntaClave != null){
+							out.println("<form action='autenticarusuario.do' method='post' autocomplete='off'>");
+							out.println("<input type='hidden' value='"+seleccionado.getId()+"' id='id_instrumento' name='id_instrumento'>");
+							out.println("<label>"+_miPreguntaClave.getTextoPregunta()+"</label><br />");
+							if(_miPreguntaClave.getTipoPregunta() == 1){
+								out.println("<select id='campo_clave' name='campo_clave'>");
+								out.println("<option value=''>Seleccione...</option>");
+								try{
+									Enumeration _misResp = _miPreguntaClave.getPreguntaAsociada().retornaRespuestasPosibles(true).elements();
+									RespuestasPosibles __misResp;
+									while(_misResp.hasMoreElements()){
+										__misResp = (RespuestasPosibles)_misResp.nextElement();
+										out.println("<option value='"+__misResp.getId()+"'>"+__misResp.getRespuesta()+"</option>");
+									}
+								}catch(Exception e){
+									e.printStackTrace();
+								}finally{
+									out.println("</select>");
+								}
+							}else if(_miPreguntaClave.getTipoPregunta() == 30){
+								out.println("<input type='text' id='campo_clave2' name='campo_clave2'>");
+								out.println("<input type='hidden' id='campo_clave' name='campo_clave'>");
+							}else if(_miPreguntaClave.getTipoPregunta() == 31){
+								out.println("<input type='text' id='campo_clave2' name='campo_clave2' onblur='validarEntero(\"campo_clave2\");'>");
+								out.println("<input type='hidden' id='campo_clave' name='campo_clave'>");
+							}else if(_miPreguntaClave.getTipoPregunta() == 32){
+								out.println("<input type='text' id='campo_clave2' name='campo_clave2' onblur='validarDouble(\"campo_clave2\");'>");
+								out.println("<input type='hidden' id='campo_clave' name='campo_clave'>");
+							}else if(_miPreguntaClave.getTipoPregunta() == 33){
+								out.println("<input type='text' id='campo_clave2' name='campo_clave2' readonly onclick='if(self.gfPop)gfPop.fPopCalendar(document.getElementById(\"campo_clave2\"));return false;'>");
+								out.println("<input type='hidden' id='campo_clave' name='campo_clave'>");
+							}else{
+								out.println("No es posible identificarlo como miembro de la poblaci&oacute;n por error en la definici&oacute;n por parte del administrador. disculpe.");
+							}
+							out.println("<input type='submit' value='Acceder' onclick='return validarForm();'>");
+							out.println("</form>");
+						}else{
+							out.println("Redireccionando hacia el Censo o la Encuesta.");
+							%>
+								<form action="autenticarusuario.do" method="post">
+									<% out.println("<input type='hidden' value='"+seleccionado.getId()+"' id='id_instrumento' name='id_instrumento'>"); %>
+									<a style='display:none' id='link_censo' href='' onclick="if(this.value != -1){this.parentNode.submit();}">aqu&iacute;</a>
+								</form>
+								<script type="text/javascript">
+									$(document).ready(function(){
+										$("#link_censo").click();
+									});
+								</script>
+							<%
+						}
 					}
 				}
 			%>

@@ -101,9 +101,9 @@ if(_miIns != null){
 				misRelaciones.add(miObj);
 				continue;
 			}
-			if(_dateFormat.format(_hoy).compareTo(miObj.getFechaInicio().toString()) < 0){
+			if(_dateFormat.format(_hoy).compareTo(_dateFormat.format(miObj.getFechaInicio())) < 0){
 				misPendientes.add(miObj);
-			}else if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
+			}else if(_dateFormat.format(_hoy).compareTo(_dateFormat.format(miObj.getFechaCierre())) < 0){
 				misEnEjecucion.add(miObj);
 			}else{
 				misFinalizados.add(miObj);
@@ -193,7 +193,7 @@ if(_miIns != null){
 			out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas del Instrumento' alt='Revisar Preguntas del Instrumento' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
-					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
+					out.println("<td align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
 						out.println("<option value='correos_a_invitar.do?_hightlight="+miObj.getId()+"'>Especificando emails</option>");
 					}
@@ -298,7 +298,7 @@ if(_miIns != null){
 			out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas del Instrumento' alt='Revisar Preguntas del Instrumento' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
-					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
+					out.println("<td align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
 						out.println("<option value='correos_a_invitar.do?_hightlight="+miObj.getId()+"'>Especificando emails</option>");
 					}
@@ -396,7 +396,7 @@ if(_miIns != null){
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
 
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
-					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
+					out.println("<td align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
 						out.println("<option value='correos_a_invitar.do?_hightlight="+miObj.getId()+"'>Especificando emails</option>");
 					}
@@ -483,7 +483,7 @@ if(_miIns != null){
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
 
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
-					out.println("<td valign='top' align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
+					out.println("<td align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
 						out.println("<option value='correos_a_invitar.do?_hightlight="+miObj.getId()+"'>Especificando emails</option>");
 					}
