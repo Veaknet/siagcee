@@ -25,6 +25,7 @@ public class InstanciaPregunta extends ObjetoBase{
 	Pregunta miPregunta;
 	Objeto miPadre;
 	Integer estudioAsociado;
+	boolean requerida;
 	boolean campo_clave_unico;
 	boolean campo_identificador;
 	boolean campo_comunicacion_email;
@@ -45,6 +46,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.campo_comunicacion_email = false;
 		this.campo_comunicacion_telefono = false;
 		this.campo_comunicacion_telefono2 = false;
+		this.requerida = true;
 	}
 
 	//obligatoriamente indicar enlace a base de datos y id usuario que esta administrando el objeto
@@ -62,6 +64,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.campo_comunicacion_email = false;
 		this.campo_comunicacion_telefono = false;
 		this.campo_comunicacion_telefono2 = false;
+		this.requerida = true;
 	}
 
 	//obligatoriamente indicar enlace a base de datos y id usuario que esta administrando el objeto
@@ -80,6 +83,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.campo_comunicacion_email = false;
 		this.campo_comunicacion_telefono = false;
 		this.campo_comunicacion_telefono2 = false;
+		this.requerida = true;
 		this.recargarInstanciaPreguntaDeBD();
 	}
 
@@ -99,6 +103,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.campo_comunicacion_email = false;
 		this.campo_comunicacion_telefono = false;
 		this.campo_comunicacion_telefono2 = false;
+		this.requerida = true;
 	}
 
 	//obligatoriamente indicar enlace a base de datos y id usuario que esta administrando el objeto
@@ -117,6 +122,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.campo_comunicacion_email = false;
 		this.campo_comunicacion_telefono = false;
 		this.campo_comunicacion_telefono2 = false;
+		this.requerida = true;
 	}
 
 	//obligatoriamente indicar enlace a base de datos y id usuario que esta administrando el objeto
@@ -137,6 +143,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.campo_comunicacion_email = false;
 		this.campo_comunicacion_telefono = false;
 		this.campo_comunicacion_telefono2 = false;
+		this.requerida = true;
 		this.ingresaABd();
 	}
 
@@ -156,6 +163,7 @@ public class InstanciaPregunta extends ObjetoBase{
 		this.campo_comunicacion_email = _insPreg.isCampo_comunicacion_email();
 		this.campo_comunicacion_telefono = _insPreg.isCampo_comunicacion_telefono();
 		this.campo_comunicacion_telefono2 = _insPreg.isCampo_comunicacion_telefono2();
+		this.requerida = _insPreg.isRequerida();
 	}
 
 	public boolean isCampo_comunicacion_telefono2(){
@@ -317,6 +325,17 @@ public class InstanciaPregunta extends ObjetoBase{
 		return this.idInstanciaPregunta;
 	}
 
+	//si esta pregunta es requerida al momento de responder el encuestado
+	public boolean isRequerida() {
+		return requerida;
+	}
+
+	//indico si esta pregunta es requerida al momento de responder el encuestado
+	public void setRequerida(boolean requerida) {
+		this.requerida = requerida;
+		this.ingresaABd();
+	}
+
 	//establezco la pregunta que será instanciada (asociada desde este objeto)
 	public void asociarPregunta(Pregunta _pregunta){
 		if(_pregunta != this.miPregunta){
@@ -389,7 +408,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				if (this.getCargadaDeBD()){
 					//ejecuto UPDATE
 					if(this.getCargadaDeBD()){
-						pstmt = getConexion().prepareStatement("UPDATE instancia_preguntas SET pregunta = ? , orden_pregunta = ? , id_pool_preguntas = ? , id_pool_objetos = ?, id_estudios = ?, campo_clave_unico = ?, campo_identificador = ?, campo_comunicacion_email = ?, campo_comunicacion_telefono = ?, campo_comunicacion_telefono2 = ? , acronimo = ? WHERE id_instancia_preguntas = ?");
+						pstmt = getConexion().prepareStatement("UPDATE instancia_preguntas SET pregunta = ? , orden_pregunta = ? , id_pool_preguntas = ? , id_pool_objetos = ?, id_estudios = ?, campo_clave_unico = ?, campo_identificador = ?, campo_comunicacion_email = ?, campo_comunicacion_telefono = ?, campo_comunicacion_telefono2 = ? , acronimo = ? , requerida = ? WHERE id_instancia_preguntas = ?");
 						pstmt.setString(1, this.getTextoPregunta());
 						pstmt.setInt(2, this.getOrden());
 						pstmt.setInt(3, this.getPreguntaAsociada().getId());
@@ -405,7 +424,8 @@ public class InstanciaPregunta extends ObjetoBase{
 						pstmt.setBoolean(9, this.isCampo_comunicacion_telefono());
 						pstmt.setBoolean(10, this.isCampo_comunicacion_telefono2());
 						pstmt.setString(11, this.getAcronimo());
-						pstmt.setInt(12, this.getId());
+						pstmt.setBoolean(12, this.isRequerida());
+						pstmt.setInt(13, this.getId());
 						pstmt.execute();
 					}
 				}else{
@@ -415,7 +435,7 @@ public class InstanciaPregunta extends ObjetoBase{
 					_rs.next();
 					int siguiente = _rs.getInt("numero");
 
-					pstmt = getConexion().prepareStatement("INSERT INTO instancia_preguntas(id_instancia_preguntas, pregunta, orden_pregunta, creado_por, id_pool_objetos, id_pool_preguntas, id_estudios, campo_clave_unico, campo_identificador, campo_comunicacion_email, campo_comunicacion_telefono, campo_comunicacion_telefono2, acronimo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					pstmt = getConexion().prepareStatement("INSERT INTO instancia_preguntas(id_instancia_preguntas, pregunta, orden_pregunta, creado_por, id_pool_objetos, id_pool_preguntas, id_estudios, campo_clave_unico, campo_identificador, campo_comunicacion_email, campo_comunicacion_telefono, campo_comunicacion_telefono2, acronimo, requerida) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 					pstmt.setInt(1, siguiente);
 					pstmt.setString(2, this.getTextoPregunta());
 					pstmt.setInt(3, this.getOrden());
@@ -433,6 +453,7 @@ public class InstanciaPregunta extends ObjetoBase{
 					pstmt.setBoolean(11, this.isCampo_comunicacion_telefono());
 					pstmt.setBoolean(12, this.isCampo_comunicacion_telefono2());
 					pstmt.setString(13, this.getAcronimo());
+					pstmt.setBoolean(14, this.isRequerida());
 					pstmt.execute();
 					this.setCargadaDeBD(true);
 					this.setId(siguiente);
@@ -463,6 +484,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				this.campo_comunicacion_email = false;
 				this.campo_comunicacion_telefono = false;
 				this.campo_comunicacion_telefono2 = false;
+				this.requerida = true;
 			}
 			catch (Exception e) {
 				//e.printStackTrace();
@@ -487,6 +509,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				this.campo_comunicacion_email = rs.getBoolean("campo_comunicacion_email");
 				this.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				this.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
+				this.requerida = rs.getBoolean("requerida");
 				if(this.miPregunta != null){
 					if(this.miPregunta.getId() != rs.getInt("id_pool_preguntas")){
 						//creo un nuevo objeto cuando ya este esta asociado
@@ -518,6 +541,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				this.campo_comunicacion_email = false;
 				this.campo_comunicacion_telefono = false;
 				this.campo_comunicacion_telefono2 = false;
+				this.requerida = true;
 			}
 		}
 		catch (Exception e) {
@@ -556,11 +580,13 @@ public class InstanciaPregunta extends ObjetoBase{
 				ObjPregTemp.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				ObjPregTemp.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
 				ObjPregTemp.estudioAsociado = rs.getInt("id_estudios");
+				ObjPregTemp.requerida = rs.getBoolean("requerida");
 				ObjPregTemp.cargadaDeBD = true;
 				_lista.add(ObjPregTemp);
 			}
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			return new Vector();
 		}
 		return _lista;
@@ -626,6 +652,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				_pregunta.campo_comunicacion_telefono = rs.getBoolean("campo_comunicacion_telefono");
 				_pregunta.campo_comunicacion_telefono2 = rs.getBoolean("campo_comunicacion_telefono2");
 				_pregunta.estudioAsociado = rs.getInt("id_estudios");
+				_pregunta.requerida = rs.getBoolean("requerida");
 				_pregunta.cargadaDeBD = true;
 				break;
 			}
