@@ -152,24 +152,36 @@ public class Relacion extends Objeto{
 		try {
 			PreparedStatement pstmt = null;
 			if(_cargaSelectiva == 0){
-				pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE creado_por = ? AND tipo_objeto = 3 "+addSQL);
-				if(!_soloPropias){
-					pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE (creado_por = ? OR creado_por IN (SELECT id_administradores FROM administradores WHERE tipo_administrador = 'superadministrador')) AND tipo_objeto = 3 "+addSQL);
+				if(_usuario.getTipoUsuario().equals("superadministrador")){
+					pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE tipo_objeto = 3 "+addSQL);
+				}else{
+					pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE creado_por = ? AND tipo_objeto = 3 "+addSQL);
+					if(!_soloPropias){
+						pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE (creado_por = ? OR creado_por IN (SELECT id_administradores FROM administradores WHERE tipo_administrador = 'superadministrador')) AND tipo_objeto = 3 "+addSQL);
+					}
+					pstmt.setInt(1, _usuario.getUsuarioId());
 				}
-				pstmt.setInt(1, _usuario.getUsuarioId());
 			}else if(_cargaSelectiva == 1){
-				pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE creado_por = ? AND tipo_objeto = 3 AND id_pool_objetos NOT IN(SELECT id_pool_objetos FROM instancia_objetos) "+addSQL);
-				if(!_soloPropias){
-					pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE (creado_por = ? OR creado_por IN (SELECT id_administradores FROM administradores WHERE tipo_administrador = 'superadministrador')) AND tipo_objeto = 3 AND id_pool_objetos NOT IN(SELECT id_pool_objetos FROM instancia_objetos) "+addSQL);
+				if(_usuario.getTipoUsuario().equals("superadministrador")){
+					pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE tipo_objeto = 3 AND id_pool_objetos NOT IN(SELECT id_pool_objetos FROM instancia_objetos) "+addSQL);
+				}else{
+					pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE creado_por = ? AND tipo_objeto = 3 AND id_pool_objetos NOT IN(SELECT id_pool_objetos FROM instancia_objetos) "+addSQL);
+					if(!_soloPropias){
+						pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE (creado_por = ? OR creado_por IN (SELECT id_administradores FROM administradores WHERE tipo_administrador = 'superadministrador')) AND tipo_objeto = 3 AND id_pool_objetos NOT IN(SELECT id_pool_objetos FROM instancia_objetos) "+addSQL);
+					}
+					pstmt.setInt(1, _usuario.getUsuarioId());
 				}
-				pstmt.setInt(1, _usuario.getUsuarioId());
 			}else{
 				//por defecto todas
-				pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE creado_por = ? AND tipo_objeto = 3 "+addSQL);
-				if(!_soloPropias){
-					pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE (creado_por = ? OR creado_por IN (SELECT id_administradores FROM administradores WHERE tipo_administrador = 'superadministrador')) AND tipo_objeto = 3 "+addSQL);
+				if(_usuario.getTipoUsuario().equals("superadministrador")){
+					pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE tipo_objeto = 3 "+addSQL);
+				}else{
+					pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE creado_por = ? AND tipo_objeto = 3 "+addSQL);
+					if(!_soloPropias){
+						pstmt = _miConexion.prepareStatement("SELECT * FROM pool_objetos WHERE (creado_por = ? OR creado_por IN (SELECT id_administradores FROM administradores WHERE tipo_administrador = 'superadministrador')) AND tipo_objeto = 3 "+addSQL);
+					}
+					pstmt.setInt(1, _usuario.getUsuarioId());
 				}
-				pstmt.setInt(1, _usuario.getUsuarioId());
 			}
 			rs = pstmt.executeQuery();
 		}catch (Exception e) {

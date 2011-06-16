@@ -95,7 +95,7 @@ public class GeneradorSQL extends HttpServlet{
 				view.forward(request, response);
 
 			}catch(Exception e){
-				//e.printStackTrace();
+				e.printStackTrace();
 				view = request.getRequestDispatcher("autenticar.do");
 				view.forward(request, response);
 			}
@@ -207,7 +207,7 @@ public class GeneradorSQL extends HttpServlet{
 				_sqltmp.append(" AND ");
 
 				if((_insPregunta.getTipoPregunta() == 1) || (_insPregunta.getTipoPregunta() == 2)){
-					_sqltmp.append(" (respuestas.id_respuestas_posibles ");
+					_sqltmp.append(" respuestas.id_respuestas_posibles ");
 					_sqltmp.append(_operador);
 					_sqltmp.append((String)request.getParameter("respuesta_"+i));
 

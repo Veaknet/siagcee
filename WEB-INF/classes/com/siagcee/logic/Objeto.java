@@ -254,9 +254,6 @@ public class Objeto extends ObjetoBase{
 	//_soloPropias solo mostrara los objetos que sean del usuario (para editarlas) o false todas las comunes (para utilzarlas o instanciarlas)
 	public static Vector todosObjetos(Usuario _usuario, Connection _miConexion, int _cargaSelectiva, boolean _visible, boolean _soloPropias){
 		Vector _lista = new Vector();
-		if(_usuario.getTipoUsuario().equals("superadministrador")){
-			_soloPropias = false;
-		}
 		_lista.addAll(EstructuraBase.todosObjetos(_usuario, _miConexion, _cargaSelectiva, _visible, _soloPropias));
 		_lista.addAll(Censo.todosObjetos(_usuario, _miConexion, _cargaSelectiva, _visible, _soloPropias));
 		_lista.addAll(Encuesta.todosObjetos(_usuario, _miConexion, _cargaSelectiva, _visible, _soloPropias));
