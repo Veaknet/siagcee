@@ -146,6 +146,9 @@ if(_miIns != null){
 						<th style="max-width:175px;" valign="top" width="175">
 							Invitar a Nuevos Usuarios
 						</th>
+						<th style="max-width:60px;" valign="top" width="45">
+							Modificar
+						</th>
 						<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
 						<th style="max-width:45px;" valign="top" width="45">
 							Borrar
@@ -196,6 +199,7 @@ if(_miIns != null){
 					}
 					out.println("</select></td>");
 				}
+				out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Desea modificar el instrumento:\\n"+miObj.getObjeto()+"?\")){window.location=\"implementobjeto.do?solo="+miObj.getId()+"\";return true;}else{return false;}' height='24' alt='Modifica este instrumento' title='Modifica este instrumento' /></a></td>");
 				if(admin.getTipoUsuario().equals("superadministrador")){
 					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar el instrumento:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar este instrumento y todas las respuestas que posea' title='Eliminar este instrumento y todas las respuestas que posea' /></a></td>");
 				}
@@ -243,6 +247,9 @@ if(_miIns != null){
 						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
 						<th style="max-width:175px;" valign="top" width="175">
 							Invitar a Nuevos Usuarios
+						</th>
+						<th style="max-width:60px;" valign="top" width="45">
+							Modificar
 						</th>
 						<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
 						<th style="max-width:45px;" valign="top" width="45">
@@ -297,6 +304,7 @@ if(_miIns != null){
 					}
 					out.println("</select></td>");
 				}
+				out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Desea modificar el instrumento:\\n"+miObj.getObjeto()+"?\")){window.location=\"implementobjeto.do?solo="+miObj.getId()+"\";return true;}else{return false;}' height='24' alt='Modifica este instrumento' title='Modifica este instrumento' /></a></td>");
 				if(admin.getTipoUsuario().equals("superadministrador")){
 					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar el instrumento:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar este instrumento y todas las respuestas que posea' title='Eliminar este instrumento y todas las respuestas que posea' /></a></td>");
 				}
@@ -395,7 +403,7 @@ if(_miIns != null){
 					out.println("</select></td>");
 				}
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) >= 0){
-					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Desea volver a ejecutar el instrumento:\\n"+miObj.getObjeto()+"?\")){window.location=\"implementobjeto.do?solo="+miObj.getId()+"\";return true;}else{return false;}' height='24' alt='Actualizar este instrumento y todas las respuestas que posea' title='Actualizar este instrumento y todas las respuestas que posea' /></a></td>");
+					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Desea volver a publicar el instrumento:\\n"+miObj.getObjeto()+" y actualizar sus datos?\")){window.location=\"implementobjeto.do?solo="+miObj.getId()+"\";return true;}else{return false;}' height='24' alt='Republicar este instrumento y actualizar sus datos' title='Republicar este instrumento y actualizar sus datos' /></a></td>");
 				}else{
 					out.println("<td align='center'>-</td>");
 				}
@@ -441,7 +449,7 @@ if(_miIns != null){
 							Invitar a Nuevos Usuarios
 						</th>
 						<th style="max-width:60px;" valign="top" width="45">
-							Reenviar
+							Publicar
 						</th>
 						<th style="max-width:50px;" valign="top" width="50">
 							Borrar
@@ -484,7 +492,7 @@ if(_miIns != null){
 					out.println("<td align='center'>-</td>");
 				}
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) >= 0){
-					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Desea volver a ejecutar la colecci&oacute;n :\\n"+miObj.getObjeto()+"?\")){window.location=\"implementobjeto.do?solo="+miObj.getId()+"\";return true;}else{return false;}' height='24' alt='Actualizar esta colecci&oacute;n y todas las respuestas que posea' title='Actualizar esta colecci&oacute;n y todas las respuestas que posea' /></a></td>");
+					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Desea publicar la colecci&oacute;n :\\n"+miObj.getObjeto()+" y actualizar sus datos?\")){window.location=\"implementobjeto.do?solo="+miObj.getId()+"\";return true;}else{return false;}' height='24' alt='Publicar esta colecci&oacute;n y actualizar todas las respuestas que posea' title='Publicar esta colecci&oacute;n y actualizar todas las respuestas que posea' /></a></td>");
 				}else{
 					out.println("<td align='center'>-</td>");
 				}
