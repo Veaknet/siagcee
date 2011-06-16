@@ -72,11 +72,11 @@ public class UserObjetos extends HttpServlet {
 						if(miPreg.getTipoPregunta() == 1){
 						  //seleccion simple
 							try{
-								if(!((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("") && !((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("-1")){
+								//if(!((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("") && !((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("-1")){
 									miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())))));
-								}else{
-									miResp.delRespuesta();
-								}
+								//}else{
+								//	miResp.delRespuesta();
+								//}
 							}catch(Exception e){
 								//e.printStackTrace();
 								miResp.delRespuesta();
@@ -91,11 +91,11 @@ public class UserObjetos extends HttpServlet {
 									miResp.asociarInstanciaObjeto(_miIns);
 									miResp.asociarInstanciaPregunta(miPreg);
 									try{
-										if(!(_listadoRespuestas[p]).equals("") && !(_listadoRespuestas[p]).equals("-1")){
+										//if(!(_listadoRespuestas[p]).equals("") && !(_listadoRespuestas[p]).equals("-1")){
 											miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt(_listadoRespuestas[p])));
-										}else{
-											miResp.delRespuesta();
-										}
+										//}else{
+										//	miResp.delRespuesta();
+										//}
 									}catch(Exception e){
 										//e.printStackTrace();
 										miResp.delRespuesta();
@@ -105,7 +105,10 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 30){
 							//abierta texto
 							try{
-								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){miResp.delRespuesta();continue;}
+								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){
+								//	miResp.delRespuesta();
+									continue;
+								}
 								miResp.setRespuesta((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())));
 							}catch(Exception e){
 								//e.printStackTrace();
@@ -114,7 +117,10 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 31){
 							//abierta int
 							try{
-								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){miResp.delRespuesta();continue;}
+								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){
+								//	miResp.delRespuesta();
+									continue;
+								}
 								miResp.setRespuesta(Long.parseLong((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))));
 							}catch(Exception e){
 								//e.printStackTrace();
@@ -123,7 +129,10 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 32){
 							//abierta Double
 							try{
-								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){miResp.delRespuesta();continue;}
+								if(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){
+								//	miResp.delRespuesta();
+									continue;
+								}
 								miResp.setRespuesta(Double.parseDouble((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))));
 							}catch(Exception e){
 								miResp.delRespuesta();
@@ -132,14 +141,14 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 33){
 							//abierta date
 							try{
-								if(!(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals(""))){
+								//if(!(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals(""))){
 									SimpleDateFormat _temp = new SimpleDateFormat("yyyy-MM-dd");
 									String[] _fechaFormateada = ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).split("-");
 									miResp.setRespuesta(_temp.parse(_fechaFormateada[2]+"-"+_fechaFormateada[1]+"-"+_fechaFormateada[0]));
-								}else{
-									miResp.delRespuesta();
+								//}else{
+								//	miResp.delRespuesta();
 									continue;
-								}
+								//}
 							}catch(Exception e){
 								//e.printStackTrace();
 								miResp.delRespuesta();
