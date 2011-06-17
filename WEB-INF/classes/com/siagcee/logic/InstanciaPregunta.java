@@ -201,6 +201,7 @@ public class InstanciaPregunta extends ObjetoBase{
 				InstanciaPregunta nuevaInstaPre = (InstanciaPregunta)_ee.nextElement();
 				nuevaInstaPre.setCampo_clave_unico(false);
 			}
+			this.requerida = true;
 		}
 		this.campo_clave_unico = _campo_clave_unico;
 		this.ingresaABd();
@@ -333,6 +334,9 @@ public class InstanciaPregunta extends ObjetoBase{
 	//indico si esta pregunta es requerida al momento de responder el encuestado
 	public void setRequerida(boolean requerida) {
 		this.requerida = requerida;
+		if(this.campo_clave_unico){
+			this.requerida = true;
+		}
 		this.ingresaABd();
 	}
 

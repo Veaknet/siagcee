@@ -67,9 +67,29 @@ function validarDouble(_nombreElem){
 		return false;
 	}
 }
-</script>
 
-<%@include file="userheader.jsp" %>
+var _listaDatos = new Array();
+
+function validarRequeridos(){
+	//return true;
+	for(var i=0;i<_listaDatos.length;i++){
+		if(_listaDatos[i]["tipopregunta"] == 1 || _listaDatos[i]["tipopregunta"] == 2){
+			if($("#pregunta_"+_listaDatos[i]['id']).val() == '' || $("#pregunta_"+_listaDatos[i]['id']).val() == '-1'){
+				alert("Es obligatorio responder a la pregunta para concluir:\n\n"+_listaDatos[i]["pregunta"]);
+				$("#pregunta_"+_listaDatos[i]['id']).focus();
+				return false;
+			}
+		}else{
+			if($("#pregunta_"+_listaDatos[i]['id']).val() == ''){
+				alert("Es obligatorio responder a la pregunta para concluir:\n\n"+_listaDatos[i]["pregunta"]);
+				$("#pregunta_"+_listaDatos[i]['id']).focus();
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
 <%
 
 String mensaje = "";
@@ -97,9 +117,28 @@ if(request.getAttribute("preguntasTotales") != null){
 Vector preguntasEditables = new Vector();
 if(request.getAttribute("preguntasEditables") != null){
 	preguntasEditables = (Vector)request.getAttribute("preguntasEditables");
+	Enumeration _enu = preguntasEditables.elements();
+	int _cont = 0;
+	while(_enu.hasMoreElements()){
+		PreguntaEditable _miPreg = (PreguntaEditable)_enu.nextElement();
+		if(_miPreg.get_InsPregunta().isRequerida()){
+			out.println("_listaDatos["+_cont+"] = new Array();");
+			out.println("_listaDatos["+_cont+"]['id'] = '"+_miPreg.get_InsPregunta().getId()+"';");
+			out.println("_listaDatos["+_cont+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(_miPreg.get_InsPregunta().getTextoPregunta(), "'", "\"")+"';");
+			out.println("_listaDatos["+_cont+"]['acronimo'] = '"+UtilidadesVarias.reemplazarCaracteres(_miPreg.get_InsPregunta().getAcronimo(), "'", "\"")+"';");
+			out.println("_listaDatos["+_cont+"]['tipopregunta'] = '"+_miPreg.get_InsPregunta().getTipoPregunta()+"';");
+			out.println("_listaDatos["+_cont+"]['ordenpregunta'] = '"+_miPreg.get_InsPregunta().getOrden()+"';");
+			_cont++;
+		}
+	}
 }
 
 %>
+
+</script>
+
+<%@include file="userheader.jsp" %>
+
 <table cellpadding="4" cellspacing="4" class="tablasecundariatitulo">
 	<tr>
 		<td style="text-align:left" valign="top">
@@ -345,11 +384,12 @@ No ha indicado un censo o encuesta para participar.
 			}
 		}
 
+		//TODO limpiar preguntas sueltas
 		//out.println(_pregTit);
 		out.println(_pregResp);
 		%>
 		<p />
-		<input type='submit' value='Finalizar'>
+		<input type='submit' value='Finalizar' onclick="return validarRequeridos();">
 		</form>
 		<iframe name='gToday:contrast:agenda.js' id='gToday:contrast:agenda.js' src='Contrast/ipopeng.htm' style='visibility: visible; z-index: 999; position: absolute; top: -500px; left: -500px;' scrolling='no' frameborder='0' height='142' width='132'>
 		</iframe>
