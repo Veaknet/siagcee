@@ -72,17 +72,18 @@ var _listaDatos = new Array();
 
 function validarRequeridos(){
 	//return true;
+	var _sufix = '_<% out.print(encuestado.getUsuarioId()); %>';
 	for(var i=0;i<_listaDatos.length;i++){
 		if(_listaDatos[i]["tipopregunta"] == 1 || _listaDatos[i]["tipopregunta"] == 2){
-			if($("#pregunta_"+_listaDatos[i]['id']).val() == '' || $("#pregunta_"+_listaDatos[i]['id']).val() == '-1'){
+			if($("#pregunta_"+_listaDatos[i]['id']+_sufix).val() == '' || $("#pregunta_"+_listaDatos[i]['id']+_sufix).val() == '-1'){
 				alert("Es obligatorio responder a la pregunta para concluir:\n\n"+_listaDatos[i]["pregunta"]);
-				$("#pregunta_"+_listaDatos[i]['id']).focus();
+				$("#pregunta_"+_listaDatos[i]['id']+_sufix).focus();
 				return false;
 			}
 		}else{
-			if($("#pregunta_"+_listaDatos[i]['id']).val() == ''){
+			if($("#pregunta_"+_listaDatos[i]['id']+_sufix).val() == ''){
 				alert("Es obligatorio responder a la pregunta para concluir:\n\n"+_listaDatos[i]["pregunta"]);
-				$("#pregunta_"+_listaDatos[i]['id']).focus();
+				$("#pregunta_"+_listaDatos[i]['id']+_sufix).focus();
 				return false;
 			}
 		}
@@ -98,7 +99,8 @@ if(request.getAttribute("mensaje") != null){
 	request.setAttribute("mensaje", "");
 }
 
-Vector _objetos = (Vector)request.getAttribute("objetos");
+//no utilizado
+//Vector _objetos = (Vector)request.getAttribute("objetos");
 
 InstanciaObjeto _miIns = null;
 Vector _misRespDadas = new Vector();
@@ -109,10 +111,13 @@ if(request.getAttribute("seleccionado") != null){
 	}
 }
 
+/*
+//No utilizado desde que se creo editables
 Vector preguntasTotales = new Vector();
 if(request.getAttribute("preguntasTotales") != null){
 	preguntasTotales = (Vector)request.getAttribute("preguntasTotales");
 }
+*/
 
 Vector preguntasEditables = new Vector();
 if(request.getAttribute("preguntasEditables") != null){
@@ -189,6 +194,7 @@ No ha indicado un censo o encuesta para participar.
 			_editable.put(_prEd.get_InsPregunta().getId(), true);
 		}
 
+		String _sufix = "_"+String.valueOf(encuestado.getUsuarioId());
 		while(_misPreg.hasMoreElements()){
 			//para verificar si se encontro una respuesta guardada previamente
 
@@ -224,9 +230,9 @@ No ha indicado un censo o encuesta para participar.
 				}
 
 				if(miPreg.isCampo_clave_unico()){
-					_pregResp.append("<select id='pregunta_"+miPreg.getId()+"' name='pregunta_"+miPreg.getId()+"' disabled='disabled'>");
+					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' disabled='disabled'>");
 				}else{
-					_pregResp.append("<select id='pregunta_"+miPreg.getId()+"' name='pregunta_"+miPreg.getId()+"'>");
+					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"'>");
 				}
 				if(!respEncontrada || miRespDada.getRespuestaCerrada().getId() < 0){
 					//si no encontré respuesta este option va
@@ -270,9 +276,9 @@ No ha indicado un censo o encuesta para participar.
 				}
 
 				if(miPreg.isCampo_clave_unico()){
-					_pregResp.append("<select id='pregunta_"+miPreg.getId()+"' name='pregunta_"+miPreg.getId()+"' multiple disabled='disabled'>");
+					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' multiple disabled='disabled'>");
 				}else{
-					_pregResp.append("<select id='pregunta_"+miPreg.getId()+"' name='pregunta_"+miPreg.getId()+"' multiple>");
+					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' multiple>");
 				}
 				if(!respEncontrada || miRespDada.getRespuestaCerrada().getId() < 0){
 					//si no encontré respuesta este option va
@@ -323,7 +329,7 @@ No ha indicado un censo o encuesta para participar.
 					}
 				}
 
-				_pregResp.append("<input type='text' name='pregunta_"+miPreg.getId()+"' id='pregunta_"+miPreg.getId()+"'");
+				_pregResp.append("<input type='text' name='pregunta_"+miPreg.getId()+_sufix+"' id='pregunta_"+miPreg.getId()+_sufix+"'");
 
 				if(miPreg.isCampo_clave_unico()){
 					_pregResp.append(" readonly ");
@@ -346,10 +352,10 @@ No ha indicado un censo o encuesta para participar.
 				}else if(miPreg.getTipoPregunta() == 31){
 					if(!respEncontrada || (miRespDada.getRespuestaAbiertaInt() == 0)){
 						//si no encontré respuesta
-						_pregResp.append(" value='' onblur='validarEntero(\"pregunta_"+miPreg.getId()+"\");'>");
+						_pregResp.append(" value='' onblur='validarEntero(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
 					}else{
 						//si encontré respuesta
-						_pregResp.append(" value='"+String.valueOf(miRespDada.getRespuestaAbiertaInt())+"' onblur='validarEntero(\"pregunta_"+miPreg.getId()+"\");'>");
+						_pregResp.append(" value='"+String.valueOf(miRespDada.getRespuestaAbiertaInt())+"' onblur='validarEntero(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
 					}
 
 				//+++++++++++++++
@@ -359,10 +365,10 @@ No ha indicado un censo o encuesta para participar.
 					DecimalFormat _df = new DecimalFormat("###############.############");
 					if(!respEncontrada || miRespDada.getRespuestaAbiertaDouble() == 0F){
 						//si no encontré respuesta
-						_pregResp.append(" value='' onblur='validarDouble(\"pregunta_"+miPreg.getId()+"\");'>");
+						_pregResp.append(" value='' onblur='validarDouble(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
 					}else{
 						//si encontré respuesta
-						_pregResp.append(" value='"+_df.format(miRespDada.getRespuestaAbiertaDouble())+"' onblur='validarDouble(\"pregunta_"+miPreg.getId()+"\");'>");
+						_pregResp.append(" value='"+_df.format(miRespDada.getRespuestaAbiertaDouble())+"' onblur='validarDouble(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
 					}
 
 				//+++++++++++++++
@@ -379,7 +385,7 @@ No ha indicado un censo o encuesta para participar.
 						String[] _respDate = miRespDada.getRespuestaAbiertaDate().toString().split("-");
 						_pregResp.append(" value='"+df.format(miRespDada.getRespuestaAbiertaDate())+"' ");
 					}
-					_pregResp.append(" readonly onclick='if(self.gfPop)gfPop.fPopCalendar(document.getElementById(\"pregunta_"+miPreg.getId()+"\"));return false;'>");
+					_pregResp.append(" readonly onclick='if(self.gfPop)gfPop.fPopCalendar(document.getElementById(\"pregunta_"+miPreg.getId()+_sufix+"\"));return false;'>");
 				}
 			}
 		}

@@ -52,6 +52,7 @@ public class UserObjetos extends HttpServlet {
 				request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(encuestado, micon, _miIns.getObjetoAsociado(), true));
 				request.setAttribute("preguntasEditables",PreguntaEditable.retornaTodasEditables(encuestado, micon, _miIns));
 
+				String _sufix = "_"+String.valueOf(encuestado.getUsuarioId());
 				if(_accion.equals("insertar")){
 					view = request.getRequestDispatcher("WEB-INF/vistas/userobjetos.jsp");
 					Vector _temporalPreguntas = _miIns.getObjetoAsociado().getPreguntas(true);
@@ -72,9 +73,9 @@ public class UserObjetos extends HttpServlet {
 						if(miPreg.getTipoPregunta() == 1){
 						  //seleccion simple
 							try{
-								if((miPreg.isRequerida()) && (!((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("") &&
-									   !((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("-1"))){
-									miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())))));
+								if((miPreg.isRequerida()) && (!((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("") &&
+									   !((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("-1"))){
+									miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix))));
 								}else{
 									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
 									break;
@@ -85,7 +86,7 @@ public class UserObjetos extends HttpServlet {
 							}
 						}else if(miPreg.getTipoPregunta() == 2){
 							//seleccion multiple
-							String[] _listadoRespuestas = request.getParameterValues("pregunta_"+String.valueOf(miPreg.getId()));
+							String[] _listadoRespuestas = request.getParameterValues("pregunta_"+String.valueOf(miPreg.getId())+_sufix);
 							boolean exit = false;
 							if(_listadoRespuestas != null){
 								Respuesta.delRespuestasDePreguntaMultiple(encuestado, micon, miPreg, _miIns);
@@ -118,11 +119,11 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 30){
 							//abierta texto
 							try{
-								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){
+								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
 									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
 									break;
 								}
-								miResp.setRespuesta((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())));
+								miResp.setRespuesta((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix));
 							}catch(Exception e){
 								//e.printStackTrace();
 								miResp.delRespuesta();
@@ -130,11 +131,11 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 31){
 							//abierta int
 							try{
-								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){
+								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
 									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
 									break;
 								}
-								miResp.setRespuesta(Long.parseLong((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))));
+								miResp.setRespuesta(Long.parseLong((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)));
 							}catch(Exception e){
 								//e.printStackTrace();
 								miResp.delRespuesta();
@@ -142,11 +143,11 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 32){
 							//abierta Double
 							try{
-								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals("")){
+								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
 									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
 									break;
 								}
-								miResp.setRespuesta(Double.parseDouble((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))));
+								miResp.setRespuesta(Double.parseDouble((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)));
 							}catch(Exception e){
 								miResp.delRespuesta();
 								//e.printStackTrace();
@@ -154,9 +155,9 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 33){
 							//abierta date
 							try{
-								if(miPreg.isRequerida() && !(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).equals(""))){
+								if(miPreg.isRequerida() && !(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals(""))){
 									SimpleDateFormat _temp = new SimpleDateFormat("yyyy-MM-dd");
-									String[] _fechaFormateada = ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId()))).split("-");
+									String[] _fechaFormateada = ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).split("-");
 									miResp.setRespuesta(_temp.parse(_fechaFormateada[2]+"-"+_fechaFormateada[1]+"-"+_fechaFormateada[0]));
 								}else{
 									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
