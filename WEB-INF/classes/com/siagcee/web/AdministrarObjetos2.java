@@ -136,6 +136,11 @@ public class AdministrarObjetos2 extends HttpServlet{
 							_nuevaInstancia.setEstudioAsociado(estudioAAsociar);
 						}
 						//ahora indico si la pregunta es de tipo clave, o demás
+						if(request.getParameter("requerido") != null){
+							_nuevaInstancia.setRequerida(true);
+						}else{
+							_nuevaInstancia.setRequerida(false);
+						}
 						InstanciaPregunta _temporalPreg = null;
 						if(request.getParameter("campo_clave") != null){
 							_temporalPreg = _nuevaInstancia.getPadre().retornaPreguntaClave(true);
