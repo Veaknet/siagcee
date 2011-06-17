@@ -172,7 +172,7 @@ No ha indicado un censo o encuesta para participar.
 	//lanzo el conjunto de preguntas
 	out.print("<h4><a name='top'>"+_miIns.getObjeto()+"</a></h4>");
 	%>
-	<form action="userobjetos.do" method="post" name="miformulario2" id="miformulario2">
+	<form action="userobjetos.do" method="post" name="miformulario2" id="miformulario2" autocomplete="off">
 		<input type="hidden" name="id_instrumento" id="id_instrumento" value="<% out.print(_miIns.getId());%>">
 		<input type="hidden" name="accionaejecutar" id="accionaejecutar" value="insertar">
 	<%
