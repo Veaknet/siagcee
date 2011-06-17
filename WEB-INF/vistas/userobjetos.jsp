@@ -195,6 +195,7 @@ No ha indicado un censo o encuesta para participar.
 		}
 
 		String _sufix = "_"+String.valueOf(encuestado.getUsuarioId());
+		boolean preguntaRequeridaSinRespuestaEncontrada = false;
 		while(_misPreg.hasMoreElements()){
 			//para verificar si se encontro una respuesta guardada previamente
 
@@ -237,6 +238,9 @@ No ha indicado un censo o encuesta para participar.
 				if(!respEncontrada || miRespDada.getRespuestaCerrada().getId() < 0){
 					//si no encontré respuesta este option va
 					_pregResp.append("<option value='-1' selected='selected'>Seleccione...</option>");
+					if(miPreg.isRequerida()){
+						preguntaRequeridaSinRespuestaEncontrada = true;
+					}
 				}else{
 					//si encontré respuesta este option va
 					//_pregResp.append("<option value='-1'>No s&eacute;/No respondo</option>");
@@ -283,6 +287,9 @@ No ha indicado un censo o encuesta para participar.
 				if(!respEncontrada || miRespDada.getRespuestaCerrada().getId() < 0){
 					//si no encontré respuesta este option va
 					_pregResp.append("<option value='-1' selected='selected'>Seleccione...</option>");
+					if(miPreg.isRequerida()){
+						preguntaRequeridaSinRespuestaEncontrada = true;
+					}
 				}else{
 					//si encontré respuesta este option va
 					//_pregResp.append("<option value='-1'>No s&eacute;/No respondo</option>");
@@ -341,6 +348,9 @@ No ha indicado un censo o encuesta para participar.
 					if(!respEncontrada || miRespDada.getRespuestaAbiertaTexto().equals("")){
 						//si no encontré respuesta
 						_pregResp.append(" value=''>");
+						if(miPreg.isRequerida()){
+							preguntaRequeridaSinRespuestaEncontrada = true;
+						}
 					}else{
 						//si encontré respuesta
 						_pregResp.append(" value='"+miRespDada.getRespuestaAbiertaTexto()+"'>");
@@ -353,6 +363,9 @@ No ha indicado un censo o encuesta para participar.
 					if(!respEncontrada || (miRespDada.getRespuestaAbiertaInt() == 0)){
 						//si no encontré respuesta
 						_pregResp.append(" value='' onblur='validarEntero(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
+						if(miPreg.isRequerida()){
+							preguntaRequeridaSinRespuestaEncontrada = true;
+						}
 					}else{
 						//si encontré respuesta
 						_pregResp.append(" value='"+String.valueOf(miRespDada.getRespuestaAbiertaInt())+"' onblur='validarEntero(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
@@ -366,6 +379,9 @@ No ha indicado un censo o encuesta para participar.
 					if(!respEncontrada || miRespDada.getRespuestaAbiertaDouble() == 0F){
 						//si no encontré respuesta
 						_pregResp.append(" value='' onblur='validarDouble(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
+						if(miPreg.isRequerida()){
+							preguntaRequeridaSinRespuestaEncontrada = true;
+						}
 					}else{
 						//si encontré respuesta
 						_pregResp.append(" value='"+_df.format(miRespDada.getRespuestaAbiertaDouble())+"' onblur='validarDouble(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
@@ -378,6 +394,9 @@ No ha indicado un censo o encuesta para participar.
 					if(!respEncontrada || miRespDada.getRespuestaAbiertaDate() == null){
 						//si no encontré respuesta
 						_pregResp.append(" value='' ");
+						if(miPreg.isRequerida()){
+							preguntaRequeridaSinRespuestaEncontrada = true;
+						}
 					}else{
 						//si encontré respuesta
 						SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
@@ -390,7 +409,11 @@ No ha indicado un censo o encuesta para participar.
 			}
 		}
 
-		//TODO limpiar preguntas sueltas
+		//si tengo preguntas requeridas sin respuestas en este punto entonces las borro todas, es inestable.
+		//por lo general ocurre para la pregunta clave al acceder
+		if(preguntaRequeridaSinRespuestaEncontrada){
+			Respuesta.delRespuestasDeUsuario(encuestado, encuestado.getConexion(), _miIns);
+		}
 		//out.println(_pregTit);
 		out.println(_pregResp);
 		%>
