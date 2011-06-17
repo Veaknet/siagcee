@@ -50,7 +50,7 @@ public class SetEditables extends HttpServlet {
 					}
 
 					Vector _objetos = Objeto.todosObjetos(admin, micon, 0, true, false);
-					Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon, true, 0);
+					Vector _instanciados = InstanciaObjeto.todosObjetosInstanciados(admin, micon, false, 0);
 
 					request.setAttribute("objetosDisponibles", _objetos);
 					request.setAttribute("objetosInstanciados", _instanciados);
