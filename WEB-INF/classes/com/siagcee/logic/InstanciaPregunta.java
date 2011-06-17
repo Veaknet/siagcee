@@ -194,6 +194,9 @@ public class InstanciaPregunta extends ObjetoBase{
 	}
 
 	public void setCampo_clave_unico(boolean _campo_clave_unico){
+		if(this.getPadre().getPublico()){
+			return;
+		}
 		if(_campo_clave_unico){
 			//todos los demas en false
 			Enumeration _ee = this.getPadre().getPreguntas(true).elements();
