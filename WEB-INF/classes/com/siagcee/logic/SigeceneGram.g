@@ -106,6 +106,7 @@ funcPredefinidas
 	|	min
 	|	redondea
 	|	diff_fechas
+	|	concatenar
 	;
 	
 promedio:	'promedio' '(' ID ')'	->	^('promedio' ID)
@@ -129,6 +130,10 @@ redondea:	'redondea' '(' expr ')'	->	^('redondea' expr)
 
 diff_fechas
 	:	'diff_fechas' '(' factorStr ',' factorStr ')'	->	^('diff_fechas' factorStr factorStr)
+	;
+	
+concatenar
+	:	'concatenar' '(' factorStr ',' factorStr ')' ->	^('concatenar' factorStr factorStr)
 	;
 //fin funciones predefinidas
 

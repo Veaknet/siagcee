@@ -528,6 +528,7 @@ $(document).ready(function(){
 											<option value="redondea( )">Redondea un valor</option>
 										<optgroup label="Funciones Utilitarias">
 											<option value="diff_fechas( , )">Calcula diferencia entre fechas en a&ntilde;os</option>
+											<option value="concatenar( , )">Concatena dos valores</option>
 										</optgroup>
 										</optgroup>
 									</select>

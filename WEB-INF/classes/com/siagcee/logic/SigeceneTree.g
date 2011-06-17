@@ -222,6 +222,10 @@ funcPredefinidas returns [String valor]
 			{
 				$valor = $diff_fechas.valor;
 			}
+	|	concatenar
+			{
+				$valor = $concatenar.valor;
+			}
 	;
 
 promedio returns [String valor]
@@ -325,6 +329,17 @@ diff_fechas returns [String valor]
 		{
 			try{
 				$valor = EstudioPerso.getInstance().diff_fechas($a.valor, $b.valor);
+			}catch(Exception proEx){
+				throw new RecognitionException();
+			}
+		}
+	;
+
+concatenar returns [String valor]
+	:	^('concatenar' a=expr b=expr)
+		{
+			try{
+				$valor = $a.valor+$b.valor;
 			}catch(Exception proEx){
 				throw new RecognitionException();
 			}

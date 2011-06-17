@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g 2011-06-12 12:18:33
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g 2011-06-16 21:34:13
 
 package com.siagcee.logic;
 
@@ -45,6 +45,7 @@ public class SigeceneGramLexer extends Lexer {
     public static final int T__17=17;
     public static final int T__36=36;
     public static final int T__12=12;
+    public static final int T__37=37;
     public static final int T__11=11;
     public static final int T__14=14;
     public static final int T__13=13;
@@ -619,16 +620,37 @@ public class SigeceneGramLexer extends Lexer {
     }
     // $ANTLR end "T__36"
 
+    // $ANTLR start "T__37"
+    public final void mT__37() throws RecognitionException {
+        try {
+            int _type = T__37;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:46:7: ( 'concatenar' )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:46:9: 'concatenar'
+            {
+            match("concatenar"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__37"
+
     // $ANTLR start "STRING"
     public final void mSTRING() throws RecognitionException {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:136:8: ( '\"' (~ ( '\"' | '\\n' | '\\r' | '\\t' ) )+ '\"' )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:136:10: '\"' (~ ( '\"' | '\\n' | '\\r' | '\\t' ) )+ '\"'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:141:8: ( '\"' (~ ( '\"' | '\\n' | '\\r' | '\\t' ) )+ '\"' )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:141:10: '\"' (~ ( '\"' | '\\n' | '\\r' | '\\t' ) )+ '\"'
             {
             match('\"'); 
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:136:14: (~ ( '\"' | '\\n' | '\\r' | '\\t' ) )+
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:141:14: (~ ( '\"' | '\\n' | '\\r' | '\\t' ) )+
             int cnt1=0;
             loop1:
             do {
@@ -642,7 +664,7 @@ public class SigeceneGramLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:136:15: ~ ( '\"' | '\\n' | '\\r' | '\\t' )
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:141:15: ~ ( '\"' | '\\n' | '\\r' | '\\t' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\b')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -683,7 +705,7 @@ public class SigeceneGramLexer extends Lexer {
         try {
             int _type = BOOLEAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:137:9: ( 'verdad' | 'falso' )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:142:9: ( 'verdad' | 'falso' )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -701,7 +723,7 @@ public class SigeceneGramLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:137:11: 'verdad'
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:142:11: 'verdad'
                     {
                     match("verdad"); 
 
@@ -709,7 +731,7 @@ public class SigeceneGramLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:137:22: 'falso'
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:142:22: 'falso'
                     {
                     match("falso"); 
 
@@ -731,11 +753,11 @@ public class SigeceneGramLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:138:4: ( '[' (~ ( '[' | ']' | '\\n' | '\\r' | '\\t' ) )+ ']' )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:138:6: '[' (~ ( '[' | ']' | '\\n' | '\\r' | '\\t' ) )+ ']'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:143:4: ( '[' (~ ( '[' | ']' | '\\n' | '\\r' | '\\t' ) )+ ']' )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:143:6: '[' (~ ( '[' | ']' | '\\n' | '\\r' | '\\t' ) )+ ']'
             {
             match('['); 
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:138:10: (~ ( '[' | ']' | '\\n' | '\\r' | '\\t' ) )+
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:143:10: (~ ( '[' | ']' | '\\n' | '\\r' | '\\t' ) )+
             int cnt3=0;
             loop3:
             do {
@@ -749,7 +771,7 @@ public class SigeceneGramLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:138:11: ~ ( '[' | ']' | '\\n' | '\\r' | '\\t' )
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:143:11: ~ ( '[' | ']' | '\\n' | '\\r' | '\\t' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\b')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='Z')||input.LA(1)=='\\'||(input.LA(1)>='^' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -790,10 +812,10 @@ public class SigeceneGramLexer extends Lexer {
         try {
             int _type = DOUBLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:139:8: ( ( '0' .. '9' )+ ( ( ',' | '.' ) ( '0' .. '9' )+ )? )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:139:10: ( '0' .. '9' )+ ( ( ',' | '.' ) ( '0' .. '9' )+ )?
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:144:8: ( ( '0' .. '9' )+ ( ( ',' | '.' ) ( '0' .. '9' )+ )? )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:144:10: ( '0' .. '9' )+ ( ( ',' | '.' ) ( '0' .. '9' )+ )?
             {
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:139:10: ( '0' .. '9' )+
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:144:10: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -807,7 +829,7 @@ public class SigeceneGramLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:139:10: '0' .. '9'
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:144:10: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -823,7 +845,7 @@ public class SigeceneGramLexer extends Lexer {
                 cnt4++;
             } while (true);
 
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:139:20: ( ( ',' | '.' ) ( '0' .. '9' )+ )?
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:144:20: ( ( ',' | '.' ) ( '0' .. '9' )+ )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -832,7 +854,7 @@ public class SigeceneGramLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:139:21: ( ',' | '.' ) ( '0' .. '9' )+
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:144:21: ( ',' | '.' ) ( '0' .. '9' )+
                     {
                     if ( input.LA(1)==','||input.LA(1)=='.' ) {
                         input.consume();
@@ -843,7 +865,7 @@ public class SigeceneGramLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:139:31: ( '0' .. '9' )+
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:144:31: ( '0' .. '9' )+
                     int cnt5=0;
                     loop5:
                     do {
@@ -857,7 +879,7 @@ public class SigeceneGramLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:139:31: '0' .. '9'
+                    	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:144:31: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -895,10 +917,10 @@ public class SigeceneGramLexer extends Lexer {
         try {
             int _type = NEWLINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:140:9: ( ( '\\r' )? '\\n' )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:140:11: ( '\\r' )? '\\n'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:145:9: ( ( '\\r' )? '\\n' )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:145:11: ( '\\r' )? '\\n'
             {
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:140:11: ( '\\r' )?
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:145:11: ( '\\r' )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -907,7 +929,7 @@ public class SigeceneGramLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:140:11: '\\r'
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:145:11: '\\r'
                     {
                     match('\r'); 
 
@@ -933,10 +955,10 @@ public class SigeceneGramLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:141:4: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:141:6: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:146:4: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:146:6: ( ' ' | '\\t' | '\\n' | '\\r' )+
             {
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:141:6: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:146:6: ( ' ' | '\\t' | '\\n' | '\\r' )+
             int cnt8=0;
             loop8:
             do {
@@ -987,8 +1009,8 @@ public class SigeceneGramLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:8: ( T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | STRING | BOOLEAN | ID | DOUBLE | NEWLINE | WS )
-        int alt9=33;
+        // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:8: ( T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | STRING | BOOLEAN | ID | DOUBLE | NEWLINE | WS )
+        int alt9=34;
         alt9 = dfa9.predict(input);
         switch (alt9) {
             case 1 :
@@ -1181,42 +1203,49 @@ public class SigeceneGramLexer extends Lexer {
                 }
                 break;
             case 28 :
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:172: STRING
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:172: T__37
+                {
+                mT__37(); 
+
+                }
+                break;
+            case 29 :
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:178: STRING
                 {
                 mSTRING(); 
 
                 }
                 break;
-            case 29 :
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:179: BOOLEAN
+            case 30 :
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:185: BOOLEAN
                 {
                 mBOOLEAN(); 
 
                 }
                 break;
-            case 30 :
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:187: ID
+            case 31 :
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:193: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 31 :
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:190: DOUBLE
+            case 32 :
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:196: DOUBLE
                 {
                 mDOUBLE(); 
 
                 }
                 break;
-            case 32 :
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:197: NEWLINE
+            case 33 :
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:203: NEWLINE
                 {
                 mNEWLINE(); 
 
                 }
                 break;
-            case 33 :
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:205: WS
+            case 34 :
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:1:211: WS
                 {
                 mWS(); 
 
@@ -1230,22 +1259,22 @@ public class SigeceneGramLexer extends Lexer {
 
     protected DFA9 dfa9 = new DFA9(this);
     static final String DFA9_eotS =
-        "\1\uffff\1\36\10\uffff\1\42\1\45\16\uffff\1\34\1\50\15\uffff";
+        "\1\uffff\1\36\10\uffff\1\42\1\45\16\uffff\1\34\1\51\21\uffff";
     static final String DFA9_eofS =
-        "\51\uffff";
+        "\55\uffff";
     static final String DFA9_minS =
-        "\1\11\1\75\1\uffff\1\151\6\uffff\2\75\6\uffff\1\141\7\uffff\1\12"+
-        "\1\11\15\uffff";
+        "\1\11\1\75\1\uffff\1\151\6\uffff\2\75\5\uffff\1\157\1\141\7\uffff"+
+        "\1\12\1\11\12\uffff\1\156\3\uffff\1\143\2\uffff";
     static final String DFA9_maxS =
-        "\1\166\1\75\1\uffff\1\165\6\uffff\1\75\1\76\6\uffff\1\151\7\uffff"+
-        "\1\12\1\40\15\uffff";
+        "\1\166\1\75\1\uffff\1\165\6\uffff\1\75\1\76\5\uffff\1\157\1\151"+
+        "\7\uffff\1\12\1\40\12\uffff\1\156\3\uffff\1\164\2\uffff";
     static final String DFA9_acceptS =
         "\2\uffff\1\2\1\uffff\1\4\1\5\1\6\1\7\1\10\1\11\2\uffff\1\20\1\21"+
-        "\1\22\1\23\1\24\1\26\1\uffff\1\31\1\32\1\33\1\34\1\35\1\36\1\37"+
-        "\2\uffff\1\41\1\16\1\1\1\3\1\25\1\13\1\12\1\15\1\17\1\14\1\27\1"+
-        "\30\1\40";
+        "\1\22\1\23\1\24\2\uffff\1\31\1\32\1\33\1\35\1\36\1\37\1\40\2\uffff"+
+        "\1\42\1\16\1\1\1\3\1\25\1\13\1\12\1\15\1\17\1\14\1\uffff\1\27\1"+
+        "\30\1\41\1\uffff\1\26\1\34";
     static final String DFA9_specialS =
-        "\51\uffff}>";
+        "\55\uffff}>";
     static final String[] DFA9_transitionS = {
             "\1\34\1\33\2\uffff\1\32\22\uffff\1\34\1\uffff\1\26\5\uffff"+
             "\1\4\1\6\1\16\1\14\1\25\1\15\1\uffff\1\17\12\31\1\uffff\1\5"+
@@ -1268,8 +1297,8 @@ public class SigeceneGramLexer extends Lexer {
             "",
             "",
             "",
-            "",
-            "\1\46\7\uffff\1\47",
+            "\1\46",
+            "\1\47\7\uffff\1\50",
             "",
             "",
             "",
@@ -1289,7 +1318,11 @@ public class SigeceneGramLexer extends Lexer {
             "",
             "",
             "",
+            "\1\52",
             "",
+            "",
+            "",
+            "\1\54\20\uffff\1\53",
             "",
             ""
     };
@@ -1324,7 +1357,7 @@ public class SigeceneGramLexer extends Lexer {
             this.transition = DFA9_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | STRING | BOOLEAN | ID | DOUBLE | NEWLINE | WS );";
+            return "1:1: Tokens : ( T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | STRING | BOOLEAN | ID | DOUBLE | NEWLINE | WS );";
         }
     }
  

@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g 2011-06-12 12:18:32
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g 2011-06-16 21:34:12
 
 package com.siagcee.logic;
 
@@ -22,7 +22,7 @@ import org.antlr.runtime.tree.*;
 
 public class SigeceneGramParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "NEWLINE", "BOOLEAN", "STRING", "DOUBLE", "WS", "'='", "'obtener'", "'si'", "'('", "';'", "')'", "'Y'", "'O'", "'NO'", "'>'", "'>='", "'<'", "'<='", "'=='", "'<>'", "'+'", "'-'", "'*'", "'/'", "'promedio'", "'sumatoria'", "'contar'", "'max'", "'min'", "'redondea'", "'diff_fechas'", "','"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "NEWLINE", "BOOLEAN", "STRING", "DOUBLE", "WS", "'='", "'obtener'", "'si'", "'('", "';'", "')'", "'Y'", "'O'", "'NO'", "'>'", "'>='", "'<'", "'<='", "'=='", "'<>'", "'+'", "'-'", "'*'", "'/'", "'promedio'", "'sumatoria'", "'contar'", "'max'", "'min'", "'redondea'", "'diff_fechas'", "','", "'concatenar'"
     };
     public static final int T__29=29;
     public static final int T__28=28;
@@ -51,6 +51,7 @@ public class SigeceneGramParser extends Parser {
     public static final int T__18=18;
     public static final int T__36=36;
     public static final int T__17=17;
+    public static final int T__37=37;
     public static final int T__12=12;
     public static final int T__11=11;
     public static final int T__14=14;
@@ -68,7 +69,7 @@ public class SigeceneGramParser extends Parser {
         }
         public SigeceneGramParser(TokenStream input, RecognizerSharedState state) {
             super(input, state);
-            this.state.ruleMemo = new HashMap[48+1];
+            this.state.ruleMemo = new HashMap[50+1];
              
              
         }
@@ -268,7 +269,7 @@ public class SigeceneGramParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: 10, proposicion, ID
+                    // elements: proposicion, ID, 10
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -326,7 +327,7 @@ public class SigeceneGramParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: proposicion, 11
+                    // elements: 11, proposicion
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -713,7 +714,7 @@ public class SigeceneGramParser extends Parser {
             if ( (LA7_0==18) ) {
                 alt7=1;
             }
-            else if ( (LA7_0==ID||(LA7_0>=BOOLEAN && LA7_0<=DOUBLE)||LA7_0==13||(LA7_0>=29 && LA7_0<=35)) ) {
+            else if ( (LA7_0==ID||(LA7_0>=BOOLEAN && LA7_0<=DOUBLE)||LA7_0==13||(LA7_0>=29 && LA7_0<=35)||LA7_0==37) ) {
                 alt7=2;
             }
             else {
@@ -820,7 +821,7 @@ public class SigeceneGramParser extends Parser {
             if ( (LA10_0==BOOLEAN) ) {
                 alt10=1;
             }
-            else if ( (LA10_0==ID||(LA10_0>=STRING && LA10_0<=DOUBLE)||LA10_0==13||(LA10_0>=29 && LA10_0<=35)) ) {
+            else if ( (LA10_0==ID||(LA10_0>=STRING && LA10_0<=DOUBLE)||LA10_0==13||(LA10_0>=29 && LA10_0<=35)||LA10_0==37) ) {
                 alt10=2;
             }
             else {
@@ -1041,7 +1042,7 @@ public class SigeceneGramParser extends Parser {
             if ( (LA11_0==STRING) ) {
                 alt11=1;
             }
-            else if ( (LA11_0==ID||LA11_0==DOUBLE||LA11_0==13||(LA11_0>=29 && LA11_0<=35)) ) {
+            else if ( (LA11_0==ID||LA11_0==DOUBLE||LA11_0==13||(LA11_0>=29 && LA11_0<=35)||LA11_0==37) ) {
                 alt11=2;
             }
             else {
@@ -1411,6 +1412,7 @@ public class SigeceneGramParser extends Parser {
             case 33:
             case 34:
             case 35:
+            case 37:
                 {
                 alt16=3;
                 }
@@ -1512,7 +1514,7 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "funcPredefinidas"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:101:1: funcPredefinidas : ( promedio | sumatoria | contar | max | min | redondea | diff_fechas );
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:101:1: funcPredefinidas : ( promedio | sumatoria | contar | max | min | redondea | diff_fechas | concatenar );
     public final SigeceneGramParser.funcPredefinidas_return funcPredefinidas() throws RecognitionException {
         SigeceneGramParser.funcPredefinidas_return retval = new SigeceneGramParser.funcPredefinidas_return();
         retval.start = input.LT(1);
@@ -1533,12 +1535,14 @@ public class SigeceneGramParser extends Parser {
 
         SigeceneGramParser.diff_fechas_return diff_fechas53 = null;
 
+        SigeceneGramParser.concatenar_return concatenar54 = null;
+
 
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return retval; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:102:2: ( promedio | sumatoria | contar | max | min | redondea | diff_fechas )
-            int alt17=7;
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:102:2: ( promedio | sumatoria | contar | max | min | redondea | diff_fechas | concatenar )
+            int alt17=8;
             switch ( input.LA(1) ) {
             case 29:
                 {
@@ -1573,6 +1577,11 @@ public class SigeceneGramParser extends Parser {
             case 35:
                 {
                 alt17=7;
+                }
+                break;
+            case 37:
+                {
+                alt17=8;
                 }
                 break;
             default:
@@ -1682,6 +1691,20 @@ public class SigeceneGramParser extends Parser {
 
                     }
                     break;
+                case 8 :
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:109:4: concatenar
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+                    pushFollow(FOLLOW_concatenar_in_funcPredefinidas386);
+                    concatenar54=concatenar();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, concatenar54.getTree());
+
+                    }
+                    break;
 
             }
             retval.stop = input.LT(-1);
@@ -1709,22 +1732,22 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "promedio"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:111:1: promedio : 'promedio' '(' ID ')' -> ^( 'promedio' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:112:1: promedio : 'promedio' '(' ID ')' -> ^( 'promedio' ID ) ;
     public final SigeceneGramParser.promedio_return promedio() throws RecognitionException {
         SigeceneGramParser.promedio_return retval = new SigeceneGramParser.promedio_return();
         retval.start = input.LT(1);
         int promedio_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token string_literal54=null;
-        Token char_literal55=null;
-        Token ID56=null;
-        Token char_literal57=null;
+        Token string_literal55=null;
+        Token char_literal56=null;
+        Token ID57=null;
+        Token char_literal58=null;
 
-        CommonTree string_literal54_tree=null;
-        CommonTree char_literal55_tree=null;
-        CommonTree ID56_tree=null;
-        CommonTree char_literal57_tree=null;
+        CommonTree string_literal55_tree=null;
+        CommonTree char_literal56_tree=null;
+        CommonTree ID57_tree=null;
+        CommonTree char_literal58_tree=null;
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_15=new RewriteRuleTokenStream(adaptor,"token 15");
         RewriteRuleTokenStream stream_13=new RewriteRuleTokenStream(adaptor,"token 13");
@@ -1732,25 +1755,25 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 12) ) { return retval; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:111:9: ( 'promedio' '(' ID ')' -> ^( 'promedio' ID ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:111:11: 'promedio' '(' ID ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:112:9: ( 'promedio' '(' ID ')' -> ^( 'promedio' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:112:11: 'promedio' '(' ID ')'
             {
-            string_literal54=(Token)match(input,29,FOLLOW_29_in_promedio391); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_29.add(string_literal54);
+            string_literal55=(Token)match(input,29,FOLLOW_29_in_promedio396); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_29.add(string_literal55);
 
-            char_literal55=(Token)match(input,13,FOLLOW_13_in_promedio393); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_13.add(char_literal55);
+            char_literal56=(Token)match(input,13,FOLLOW_13_in_promedio398); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_13.add(char_literal56);
 
-            ID56=(Token)match(input,ID,FOLLOW_ID_in_promedio395); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_ID.add(ID56);
+            ID57=(Token)match(input,ID,FOLLOW_ID_in_promedio400); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_ID.add(ID57);
 
-            char_literal57=(Token)match(input,15,FOLLOW_15_in_promedio397); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_15.add(char_literal57);
+            char_literal58=(Token)match(input,15,FOLLOW_15_in_promedio402); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_15.add(char_literal58);
 
 
 
             // AST REWRITE
-            // elements: ID, 29
+            // elements: 29, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1761,9 +1784,9 @@ public class SigeceneGramParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 111:33: -> ^( 'promedio' ID )
+            // 112:33: -> ^( 'promedio' ID )
             {
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:111:36: ^( 'promedio' ID )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:112:36: ^( 'promedio' ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_29.nextNode(), root_1);
@@ -1803,22 +1826,22 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "sumatoria"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:114:1: sumatoria : 'sumatoria' '(' ID ')' -> ^( 'sumatoria' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:115:1: sumatoria : 'sumatoria' '(' ID ')' -> ^( 'sumatoria' ID ) ;
     public final SigeceneGramParser.sumatoria_return sumatoria() throws RecognitionException {
         SigeceneGramParser.sumatoria_return retval = new SigeceneGramParser.sumatoria_return();
         retval.start = input.LT(1);
         int sumatoria_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token string_literal58=null;
-        Token char_literal59=null;
-        Token ID60=null;
-        Token char_literal61=null;
+        Token string_literal59=null;
+        Token char_literal60=null;
+        Token ID61=null;
+        Token char_literal62=null;
 
-        CommonTree string_literal58_tree=null;
-        CommonTree char_literal59_tree=null;
-        CommonTree ID60_tree=null;
-        CommonTree char_literal61_tree=null;
+        CommonTree string_literal59_tree=null;
+        CommonTree char_literal60_tree=null;
+        CommonTree ID61_tree=null;
+        CommonTree char_literal62_tree=null;
         RewriteRuleTokenStream stream_30=new RewriteRuleTokenStream(adaptor,"token 30");
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_15=new RewriteRuleTokenStream(adaptor,"token 15");
@@ -1826,25 +1849,25 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 13) ) { return retval; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:115:2: ( 'sumatoria' '(' ID ')' -> ^( 'sumatoria' ID ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:115:4: 'sumatoria' '(' ID ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:2: ( 'sumatoria' '(' ID ')' -> ^( 'sumatoria' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:4: 'sumatoria' '(' ID ')'
             {
-            string_literal58=(Token)match(input,30,FOLLOW_30_in_sumatoria416); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_30.add(string_literal58);
+            string_literal59=(Token)match(input,30,FOLLOW_30_in_sumatoria421); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_30.add(string_literal59);
 
-            char_literal59=(Token)match(input,13,FOLLOW_13_in_sumatoria418); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_13.add(char_literal59);
+            char_literal60=(Token)match(input,13,FOLLOW_13_in_sumatoria423); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_13.add(char_literal60);
 
-            ID60=(Token)match(input,ID,FOLLOW_ID_in_sumatoria420); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_ID.add(ID60);
+            ID61=(Token)match(input,ID,FOLLOW_ID_in_sumatoria425); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_ID.add(ID61);
 
-            char_literal61=(Token)match(input,15,FOLLOW_15_in_sumatoria422); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_15.add(char_literal61);
+            char_literal62=(Token)match(input,15,FOLLOW_15_in_sumatoria427); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_15.add(char_literal62);
 
 
 
             // AST REWRITE
-            // elements: 30, ID
+            // elements: ID, 30
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1855,9 +1878,9 @@ public class SigeceneGramParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 115:27: -> ^( 'sumatoria' ID )
+            // 116:27: -> ^( 'sumatoria' ID )
             {
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:115:30: ^( 'sumatoria' ID )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:116:30: ^( 'sumatoria' ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_30.nextNode(), root_1);
@@ -1897,22 +1920,22 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "contar"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:118:1: contar : 'contar' '(' ID ')' -> ^( 'contar' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:1: contar : 'contar' '(' ID ')' -> ^( 'contar' ID ) ;
     public final SigeceneGramParser.contar_return contar() throws RecognitionException {
         SigeceneGramParser.contar_return retval = new SigeceneGramParser.contar_return();
         retval.start = input.LT(1);
         int contar_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token string_literal62=null;
-        Token char_literal63=null;
-        Token ID64=null;
-        Token char_literal65=null;
+        Token string_literal63=null;
+        Token char_literal64=null;
+        Token ID65=null;
+        Token char_literal66=null;
 
-        CommonTree string_literal62_tree=null;
-        CommonTree char_literal63_tree=null;
-        CommonTree ID64_tree=null;
-        CommonTree char_literal65_tree=null;
+        CommonTree string_literal63_tree=null;
+        CommonTree char_literal64_tree=null;
+        CommonTree ID65_tree=null;
+        CommonTree char_literal66_tree=null;
         RewriteRuleTokenStream stream_31=new RewriteRuleTokenStream(adaptor,"token 31");
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_15=new RewriteRuleTokenStream(adaptor,"token 15");
@@ -1920,25 +1943,25 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 14) ) { return retval; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:118:8: ( 'contar' '(' ID ')' -> ^( 'contar' ID ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:118:10: 'contar' '(' ID ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:8: ( 'contar' '(' ID ')' -> ^( 'contar' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:10: 'contar' '(' ID ')'
             {
-            string_literal62=(Token)match(input,31,FOLLOW_31_in_contar440); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_31.add(string_literal62);
+            string_literal63=(Token)match(input,31,FOLLOW_31_in_contar445); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_31.add(string_literal63);
 
-            char_literal63=(Token)match(input,13,FOLLOW_13_in_contar442); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_13.add(char_literal63);
+            char_literal64=(Token)match(input,13,FOLLOW_13_in_contar447); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_13.add(char_literal64);
 
-            ID64=(Token)match(input,ID,FOLLOW_ID_in_contar444); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_ID.add(ID64);
+            ID65=(Token)match(input,ID,FOLLOW_ID_in_contar449); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_ID.add(ID65);
 
-            char_literal65=(Token)match(input,15,FOLLOW_15_in_contar446); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_15.add(char_literal65);
+            char_literal66=(Token)match(input,15,FOLLOW_15_in_contar451); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_15.add(char_literal66);
 
 
 
             // AST REWRITE
-            // elements: ID, 31
+            // elements: 31, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1949,9 +1972,9 @@ public class SigeceneGramParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 118:30: -> ^( 'contar' ID )
+            // 119:30: -> ^( 'contar' ID )
             {
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:118:33: ^( 'contar' ID )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:119:33: ^( 'contar' ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_31.nextNode(), root_1);
@@ -1991,22 +2014,22 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "max"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:121:1: max : 'max' '(' ID ')' -> ^( 'max' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:1: max : 'max' '(' ID ')' -> ^( 'max' ID ) ;
     public final SigeceneGramParser.max_return max() throws RecognitionException {
         SigeceneGramParser.max_return retval = new SigeceneGramParser.max_return();
         retval.start = input.LT(1);
         int max_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token string_literal66=null;
-        Token char_literal67=null;
-        Token ID68=null;
-        Token char_literal69=null;
+        Token string_literal67=null;
+        Token char_literal68=null;
+        Token ID69=null;
+        Token char_literal70=null;
 
-        CommonTree string_literal66_tree=null;
-        CommonTree char_literal67_tree=null;
-        CommonTree ID68_tree=null;
-        CommonTree char_literal69_tree=null;
+        CommonTree string_literal67_tree=null;
+        CommonTree char_literal68_tree=null;
+        CommonTree ID69_tree=null;
+        CommonTree char_literal70_tree=null;
         RewriteRuleTokenStream stream_32=new RewriteRuleTokenStream(adaptor,"token 32");
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_15=new RewriteRuleTokenStream(adaptor,"token 15");
@@ -2014,20 +2037,20 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 15) ) { return retval; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:121:5: ( 'max' '(' ID ')' -> ^( 'max' ID ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:121:7: 'max' '(' ID ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:5: ( 'max' '(' ID ')' -> ^( 'max' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:7: 'max' '(' ID ')'
             {
-            string_literal66=(Token)match(input,32,FOLLOW_32_in_max464); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_32.add(string_literal66);
+            string_literal67=(Token)match(input,32,FOLLOW_32_in_max469); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_32.add(string_literal67);
 
-            char_literal67=(Token)match(input,13,FOLLOW_13_in_max466); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_13.add(char_literal67);
+            char_literal68=(Token)match(input,13,FOLLOW_13_in_max471); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_13.add(char_literal68);
 
-            ID68=(Token)match(input,ID,FOLLOW_ID_in_max468); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_ID.add(ID68);
+            ID69=(Token)match(input,ID,FOLLOW_ID_in_max473); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_ID.add(ID69);
 
-            char_literal69=(Token)match(input,15,FOLLOW_15_in_max470); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_15.add(char_literal69);
+            char_literal70=(Token)match(input,15,FOLLOW_15_in_max475); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_15.add(char_literal70);
 
 
 
@@ -2043,9 +2066,9 @@ public class SigeceneGramParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 121:24: -> ^( 'max' ID )
+            // 122:24: -> ^( 'max' ID )
             {
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:121:27: ^( 'max' ID )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:122:27: ^( 'max' ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_32.nextNode(), root_1);
@@ -2085,22 +2108,22 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "min"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:124:1: min : 'min' '(' ID ')' -> ^( 'min' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:125:1: min : 'min' '(' ID ')' -> ^( 'min' ID ) ;
     public final SigeceneGramParser.min_return min() throws RecognitionException {
         SigeceneGramParser.min_return retval = new SigeceneGramParser.min_return();
         retval.start = input.LT(1);
         int min_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token string_literal70=null;
-        Token char_literal71=null;
-        Token ID72=null;
-        Token char_literal73=null;
+        Token string_literal71=null;
+        Token char_literal72=null;
+        Token ID73=null;
+        Token char_literal74=null;
 
-        CommonTree string_literal70_tree=null;
-        CommonTree char_literal71_tree=null;
-        CommonTree ID72_tree=null;
-        CommonTree char_literal73_tree=null;
+        CommonTree string_literal71_tree=null;
+        CommonTree char_literal72_tree=null;
+        CommonTree ID73_tree=null;
+        CommonTree char_literal74_tree=null;
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_15=new RewriteRuleTokenStream(adaptor,"token 15");
         RewriteRuleTokenStream stream_33=new RewriteRuleTokenStream(adaptor,"token 33");
@@ -2108,25 +2131,25 @@ public class SigeceneGramParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 16) ) { return retval; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:124:5: ( 'min' '(' ID ')' -> ^( 'min' ID ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:124:7: 'min' '(' ID ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:125:5: ( 'min' '(' ID ')' -> ^( 'min' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:125:7: 'min' '(' ID ')'
             {
-            string_literal70=(Token)match(input,33,FOLLOW_33_in_min488); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_33.add(string_literal70);
+            string_literal71=(Token)match(input,33,FOLLOW_33_in_min493); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_33.add(string_literal71);
 
-            char_literal71=(Token)match(input,13,FOLLOW_13_in_min490); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_13.add(char_literal71);
+            char_literal72=(Token)match(input,13,FOLLOW_13_in_min495); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_13.add(char_literal72);
 
-            ID72=(Token)match(input,ID,FOLLOW_ID_in_min492); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_ID.add(ID72);
+            ID73=(Token)match(input,ID,FOLLOW_ID_in_min497); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_ID.add(ID73);
 
-            char_literal73=(Token)match(input,15,FOLLOW_15_in_min494); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_15.add(char_literal73);
+            char_literal74=(Token)match(input,15,FOLLOW_15_in_min499); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_15.add(char_literal74);
 
 
 
             // AST REWRITE
-            // elements: 33, ID
+            // elements: ID, 33
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2137,9 +2160,9 @@ public class SigeceneGramParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 124:24: -> ^( 'min' ID )
+            // 125:24: -> ^( 'min' ID )
             {
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:124:27: ^( 'min' ID )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:125:27: ^( 'min' ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_33.nextNode(), root_1);
@@ -2179,45 +2202,45 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "redondea"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:127:1: redondea : 'redondea' '(' expr ')' -> ^( 'redondea' expr ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:128:1: redondea : 'redondea' '(' expr ')' -> ^( 'redondea' expr ) ;
     public final SigeceneGramParser.redondea_return redondea() throws RecognitionException {
         SigeceneGramParser.redondea_return retval = new SigeceneGramParser.redondea_return();
         retval.start = input.LT(1);
         int redondea_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token string_literal74=null;
-        Token char_literal75=null;
-        Token char_literal77=null;
-        SigeceneGramParser.expr_return expr76 = null;
+        Token string_literal75=null;
+        Token char_literal76=null;
+        Token char_literal78=null;
+        SigeceneGramParser.expr_return expr77 = null;
 
 
-        CommonTree string_literal74_tree=null;
-        CommonTree char_literal75_tree=null;
-        CommonTree char_literal77_tree=null;
+        CommonTree string_literal75_tree=null;
+        CommonTree char_literal76_tree=null;
+        CommonTree char_literal78_tree=null;
         RewriteRuleTokenStream stream_15=new RewriteRuleTokenStream(adaptor,"token 15");
         RewriteRuleTokenStream stream_34=new RewriteRuleTokenStream(adaptor,"token 34");
         RewriteRuleTokenStream stream_13=new RewriteRuleTokenStream(adaptor,"token 13");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 17) ) { return retval; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:127:9: ( 'redondea' '(' expr ')' -> ^( 'redondea' expr ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:127:11: 'redondea' '(' expr ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:128:9: ( 'redondea' '(' expr ')' -> ^( 'redondea' expr ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:128:11: 'redondea' '(' expr ')'
             {
-            string_literal74=(Token)match(input,34,FOLLOW_34_in_redondea511); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_34.add(string_literal74);
+            string_literal75=(Token)match(input,34,FOLLOW_34_in_redondea516); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_34.add(string_literal75);
 
-            char_literal75=(Token)match(input,13,FOLLOW_13_in_redondea513); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_13.add(char_literal75);
+            char_literal76=(Token)match(input,13,FOLLOW_13_in_redondea518); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_13.add(char_literal76);
 
-            pushFollow(FOLLOW_expr_in_redondea515);
-            expr76=expr();
+            pushFollow(FOLLOW_expr_in_redondea520);
+            expr77=expr();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_expr.add(expr76.getTree());
-            char_literal77=(Token)match(input,15,FOLLOW_15_in_redondea517); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_15.add(char_literal77);
+            if ( state.backtracking==0 ) stream_expr.add(expr77.getTree());
+            char_literal78=(Token)match(input,15,FOLLOW_15_in_redondea522); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_15.add(char_literal78);
 
 
 
@@ -2233,9 +2256,9 @@ public class SigeceneGramParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 127:35: -> ^( 'redondea' expr )
+            // 128:35: -> ^( 'redondea' expr )
             {
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:127:38: ^( 'redondea' expr )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:128:38: ^( 'redondea' expr )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_34.nextNode(), root_1);
@@ -2275,26 +2298,26 @@ public class SigeceneGramParser extends Parser {
     };
 
     // $ANTLR start "diff_fechas"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:130:1: diff_fechas : 'diff_fechas' '(' factorStr ',' factorStr ')' -> ^( 'diff_fechas' factorStr factorStr ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:131:1: diff_fechas : 'diff_fechas' '(' factorStr ',' factorStr ')' -> ^( 'diff_fechas' factorStr factorStr ) ;
     public final SigeceneGramParser.diff_fechas_return diff_fechas() throws RecognitionException {
         SigeceneGramParser.diff_fechas_return retval = new SigeceneGramParser.diff_fechas_return();
         retval.start = input.LT(1);
         int diff_fechas_StartIndex = input.index();
         CommonTree root_0 = null;
 
-        Token string_literal78=null;
-        Token char_literal79=null;
-        Token char_literal81=null;
-        Token char_literal83=null;
-        SigeceneGramParser.factorStr_return factorStr80 = null;
+        Token string_literal79=null;
+        Token char_literal80=null;
+        Token char_literal82=null;
+        Token char_literal84=null;
+        SigeceneGramParser.factorStr_return factorStr81 = null;
 
-        SigeceneGramParser.factorStr_return factorStr82 = null;
+        SigeceneGramParser.factorStr_return factorStr83 = null;
 
 
-        CommonTree string_literal78_tree=null;
-        CommonTree char_literal79_tree=null;
-        CommonTree char_literal81_tree=null;
-        CommonTree char_literal83_tree=null;
+        CommonTree string_literal79_tree=null;
+        CommonTree char_literal80_tree=null;
+        CommonTree char_literal82_tree=null;
+        CommonTree char_literal84_tree=null;
         RewriteRuleTokenStream stream_35=new RewriteRuleTokenStream(adaptor,"token 35");
         RewriteRuleTokenStream stream_36=new RewriteRuleTokenStream(adaptor,"token 36");
         RewriteRuleTokenStream stream_15=new RewriteRuleTokenStream(adaptor,"token 15");
@@ -2302,37 +2325,37 @@ public class SigeceneGramParser extends Parser {
         RewriteRuleSubtreeStream stream_factorStr=new RewriteRuleSubtreeStream(adaptor,"rule factorStr");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 18) ) { return retval; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:131:2: ( 'diff_fechas' '(' factorStr ',' factorStr ')' -> ^( 'diff_fechas' factorStr factorStr ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:131:4: 'diff_fechas' '(' factorStr ',' factorStr ')'
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:132:2: ( 'diff_fechas' '(' factorStr ',' factorStr ')' -> ^( 'diff_fechas' factorStr factorStr ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:132:4: 'diff_fechas' '(' factorStr ',' factorStr ')'
             {
-            string_literal78=(Token)match(input,35,FOLLOW_35_in_diff_fechas536); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_35.add(string_literal78);
+            string_literal79=(Token)match(input,35,FOLLOW_35_in_diff_fechas541); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_35.add(string_literal79);
 
-            char_literal79=(Token)match(input,13,FOLLOW_13_in_diff_fechas538); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_13.add(char_literal79);
+            char_literal80=(Token)match(input,13,FOLLOW_13_in_diff_fechas543); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_13.add(char_literal80);
 
-            pushFollow(FOLLOW_factorStr_in_diff_fechas540);
-            factorStr80=factorStr();
-
-            state._fsp--;
-            if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_factorStr.add(factorStr80.getTree());
-            char_literal81=(Token)match(input,36,FOLLOW_36_in_diff_fechas542); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_36.add(char_literal81);
-
-            pushFollow(FOLLOW_factorStr_in_diff_fechas544);
-            factorStr82=factorStr();
+            pushFollow(FOLLOW_factorStr_in_diff_fechas545);
+            factorStr81=factorStr();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_factorStr.add(factorStr82.getTree());
-            char_literal83=(Token)match(input,15,FOLLOW_15_in_diff_fechas546); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_15.add(char_literal83);
+            if ( state.backtracking==0 ) stream_factorStr.add(factorStr81.getTree());
+            char_literal82=(Token)match(input,36,FOLLOW_36_in_diff_fechas547); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_36.add(char_literal82);
+
+            pushFollow(FOLLOW_factorStr_in_diff_fechas549);
+            factorStr83=factorStr();
+
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) stream_factorStr.add(factorStr83.getTree());
+            char_literal84=(Token)match(input,15,FOLLOW_15_in_diff_fechas551); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_15.add(char_literal84);
 
 
 
             // AST REWRITE
-            // elements: 35, factorStr, factorStr
+            // elements: factorStr, 35, factorStr
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2343,9 +2366,9 @@ public class SigeceneGramParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 131:50: -> ^( 'diff_fechas' factorStr factorStr )
+            // 132:50: -> ^( 'diff_fechas' factorStr factorStr )
             {
-                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:131:53: ^( 'diff_fechas' factorStr factorStr )
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:132:53: ^( 'diff_fechas' factorStr factorStr )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_35.nextNode(), root_1);
@@ -2380,6 +2403,117 @@ public class SigeceneGramParser extends Parser {
     }
     // $ANTLR end "diff_fechas"
 
+    public static class concatenar_return extends ParserRuleReturnScope {
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "concatenar"
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:135:1: concatenar : 'concatenar' '(' factorStr ',' factorStr ')' -> ^( 'concatenar' factorStr factorStr ) ;
+    public final SigeceneGramParser.concatenar_return concatenar() throws RecognitionException {
+        SigeceneGramParser.concatenar_return retval = new SigeceneGramParser.concatenar_return();
+        retval.start = input.LT(1);
+        int concatenar_StartIndex = input.index();
+        CommonTree root_0 = null;
+
+        Token string_literal85=null;
+        Token char_literal86=null;
+        Token char_literal88=null;
+        Token char_literal90=null;
+        SigeceneGramParser.factorStr_return factorStr87 = null;
+
+        SigeceneGramParser.factorStr_return factorStr89 = null;
+
+
+        CommonTree string_literal85_tree=null;
+        CommonTree char_literal86_tree=null;
+        CommonTree char_literal88_tree=null;
+        CommonTree char_literal90_tree=null;
+        RewriteRuleTokenStream stream_36=new RewriteRuleTokenStream(adaptor,"token 36");
+        RewriteRuleTokenStream stream_15=new RewriteRuleTokenStream(adaptor,"token 15");
+        RewriteRuleTokenStream stream_13=new RewriteRuleTokenStream(adaptor,"token 13");
+        RewriteRuleTokenStream stream_37=new RewriteRuleTokenStream(adaptor,"token 37");
+        RewriteRuleSubtreeStream stream_factorStr=new RewriteRuleSubtreeStream(adaptor,"rule factorStr");
+        try {
+            if ( state.backtracking>0 && alreadyParsedRule(input, 19) ) { return retval; }
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:136:2: ( 'concatenar' '(' factorStr ',' factorStr ')' -> ^( 'concatenar' factorStr factorStr ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:136:4: 'concatenar' '(' factorStr ',' factorStr ')'
+            {
+            string_literal85=(Token)match(input,37,FOLLOW_37_in_concatenar573); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_37.add(string_literal85);
+
+            char_literal86=(Token)match(input,13,FOLLOW_13_in_concatenar575); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_13.add(char_literal86);
+
+            pushFollow(FOLLOW_factorStr_in_concatenar577);
+            factorStr87=factorStr();
+
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) stream_factorStr.add(factorStr87.getTree());
+            char_literal88=(Token)match(input,36,FOLLOW_36_in_concatenar579); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_36.add(char_literal88);
+
+            pushFollow(FOLLOW_factorStr_in_concatenar581);
+            factorStr89=factorStr();
+
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) stream_factorStr.add(factorStr89.getTree());
+            char_literal90=(Token)match(input,15,FOLLOW_15_in_concatenar583); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_15.add(char_literal90);
+
+
+
+            // AST REWRITE
+            // elements: factorStr, 37, factorStr
+            // token labels: 
+            // rule labels: retval
+            // token list labels: 
+            // rule list labels: 
+            // wildcard labels: 
+            if ( state.backtracking==0 ) {
+            retval.tree = root_0;
+            RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+            root_0 = (CommonTree)adaptor.nil();
+            // 136:49: -> ^( 'concatenar' factorStr factorStr )
+            {
+                // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneGram.g:136:52: ^( 'concatenar' factorStr factorStr )
+                {
+                CommonTree root_1 = (CommonTree)adaptor.nil();
+                root_1 = (CommonTree)adaptor.becomeRoot(stream_37.nextNode(), root_1);
+
+                adaptor.addChild(root_1, stream_factorStr.nextTree());
+                adaptor.addChild(root_1, stream_factorStr.nextTree());
+
+                adaptor.addChild(root_0, root_1);
+                }
+
+            }
+
+            retval.tree = root_0;}
+            }
+
+            retval.stop = input.LT(-1);
+
+            if ( state.backtracking==0 ) {
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+            }
+        }
+
+        	catch (RecognitionException e) {
+        		throw e;
+        	}
+        finally {
+            if ( state.backtracking>0 ) { memoize(input, 19, concatenar_StartIndex); }
+        }
+        return retval;
+    }
+    // $ANTLR end "concatenar"
+
     // Delegated rules
 
 
@@ -2387,49 +2521,49 @@ public class SigeceneGramParser extends Parser {
 
     public static final BitSet FOLLOW_stat_in_prog73 = new BitSet(new long[]{0x0000000000001832L});
     public static final BitSet FOLLOW_ID_in_stat85 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_stat87 = new BitSet(new long[]{0x0000000FE00421F0L});
+    public static final BitSet FOLLOW_10_in_stat87 = new BitSet(new long[]{0x0000002FE00421F0L});
     public static final BitSet FOLLOW_proposicion_in_stat89 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_condicional_in_stat104 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_stat109 = new BitSet(new long[]{0x0000000FE00421F0L});
+    public static final BitSet FOLLOW_11_in_stat109 = new BitSet(new long[]{0x0000002FE00421F0L});
     public static final BitSet FOLLOW_proposicion_in_stat111 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_NEWLINE_in_stat124 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_12_in_condicional139 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_condicional142 = new BitSet(new long[]{0x0000000FE00421F0L});
+    public static final BitSet FOLLOW_13_in_condicional142 = new BitSet(new long[]{0x0000002FE00421F0L});
     public static final BitSet FOLLOW_proposicion_in_condicional147 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_14_in_condicional149 = new BitSet(new long[]{0x0000000000009830L});
     public static final BitSet FOLLOW_stat_in_condicional153 = new BitSet(new long[]{0x0000000000009830L});
     public static final BitSet FOLLOW_15_in_condicional156 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEWLINE_in_proposicion170 = new BitSet(new long[]{0x0000000FE00421F0L});
+    public static final BitSet FOLLOW_NEWLINE_in_proposicion170 = new BitSet(new long[]{0x0000002FE00421F0L});
     public static final BitSet FOLLOW_negacion_in_proposicion176 = new BitSet(new long[]{0x0000000000030002L});
-    public static final BitSet FOLLOW_16_in_proposicion180 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_17_in_proposicion183 = new BitSet(new long[]{0x0000000FE00421F0L});
+    public static final BitSet FOLLOW_16_in_proposicion180 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_17_in_proposicion183 = new BitSet(new long[]{0x0000002FE00421F0L});
     public static final BitSet FOLLOW_negacion_in_proposicion187 = new BitSet(new long[]{0x0000000000030002L});
-    public static final BitSet FOLLOW_18_in_negacion198 = new BitSet(new long[]{0x0000000FE00421F0L});
+    public static final BitSet FOLLOW_18_in_negacion198 = new BitSet(new long[]{0x0000002FE00421F0L});
     public static final BitSet FOLLOW_comparacion_in_negacion201 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_comparacion_in_negacion206 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_BOOLEAN_in_comparacion217 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_factorStr_in_comparacion222 = new BitSet(new long[]{0x0000000001F80002L});
-    public static final BitSet FOLLOW_19_in_comparacion226 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_20_in_comparacion229 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_21_in_comparacion232 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_22_in_comparacion235 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_23_in_comparacion238 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_24_in_comparacion241 = new BitSet(new long[]{0x0000000FE00421F0L});
+    public static final BitSet FOLLOW_19_in_comparacion226 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_20_in_comparacion229 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_21_in_comparacion232 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_22_in_comparacion235 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_23_in_comparacion238 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_24_in_comparacion241 = new BitSet(new long[]{0x0000002FE00421F0L});
     public static final BitSet FOLLOW_factorStr_in_comparacion245 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_STRING_in_factorStr258 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expr_in_factorStr263 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_producto_in_expr273 = new BitSet(new long[]{0x0000000006000002L});
-    public static final BitSet FOLLOW_25_in_expr277 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_26_in_expr280 = new BitSet(new long[]{0x0000000FE00421F0L});
+    public static final BitSet FOLLOW_25_in_expr277 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_26_in_expr280 = new BitSet(new long[]{0x0000002FE00421F0L});
     public static final BitSet FOLLOW_producto_in_expr284 = new BitSet(new long[]{0x0000000006000002L});
     public static final BitSet FOLLOW_factor_in_producto295 = new BitSet(new long[]{0x0000000018000002L});
-    public static final BitSet FOLLOW_27_in_producto299 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_28_in_producto302 = new BitSet(new long[]{0x0000000FE00421F0L});
+    public static final BitSet FOLLOW_27_in_producto299 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_28_in_producto302 = new BitSet(new long[]{0x0000002FE00421F0L});
     public static final BitSet FOLLOW_factor_in_producto306 = new BitSet(new long[]{0x0000000018000002L});
     public static final BitSet FOLLOW_DOUBLE_in_factor318 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ID_in_factor323 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_funcPredefinidas_in_factor328 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_factor333 = new BitSet(new long[]{0x0000000FE00421F0L});
+    public static final BitSet FOLLOW_13_in_factor333 = new BitSet(new long[]{0x0000002FE00421F0L});
     public static final BitSet FOLLOW_proposicion_in_factor336 = new BitSet(new long[]{0x0000000000008000L});
     public static final BitSet FOLLOW_15_in_factor338 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_promedio_in_funcPredefinidas351 = new BitSet(new long[]{0x0000000000000002L});
@@ -2439,35 +2573,42 @@ public class SigeceneGramParser extends Parser {
     public static final BitSet FOLLOW_min_in_funcPredefinidas371 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_redondea_in_funcPredefinidas376 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_diff_fechas_in_funcPredefinidas381 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_promedio391 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_promedio393 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_promedio395 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_promedio397 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_sumatoria416 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_sumatoria418 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_sumatoria420 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_sumatoria422 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_contar440 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_contar442 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_contar444 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_contar446 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_max464 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_max466 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_max468 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_max470 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_min488 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_min490 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_min492 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_min494 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_redondea511 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_redondea513 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_expr_in_redondea515 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_redondea517 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_diff_fechas536 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_diff_fechas538 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_factorStr_in_diff_fechas540 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_diff_fechas542 = new BitSet(new long[]{0x0000000FE00421F0L});
-    public static final BitSet FOLLOW_factorStr_in_diff_fechas544 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_diff_fechas546 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_concatenar_in_funcPredefinidas386 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_promedio396 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_promedio398 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_promedio400 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_promedio402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_sumatoria421 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_sumatoria423 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_sumatoria425 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_sumatoria427 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_contar445 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_contar447 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_contar449 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_contar451 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_max469 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_max471 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_max473 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_max475 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_min493 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_min495 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_min497 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_min499 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_redondea516 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_redondea518 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_expr_in_redondea520 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_redondea522 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_diff_fechas541 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_diff_fechas543 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_factorStr_in_diff_fechas545 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36_in_diff_fechas547 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_factorStr_in_diff_fechas549 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_diff_fechas551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_concatenar573 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_concatenar575 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_factorStr_in_concatenar577 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36_in_concatenar579 = new BitSet(new long[]{0x0000002FE00421F0L});
+    public static final BitSet FOLLOW_factorStr_in_concatenar581 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_concatenar583 = new BitSet(new long[]{0x0000000000000002L});
 
 }
