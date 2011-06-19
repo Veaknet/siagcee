@@ -161,7 +161,7 @@ if(_miIns != null){
 							Carga desde Excel
 						</th>
 						<th style="max-width:50px;" valign="top" width="50">
-							Campos Editables y Opcionales
+							Campos Editables
 						</th>
 						<% } %>
 						<th style="max-width:55px;" valign="top" width="55">
@@ -263,7 +263,7 @@ if(_miIns != null){
 							Carga desde Excel
 						</th> //-->
 						<th style="max-width:50px;" valign="top" width="50">
-							Campos Editables y Opcionales
+							Campos Editables
 						</th>
 						<% } %>
 						<th style="max-width:55px;" valign="top" width="55">
@@ -461,7 +461,7 @@ if(_miIns != null){
 							Carga desde Excel
 						</th> //-->
 						<th style="max-width:50px;" valign="top" width="50">
-							Campos Editables y Opcionales
+							Campos Editables
 						</th>
 						<% } %>
 						<th style="max-width:55px;" valign="top" width="55">
