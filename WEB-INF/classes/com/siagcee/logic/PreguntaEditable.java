@@ -23,6 +23,7 @@ public class PreguntaEditable extends ObjetoBase{
 		_InsObjeto = _insObj;
 		_InsPregunta = _insPreg;
 		noRequerida = false;
+		this.recarga();
 	}
 
 	public PreguntaEditable(Usuario _usuario, Connection _miConexion, int __id){
@@ -59,7 +60,7 @@ public class PreguntaEditable extends ObjetoBase{
 	}
 
 	public boolean isRequerida() {
-		return !noRequerida;
+		return !this.isNoRequerida();
 	}
 
 	public boolean isNoRequerida() {
@@ -67,11 +68,13 @@ public class PreguntaEditable extends ObjetoBase{
 	}
 
 	public void setRequerida(boolean noRequerida) {
-		this.noRequerida = !noRequerida;
+		this.setNoRequerida(!noRequerida);
 	}
 
 	public void setNoRequerida(boolean noRequerida) {
 		this.noRequerida = noRequerida;
+		this.guarda();
+
 	}
 
 	public static Vector retornaTodasEditables(Usuario _usuario, Connection _miConexion, InstanciaObjeto _idObj){
@@ -79,7 +82,30 @@ public class PreguntaEditable extends ObjetoBase{
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = null;
-			pstmt = _miConexion.prepareStatement("SELECT * FROM campos_editables WHERE id_instancia_objetos = ? ORDER BY id_campos_editables");
+			pstmt = _miConexion.prepareStatement("SELECT id_campos_editables FROM campos_editables WHERE id_instancia_objetos = ? ORDER BY id_campos_editables");
+			pstmt.setInt(1, _idObj.getId());
+			rs = pstmt.executeQuery();
+			try {
+				PreguntaEditable _prgEdit;
+				while (rs.next()){
+					_prgEdit = new PreguntaEditable(_usuario, _miConexion, rs.getInt("id_campos_editables"));
+					_pregEdit.add(_prgEdit);
+				}
+			}catch (Exception e1){
+				//e1.printStackTrace();
+			}
+		}catch (Exception e) {
+			//e.printStackTrace();
+		}
+		return _pregEdit;
+	}
+
+	public static Vector retornaTodasOpcionales(Usuario _usuario, Connection _miConexion, InstanciaObjeto _idObj){
+		Vector _pregEdit = new Vector();
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = null;
+			pstmt = _miConexion.prepareStatement("SELECT id_campos_editables FROM campos_editables WHERE id_instancia_objetos = ? AND no_requerida = true ORDER BY id_campos_editables");
 			pstmt.setInt(1, _idObj.getId());
 			rs = pstmt.executeQuery();
 			try {
@@ -131,6 +157,40 @@ public class PreguntaEditable extends ObjetoBase{
 		}
 	}
 
+	protected void recarga(){
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = null;
+			pstmt = this.getConexion().prepareStatement("SELECT * FROM campos_editables WHERE id_instancia_objetos = ? AND id_instancia_preguntas = ?");
+			pstmt.setInt(1, this.get_InsObjeto().getId());
+			pstmt.setInt(2, this.get_InsPregunta().getId());
+			rs = pstmt.executeQuery();
+			try {
+				if (rs.next()){
+					this._InsObjeto = new InstanciaObjeto(this.getUsuario(), this.getConexion(), rs.getInt("id_instancia_objetos"));
+					this._InsPregunta = new InstanciaPregunta(this.getUsuario(), this.getConexion(), rs.getInt("id_instancia_preguntas"));
+					this.noRequerida = rs.getBoolean("no_requerida");
+					this.setCargadaDeBD(true);
+				}else{
+					this._id = -1;
+					this.noRequerida = false;
+					this.setCargadaDeBD(false);
+					this.guarda();
+				}
+			}catch (Exception e1){
+				//e1.printStackTrace();
+				this._id = -1;
+				this.noRequerida = false;
+				this.setCargadaDeBD(false);
+			}
+		}catch (Exception e) {
+			//e.printStackTrace();
+			this._id = -1;
+			this.noRequerida = false;
+			this.setCargadaDeBD(false);
+		}
+	}
+
 	protected void carga(){
 		if(this._id != -1){
 			ResultSet rs = null;
@@ -141,25 +201,25 @@ public class PreguntaEditable extends ObjetoBase{
 				rs = pstmt.executeQuery();
 				try {
 					if (rs.next()){
-						this.set_InsObjeto(new InstanciaObjeto(this.getUsuario(), this.getConexion(), rs.getInt("id_instancia_objetos")));
-						this.set_InsPregunta(new InstanciaPregunta(this.getUsuario(), this.getConexion(), rs.getInt("id_instancia_preguntas")));
-						this.setNoRequerida(rs.getBoolean("no_requerida"));
+						this._InsObjeto = new InstanciaObjeto(this.getUsuario(), this.getConexion(), rs.getInt("id_instancia_objetos"));
+						this._InsPregunta = new InstanciaPregunta(this.getUsuario(), this.getConexion(), rs.getInt("id_instancia_preguntas"));
+						this.noRequerida = rs.getBoolean("no_requerida");
 						this.setCargadaDeBD(true);
 					}else{
 						this._id = -1;
-						this.setNoRequerida(true);
+						this.noRequerida = false;
 						this.setCargadaDeBD(false);
 					}
 				}catch (Exception e1){
 					//e1.printStackTrace();
 					this._id = -1;
-					this.setNoRequerida(true);
+					this.noRequerida = false;
 					this.setCargadaDeBD(false);
 				}
 			}catch (Exception e) {
 				//e.printStackTrace();
 				this._id = -1;
-				this.setNoRequerida(true);
+				this.noRequerida = false;
 				this.setCargadaDeBD(false);
 			}
 		}

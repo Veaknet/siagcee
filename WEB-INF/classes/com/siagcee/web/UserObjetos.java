@@ -258,6 +258,7 @@ public class UserObjetos extends HttpServlet {
 				request.setAttribute("objetos", _insObjFinal);
 				view = request.getRequestDispatcher("WEB-INF/vistas/userobjetos.jsp");
 			}catch(Exception e){
+				//e.printStackTrace();
 				view = request.getRequestDispatcher("autenticarusuario.do");
 			}
 			view.forward(request, response);

@@ -161,7 +161,7 @@ if(_miIns != null){
 							Carga desde Excel
 						</th>
 						<th style="max-width:50px;" valign="top" width="50">
-							Campos Editables
+							Campos Editables y Opcionales
 						</th>
 						<% } %>
 						<th style="max-width:55px;" valign="top" width="55">
@@ -206,7 +206,7 @@ if(_miIns != null){
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
 				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='' alt='Enlace' src='comunes/imagenes/world_link.png'></a></td>");
 				out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
-				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables para el encuestado' src='comunes/imagenes/modificar.png'></td>");
+				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
 			}
 			out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
 			out.println("</tr>");
@@ -263,7 +263,7 @@ if(_miIns != null){
 							Carga desde Excel
 						</th> //-->
 						<th style="max-width:50px;" valign="top" width="50">
-							Campos Editables
+							Campos Editables y Opcionales
 						</th>
 						<% } %>
 						<th style="max-width:55px;" valign="top" width="55">
@@ -311,7 +311,7 @@ if(_miIns != null){
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
 				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='' alt='Enlace' src='comunes/imagenes/world_link.png'></a></td>");
 				//out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
-				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables para el encuestado' src='comunes/imagenes/modificar.png'></td>");
+				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
 			}
 			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
 			out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
@@ -461,7 +461,7 @@ if(_miIns != null){
 							Carga desde Excel
 						</th> //-->
 						<th style="max-width:50px;" valign="top" width="50">
-							Campos Editables
+							Campos Editables y Opcionales
 						</th>
 						<% } %>
 						<th style="max-width:55px;" valign="top" width="55">
@@ -503,7 +503,7 @@ if(_miIns != null){
 				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='' alt='Enlace' src='comunes/imagenes/world_link.png'></a></td>");
 				//out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
-					out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables para el encuestado' src='comunes/imagenes/modificar.png'></td>");
+					out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
 				}else{
 					out.println("<td align='center'>-</td>");
 				}

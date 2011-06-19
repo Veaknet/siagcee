@@ -31,6 +31,11 @@ if(request.getAttribute("preguntasEditables") != null){
 	preguntasEditables = (Vector)request.getAttribute("preguntasEditables");
 }
 
+String accion = "seteditables";
+if(request.getAttribute("accion") != null){
+	accion = (String)request.getAttribute("accion");
+}
+
 HashMap _editable = new HashMap();
 Enumeration _enu = preguntasEditables.elements();
 PreguntaEditable _prEd;
@@ -48,10 +53,14 @@ if(objetoatrabajar != null){
 				<td valign="top">
 					<h2>Selecci&oacute;n de preguntas objeto de actualizaci&oacute;n</h2>
 					<h4>Instrumento sobre el que se trabaja:<br /><% out.print(objetoatrabajar.getObjeto());%></h4>
-					<label>Seleccione los datos que se permitir&aacute;n modificar:</label>
+					<% if(accion.equals("setopcionales")){ %>
+						<label>Indique, si lo desea, que datos se indicar&aacute;n como opcionales:</label>
+					<% }else{ %>
+						<label>Seleccione los datos que se permitir&aacute;n modificar:</label>
+					<% } %>
 					<form action="seteditables" method="post">
 						<input type="hidden" value="<% out.print(objetoatrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
-						<input type="hidden" value="actualiza" id="accion" name="accion">
+						<input type="hidden" value="<% out.print(accion); %>" id="accion" name="accion">
 						<select id="preguntaseditables" name="preguntaseditables" multiple="multiple" size="<% out.print(preguntasTotales.size() + 1); %>">
 							<%
 							InstanciaPregunta _pre = null;

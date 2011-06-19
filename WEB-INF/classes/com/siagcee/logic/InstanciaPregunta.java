@@ -320,11 +320,6 @@ public class InstanciaPregunta extends ObjetoBase{
 		return this.idInstanciaPregunta;
 	}
 
-	//si esta pregunta es requerida al momento de responder el encuestado
-	public boolean isRequerida() {
-		return true;
-	}
-
 	//establezco la pregunta que será instanciada (asociada desde este objeto)
 	public void asociarPregunta(Pregunta _pregunta){
 		if(_pregunta != this.miPregunta){

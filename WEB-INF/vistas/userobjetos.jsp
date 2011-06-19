@@ -193,7 +193,7 @@ No ha indicado un censo o encuesta para participar.
 		while(_enu.hasMoreElements()){
 			_prEd = (PreguntaEditable)_enu.nextElement();
 			_editable.put(_prEd.get_InsPregunta().getId(), true);
-			_requerida.put(_prEd.get_InsPregunta().getId(), _prEd.get_InsPregunta().isRequerida());
+			_requerida.put(_prEd.get_InsPregunta().getId(), _prEd.isRequerida());
 		}
 
 		String _sufix = "_"+String.valueOf(encuestado.getUsuarioId());
