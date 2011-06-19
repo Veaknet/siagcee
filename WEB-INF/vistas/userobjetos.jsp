@@ -71,7 +71,7 @@ function validarDouble(_nombreElem){
 var _listaDatos = new Array();
 
 function validarRequeridos(){
-	return true;
+	//return true;
 	var _sufix = '_<% out.print(encuestado.getUsuarioId()); %>';
 	for(var i=0;i<_listaDatos.length;i++){
 		if(_listaDatos[i]["tipopregunta"] == 1 || _listaDatos[i]["tipopregunta"] == 2){
