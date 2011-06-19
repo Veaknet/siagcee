@@ -71,7 +71,7 @@ function validarDouble(_nombreElem){
 var _listaDatos = new Array();
 
 function validarRequeridos(){
-	//return true;
+	return true;
 	var _sufix = '_<% out.print(encuestado.getUsuarioId()); %>';
 	for(var i=0;i<_listaDatos.length;i++){
 		if(_listaDatos[i]["tipopregunta"] == 1 || _listaDatos[i]["tipopregunta"] == 2){
@@ -412,7 +412,7 @@ No ha indicado un censo o encuesta para participar.
 		//si tengo preguntas requeridas sin respuestas en este punto entonces las borro todas, es inestable.
 		//por lo general ocurre para la pregunta clave al acceder
 		if(preguntaRequeridaSinRespuestaEncontrada){
-			Respuesta.delRespuestasDeUsuario(encuestado, encuestado.getConexion(), _miIns);
+			//Respuesta.delRespuestasDeUsuario(encuestado, encuestado.getConexion(), _miIns);
 		}
 		//out.println(_pregTit);
 		out.println(_pregResp);

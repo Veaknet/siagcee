@@ -78,8 +78,8 @@ public class UserObjetos extends HttpServlet {
 									miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix))));
 								}else{
 									if(miPreg.isRequerida()){
-										Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-										break;
+										//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+										//break;
 									}
 								}
 							}catch(Exception e){
@@ -101,9 +101,9 @@ public class UserObjetos extends HttpServlet {
 											miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt(_listadoRespuestas[p])));
 										}else{
 											if(miPreg.isRequerida()){
-												Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-												exit = true;
-												break;
+												//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+												//exit = true;
+												//break;
 											}
 										}
 									}catch(Exception e){
@@ -113,8 +113,8 @@ public class UserObjetos extends HttpServlet {
 								}
 							}else{
 								if(miPreg.isRequerida()){
-									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-									break;
+									//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+									//break;
 								}
 							}
 							if(exit){
@@ -124,8 +124,8 @@ public class UserObjetos extends HttpServlet {
 							//abierta texto
 							try{
 								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
-									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-									break;
+									//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+									//break;
 								}
 								miResp.setRespuesta((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix));
 							}catch(Exception e){
@@ -136,8 +136,8 @@ public class UserObjetos extends HttpServlet {
 							//abierta int
 							try{
 								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
-									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-									break;
+									//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+									//break;
 								}
 								miResp.setRespuesta(Long.parseLong((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)));
 							}catch(Exception e){
@@ -148,8 +148,8 @@ public class UserObjetos extends HttpServlet {
 							//abierta Double
 							try{
 								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
-									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-									break;
+									//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+									//break;
 								}
 								miResp.setRespuesta(Double.parseDouble((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)));
 							}catch(Exception e){
@@ -164,8 +164,8 @@ public class UserObjetos extends HttpServlet {
 									String[] _fechaFormateada = ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).split("-");
 									miResp.setRespuesta(_temp.parse(_fechaFormateada[2]+"-"+_fechaFormateada[1]+"-"+_fechaFormateada[0]));
 								}else{
-									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-									break;
+									//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+									//break;
 								}
 							}catch(Exception e){
 								//e.printStackTrace();
