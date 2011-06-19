@@ -49,20 +49,23 @@ public class UserObjetos extends HttpServlet {
 				Vector _respuestasEnBD = Respuesta.todasRespuestas(encuestado, micon, null, _miIns);
 				request.setAttribute("respuestasDadas", _respuestasEnBD);
 
+				Vector _editables = PreguntaEditable.retornaTodasEditables(encuestado, micon, _miIns);
 				request.setAttribute("preguntasTotales", InstanciaPregunta.todasPreguntasInstanciadas(encuestado, micon, _miIns.getObjetoAsociado(), true));
-				request.setAttribute("preguntasEditables",PreguntaEditable.retornaTodasEditables(encuestado, micon, _miIns));
+				request.setAttribute("preguntasEditables",_editables);
 
 				String _sufix = "_"+String.valueOf(encuestado.getUsuarioId());
 				if(_accion.equals("insertar")){
 					view = request.getRequestDispatcher("WEB-INF/vistas/userobjetos.jsp");
-					Vector _temporalPreguntas = _miIns.getObjetoAsociado().getPreguntas(true);
-					Collections.sort(_temporalPreguntas, new OrdenadorInstanciaPreguntas());
-					Enumeration _misPreg = _temporalPreguntas.elements();
+					//Vector _temporalPreguntas = _miIns.getObjetoAsociado().getPreguntas(true);
+					//Collections.sort(_temporalPreguntas, new OrdenadorInstanciaPreguntas());
+					Enumeration _misPreg = _editables.elements();
+					PreguntaEditable miPregEd;
 					InstanciaPregunta miPreg;
 					Respuesta miResp;
 					Vector vectorResp = new Vector();
 					while(_misPreg.hasMoreElements()){
-						miPreg = (InstanciaPregunta)_misPreg.nextElement();
+						miPregEd = (PreguntaEditable)_misPreg.nextElement();
+						miPreg = miPregEd.get_InsPregunta();
 						//vectorResp = Respuesta.todasRespuestas(encuestado, micon, miPreg, _miIns);
 						//miResp = (Respuesta)vectorResp.elementAt(0);
 
@@ -77,9 +80,9 @@ public class UserObjetos extends HttpServlet {
 									   !((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("-1")){
 									miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix))));
 								}else{
-									if(miPreg.isRequerida()){
-										//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-										//break;
+									if(miPregEd.isRequerida() || miPreg.isCampo_clave_unico()){
+										Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+										break;
 									}
 								}
 							}catch(Exception e){
@@ -100,10 +103,10 @@ public class UserObjetos extends HttpServlet {
 										if(!(_listadoRespuestas[p]).equals("") && !(_listadoRespuestas[p]).equals("-1")){
 											miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt(_listadoRespuestas[p])));
 										}else{
-											if(miPreg.isRequerida()){
-												//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-												//exit = true;
-												//break;
+											if(miPregEd.isRequerida() || miPreg.isCampo_clave_unico()){
+												Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+												exit = true;
+												break;
 											}
 										}
 									}catch(Exception e){
@@ -112,9 +115,9 @@ public class UserObjetos extends HttpServlet {
 									}
 								}
 							}else{
-								if(miPreg.isRequerida()){
-									//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-									//break;
+								if(miPregEd.isRequerida() || miPreg.isCampo_clave_unico()){
+									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+									break;
 								}
 							}
 							if(exit){
@@ -123,9 +126,9 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 30){
 							//abierta texto
 							try{
-								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
-									//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-									//break;
+								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
+									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+									break;
 								}
 								miResp.setRespuesta((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix));
 							}catch(Exception e){
@@ -135,9 +138,9 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 31){
 							//abierta int
 							try{
-								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
-									//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-									//break;
+								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
+									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+									break;
 								}
 								miResp.setRespuesta(Long.parseLong((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)));
 							}catch(Exception e){
@@ -147,9 +150,9 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 32){
 							//abierta Double
 							try{
-								if(miPreg.isRequerida() && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
-									//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-									//break;
+								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
+									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+									break;
 								}
 								miResp.setRespuesta(Double.parseDouble((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)));
 							}catch(Exception e){
@@ -159,13 +162,13 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 33){
 							//abierta date
 							try{
-								if(miPreg.isRequerida() && !(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals(""))){
+								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && !(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals(""))){
 									SimpleDateFormat _temp = new SimpleDateFormat("yyyy-MM-dd");
 									String[] _fechaFormateada = ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).split("-");
 									miResp.setRespuesta(_temp.parse(_fechaFormateada[2]+"-"+_fechaFormateada[1]+"-"+_fechaFormateada[0]));
 								}else{
-									//Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
-									//break;
+									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
+									break;
 								}
 							}catch(Exception e){
 								//e.printStackTrace();
