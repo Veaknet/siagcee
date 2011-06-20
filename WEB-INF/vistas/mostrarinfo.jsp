@@ -87,9 +87,6 @@ if(_miObj != null){
 		while(_misPregsEnu.hasMoreElements()){
 			InstanciaPregunta _temp = (InstanciaPregunta)_misPregsEnu.nextElement();
 			out.println("<h4>"+String.valueOf(_temp.getOrden())+". "+_temp.getTextoPregunta());
-			if(_temp.isRequerida()){
-				out.println("<img src='comunes/imagenes/promotion.png' height='24' alt='Pregunta obligatoria' title='Pregunta obligatoria'>");
-			}
 			if(_temp.isCampo_clave_unico()){
 				out.println("<img src='comunes/imagenes/primary_key_icon.jpg' height='24' alt='Pregunta clave' title='Pregunta clave'>");
 			}
