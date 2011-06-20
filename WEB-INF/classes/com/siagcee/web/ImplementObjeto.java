@@ -83,6 +83,9 @@ public class ImplementObjeto extends HttpServlet{
 
 							if((_miIns.getObjetoAsociado().retornaPreguntaClave(true) != null) && (_miIns.getObjetoAsociado().retornaPreguntaClave(true).getCargadaDeBD())){
 								//existe pregunta clave...
+								if(_tipoAcceso == 2){
+									_tipoAcceso = 1;
+								}
 								_miIns.setAcceso(_tipoAcceso);
 							}else{
 								//no existe pregunta clave... la unica opcion de acceso es publica

@@ -548,6 +548,7 @@ public class UtilidadesVarias {
                 _enu = _preguntas.elements();
                 if(_preguntaClave == -1){
                     _encu = new Encuestado(micon, String.valueOf(_obj.getId()), "");
+					_ae = null;
                 }else{
                     try{
                         celda = sheet.getCell(_preguntaClave, Fil);
@@ -557,7 +558,7 @@ public class UtilidadesVarias {
                     }catch(Exception ee3){
 						//ee3.printStackTrace();
                         _encu = new Encuestado(micon, String.valueOf(_obj.getId()), "");
-						_ae.delAccesosEncuestados();
+						_ae = null;
                     }
                 }
 
@@ -627,7 +628,7 @@ public class UtilidadesVarias {
                     //al ser vacio quiere decir que sus respuestas todas eran vacias y por lo tanto no existe
                     Respuesta.delRespuestasDeUsuario(_encu, micon, _obj);
                     _encu.delUsuario();
-					_ae.delAccesosEncuestados();
+					_ae = null;
                     break;
 				}
                 Fil++;
@@ -636,14 +637,18 @@ public class UtilidadesVarias {
             _resul = true;
 
         }catch (IOException ioe){
-            System.out.println("Error creando el archivo de excel.");
-            //ioe.printStackTrace();
+            System.out.println("Error cargando el archivo de excel.");
+            ioe.printStackTrace();
             _resul = false;
-        }catch (Exception e){
-            System.out.println("Error no especificado.");
-            //e.printStackTrace();
-            _resul = false;
-        }
+        }catch (jxl.read.biff.BiffException biffe){
+			System.out.println("Error leyendo el formato de archivo excel. Asegurese que el archivo sea formato xls 97-2007.");
+			biffe.printStackTrace();
+			_resul = false;
+		}catch (Exception e){
+			System.out.println("Error no especificado. Contacte al administrador.");
+			e.printStackTrace();
+			_resul = false;
+		}
         return _resul;
     }
 }

@@ -256,10 +256,10 @@ function modificarTipoInvitacion(){
         _temp = new Option("A traves de otro instrumento", "1");
         _tipoinvitacion.options[_tipoinvitacion.options.length] = _temp;
 	}else{
-        _inicio.disabled = true;
-		_inicio.value = '';
-        _cierre.disabled = true;
-		_cierre.value = '';
+        _inicio.disabled = false;
+		//_inicio.value = '';
+        _cierre.disabled = false;
+		//_cierre.value = '';
         _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
         _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
         _tipoinvitacion.remove(_tipoinvitacion.options.length - 1);
