@@ -542,6 +542,7 @@ public class UtilidadesVarias {
 
             Respuesta _resp = null;
             Encuestado _encu = null;
+			AccesosEncuestados _ae = null;
             while(true){
                 boolean todosVacios = true;
                 _enu = _preguntas.elements();
@@ -552,9 +553,11 @@ public class UtilidadesVarias {
                         celda = sheet.getCell(_preguntaClave, Fil);
                         valor = celda.getContents();
                         _encu = new Encuestado(micon, String.valueOf(_obj.getId()), valor);
+						_ae = AccesosEncuestados.IngresarEncuestado(_encu, _obj, micon);
                     }catch(Exception ee3){
 						//ee3.printStackTrace();
                         _encu = new Encuestado(micon, String.valueOf(_obj.getId()), "");
+						_ae.delAccesosEncuestados();
                     }
                 }
 
@@ -624,8 +627,9 @@ public class UtilidadesVarias {
                     //al ser vacio quiere decir que sus respuestas todas eran vacias y por lo tanto no existe
                     Respuesta.delRespuestasDeUsuario(_encu, micon, _obj);
                     _encu.delUsuario();
+					_ae.delAccesosEncuestados();
                     break;
-                }
+				}
                 Fil++;
             }
             workbook.close();
