@@ -183,7 +183,8 @@ if(request.getAttribute("insVector") != null){
                             </form>
                             <%
                         }else{
-                            out.println("No existen censos o encuestas disponibles. Disculpe.");
+                            out.println("No existen censos o encuestas disponibles. Disculpe.<p />");
+							out.println("<script>if(!opener){document.write('Puede ahora cerrar esta ventana haciendo clic en la \"X\" de la ventana o pestaña de su navegador.');}else{document.write('<input type=\"button\" onclick=\"window.close();\" value=\"Cerrar esta ventana\">')}</script>");
                         }
                     }
 				}else{
@@ -191,9 +192,11 @@ if(request.getAttribute("insVector") != null){
 					Date _hoy = new Date();
 
 					if(_dateFormat.format(_hoy).compareTo(_dateFormat.format(seleccionado.getFechaCierre())) >= 0){
-						out.println("Disculpe el censo o encuesta requerido ya ha finalizado.");
+						out.println("Disculpe el censo o encuesta requerido ya ha finalizado.<p />");
+						out.println("<script>if(!opener){document.write('Puede ahora cerrar esta ventana haciendo clic en la \"X\" de la ventana o pestaña de su navegador.');}else{document.write('<input type=\"button\" onclick=\"window.close();\" value=\"Cerrar esta ventana\">')}</script>");
 					}else if(_dateFormat.format(_hoy).compareTo(_dateFormat.format(seleccionado.getFechaInicio())) < 0){
-						out.println("Disculpe el censo o encuesta requerido no ha sido publicado a&uacute;n.");
+						out.println("Disculpe el censo o encuesta requerido no ha sido publicado a&uacute;n.<p />");
+						out.println("<script>if(!opener){document.write('Puede ahora cerrar esta ventana haciendo clic en la \"X\" de la ventana o pestaña de su navegador.');}else{document.write('<input type=\"button\" onclick=\"window.close();\" value=\"Cerrar esta ventana\">')}</script>");
 					}else{
 						//solicito campo_clave
 						InstanciaPregunta _miPreguntaClave = seleccionado.getObjetoAsociado().retornaPreguntaClave(true);
