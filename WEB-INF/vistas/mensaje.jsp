@@ -55,7 +55,7 @@ if(request.getAttribute("titulo") != null){
 			<form action="mensaje.do?accioninvitar=true" method="post" onsubmit="$('#id_encapsulador').show('slow');">
 				<input type="hidden" value="enviar_correos" id="opcion" name="opcion">
 				<input type="hidden" value="<% out.print(_titulo); %>" id="titulo" name="titulo">
-				<input type="hidden" value="<% out.print(_mensaje); %>" id="mensaje" name="mensaje">
+				<input type="hidden" value="<% out.print(UtilidadesVarias.reemplazarCaracteres(_mensaje,"\"","'")); %>" id="mensaje" name="mensaje">
 				<label>Correos electr&oacute;nicos a contactar (1 por l&iacute;nea):</label><br />
 				<textarea rows="7" cols="50" id="correos" name="correos"></textarea><p />
 				<input type ="submit" value="Enviar Mensaje">

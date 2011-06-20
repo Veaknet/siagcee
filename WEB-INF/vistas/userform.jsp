@@ -120,10 +120,11 @@ if(request.getAttribute("InstanciaSeleccionadaPorId") != null){
 	_opcion = 1;
 	_titulo = "Identif&iacute;quese para Acceder ";
 	if(seleccionado.getObjetoAsociado().getClass().toString().contains("Censo")){
-		_titulo = _titulo + "al Censo";
+		_titulo = _titulo + "al Censo: ";
 	}else{
-		_titulo = _titulo + "a la Encuesta";
+		_titulo = _titulo + "a la Encuesta: ";
 	}
+	_titulo = _titulo + seleccionado.getObjeto();
 }
 
 Vector _insVector = new Vector();

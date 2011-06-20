@@ -147,14 +147,13 @@ if(request.getAttribute("preguntasEditables") != null){
 <table cellpadding="4" cellspacing="4" class="tablasecundariatitulo">
 	<tr>
 		<td style="text-align:left" valign="top">
-			<h2>Responda las preguntas que se indican</h2>
+			<h2><% out.println(_miIns.getObjeto()); %></h2>
 		</td>
 		<td style="text-align:right" valign="bottom" width="36px">
             &nbsp;
 		</td>
 	</tr>
 </table>
-
 <table class="tablasecundaria" cellpadding="4" cellspacing="4">
 	<tr>
 		<td>
@@ -170,7 +169,7 @@ No ha indicado un censo o encuesta para participar.
 	StringBuffer _pregTit = new StringBuffer();  //preguntas titulares inicio de pagina
 	StringBuffer _pregResp = new StringBuffer(); //preguntas a responder parte final de la pagina
 	//lanzo el conjunto de preguntas
-	out.print("<h4><a name='top'>"+_miIns.getObjeto()+"</a></h4>");
+	out.print("<h4><a name='top'>Responda las preguntas que se indican:</a></h4>");
 	%>
 	<form action="userobjetos.do" method="post" name="miformulario2" id="miformulario2" autocomplete="off">
 		<input type="hidden" name="id_instrumento" id="id_instrumento" value="<% out.print(_miIns.getId());%>">
