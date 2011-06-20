@@ -232,7 +232,7 @@ No ha indicado un censo o encuesta para participar.
 				}
 
 				if(miPreg.isCampo_clave_unico()){
-					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' disabled='disabled'>");
+					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' readonly>");
 				}else{
 					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"'>");
 				}
@@ -283,7 +283,7 @@ No ha indicado un censo o encuesta para participar.
 				}
 
 				if(miPreg.isCampo_clave_unico()){
-					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' multiple disabled='disabled'>");
+					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' multiple readonly>");
 				}else{
 					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' multiple>");
 				}
