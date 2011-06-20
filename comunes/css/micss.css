@@ -141,7 +141,7 @@ div.fondo {
 #simplemodal-overlay {cursor:wait;}
 
 /* Container */
-#simplemodal-container {height:400px; width:550px; color: #ffffff; background-color: #666666; border:4px solid #999900; padding:12px;}
+#simplemodal-container {height:430px; width:550px; color: #ffffff; background-color: #666666; border:4px solid #999900; padding:12px;}
 #simplemodal-container code {background: #cccccc; border-left:3px solid #65B43D; color:#bbb; display:block; margin-bottom:12px; padding:4px 6px 6px;}
 #simplemodal-container a {color: #ffcc33;}
 #simplemodal-container img.modalCloseImg {background:url(../imagenes/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}

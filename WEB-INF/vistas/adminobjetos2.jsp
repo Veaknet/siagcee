@@ -533,8 +533,8 @@ if(!_mensaje.equals("")){
 								<input type="hidden" value="insertar" name="accion" id="accion">
 								<input type="hidden" name="tipoinstrumento" value="<% out.print(_tipoinstrumento);%>">
 								<input type="hidden" name="opcionbase" value="<% out.print(_opcionBase);%>">
-								<label>Nombre que tendr&aacute; la pregunta en <% out.print(_prefix+"&nbsp;"+_tipoinstrumento);%>:</label><br /><input type="text" value="" name="valor" id="valor" size="50"><p />
-								<label>Acr&oacute;nimo: (Si es omitido se tomar&aacute; el nombre indicado en campo anterior)</label><br /><input type="text" value="" name="acronimo" id="acronimo" size="50"><p />
+								<label>Nombre que tendr&aacute; la pregunta en <% out.print(_prefix+"&nbsp;"+_tipoinstrumento);%>:</label><br /><input type="text" value="" name="valor" id="valor" size="70"><p />
+								<label>Acr&oacute;nimo: (si es omitido se tomar&aacute; el nombre indicado en campo anterior)</label><br /><input type="text" value="" name="acronimo" id="acronimo" size="30"><p />
 								<label>Orden de la pregunta:</label><br /><input type="text" value="0" name="orden" id="orden" size="3"><p />
 								<input type="checkbox" id="campo_clave" name="campo_clave"><label>Establecer como pregunta clave en <% out.print(_prefix+"&nbsp;"+_tipoinstrumento);%></label><br />
 								<!--// <input type="checkbox" id="campo_identificador" name="campo_identificador"><label>Establecer como elemento de identificaci&oacute;n</label><br /> //-->
