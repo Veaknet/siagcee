@@ -30,7 +30,7 @@ if(request.getAttribute("datos") != null){
 		preg = (InstanciaPregunta)_misPreguntas.nextElement();
 		out.println("array_preguntas["+i+"] = new Array();");
 		out.println("array_preguntas["+i+"]['id'] = '"+preg.getId()+"';");
-		out.println("array_preguntas["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(preg.getAcronimo(),"'","\\'")+"';");
+		out.println("array_preguntas["+i+"]['pregunta'] = '"+UtilidadesVarias.reemplazarCaracteres(preg.getAcronimo(),"'","\\'").trim()+"';");
 		out.println("array_preguntas["+i+"]['tipopregunta'] = '"+preg.getTipoPregunta()+"';");
 		out.println("array_preguntas["+i+"]['ordenpregunta'] = '"+preg.getOrden()+"';");
 		out.println("array_preguntas["+i+"]['tipodato'] = '"+preg.getPreguntaAsociada().getId()+"';");
@@ -43,7 +43,7 @@ if(request.getAttribute("datos") != null){
 			resp = (RespuestasPosibles)_misRespuestas.nextElement();
 			out.println("array_preguntas["+i+"]['respuestas']["+j+"] = new Array();");
 			out.println("array_preguntas["+i+"]['respuestas']["+j+"]['id'] = '"+resp.getId()+"';");
-			out.println("array_preguntas["+i+"]['respuestas']["+j+"]['respuesta'] = '"+UtilidadesVarias.reemplazarCaracteres(resp.getRespuesta(),"'","\\'")+"';");
+			out.println("array_preguntas["+i+"]['respuestas']["+j+"]['respuesta'] = '"+UtilidadesVarias.reemplazarCaracteres(resp.getRespuesta(),"'","\\'").trim()+"';");
 			j++;
 		}
 		i++;
