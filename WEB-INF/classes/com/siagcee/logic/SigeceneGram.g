@@ -60,6 +60,8 @@ prog	:	stat+
 stat	:	ID '=' proposicion	->	^('=' ID proposicion)
 	|	condicional
 	|	'obtener' proposicion	->	^('obtener' proposicion)
+	|	'pre'^ '{'! (stat+) '}'!
+	|	'post'^ '{'! (stat+) '}'!
 	|	NEWLINE			->
 	;
 

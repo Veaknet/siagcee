@@ -539,6 +539,8 @@ $(document).ready(function(){
 								<td width="35%" style="text-align:left;">
 									<select id="acciones" name="acciones" onchange="insertAtCursor(document.getElementById('codigoestudio'), this.value);this.value='';">
 										<option value="" selected="selected">Seleccione...</option>
+										<option value="pre{ }" >Pre-acciones</option>
+										<option value="post{ }" >Post-acciones</option>
 										<option value="si( ; )" >Condicional</option>
 										<option value="obtener " >Obtener valor</option>
 									</select>

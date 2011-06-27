@@ -27,7 +27,8 @@ public class EstudioPerso extends ObjetoBase{
 	protected String _titulo = "";
 	protected String _acronimo = "";
 	protected int _id = -1;
-
+	protected boolean _final = false;
+	protected boolean _initial = true;
 
 	public int _usuarioCorriente = -1; //para usar con el haspmap y agregar un resultado único por usuario
 	public HashMap _memoriaInternaEstudio = new HashMap();
@@ -110,6 +111,22 @@ public class EstudioPerso extends ObjetoBase{
 
 	public void set_obj_simple(Objeto _obj) {
 		this._obj_simple = _obj;
+	}
+
+	public boolean is_final() {
+		return _final;
+	}
+
+	public void set_final(boolean _final) {
+		this._final = _final;
+	}
+
+	public boolean is_initial() {
+		return _initial;
+	}
+
+	public void set_initial(boolean _initial) {
+		this._initial = _initial;
 	}
 
 	public void addError(String __error){
@@ -217,10 +234,13 @@ public class EstudioPerso extends ObjetoBase{
 					pstmt.setInt(1, this.get_obj().getId());
 					ResultSet rs = pstmt.executeQuery();
 					//tengo todos los usuarios participantes
+					//para compartir variables entre usuarios.
+					_memoriaInternaEstudio = new HashMap();
+					this.set_final(false);
+					this.set_initial(true);
 					while(rs.next()){
+						this.set_final(rs.isLast());
 						this._usuarioCorriente = rs.getInt("elaborado_por");
-						_memoriaInternaEstudio = new HashMap();
-
 						//agrego las respuestas de este usuario a la memoria interna
 						Enumeration _enuPreg = this.get_obj().getObjetoAsociado().getPreguntas(true).elements();
 						InstanciaPregunta _insPregTemp;
@@ -262,6 +282,7 @@ public class EstudioPerso extends ObjetoBase{
 						nodes = new CommonTreeNodeStream(t);
 						walker = new SigeceneTree(nodes);
 						walker.prog();
+						this.set_initial(false);
 					}
 				}else{
 					return;

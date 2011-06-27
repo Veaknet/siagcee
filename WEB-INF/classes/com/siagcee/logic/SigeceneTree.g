@@ -37,6 +37,26 @@ stat[boolean accionar]
 					memory.put($ID.text, $proposicion.valor);
 				}
 			}
+	|	^('pre' 
+			{
+				if(EstudioPerso.getInstance().is_initial()){
+					$accionar = true;
+				}else{
+					$accionar = false;
+				}
+			}
+			(stat[accionar])+
+		)
+	|	^('post' 
+			{
+				if(EstudioPerso.getInstance().is_final()){
+					$accionar = true;
+				}else{
+					$accionar = false;
+				}
+			}
+			(stat[accionar])+
+		)
 	;
 
 condicional[boolean accionar]
@@ -231,7 +251,8 @@ funcPredefinidas returns [String valor]
 promedio returns [String valor]
 	:	^('promedio' ID)
 		{
-			String v = (String)memory.get("promedio(["+$ID.text+"])");
+			//para permitir que se compartan las variables entre los usuarios
+			/*String v = (String)memory.get("promedio(["+$ID.text+"])");
 			if (v != null){
 				$valor = v;
 			}else{
@@ -241,6 +262,11 @@ promedio returns [String valor]
 					throw new RecognitionException();
 				}
 				memory.put("promedio(["+$ID.text+"])", $valor);
+			}*/
+			try{
+				$valor = EstudioPerso.getInstance().getPromedioField($ID.text);
+			}catch(Exception proEx){
+				throw new RecognitionException();
 			}
 		}
 	;
@@ -248,7 +274,8 @@ promedio returns [String valor]
 sumatoria returns [String valor]
 	:	^('sumatoria' ID)
 		{
-			String v = (String)memory.get("sumatoria(["+$ID.text+"])");
+			//para permitir que se compartan las variables entre los usuarios
+			/*String v = (String)memory.get("sumatoria(["+$ID.text+"])");
 			if (v != null){
 				$valor = v;
 			}else{
@@ -258,6 +285,11 @@ sumatoria returns [String valor]
 					throw new RecognitionException();
 				}
 				memory.put("sumatoria(["+$ID.text+"])", $valor);
+			}*/
+			try{
+				$valor = EstudioPerso.getInstance().getSumatoriaField($ID.text);
+			}catch(Exception proEx){
+				throw new RecognitionException();
 			}
 		}
 	;
@@ -265,7 +297,8 @@ sumatoria returns [String valor]
 contar returns [String valor]
 	:	^('contar' ID)
 		{
-			String v = (String)memory.get("contar(["+$ID.text+"])");
+			//para permitir que se compartan las variables entre los usuarios
+			/*String v = (String)memory.get("contar(["+$ID.text+"])");
 			if (v != null){
 				$valor = v;
 			}else{
@@ -275,6 +308,11 @@ contar returns [String valor]
 					throw new RecognitionException();
 				}
 				memory.put("contar(["+$ID.text+"])", $valor);
+			}*/
+			try{
+				$valor = EstudioPerso.getInstance().getContarField($ID.text);
+			}catch(Exception proEx){
+				throw new RecognitionException();
 			}
 		}
 	;
@@ -282,7 +320,8 @@ contar returns [String valor]
 max returns [String valor]
 	:	^('max' ID)
 		{
-			String v = (String)memory.get("max(["+$ID.text+"])");
+			//para permitir que se compartan las variables entre los usuarios
+			/*String v = (String)memory.get("max(["+$ID.text+"])");
 			if (v != null){
 				$valor = v;
 			}else{
@@ -292,6 +331,11 @@ max returns [String valor]
 					throw new RecognitionException();
 				}
 				memory.put("max(["+$ID.text+"])", $valor);
+			}*/
+			try{
+				$valor = EstudioPerso.getInstance().getMaxField($ID.text);
+			}catch(Exception proEx){
+				throw new RecognitionException();
 			}
 		}
 	;
@@ -299,7 +343,8 @@ max returns [String valor]
 min returns [String valor]
 	:	^('min' ID)
 		{
-			String v = (String)memory.get("min(["+$ID.text+"])");
+			//para permitir que se compartan las variables entre los usuarios
+			/*String v = (String)memory.get("min(["+$ID.text+"])");
 			if (v != null){
 				$valor = v;
 			}else{
@@ -309,6 +354,11 @@ min returns [String valor]
 					throw new RecognitionException();
 				}
 				memory.put("min(["+$ID.text+"])", $valor);
+			}*/
+			try{
+				$valor = EstudioPerso.getInstance().getMinField($ID.text);
+			}catch(Exception proEx){
+				throw new RecognitionException();
 			}
 		}
 	;
@@ -337,7 +387,7 @@ diff_fechas returns [String valor]
 
 concatenar returns [String valor]
 	:	^('concatenar' a=expr b=expr)
-		{
+			{
 			try{
 				$valor = $a.valor+$b.valor;
 			}catch(Exception proEx){

@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g 2011-06-16 21:35:20
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g 2011-06-26 19:31:33
 
 package com.siagcee.logic;
 
@@ -16,8 +16,10 @@ import java.util.Map;
 import java.util.HashMap;
 public class SigeceneTree extends TreeParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "NEWLINE", "BOOLEAN", "STRING", "DOUBLE", "WS", "'='", "'obtener'", "'si'", "'('", "';'", "')'", "'Y'", "'O'", "'NO'", "'>'", "'>='", "'<'", "'<='", "'=='", "'<>'", "'+'", "'-'", "'*'", "'/'", "'promedio'", "'sumatoria'", "'contar'", "'max'", "'min'", "'redondea'", "'diff_fechas'", "','", "'concatenar'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "NEWLINE", "BOOLEAN", "STRING", "DOUBLE", "WS", "'='", "'obtener'", "'pre'", "'{'", "'}'", "'post'", "'si'", "'('", "';'", "')'", "'Y'", "'O'", "'NO'", "'>'", "'>='", "'<'", "'<='", "'=='", "'<>'", "'+'", "'-'", "'*'", "'/'", "'promedio'", "'sumatoria'", "'contar'", "'max'", "'min'", "'redondea'", "'diff_fechas'", "','", "'concatenar'"
     };
+    public static final int T__40=40;
+    public static final int T__41=41;
     public static final int T__29=29;
     public static final int T__28=28;
     public static final int T__27=27;
@@ -48,7 +50,9 @@ public class SigeceneTree extends TreeParser {
     public static final int T__12=12;
     public static final int T__37=37;
     public static final int T__11=11;
+    public static final int T__38=38;
     public static final int T__14=14;
+    public static final int T__39=39;
     public static final int T__13=13;
     public static final int T__10=10;
     public static final int DOUBLE=8;
@@ -63,7 +67,7 @@ public class SigeceneTree extends TreeParser {
         }
         public SigeceneTree(TreeNodeStream input, RecognizerSharedState state) {
             super(input, state);
-            this.state.ruleMemo = new HashMap[42+1];
+            this.state.ruleMemo = new HashMap[46+1];
              
              
         }
@@ -93,7 +97,7 @@ public class SigeceneTree extends TreeParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( ((LA1_0>=10 && LA1_0<=12)) ) {
+                if ( ((LA1_0>=10 && LA1_0<=12)||(LA1_0>=15 && LA1_0<=16)) ) {
                     alt1=1;
                 }
 
@@ -138,7 +142,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "stat"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:26:1: stat[boolean accionar] : ( condicional[accionar] | ^( 'obtener' proposicion ) | ^( '=' ID proposicion ) );
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:26:1: stat[boolean accionar] : ( condicional[accionar] | ^( 'obtener' proposicion ) | ^( '=' ID proposicion ) | ^( 'pre' ( stat[accionar] )+ ) | ^( 'post' ( stat[accionar] )+ ) );
     public final void stat(boolean accionar) throws RecognitionException {
         int stat_StartIndex = input.index();
         CommonTree ID2=null;
@@ -149,33 +153,43 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return ; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:27:2: ( condicional[accionar] | ^( 'obtener' proposicion ) | ^( '=' ID proposicion ) )
-            int alt2=3;
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:27:2: ( condicional[accionar] | ^( 'obtener' proposicion ) | ^( '=' ID proposicion ) | ^( 'pre' ( stat[accionar] )+ ) | ^( 'post' ( stat[accionar] )+ ) )
+            int alt4=5;
             switch ( input.LA(1) ) {
-            case 12:
+            case 16:
                 {
-                alt2=1;
+                alt4=1;
                 }
                 break;
             case 11:
                 {
-                alt2=2;
+                alt4=2;
                 }
                 break;
             case 10:
                 {
-                alt2=3;
+                alt4=3;
+                }
+                break;
+            case 12:
+                {
+                alt4=4;
+                }
+                break;
+            case 15:
+                {
+                alt4=5;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 2, 0, input);
+                    new NoViableAltException("", 4, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt2) {
+            switch (alt4) {
                 case 1 :
                     // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:27:4: condicional[accionar]
                     {
@@ -234,6 +248,118 @@ public class SigeceneTree extends TreeParser {
 
                     }
                     break;
+                case 4 :
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:40:4: ^( 'pre' ( stat[accionar] )+ )
+                    {
+                    match(input,12,FOLLOW_12_in_stat109); if (state.failed) return ;
+
+                    if ( state.backtracking==0 ) {
+
+                      				if(EstudioPerso.getInstance().is_initial()){
+                      					accionar = true;
+                      				}else{
+                      					accionar = false;
+                      				}
+                      			
+                    }
+
+                    match(input, Token.DOWN, null); if (state.failed) return ;
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:48:4: ( stat[accionar] )+
+                    int cnt2=0;
+                    loop2:
+                    do {
+                        int alt2=2;
+                        int LA2_0 = input.LA(1);
+
+                        if ( ((LA2_0>=10 && LA2_0<=12)||(LA2_0>=15 && LA2_0<=16)) ) {
+                            alt2=1;
+                        }
+
+
+                        switch (alt2) {
+                    	case 1 :
+                    	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:48:5: stat[accionar]
+                    	    {
+                    	    pushFollow(FOLLOW_stat_in_stat121);
+                    	    stat(accionar);
+
+                    	    state._fsp--;
+                    	    if (state.failed) return ;
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt2 >= 1 ) break loop2;
+                    	    if (state.backtracking>0) {state.failed=true; return ;}
+                                EarlyExitException eee =
+                                    new EarlyExitException(2, input);
+                                throw eee;
+                        }
+                        cnt2++;
+                    } while (true);
+
+
+                    match(input, Token.UP, null); if (state.failed) return ;
+
+                    }
+                    break;
+                case 5 :
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:50:4: ^( 'post' ( stat[accionar] )+ )
+                    {
+                    match(input,15,FOLLOW_15_in_stat134); if (state.failed) return ;
+
+                    if ( state.backtracking==0 ) {
+
+                      				if(EstudioPerso.getInstance().is_final()){
+                      					accionar = true;
+                      				}else{
+                      					accionar = false;
+                      				}
+                      			
+                    }
+
+                    match(input, Token.DOWN, null); if (state.failed) return ;
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:58:4: ( stat[accionar] )+
+                    int cnt3=0;
+                    loop3:
+                    do {
+                        int alt3=2;
+                        int LA3_0 = input.LA(1);
+
+                        if ( ((LA3_0>=10 && LA3_0<=12)||(LA3_0>=15 && LA3_0<=16)) ) {
+                            alt3=1;
+                        }
+
+
+                        switch (alt3) {
+                    	case 1 :
+                    	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:58:5: stat[accionar]
+                    	    {
+                    	    pushFollow(FOLLOW_stat_in_stat146);
+                    	    stat(accionar);
+
+                    	    state._fsp--;
+                    	    if (state.failed) return ;
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt3 >= 1 ) break loop3;
+                    	    if (state.backtracking>0) {state.failed=true; return ;}
+                                EarlyExitException eee =
+                                    new EarlyExitException(3, input);
+                                throw eee;
+                        }
+                        cnt3++;
+                    } while (true);
+
+
+                    match(input, Token.UP, null); if (state.failed) return ;
+
+                    }
+                    break;
 
             }
         }
@@ -250,7 +376,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "condicional"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:42:1: condicional[boolean accionar] : ^( 'si' cond= proposicion ( stat[accionar] )+ ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:62:1: condicional[boolean accionar] : ^( 'si' cond= proposicion ( stat[accionar] )+ ) ;
     public final void condicional(boolean accionar) throws RecognitionException {
         int condicional_StartIndex = input.index();
         String cond = null;
@@ -258,13 +384,13 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return ; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:43:2: ( ^( 'si' cond= proposicion ( stat[accionar] )+ ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:43:4: ^( 'si' cond= proposicion ( stat[accionar] )+ )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:63:2: ( ^( 'si' cond= proposicion ( stat[accionar] )+ ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:63:4: ^( 'si' cond= proposicion ( stat[accionar] )+ )
             {
-            match(input,12,FOLLOW_12_in_condicional116); if (state.failed) return ;
+            match(input,16,FOLLOW_16_in_condicional166); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_proposicion_in_condicional120);
+            pushFollow(FOLLOW_proposicion_in_condicional170);
             cond=proposicion();
 
             state._fsp--;
@@ -278,23 +404,23 @@ public class SigeceneTree extends TreeParser {
               				}
               			
             }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:51:4: ( stat[accionar] )+
-            int cnt3=0;
-            loop3:
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:71:4: ( stat[accionar] )+
+            int cnt5=0;
+            loop5:
             do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+                int alt5=2;
+                int LA5_0 = input.LA(1);
 
-                if ( ((LA3_0>=10 && LA3_0<=12)) ) {
-                    alt3=1;
+                if ( ((LA5_0>=10 && LA5_0<=12)||(LA5_0>=15 && LA5_0<=16)) ) {
+                    alt5=1;
                 }
 
 
-                switch (alt3) {
+                switch (alt5) {
             	case 1 :
-            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:51:5: stat[accionar]
+            	    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:71:5: stat[accionar]
             	    {
-            	    pushFollow(FOLLOW_stat_in_condicional132);
+            	    pushFollow(FOLLOW_stat_in_condicional182);
             	    stat(accionar);
 
             	    state._fsp--;
@@ -304,13 +430,13 @@ public class SigeceneTree extends TreeParser {
             	    break;
 
             	default :
-            	    if ( cnt3 >= 1 ) break loop3;
+            	    if ( cnt5 >= 1 ) break loop5;
             	    if (state.backtracking>0) {state.failed=true; return ;}
                         EarlyExitException eee =
-                            new EarlyExitException(3, input);
+                            new EarlyExitException(5, input);
                         throw eee;
                 }
-                cnt3++;
+                cnt5++;
             } while (true);
 
 
@@ -332,7 +458,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "proposicion"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:55:1: proposicion returns [String valor] : ( ^( '<' a= expr b= expr ) | ^( '<=' a= expr b= expr ) | ^( '>' a= expr b= expr ) | ^( '>=' a= expr b= expr ) | ^( '==' a= expr b= expr ) | ^( '<>' a= expr b= expr ) | ^( 'Y' a= proposicion b= proposicion ) | ^( 'O' a= proposicion b= proposicion ) | ^( 'NO' a= proposicion ) | BOOLEAN | expr );
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:75:1: proposicion returns [String valor] : ( ^( '<' a= expr b= expr ) | ^( '<=' a= expr b= expr ) | ^( '>' a= expr b= expr ) | ^( '>=' a= expr b= expr ) | ^( '==' a= expr b= expr ) | ^( '<>' a= expr b= expr ) | ^( 'Y' a= proposicion b= proposicion ) | ^( 'O' a= proposicion b= proposicion ) | ^( 'NO' a= proposicion ) | BOOLEAN | expr );
     public final String proposicion() throws RecognitionException {
         String valor = null;
         int proposicion_StartIndex = input.index();
@@ -346,66 +472,62 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:56:2: ( ^( '<' a= expr b= expr ) | ^( '<=' a= expr b= expr ) | ^( '>' a= expr b= expr ) | ^( '>=' a= expr b= expr ) | ^( '==' a= expr b= expr ) | ^( '<>' a= expr b= expr ) | ^( 'Y' a= proposicion b= proposicion ) | ^( 'O' a= proposicion b= proposicion ) | ^( 'NO' a= proposicion ) | BOOLEAN | expr )
-            int alt4=11;
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:76:2: ( ^( '<' a= expr b= expr ) | ^( '<=' a= expr b= expr ) | ^( '>' a= expr b= expr ) | ^( '>=' a= expr b= expr ) | ^( '==' a= expr b= expr ) | ^( '<>' a= expr b= expr ) | ^( 'Y' a= proposicion b= proposicion ) | ^( 'O' a= proposicion b= proposicion ) | ^( 'NO' a= proposicion ) | BOOLEAN | expr )
+            int alt6=11;
             switch ( input.LA(1) ) {
-            case 21:
+            case 25:
                 {
-                alt4=1;
+                alt6=1;
                 }
                 break;
-            case 22:
+            case 26:
                 {
-                alt4=2;
-                }
-                break;
-            case 19:
-                {
-                alt4=3;
-                }
-                break;
-            case 20:
-                {
-                alt4=4;
+                alt6=2;
                 }
                 break;
             case 23:
                 {
-                alt4=5;
+                alt6=3;
                 }
                 break;
             case 24:
                 {
-                alt4=6;
+                alt6=4;
                 }
                 break;
-            case 16:
+            case 27:
                 {
-                alt4=7;
+                alt6=5;
                 }
                 break;
-            case 17:
+            case 28:
                 {
-                alt4=8;
+                alt6=6;
                 }
                 break;
-            case 18:
+            case 20:
                 {
-                alt4=9;
+                alt6=7;
+                }
+                break;
+            case 21:
+                {
+                alt6=8;
+                }
+                break;
+            case 22:
+                {
+                alt6=9;
                 }
                 break;
             case BOOLEAN:
                 {
-                alt4=10;
+                alt6=10;
                 }
                 break;
             case ID:
             case STRING:
             case DOUBLE:
-            case 25:
-            case 26:
-            case 27:
-            case 28:
             case 29:
             case 30:
             case 31:
@@ -413,32 +535,36 @@ public class SigeceneTree extends TreeParser {
             case 33:
             case 34:
             case 35:
+            case 36:
             case 37:
+            case 38:
+            case 39:
+            case 41:
                 {
-                alt4=11;
+                alt6=11;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return valor;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 4, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt4) {
+            switch (alt6) {
                 case 1 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:56:4: ^( '<' a= expr b= expr )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:76:4: ^( '<' a= expr b= expr )
                     {
-                    match(input,21,FOLLOW_21_in_proposicion155); if (state.failed) return valor;
+                    match(input,25,FOLLOW_25_in_proposicion205); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion159);
+                    pushFollow(FOLLOW_expr_in_proposicion209);
                     a=expr();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion163);
+                    pushFollow(FOLLOW_expr_in_proposicion213);
                     b=expr();
 
                     state._fsp--;
@@ -465,17 +591,17 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 2 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:71:4: ^( '<=' a= expr b= expr )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:91:4: ^( '<=' a= expr b= expr )
                     {
-                    match(input,22,FOLLOW_22_in_proposicion175); if (state.failed) return valor;
+                    match(input,26,FOLLOW_26_in_proposicion225); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion179);
+                    pushFollow(FOLLOW_expr_in_proposicion229);
                     a=expr();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion183);
+                    pushFollow(FOLLOW_expr_in_proposicion233);
                     b=expr();
 
                     state._fsp--;
@@ -502,17 +628,17 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 3 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:86:4: ^( '>' a= expr b= expr )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:106:4: ^( '>' a= expr b= expr )
                     {
-                    match(input,19,FOLLOW_19_in_proposicion195); if (state.failed) return valor;
+                    match(input,23,FOLLOW_23_in_proposicion245); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion199);
+                    pushFollow(FOLLOW_expr_in_proposicion249);
                     a=expr();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion203);
+                    pushFollow(FOLLOW_expr_in_proposicion253);
                     b=expr();
 
                     state._fsp--;
@@ -539,17 +665,17 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 4 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:101:4: ^( '>=' a= expr b= expr )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:121:4: ^( '>=' a= expr b= expr )
                     {
-                    match(input,20,FOLLOW_20_in_proposicion215); if (state.failed) return valor;
+                    match(input,24,FOLLOW_24_in_proposicion265); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion219);
+                    pushFollow(FOLLOW_expr_in_proposicion269);
                     a=expr();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion223);
+                    pushFollow(FOLLOW_expr_in_proposicion273);
                     b=expr();
 
                     state._fsp--;
@@ -576,17 +702,17 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 5 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:116:4: ^( '==' a= expr b= expr )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:136:4: ^( '==' a= expr b= expr )
                     {
-                    match(input,23,FOLLOW_23_in_proposicion235); if (state.failed) return valor;
+                    match(input,27,FOLLOW_27_in_proposicion285); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion239);
+                    pushFollow(FOLLOW_expr_in_proposicion289);
                     a=expr();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion243);
+                    pushFollow(FOLLOW_expr_in_proposicion293);
                     b=expr();
 
                     state._fsp--;
@@ -602,17 +728,17 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 6 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:120:4: ^( '<>' a= expr b= expr )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:140:4: ^( '<>' a= expr b= expr )
                     {
-                    match(input,24,FOLLOW_24_in_proposicion255); if (state.failed) return valor;
+                    match(input,28,FOLLOW_28_in_proposicion305); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion259);
+                    pushFollow(FOLLOW_expr_in_proposicion309);
                     a=expr();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_proposicion263);
+                    pushFollow(FOLLOW_expr_in_proposicion313);
                     b=expr();
 
                     state._fsp--;
@@ -628,17 +754,17 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 7 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:124:4: ^( 'Y' a= proposicion b= proposicion )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:144:4: ^( 'Y' a= proposicion b= proposicion )
                     {
-                    match(input,16,FOLLOW_16_in_proposicion275); if (state.failed) return valor;
+                    match(input,20,FOLLOW_20_in_proposicion325); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_proposicion_in_proposicion279);
+                    pushFollow(FOLLOW_proposicion_in_proposicion329);
                     a=proposicion();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_proposicion_in_proposicion283);
+                    pushFollow(FOLLOW_proposicion_in_proposicion333);
                     b=proposicion();
 
                     state._fsp--;
@@ -654,17 +780,17 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 8 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:128:4: ^( 'O' a= proposicion b= proposicion )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:148:4: ^( 'O' a= proposicion b= proposicion )
                     {
-                    match(input,17,FOLLOW_17_in_proposicion295); if (state.failed) return valor;
+                    match(input,21,FOLLOW_21_in_proposicion345); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_proposicion_in_proposicion299);
+                    pushFollow(FOLLOW_proposicion_in_proposicion349);
                     a=proposicion();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_proposicion_in_proposicion303);
+                    pushFollow(FOLLOW_proposicion_in_proposicion353);
                     b=proposicion();
 
                     state._fsp--;
@@ -680,12 +806,12 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 9 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:132:4: ^( 'NO' a= proposicion )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:152:4: ^( 'NO' a= proposicion )
                     {
-                    match(input,18,FOLLOW_18_in_proposicion315); if (state.failed) return valor;
+                    match(input,22,FOLLOW_22_in_proposicion365); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_proposicion_in_proposicion319);
+                    pushFollow(FOLLOW_proposicion_in_proposicion369);
                     a=proposicion();
 
                     state._fsp--;
@@ -705,9 +831,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 10 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:140:4: BOOLEAN
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:160:4: BOOLEAN
                     {
-                    BOOLEAN4=(CommonTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_proposicion330); if (state.failed) return valor;
+                    BOOLEAN4=(CommonTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_proposicion380); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
 
                       				valor = "0";
@@ -720,9 +846,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 11 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:147:4: expr
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:167:4: expr
                     {
-                    pushFollow(FOLLOW_expr_in_proposicion341);
+                    pushFollow(FOLLOW_expr_in_proposicion391);
                     expr5=expr();
 
                     state._fsp--;
@@ -751,7 +877,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "expr"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:153:1: expr returns [String valor] : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | funcPredefinidas | ID | DOUBLE | STRING );
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:173:1: expr returns [String valor] : ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | funcPredefinidas | ID | DOUBLE | STRING );
     public final String expr() throws RecognitionException {
         String valor = null;
         int expr_StartIndex = input.index();
@@ -767,77 +893,77 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:154:2: ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | funcPredefinidas | ID | DOUBLE | STRING )
-            int alt5=8;
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:174:2: ( ^( '+' a= expr b= expr ) | ^( '-' a= expr b= expr ) | ^( '*' a= expr b= expr ) | ^( '/' a= expr b= expr ) | funcPredefinidas | ID | DOUBLE | STRING )
+            int alt7=8;
             switch ( input.LA(1) ) {
-            case 25:
-                {
-                alt5=1;
-                }
-                break;
-            case 26:
-                {
-                alt5=2;
-                }
-                break;
-            case 27:
-                {
-                alt5=3;
-                }
-                break;
-            case 28:
-                {
-                alt5=4;
-                }
-                break;
             case 29:
+                {
+                alt7=1;
+                }
+                break;
             case 30:
+                {
+                alt7=2;
+                }
+                break;
             case 31:
+                {
+                alt7=3;
+                }
+                break;
             case 32:
+                {
+                alt7=4;
+                }
+                break;
             case 33:
             case 34:
             case 35:
+            case 36:
             case 37:
+            case 38:
+            case 39:
+            case 41:
                 {
-                alt5=5;
+                alt7=5;
                 }
                 break;
             case ID:
                 {
-                alt5=6;
+                alt7=6;
                 }
                 break;
             case DOUBLE:
                 {
-                alt5=7;
+                alt7=7;
                 }
                 break;
             case STRING:
                 {
-                alt5=8;
+                alt7=8;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return valor;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
+                    new NoViableAltException("", 7, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt5) {
+            switch (alt7) {
                 case 1 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:154:4: ^( '+' a= expr b= expr )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:174:4: ^( '+' a= expr b= expr )
                     {
-                    match(input,25,FOLLOW_25_in_expr363); if (state.failed) return valor;
+                    match(input,29,FOLLOW_29_in_expr413); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_expr367);
+                    pushFollow(FOLLOW_expr_in_expr417);
                     a=expr();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_expr371);
+                    pushFollow(FOLLOW_expr_in_expr421);
                     b=expr();
 
                     state._fsp--;
@@ -853,17 +979,17 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 2 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:158:4: ^( '-' a= expr b= expr )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:178:4: ^( '-' a= expr b= expr )
                     {
-                    match(input,26,FOLLOW_26_in_expr383); if (state.failed) return valor;
+                    match(input,30,FOLLOW_30_in_expr433); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_expr387);
+                    pushFollow(FOLLOW_expr_in_expr437);
                     a=expr();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_expr391);
+                    pushFollow(FOLLOW_expr_in_expr441);
                     b=expr();
 
                     state._fsp--;
@@ -879,17 +1005,17 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 3 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:162:4: ^( '*' a= expr b= expr )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:182:4: ^( '*' a= expr b= expr )
                     {
-                    match(input,27,FOLLOW_27_in_expr403); if (state.failed) return valor;
+                    match(input,31,FOLLOW_31_in_expr453); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_expr407);
+                    pushFollow(FOLLOW_expr_in_expr457);
                     a=expr();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_expr411);
+                    pushFollow(FOLLOW_expr_in_expr461);
                     b=expr();
 
                     state._fsp--;
@@ -905,17 +1031,17 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 4 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:166:4: ^( '/' a= expr b= expr )
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:186:4: ^( '/' a= expr b= expr )
                     {
-                    match(input,28,FOLLOW_28_in_expr423); if (state.failed) return valor;
+                    match(input,32,FOLLOW_32_in_expr473); if (state.failed) return valor;
 
                     match(input, Token.DOWN, null); if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_expr427);
+                    pushFollow(FOLLOW_expr_in_expr477);
                     a=expr();
 
                     state._fsp--;
                     if (state.failed) return valor;
-                    pushFollow(FOLLOW_expr_in_expr431);
+                    pushFollow(FOLLOW_expr_in_expr481);
                     b=expr();
 
                     state._fsp--;
@@ -931,9 +1057,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 5 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:170:4: funcPredefinidas
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:190:4: funcPredefinidas
                     {
-                    pushFollow(FOLLOW_funcPredefinidas_in_expr442);
+                    pushFollow(FOLLOW_funcPredefinidas_in_expr492);
                     funcPredefinidas6=funcPredefinidas();
 
                     state._fsp--;
@@ -947,9 +1073,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 6 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:174:4: ID
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:194:4: ID
                     {
-                    ID7=(CommonTree)match(input,ID,FOLLOW_ID_in_expr452); if (state.failed) return valor;
+                    ID7=(CommonTree)match(input,ID,FOLLOW_ID_in_expr502); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
 
                       				String v = (String)memory.get((ID7!=null?ID7.getText():null));
@@ -964,9 +1090,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 7 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:183:4: DOUBLE
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:203:4: DOUBLE
                     {
-                    DOUBLE8=(CommonTree)match(input,DOUBLE,FOLLOW_DOUBLE_in_expr463); if (state.failed) return valor;
+                    DOUBLE8=(CommonTree)match(input,DOUBLE,FOLLOW_DOUBLE_in_expr513); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
 
                       				valor = new String((DOUBLE8!=null?DOUBLE8.getText():null));
@@ -976,9 +1102,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 8 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:187:4: STRING
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:207:4: STRING
                     {
-                    STRING9=(CommonTree)match(input,STRING,FOLLOW_STRING_in_expr474); if (state.failed) return valor;
+                    STRING9=(CommonTree)match(input,STRING,FOLLOW_STRING_in_expr524); if (state.failed) return valor;
                     if ( state.backtracking==0 ) {
 
                       				//Elimino las comillas dobles del texto del String
@@ -1005,7 +1131,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "funcPredefinidas"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:196:1: funcPredefinidas returns [String valor] : ( promedio | sumatoria | contar | max | min | redondea | diff_fechas | concatenar );
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:216:1: funcPredefinidas returns [String valor] : ( promedio | sumatoria | contar | max | min | redondea | diff_fechas | concatenar );
     public final String funcPredefinidas() throws RecognitionException {
         String valor = null;
         int funcPredefinidas_StartIndex = input.index();
@@ -1028,62 +1154,62 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 6) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:197:2: ( promedio | sumatoria | contar | max | min | redondea | diff_fechas | concatenar )
-            int alt6=8;
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:217:2: ( promedio | sumatoria | contar | max | min | redondea | diff_fechas | concatenar )
+            int alt8=8;
             switch ( input.LA(1) ) {
-            case 29:
-                {
-                alt6=1;
-                }
-                break;
-            case 30:
-                {
-                alt6=2;
-                }
-                break;
-            case 31:
-                {
-                alt6=3;
-                }
-                break;
-            case 32:
-                {
-                alt6=4;
-                }
-                break;
             case 33:
                 {
-                alt6=5;
+                alt8=1;
                 }
                 break;
             case 34:
                 {
-                alt6=6;
+                alt8=2;
                 }
                 break;
             case 35:
                 {
-                alt6=7;
+                alt8=3;
+                }
+                break;
+            case 36:
+                {
+                alt8=4;
                 }
                 break;
             case 37:
                 {
-                alt6=8;
+                alt8=5;
+                }
+                break;
+            case 38:
+                {
+                alt8=6;
+                }
+                break;
+            case 39:
+                {
+                alt8=7;
+                }
+                break;
+            case 41:
+                {
+                alt8=8;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return valor;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
+                    new NoViableAltException("", 8, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt6) {
+            switch (alt8) {
                 case 1 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:197:4: promedio
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:217:4: promedio
                     {
-                    pushFollow(FOLLOW_promedio_in_funcPredefinidas496);
+                    pushFollow(FOLLOW_promedio_in_funcPredefinidas546);
                     promedio10=promedio();
 
                     state._fsp--;
@@ -1097,9 +1223,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 2 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:201:4: sumatoria
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:221:4: sumatoria
                     {
-                    pushFollow(FOLLOW_sumatoria_in_funcPredefinidas506);
+                    pushFollow(FOLLOW_sumatoria_in_funcPredefinidas556);
                     sumatoria11=sumatoria();
 
                     state._fsp--;
@@ -1113,9 +1239,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 3 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:205:4: contar
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:225:4: contar
                     {
-                    pushFollow(FOLLOW_contar_in_funcPredefinidas516);
+                    pushFollow(FOLLOW_contar_in_funcPredefinidas566);
                     contar12=contar();
 
                     state._fsp--;
@@ -1129,9 +1255,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 4 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:209:4: max
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:229:4: max
                     {
-                    pushFollow(FOLLOW_max_in_funcPredefinidas526);
+                    pushFollow(FOLLOW_max_in_funcPredefinidas576);
                     max13=max();
 
                     state._fsp--;
@@ -1145,9 +1271,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 5 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:213:4: min
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:233:4: min
                     {
-                    pushFollow(FOLLOW_min_in_funcPredefinidas536);
+                    pushFollow(FOLLOW_min_in_funcPredefinidas586);
                     min14=min();
 
                     state._fsp--;
@@ -1161,9 +1287,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 6 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:217:4: redondea
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:237:4: redondea
                     {
-                    pushFollow(FOLLOW_redondea_in_funcPredefinidas546);
+                    pushFollow(FOLLOW_redondea_in_funcPredefinidas596);
                     redondea15=redondea();
 
                     state._fsp--;
@@ -1177,9 +1303,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 7 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:221:4: diff_fechas
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:241:4: diff_fechas
                     {
-                    pushFollow(FOLLOW_diff_fechas_in_funcPredefinidas556);
+                    pushFollow(FOLLOW_diff_fechas_in_funcPredefinidas606);
                     diff_fechas16=diff_fechas();
 
                     state._fsp--;
@@ -1193,9 +1319,9 @@ public class SigeceneTree extends TreeParser {
                     }
                     break;
                 case 8 :
-                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:225:4: concatenar
+                    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:245:4: concatenar
                     {
-                    pushFollow(FOLLOW_concatenar_in_funcPredefinidas566);
+                    pushFollow(FOLLOW_concatenar_in_funcPredefinidas616);
                     concatenar17=concatenar();
 
                     state._fsp--;
@@ -1224,7 +1350,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "promedio"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:231:1: promedio returns [String valor] : ^( 'promedio' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:251:1: promedio returns [String valor] : ^( 'promedio' ID ) ;
     public final String promedio() throws RecognitionException {
         String valor = null;
         int promedio_StartIndex = input.index();
@@ -1232,18 +1358,19 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 7) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:232:2: ( ^( 'promedio' ID ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:232:4: ^( 'promedio' ID )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:252:2: ( ^( 'promedio' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:252:4: ^( 'promedio' ID )
             {
-            match(input,29,FOLLOW_29_in_promedio587); if (state.failed) return valor;
+            match(input,33,FOLLOW_33_in_promedio637); if (state.failed) return valor;
 
             match(input, Token.DOWN, null); if (state.failed) return valor;
-            ID18=(CommonTree)match(input,ID,FOLLOW_ID_in_promedio589); if (state.failed) return valor;
+            ID18=(CommonTree)match(input,ID,FOLLOW_ID_in_promedio639); if (state.failed) return valor;
 
             match(input, Token.UP, null); if (state.failed) return valor;
             if ( state.backtracking==0 ) {
 
-              			String v = (String)memory.get("promedio(["+(ID18!=null?ID18.getText():null)+"])");
+              			//para permitir que se compartan las variables entre los usuarios
+              			/*String v = (String)memory.get("promedio(["+(ID18!=null?ID18.getText():null)+"])");
               			if (v != null){
               				valor = v;
               			}else{
@@ -1253,6 +1380,11 @@ public class SigeceneTree extends TreeParser {
               					throw new RecognitionException();
               				}
               				memory.put("promedio(["+(ID18!=null?ID18.getText():null)+"])", valor);
+              			}*/
+              			try{
+              				valor = EstudioPerso.getInstance().getPromedioField((ID18!=null?ID18.getText():null));
+              			}catch(Exception proEx){
+              				throw new RecognitionException();
               			}
               		
             }
@@ -1273,7 +1405,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "sumatoria"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:248:1: sumatoria returns [String valor] : ^( 'sumatoria' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:274:1: sumatoria returns [String valor] : ^( 'sumatoria' ID ) ;
     public final String sumatoria() throws RecognitionException {
         String valor = null;
         int sumatoria_StartIndex = input.index();
@@ -1281,18 +1413,19 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 8) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:249:2: ( ^( 'sumatoria' ID ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:249:4: ^( 'sumatoria' ID )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:275:2: ( ^( 'sumatoria' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:275:4: ^( 'sumatoria' ID )
             {
-            match(input,30,FOLLOW_30_in_sumatoria610); if (state.failed) return valor;
+            match(input,34,FOLLOW_34_in_sumatoria660); if (state.failed) return valor;
 
             match(input, Token.DOWN, null); if (state.failed) return valor;
-            ID19=(CommonTree)match(input,ID,FOLLOW_ID_in_sumatoria612); if (state.failed) return valor;
+            ID19=(CommonTree)match(input,ID,FOLLOW_ID_in_sumatoria662); if (state.failed) return valor;
 
             match(input, Token.UP, null); if (state.failed) return valor;
             if ( state.backtracking==0 ) {
 
-              			String v = (String)memory.get("sumatoria(["+(ID19!=null?ID19.getText():null)+"])");
+              			//para permitir que se compartan las variables entre los usuarios
+              			/*String v = (String)memory.get("sumatoria(["+(ID19!=null?ID19.getText():null)+"])");
               			if (v != null){
               				valor = v;
               			}else{
@@ -1302,6 +1435,11 @@ public class SigeceneTree extends TreeParser {
               					throw new RecognitionException();
               				}
               				memory.put("sumatoria(["+(ID19!=null?ID19.getText():null)+"])", valor);
+              			}*/
+              			try{
+              				valor = EstudioPerso.getInstance().getSumatoriaField((ID19!=null?ID19.getText():null));
+              			}catch(Exception proEx){
+              				throw new RecognitionException();
               			}
               		
             }
@@ -1322,7 +1460,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "contar"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:265:1: contar returns [String valor] : ^( 'contar' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:297:1: contar returns [String valor] : ^( 'contar' ID ) ;
     public final String contar() throws RecognitionException {
         String valor = null;
         int contar_StartIndex = input.index();
@@ -1330,18 +1468,19 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 9) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:266:2: ( ^( 'contar' ID ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:266:4: ^( 'contar' ID )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:298:2: ( ^( 'contar' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:298:4: ^( 'contar' ID )
             {
-            match(input,31,FOLLOW_31_in_contar633); if (state.failed) return valor;
+            match(input,35,FOLLOW_35_in_contar683); if (state.failed) return valor;
 
             match(input, Token.DOWN, null); if (state.failed) return valor;
-            ID20=(CommonTree)match(input,ID,FOLLOW_ID_in_contar635); if (state.failed) return valor;
+            ID20=(CommonTree)match(input,ID,FOLLOW_ID_in_contar685); if (state.failed) return valor;
 
             match(input, Token.UP, null); if (state.failed) return valor;
             if ( state.backtracking==0 ) {
 
-              			String v = (String)memory.get("contar(["+(ID20!=null?ID20.getText():null)+"])");
+              			//para permitir que se compartan las variables entre los usuarios
+              			/*String v = (String)memory.get("contar(["+(ID20!=null?ID20.getText():null)+"])");
               			if (v != null){
               				valor = v;
               			}else{
@@ -1351,6 +1490,11 @@ public class SigeceneTree extends TreeParser {
               					throw new RecognitionException();
               				}
               				memory.put("contar(["+(ID20!=null?ID20.getText():null)+"])", valor);
+              			}*/
+              			try{
+              				valor = EstudioPerso.getInstance().getContarField((ID20!=null?ID20.getText():null));
+              			}catch(Exception proEx){
+              				throw new RecognitionException();
               			}
               		
             }
@@ -1371,7 +1515,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "max"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:282:1: max returns [String valor] : ^( 'max' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:320:1: max returns [String valor] : ^( 'max' ID ) ;
     public final String max() throws RecognitionException {
         String valor = null;
         int max_StartIndex = input.index();
@@ -1379,18 +1523,19 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 10) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:283:2: ( ^( 'max' ID ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:283:4: ^( 'max' ID )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:321:2: ( ^( 'max' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:321:4: ^( 'max' ID )
             {
-            match(input,32,FOLLOW_32_in_max656); if (state.failed) return valor;
+            match(input,36,FOLLOW_36_in_max706); if (state.failed) return valor;
 
             match(input, Token.DOWN, null); if (state.failed) return valor;
-            ID21=(CommonTree)match(input,ID,FOLLOW_ID_in_max658); if (state.failed) return valor;
+            ID21=(CommonTree)match(input,ID,FOLLOW_ID_in_max708); if (state.failed) return valor;
 
             match(input, Token.UP, null); if (state.failed) return valor;
             if ( state.backtracking==0 ) {
 
-              			String v = (String)memory.get("max(["+(ID21!=null?ID21.getText():null)+"])");
+              			//para permitir que se compartan las variables entre los usuarios
+              			/*String v = (String)memory.get("max(["+(ID21!=null?ID21.getText():null)+"])");
               			if (v != null){
               				valor = v;
               			}else{
@@ -1400,6 +1545,11 @@ public class SigeceneTree extends TreeParser {
               					throw new RecognitionException();
               				}
               				memory.put("max(["+(ID21!=null?ID21.getText():null)+"])", valor);
+              			}*/
+              			try{
+              				valor = EstudioPerso.getInstance().getMaxField((ID21!=null?ID21.getText():null));
+              			}catch(Exception proEx){
+              				throw new RecognitionException();
               			}
               		
             }
@@ -1420,7 +1570,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "min"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:299:1: min returns [String valor] : ^( 'min' ID ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:343:1: min returns [String valor] : ^( 'min' ID ) ;
     public final String min() throws RecognitionException {
         String valor = null;
         int min_StartIndex = input.index();
@@ -1428,18 +1578,19 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:300:2: ( ^( 'min' ID ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:300:4: ^( 'min' ID )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:344:2: ( ^( 'min' ID ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:344:4: ^( 'min' ID )
             {
-            match(input,33,FOLLOW_33_in_min679); if (state.failed) return valor;
+            match(input,37,FOLLOW_37_in_min729); if (state.failed) return valor;
 
             match(input, Token.DOWN, null); if (state.failed) return valor;
-            ID22=(CommonTree)match(input,ID,FOLLOW_ID_in_min681); if (state.failed) return valor;
+            ID22=(CommonTree)match(input,ID,FOLLOW_ID_in_min731); if (state.failed) return valor;
 
             match(input, Token.UP, null); if (state.failed) return valor;
             if ( state.backtracking==0 ) {
 
-              			String v = (String)memory.get("min(["+(ID22!=null?ID22.getText():null)+"])");
+              			//para permitir que se compartan las variables entre los usuarios
+              			/*String v = (String)memory.get("min(["+(ID22!=null?ID22.getText():null)+"])");
               			if (v != null){
               				valor = v;
               			}else{
@@ -1449,6 +1600,11 @@ public class SigeceneTree extends TreeParser {
               					throw new RecognitionException();
               				}
               				memory.put("min(["+(ID22!=null?ID22.getText():null)+"])", valor);
+              			}*/
+              			try{
+              				valor = EstudioPerso.getInstance().getMinField((ID22!=null?ID22.getText():null));
+              			}catch(Exception proEx){
+              				throw new RecognitionException();
               			}
               		
             }
@@ -1469,7 +1625,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "redondea"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:316:1: redondea returns [String valor] : ^( 'redondea' expr ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:366:1: redondea returns [String valor] : ^( 'redondea' expr ) ;
     public final String redondea() throws RecognitionException {
         String valor = null;
         int redondea_StartIndex = input.index();
@@ -1478,13 +1634,13 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 12) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:317:2: ( ^( 'redondea' expr ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:317:4: ^( 'redondea' expr )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:367:2: ( ^( 'redondea' expr ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:367:4: ^( 'redondea' expr )
             {
-            match(input,34,FOLLOW_34_in_redondea702); if (state.failed) return valor;
+            match(input,38,FOLLOW_38_in_redondea752); if (state.failed) return valor;
 
             match(input, Token.DOWN, null); if (state.failed) return valor;
-            pushFollow(FOLLOW_expr_in_redondea704);
+            pushFollow(FOLLOW_expr_in_redondea754);
             expr23=expr();
 
             state._fsp--;
@@ -1517,7 +1673,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "diff_fechas"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:327:1: diff_fechas returns [String valor] : ^( 'diff_fechas' a= expr b= expr ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:377:1: diff_fechas returns [String valor] : ^( 'diff_fechas' a= expr b= expr ) ;
     public final String diff_fechas() throws RecognitionException {
         String valor = null;
         int diff_fechas_StartIndex = input.index();
@@ -1528,18 +1684,18 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 13) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:328:2: ( ^( 'diff_fechas' a= expr b= expr ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:328:4: ^( 'diff_fechas' a= expr b= expr )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:378:2: ( ^( 'diff_fechas' a= expr b= expr ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:378:4: ^( 'diff_fechas' a= expr b= expr )
             {
-            match(input,35,FOLLOW_35_in_diff_fechas725); if (state.failed) return valor;
+            match(input,39,FOLLOW_39_in_diff_fechas775); if (state.failed) return valor;
 
             match(input, Token.DOWN, null); if (state.failed) return valor;
-            pushFollow(FOLLOW_expr_in_diff_fechas729);
+            pushFollow(FOLLOW_expr_in_diff_fechas779);
             a=expr();
 
             state._fsp--;
             if (state.failed) return valor;
-            pushFollow(FOLLOW_expr_in_diff_fechas733);
+            pushFollow(FOLLOW_expr_in_diff_fechas783);
             b=expr();
 
             state._fsp--;
@@ -1572,7 +1728,7 @@ public class SigeceneTree extends TreeParser {
 
 
     // $ANTLR start "concatenar"
-    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:338:1: concatenar returns [String valor] : ^( 'concatenar' a= expr b= expr ) ;
+    // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:388:1: concatenar returns [String valor] : ^( 'concatenar' a= expr b= expr ) ;
     public final String concatenar() throws RecognitionException {
         String valor = null;
         int concatenar_StartIndex = input.index();
@@ -1583,18 +1739,18 @@ public class SigeceneTree extends TreeParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 14) ) { return valor; }
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:339:2: ( ^( 'concatenar' a= expr b= expr ) )
-            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:339:4: ^( 'concatenar' a= expr b= expr )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:389:2: ( ^( 'concatenar' a= expr b= expr ) )
+            // Y:\\webapps\\siagcee\\WEB-INF\\classes\\com\\siagcee\\logic\\SigeceneTree.g:389:4: ^( 'concatenar' a= expr b= expr )
             {
-            match(input,37,FOLLOW_37_in_concatenar754); if (state.failed) return valor;
+            match(input,41,FOLLOW_41_in_concatenar804); if (state.failed) return valor;
 
             match(input, Token.DOWN, null); if (state.failed) return valor;
-            pushFollow(FOLLOW_expr_in_concatenar758);
+            pushFollow(FOLLOW_expr_in_concatenar808);
             a=expr();
 
             state._fsp--;
             if (state.failed) return valor;
-            pushFollow(FOLLOW_expr_in_concatenar762);
+            pushFollow(FOLLOW_expr_in_concatenar812);
             b=expr();
 
             state._fsp--;
@@ -1630,85 +1786,89 @@ public class SigeceneTree extends TreeParser {
 
  
 
-    public static final BitSet FOLLOW_stat_in_prog59 = new BitSet(new long[]{0x0000000000001C02L});
+    public static final BitSet FOLLOW_stat_in_prog59 = new BitSet(new long[]{0x0000000000019C02L});
     public static final BitSet FOLLOW_condicional_in_stat71 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_11_in_stat78 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_proposicion_in_stat80 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_10_in_stat93 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_stat95 = new BitSet(new long[]{0x0000002FFFFF01D0L});
+    public static final BitSet FOLLOW_ID_in_stat95 = new BitSet(new long[]{0x000002FFFFF001D0L});
     public static final BitSet FOLLOW_proposicion_in_stat97 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_12_in_condicional116 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_proposicion_in_condicional120 = new BitSet(new long[]{0x0000000000001C08L});
-    public static final BitSet FOLLOW_stat_in_condicional132 = new BitSet(new long[]{0x0000000000001C08L});
-    public static final BitSet FOLLOW_21_in_proposicion155 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_proposicion159 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_proposicion163 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_22_in_proposicion175 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_proposicion179 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_proposicion183 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_19_in_proposicion195 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_proposicion199 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_proposicion203 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_20_in_proposicion215 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_proposicion219 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_proposicion223 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_23_in_proposicion235 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_proposicion239 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_proposicion243 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_24_in_proposicion255 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_proposicion259 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_proposicion263 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_16_in_proposicion275 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_proposicion_in_proposicion279 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_proposicion_in_proposicion283 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_17_in_proposicion295 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_proposicion_in_proposicion299 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_proposicion_in_proposicion303 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_18_in_proposicion315 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_proposicion_in_proposicion319 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_BOOLEAN_in_proposicion330 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_proposicion341 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_expr363 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr367 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_expr371 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_26_in_expr383 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr387 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_expr391 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_27_in_expr403 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr407 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_expr411 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_28_in_expr423 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr427 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_expr431 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_funcPredefinidas_in_expr442 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_expr452 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DOUBLE_in_expr463 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_expr474 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_promedio_in_funcPredefinidas496 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_sumatoria_in_funcPredefinidas506 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_contar_in_funcPredefinidas516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_max_in_funcPredefinidas526 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_min_in_funcPredefinidas536 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_redondea_in_funcPredefinidas546 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_diff_fechas_in_funcPredefinidas556 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_concatenar_in_funcPredefinidas566 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_promedio587 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_promedio589 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_30_in_sumatoria610 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_sumatoria612 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_31_in_contar633 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_contar635 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_32_in_max656 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_max658 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_33_in_min679 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_min681 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_34_in_redondea702 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_redondea704 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_35_in_diff_fechas725 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_diff_fechas729 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_diff_fechas733 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_37_in_concatenar754 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_concatenar758 = new BitSet(new long[]{0x0000002FFFFF01D0L});
-    public static final BitSet FOLLOW_expr_in_concatenar762 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_12_in_stat109 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stat_in_stat121 = new BitSet(new long[]{0x0000000000019C08L});
+    public static final BitSet FOLLOW_15_in_stat134 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stat_in_stat146 = new BitSet(new long[]{0x0000000000019C08L});
+    public static final BitSet FOLLOW_16_in_condicional166 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_proposicion_in_condicional170 = new BitSet(new long[]{0x0000000000019C08L});
+    public static final BitSet FOLLOW_stat_in_condicional182 = new BitSet(new long[]{0x0000000000019C08L});
+    public static final BitSet FOLLOW_25_in_proposicion205 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_proposicion209 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_proposicion213 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_26_in_proposicion225 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_proposicion229 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_proposicion233 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_23_in_proposicion245 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_proposicion249 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_proposicion253 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_24_in_proposicion265 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_proposicion269 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_proposicion273 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_27_in_proposicion285 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_proposicion289 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_proposicion293 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_28_in_proposicion305 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_proposicion309 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_proposicion313 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_20_in_proposicion325 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_proposicion_in_proposicion329 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_proposicion_in_proposicion333 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_21_in_proposicion345 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_proposicion_in_proposicion349 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_proposicion_in_proposicion353 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_22_in_proposicion365 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_proposicion_in_proposicion369 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_BOOLEAN_in_proposicion380 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_proposicion391 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_expr413 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr417 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_expr421 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_30_in_expr433 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr437 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_expr441 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_31_in_expr453 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr457 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_expr461 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_32_in_expr473 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr477 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_expr481 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_funcPredefinidas_in_expr492 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_expr502 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLE_in_expr513 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_expr524 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_promedio_in_funcPredefinidas546 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_sumatoria_in_funcPredefinidas556 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_contar_in_funcPredefinidas566 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_max_in_funcPredefinidas576 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_min_in_funcPredefinidas586 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_redondea_in_funcPredefinidas596 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_diff_fechas_in_funcPredefinidas606 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_concatenar_in_funcPredefinidas616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_promedio637 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_promedio639 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_34_in_sumatoria660 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_sumatoria662 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_35_in_contar683 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_contar685 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_36_in_max706 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_max708 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_37_in_min729 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_min731 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_38_in_redondea752 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_redondea754 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_39_in_diff_fechas775 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_diff_fechas779 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_diff_fechas783 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_41_in_concatenar804 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_concatenar808 = new BitSet(new long[]{0x000002FFFFF001D0L});
+    public static final BitSet FOLLOW_expr_in_concatenar812 = new BitSet(new long[]{0x0000000000000008L});
 
 }
