@@ -55,6 +55,7 @@ public class Pregunta extends ObjetoBase{
 	public Pregunta(Usuario _usuario, Connection _miConexion, String _pregunta) {
 		super(_usuario, _miConexion);
 		misRespuestas = new Vector();
+		_pregunta = _pregunta.trim();
 		if(!_pregunta.equals("")){
 			pregunta = _pregunta;
 		}
@@ -67,6 +68,7 @@ public class Pregunta extends ObjetoBase{
 	public Pregunta(Usuario _usuario, Connection _miConexion, String _pregunta, int _tipoPregunta) {
 		super(_usuario, _miConexion);
 		misRespuestas = new Vector();
+		_pregunta = _pregunta.trim();
 		if(!_pregunta.equals("")){
 			pregunta = _pregunta;
 		}
@@ -107,6 +109,7 @@ public class Pregunta extends ObjetoBase{
 
 	//indico el texto de la pregunta
 	public void setPregunta(String _pregunta) {
+		_pregunta = _pregunta.trim();
 		if(!_pregunta.equals("")){
 			pregunta = _pregunta;
 			this.ingresaABd();
@@ -234,7 +237,7 @@ public class Pregunta extends ObjetoBase{
 			pstmt.setInt(1, this.getId());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				this.pregunta = rs.getString("nombre_amistoso");
+				this.pregunta = rs.getString("nombre_amistoso").trim();
 				this.tipoPregunta = rs.getInt("tipo_pregunta");
 				this.setId(rs.getInt("id_pool_preguntas"));
 				this.publico = rs.getBoolean("visible");
@@ -260,7 +263,7 @@ public class Pregunta extends ObjetoBase{
 					//ejecuto UPDATE
 					if(this.esEditable()){
 						PreparedStatement pstmt = getConexion().prepareStatement("UPDATE pool_preguntas SET nombre_amistoso = ? , tipo_pregunta = ? , visible = ? WHERE id_pool_preguntas = ? AND creado_por = ?");
-						pstmt.setString(1, this.getPregunta());
+						pstmt.setString(1, this.getPregunta().trim());
 						pstmt.setInt(2, this.getTipoPregunta());
 						pstmt.setBoolean(3, this.getPublico());
 						pstmt.setInt(4, this.getId());
@@ -276,7 +279,7 @@ public class Pregunta extends ObjetoBase{
 
 					PreparedStatement pstmt = getConexion().prepareStatement("INSERT INTO pool_preguntas(id_pool_preguntas, nombre_amistoso, tipo_pregunta, creado_por, visible) VALUES (?, ?, ?, ?, ?)");
 					pstmt.setInt(1, siguiente);
-					pstmt.setString(2, this.getPregunta());
+					pstmt.setString(2, this.getPregunta().trim());
 					pstmt.setInt(3, this.getTipoPregunta());
 					pstmt.setInt(4, this.getUsuario().getUsuarioId());
 					pstmt.setBoolean(5, this.getPublico());
@@ -307,7 +310,7 @@ public class Pregunta extends ObjetoBase{
 				ObjPregTemp = new Pregunta(_usuario, _miConexion);
 				ObjPregTemp.idPregunta = rs.getInt("id_pool_preguntas");
 				ObjPregTemp.tipoPregunta = rs.getInt("tipo_pregunta");
-				ObjPregTemp.pregunta = rs.getString("nombre_amistoso");
+				ObjPregTemp.pregunta = rs.getString("nombre_amistoso").trim();
 				ObjPregTemp.publico = rs.getBoolean("visible");
 				ObjPregTemp.cargadaDeBD = true;
 				_lista.add(ObjPregTemp);
@@ -380,7 +383,7 @@ public class Pregunta extends ObjetoBase{
 				ObjPregTemp = new Pregunta(_usuario, _miConexion);
 				ObjPregTemp.idPregunta = rs.getInt("id_pool_preguntas");
 				ObjPregTemp.tipoPregunta = rs.getInt("tipo_pregunta");
-				ObjPregTemp.pregunta = rs.getString("nombre_amistoso");
+				ObjPregTemp.pregunta = rs.getString("nombre_amistoso").trim();
 				ObjPregTemp.publico = rs.getBoolean("visible");
 				ObjPregTemp.cargadaDeBD = true;
 				_retorno.add(ObjPregTemp);

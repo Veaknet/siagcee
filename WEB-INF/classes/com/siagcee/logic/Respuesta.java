@@ -116,7 +116,7 @@ public class Respuesta extends ObjetoBase{
 
 	//establece la respuesta en caso que sea abierta
 	public void setRespuesta(String _miRespuesta){
-		this.textoRespuesta = _miRespuesta;
+		this.textoRespuesta = _miRespuesta.trim();
 		this.ingresaABd();
 	}
 
@@ -155,7 +155,7 @@ public class Respuesta extends ObjetoBase{
 			return null;
 		}
 		if(this.getInstanciaPregunta().getTipoPregunta() == 30 || this.getInstanciaPregunta().getTipoPregunta() == 100){
-			return this.textoRespuesta;
+			return this.textoRespuesta.trim();
 		}
 		return "";
 	}
@@ -199,7 +199,7 @@ public class Respuesta extends ObjetoBase{
 			return null;
 		}
 		if(this.getInstanciaPregunta().getTipoPregunta() == 30 || this.getInstanciaPregunta().getTipoPregunta() == 100){
-			return (Object)this.textoRespuesta;
+			return (Object)this.textoRespuesta.trim();
 		}else{
 			if(this.getInstanciaPregunta().getTipoPregunta() == 31){
 				return (Object)this.intRespuesta;
@@ -291,7 +291,7 @@ public class Respuesta extends ObjetoBase{
 				this.insPreg = new InstanciaPregunta(this.getUsuario(), this.getConexion(), rs.getInt("id_instancia_preguntas"));
 				if(this.getTipoPregunta() >= 30){
 					//abierta
-					this.textoRespuesta = rs.getString("respuesta_string");
+					this.textoRespuesta = rs.getString("respuesta_string").trim();
 					this.DoubleRespuesta = rs.getDouble("respuesta_float");
 					this.intRespuesta = rs.getLong("respuesta_int");
 					this.dateRespuesta = rs.getDate("respuesta_date");
@@ -327,7 +327,7 @@ public class Respuesta extends ObjetoBase{
 						pstmt.setInt(1, this.getInstanciaObjeto().getId());
 						pstmt.setInt(2, this.getInstanciaPregunta().getId());
 						//abierta
-						pstmt.setString(3, this.textoRespuesta);
+						pstmt.setString(3, this.textoRespuesta.trim());
 						pstmt.setLong(4, this.intRespuesta);
 						pstmt.setDouble(5, this.DoubleRespuesta);
 						pstmt.setDate(6, new java.sql.Date((this.dateRespuesta).getTime()));
@@ -362,7 +362,7 @@ public class Respuesta extends ObjetoBase{
 						pstmt.setInt(3, this.getInstanciaObjeto().getId());
 						pstmt.setInt(4, this.getUsuario().getUsuarioId());
 						//abierta
-						pstmt.setString(5, this.textoRespuesta);
+						pstmt.setString(5, this.textoRespuesta.trim());
 						pstmt.setLong(6, this.intRespuesta);
 						pstmt.setDouble(7, this.DoubleRespuesta);
 						pstmt.setDate(8, new java.sql.Date((this.dateRespuesta).getTime()));
@@ -497,7 +497,7 @@ public class Respuesta extends ObjetoBase{
 				_resp.insPreg = new InstanciaPregunta(_usuario, _miConexion, rs.getInt("id_instancia_preguntas"));
 				if(_resp.getTipoPregunta() >= 30){
 					//abierta
-					_resp.textoRespuesta = rs.getString("respuesta_string");
+					_resp.textoRespuesta = rs.getString("respuesta_string").trim();
 					_resp.DoubleRespuesta = rs.getDouble("respuesta_float");
 					_resp.intRespuesta = rs.getLong("respuesta_int");
 					_resp.dateRespuesta = rs.getDate("respuesta_date");

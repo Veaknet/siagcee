@@ -89,8 +89,8 @@ public class InstanciaPregunta extends ObjetoBase{
 		super(_usuario, _miConexion);
 		this.idInstanciaPregunta = -1;
 		this.ordenPregunta = 0;
-		this.pregunta = _pregunta;
-		this.acronimo = _pregunta;
+		this.pregunta = _pregunta.trim();
+		this.acronimo = _pregunta.trim();
 		this.miPregunta = null;
 		this.miPadre = null;
 		this.estudioAsociado = -1;
@@ -107,8 +107,8 @@ public class InstanciaPregunta extends ObjetoBase{
 		super(_usuario, _miConexion);
 		this.idInstanciaPregunta = -1;
 		this.ordenPregunta = 0;
-		this.pregunta = _pregunta;
-		this.acronimo = _acronimo;
+		this.pregunta = _pregunta.trim();
+		this.acronimo = _acronimo.trim();
 		this.miPregunta = null;
 		this.miPadre = null;
 		this.estudioAsociado = -1;
@@ -126,8 +126,8 @@ public class InstanciaPregunta extends ObjetoBase{
 		super(_usuario, _miConexion);
 		this.idInstanciaPregunta = -1;
 		this.ordenPregunta = 0;
-		this.pregunta = _pregunta;
-		this.acronimo = _pregunta;
+		this.pregunta = _pregunta.trim();
+		this.acronimo = _pregunta.trim();
 		this.miPregunta = _miPregunta;
 		this.miPadre = _padre;
 		this.cargadaDeBD = false;
@@ -163,10 +163,11 @@ public class InstanciaPregunta extends ObjetoBase{
 	}
 
 	public String getAcronimo() {
-		return acronimo;
+		return acronimo.trim();
 	}
 
 	public void setAcronimo(String _acronimo) {
+		_acronimo = _acronimo.trim();
 		if(!_acronimo.equals("")){
 			this.acronimo = _acronimo;
 		}
@@ -288,6 +289,7 @@ public class InstanciaPregunta extends ObjetoBase{
 
 	//establece el texto visible a los usuarios de la pregunta
 	public void setTextoPregunta(String _pregunta){
+		_pregunta = _pregunta.trim();
 		if(!_pregunta.equals("")){
 			this.pregunta = _pregunta;
 		}
@@ -296,7 +298,7 @@ public class InstanciaPregunta extends ObjetoBase{
 
 	//texto visible a los usuarios de pregunta
 	public String getTextoPregunta(){
-		return this.pregunta;
+		return this.pregunta.trim();
 	}
 
 	//establece el texto visible a los usuarios de la pregunta
@@ -481,8 +483,8 @@ public class InstanciaPregunta extends ObjetoBase{
 			pstmt.setInt(1, this.getId());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				this.pregunta = rs.getString("pregunta");
-				this.acronimo = rs.getString("acronimo");
+				this.pregunta = rs.getString("pregunta").trim();
+				this.acronimo = rs.getString("acronimo").trim();
 				this.ordenPregunta = rs.getInt("orden_pregunta");
 				this.setId(rs.getInt("id_instancia_preguntas"));
 				this.campo_clave_unico = rs.getBoolean("campo_clave_unico");
@@ -547,8 +549,8 @@ public class InstanciaPregunta extends ObjetoBase{
 		try {
 			while (rs.next()){
 				ObjPregTemp = new InstanciaPregunta(_usuario, _miConexion);
-				ObjPregTemp.pregunta = rs.getString("pregunta");
-				ObjPregTemp.acronimo = rs.getString("acronimo");
+				ObjPregTemp.pregunta = rs.getString("pregunta").trim();
+				ObjPregTemp.acronimo = rs.getString("acronimo").trim();
 				ObjPregTemp.idInstanciaPregunta = rs.getInt("id_instancia_preguntas");
 				ObjPregTemp.miPadre = _padre;
 				ObjPregTemp.ordenPregunta = rs.getInt("orden_pregunta");
@@ -618,8 +620,8 @@ public class InstanciaPregunta extends ObjetoBase{
 					continue;
 				}
 				_pregunta = new InstanciaPregunta(_usuario, _miConexion);
-				_pregunta.pregunta = rs.getString("pregunta");
-				_pregunta.acronimo = rs.getString("acronimo");
+				_pregunta.pregunta = rs.getString("pregunta").trim();
+				_pregunta.acronimo = rs.getString("acronimo").trim();
 				_pregunta.idInstanciaPregunta = rs.getInt("id_instancia_preguntas");
 				_pregunta.miPadre = _padre;
 				_pregunta.ordenPregunta = rs.getInt("orden_pregunta");

@@ -64,7 +64,7 @@ public class InstanciaObjeto extends ObjetoBase{
 		super(_usuario, _miConexion);
 		id = -1;
 		tipoAcceso = 0;
-		objeto = _objeto;
+		objeto = _objeto.trim();
 		idPublico = "";
 		fecha_inicio = null;
 		fecha_cierre = null;
@@ -113,7 +113,7 @@ public class InstanciaObjeto extends ObjetoBase{
 		super(_usuario, _miConexion);
 		id = -1;
 		tipoAcceso = 0;
-		objeto = _objeto;
+		objeto = _objeto.trim();
 		idPublico = "";
 		fecha_inicio = null;
 		fecha_cierre = null;
@@ -155,13 +155,13 @@ public class InstanciaObjeto extends ObjetoBase{
 
 	//indicamos nombre del objeto
 	public void setObjeto(String _objeto){
-		this.objeto = _objeto;
+		this.objeto = _objeto.trim();
 		this.ingresaABd();
 	}
 
 	//obtenemos nombre del objeto
 	public String getObjeto(){
-		return this.objeto;
+		return this.objeto.trim();
 	}
 
 	//dado un String se crea un objeto Date...
@@ -243,6 +243,7 @@ public class InstanciaObjeto extends ObjetoBase{
 	//ingresamos un String que identifica al objeto
 	//principalmente usado para enlaces web ej:  censo.do?id=aaasig8432nsjnvnaiq7827
 	public void setIdPublico(String _id){
+		_id = _id.trim();
 		if(_id.equals("")){
 			this.idPublico = this.generaIdPublico();
 			return;
@@ -256,7 +257,7 @@ public class InstanciaObjeto extends ObjetoBase{
 	//obtenemos un String que identifica al objeto
 	//principalmente usado para enlaces web ej:  censo.do?id=aaasig8432nsjnvnaiq7827
 	public String getIdPublico(){
-		return this.idPublico;
+		return this.idPublico.trim();
 	}
 
 	//selectivo
@@ -277,9 +278,9 @@ public class InstanciaObjeto extends ObjetoBase{
 			}
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				this.objeto = rs.getString("objeto");
+				this.objeto = rs.getString("objeto").trim();
 				this.id = rs.getInt("id_instancia_objetos");
-				this.idPublico = rs.getString("identificador_publico");
+				this.idPublico = rs.getString("identificador_publico").trim();
 				this.tipoAcceso = rs.getInt("tipo_acceso");
 				fecha_inicio = new Date(rs.getDate("fecha_inicio").getTime());
 				fecha_cierre = new Date(rs.getDate("fecha_cierre").getTime());
@@ -314,11 +315,11 @@ public class InstanciaObjeto extends ObjetoBase{
 					//ejecuto UPDATE
 					if(this.esEditable()){
 						pstmt = getConexion().prepareStatement("UPDATE instancia_objetos SET objeto = ? , fecha_cierre = ? , fecha_inicio = ? , id_pool_objetos = ? , identificador_publico = ? , tipo_acceso = ?, poblacion_asociada = ?, eliminado = ? WHERE id_instancia_objetos = ?");
-						pstmt.setString(1, this.getObjeto());
+						pstmt.setString(1, this.getObjeto().trim());
 						pstmt.setDate(2, new java.sql.Date(this.getFechaCierre().getTime()));
 						pstmt.setDate(3, new java.sql.Date(this.getFechaInicio().getTime()));
 						pstmt.setInt(4, this.getObjetoAsociado().getId());
-						pstmt.setString(5, this.getIdPublico());
+						pstmt.setString(5, this.getIdPublico().trim());
 						pstmt.setInt(6, this.getAcceso());
 						if(this.getPoblacion_asociada() != null){
 							pstmt.setInt(7, this.getPoblacion_asociada().getId());
@@ -342,11 +343,11 @@ public class InstanciaObjeto extends ObjetoBase{
 
 					pstmt = getConexion().prepareStatement("INSERT INTO instancia_objetos(id_instancia_objetos, objeto, fecha_cierre, fecha_inicio, id_pool_objetos, identificador_publico, creado_por, tipo_acceso, poblacion_asociada, eliminado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 					pstmt.setInt(1, siguiente);
-					pstmt.setString(2, this.getObjeto());
+					pstmt.setString(2, this.getObjeto().trim());
 					pstmt.setDate(3, new java.sql.Date(this.getFechaCierre().getTime()));
 					pstmt.setDate(4, new java.sql.Date(this.getFechaInicio().getTime()));
 					pstmt.setInt(5, this.getObjetoAsociado().getId());
-					pstmt.setString(6, this.getIdPublico());
+					pstmt.setString(6, this.getIdPublico().trim());
 					pstmt.setInt(7, this.getUsuario().getUsuarioId());
 					pstmt.setInt(8, this.getAcceso());
 					if(this.getPoblacion_asociada() != null){
@@ -435,11 +436,11 @@ public class InstanciaObjeto extends ObjetoBase{
 				}else{
 					ObjTemp = new InstanciaObjeto(_usuario, _miConexion);
 				}
-				ObjTemp.objeto = rs.getString("objeto");
+				ObjTemp.objeto = rs.getString("objeto").trim();
 				ObjTemp.fecha_inicio = rs.getDate("fecha_inicio");
 				ObjTemp.fecha_cierre = rs.getDate("fecha_cierre");
 				ObjTemp.id = rs.getInt("id_instancia_objetos");
-				ObjTemp.idPublico = rs.getString("identificador_publico");
+				ObjTemp.idPublico = rs.getString("identificador_publico").trim();
 				ObjTemp.tipoAcceso = rs.getInt("tipo_acceso");
 				ObjTemp.eliminado = rs.getBoolean("eliminado");
 				ObjTemp.objetoAsociado = Objeto.retornaObjeto(_usuario,_miConexion, rs.getInt("id_pool_objetos"));

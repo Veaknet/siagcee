@@ -44,7 +44,7 @@ public class RespuestasPosibles extends ObjetoBase{
 	//si conocemos el ID de la respuesta a cargar se indica de inmediato.
 	public RespuestasPosibles(Usuario _usuario, Connection _miConexion, String _respuesta) {
 		super(_usuario, _miConexion);
-		respuesta = _respuesta;
+		respuesta = _respuesta.trim();
 		idRespuesta = -1;
 	}
 
@@ -60,7 +60,7 @@ public class RespuestasPosibles extends ObjetoBase{
 
 	//texto respuesta
 	public String getRespuesta() {
-		return respuesta;
+		return respuesta.trim();
 	}
 
 	//actualiza la respuesta en la BD.
@@ -68,6 +68,7 @@ public class RespuestasPosibles extends ObjetoBase{
 	//no se ingresa en la BD debido a que no hay padre (pregunta) asociado
 	//solo se ingresa el texto en el objeto
 	public void setRespuesta(String _respuesta){
+		_respuesta = _respuesta.trim();
 		if(this.esEditable()){
 			if(!_respuesta.equals("")){
 				try{
@@ -87,6 +88,7 @@ public class RespuestasPosibles extends ObjetoBase{
 	//si la respuesta que existe en el objeto fue cargada de BD realizo un UPDATE
 	//caso contrario implica la realizacion de un INSERT ya que la respuesta no vino de BD
 	public void setRespuesta(String _respuesta, Pregunta padre) {
+		_respuesta = _respuesta.trim();
 		if((!_respuesta.equals("")) && (padre != null)){
 			try {
 				if (getCargadaDeBD()) {
@@ -101,7 +103,7 @@ public class RespuestasPosibles extends ObjetoBase{
 					PreparedStatement pstmt = getConexion().prepareStatement("INSERT INTO pool_respuestas_posibles(id_pool_respuestas_posibles, id_pool_preguntas, respuesta, creado_por) VALUES (?, ?, ?, ?)");
 					pstmt.setInt(1, siguiente);
 					pstmt.setInt(2, padre.getId());
-					pstmt.setString(3, _respuesta);
+					pstmt.setString(3, _respuesta.trim());
 					pstmt.setInt(4, getUsuario().getUsuarioId());
 					pstmt.execute();
 					this.setCargadaDeBD(true);
@@ -170,7 +172,7 @@ public class RespuestasPosibles extends ObjetoBase{
 			while(rs.next()) {
 				ObjRespTemp = new RespuestasPosibles(_usuario, _miConexion);
 				ObjRespTemp.idRespuesta = rs.getInt("id_pool_respuestas_posibles");
-				ObjRespTemp.respuesta = rs.getString("respuesta");
+				ObjRespTemp.respuesta = rs.getString("respuesta").trim();
 				ObjRespTemp.cargadaDeBD = true;
 				_lista.add(ObjRespTemp);
 			}
@@ -214,7 +216,7 @@ public class RespuestasPosibles extends ObjetoBase{
 			pstmt.setInt(1, this.getId());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				this.respuesta = rs.getString("respuesta");
+				this.respuesta = rs.getString("respuesta").trim();
 				this.setId(rs.getInt("id_pool_respuestas_posibles"));
 				this.setCargadaDeBD(true);
 			}else{
