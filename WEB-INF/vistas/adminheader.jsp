@@ -18,7 +18,7 @@
 				<td valign="top" align="left">
 					<center>
 						<center>
-						<table cellpadding="0" cellspacing="0" class="tablasecundariatitulo">
+						<table cellpadding="0" cellspacing="0" class="tablasecundariatitulo hideprint">
 							<tr>
 								<td style="text-align: left;">
 									<div style="position:absolute; z-index:1000;max-width:1010px;width:1010px;overflow:hidden;text-align:left;">

@@ -437,6 +437,7 @@ caption {
 				if(request.getAttribute("imagen").equals("")){
 					out.println("<center>Error generando el gr&aacute;fico correspondiente... Intente con otro estilo.</center>");
 				}else{
+					out.println("<div style='display:inline;float:right'><a class=\"hideprint\" href=\"javascript:void(null);\" onclick=\"$('.qtip').hide();self.print();\"><img height=\"36\" src=\"comunes/imagenes/print.png\" alt=\"Imprimir\" title=\"Imprimir\"/></a></div>");
 					out.println("<center><a href='"+((String)request.getAttribute("imagen"))+"' target='_blank'><img src='"+((String)request.getAttribute("imagen"))+"' height='450' width='800' /></a></center>");
 				}
 			}else{
@@ -462,7 +463,7 @@ caption {
       <%
       if(objetoatrabajar != null){
       %>
-        <form action="aplicadorestudios" method="post" onsubmit="return validarForm();">
+        <form action="aplicadorestudios" method="post" onsubmit="return validarForm();" class="hideprint">
           <input type="hidden" value="<% out.print(objetoatrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
           <input type="hidden" value="seleccionarestudio" id="accion" name="accion">
           <table cellpadding="4" cellspacing="4">

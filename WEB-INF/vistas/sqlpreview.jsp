@@ -225,6 +225,7 @@ if(request.getParameter("accioninvitar") != null){
         <a href="javascript:void(null);" onclick="$('#formPreguntas').attr('action', 'archivo.pdf');$('#accionextra').val('exportapdf');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/pdf.png" alt="Exportar estos datos a PDF" title="Exportar estos datos a PDF"/></a>
         &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#formPreguntas').attr('action', 'archivo.docx');$('#accionextra').val('exportaword');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/word.png" alt="Exportar estos datos a Word" title="Exportar estos datos a Word"/></a>
         &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#formPreguntas').attr('action', 'archivo.xls');$('#accionextra').val('exportaexcel');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/excel.png" alt="Exportar estos datos a excel" title="Exportar estos datos a excel"/></a>
+		&nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('.qtip').hide();self.print();"><img height="46" src="comunes/imagenes/print.png" alt="Imprimir" title="Imprimir"/></a>
     </div>
 	<% } %>
 	<br />

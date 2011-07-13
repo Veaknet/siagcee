@@ -386,7 +386,7 @@ $(document).ready(function(){
 <table class="tablasecundaria" cellpadding="4" cellspacing="4">
 	<tr>
 		<td>
-			<h2>Creaci&oacute;n de estudio personalizado</h2>
+			<h2 class="hideprint">Creaci&oacute;n de estudio personalizado</h2>
 			<%
 			if(mostrarresultados){
 				if(EstudioPerso.getInstance().hayErrores()){
@@ -418,13 +418,14 @@ $(document).ready(function(){
 					}
 					out.print("</tbody></table>");
 					%>
-					<form id="expor" method="post" action="#" target="_blank">
+					<form id="expor" method="post" action="#" target="_blank" class="hideprint">
 					<input type="hidden" value="" id="exportar" name="exportar">
 					<input type="hidden" value="<% out.print(_objTrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
 					<input type="hidden" value="<% out.print(_codigo); %>" id="codigoestudio" name="codigoestudio">
 					<a href="javascript:void(null);" onclick="$('#expor').attr('action', 'est_archivo.pdf');$('#exportar').val('exportapdf');$('#guardar').val('');$('#expor').submit();"><img height="24" src="comunes/imagenes/pdf.png" alt="Exportar estos datos a pdf" title="Exportar estos datos a pdf"/></a>
 					&nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#expor').attr('action', 'est_archivo.docx');$('#exportar').val('exportaword');$('#guardar').val('');$('#expor').submit();"><img height="24" src="comunes/imagenes/word.png" alt="Exportar estos datos a word" title="Exportar estos datos a word"/></a>
 					&nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#expor').attr('action', 'est_archivo.xls');$('#exportar').val('exportaexcel');$('#guardar').val('');$('#expor').submit();"><img height="24" src="comunes/imagenes/excel.png" alt="Exportar estos datos a excel" title="Exportar estos datos a excel"/></a>
+					&nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('.qtip').hide();self.print();"><img height="24" src="comunes/imagenes/print.png" alt="Imprimir" title="Imprimir"/></a>
 					</form><p />
 					<%
 				}else if(EstudioPerso.getInstance().hayErrores()){
@@ -440,8 +441,8 @@ $(document).ready(function(){
 				if(!EstudioPerso.getInstance().hayErrores() && mostrarguardar){
 					//desea guardarel estudio?
 					%>
-					<h4>Desea guardar este estudio?</h4>
-					<form id="formestudios" method="post" action="crearestudioperso" onsubmit="if(document.getElementById('titulo').value==''){alert('Debe indicar el titulo.');document.getElementById('titulo').focus();return false;}if(document.getElementById('acronimo').value==''){alert('Debe indicar el acronimo.');document.getElementById('acronimo').focus();return false;}">
+					<h4 class="hideprint">Desea guardar este estudio?</h4>
+					<form id="formestudios" method="post" action="crearestudioperso" onsubmit="if(document.getElementById('titulo').value==''){alert('Debe indicar el titulo.');document.getElementById('titulo').focus();return false;}if(document.getElementById('acronimo').value==''){alert('Debe indicar el acronimo.');document.getElementById('acronimo').focus();return false;}" class="hideprint">
 						<input type="hidden" value="true" id="guardar" name="guardar">
 						<input type="hidden" value="<% out.print(_objTrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
 						<input type="hidden" value="<% out.print(_codigo); %>" id="codigoestudio" name="codigoestudio">
@@ -472,7 +473,7 @@ $(document).ready(function(){
 					out.println("No existen datos disponibles en la estructura para crear un estudio.");
 				}else{
 					%>
-					<form id="formestudios" method="post" action="crearestudioperso">
+					<form id="formestudios" method="post" action="crearestudioperso" class="hideprint">
 						<input type="hidden" value="<% out.print(_objTrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
 						<table>
 							<tr>
