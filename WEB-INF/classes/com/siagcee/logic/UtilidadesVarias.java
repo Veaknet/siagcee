@@ -38,6 +38,7 @@ import java.util.*;
  */
 public class UtilidadesVarias {
 
+	//public static String dominioWeb = "http://www.ciens.ucv.ve/sigecene/";
 	public static String dominioWeb = "http://debian6:8080/siagcee/";
 
 	public UtilidadesVarias() {
