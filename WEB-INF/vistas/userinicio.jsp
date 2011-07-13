@@ -16,6 +16,7 @@ if(encuestado == null){
 		<link type="image/x-icon" href="comunes/imagenes/favicon.ico" rel="icon" />
 		<link type="image/x-icon" href="comunes/imagenes/favicon.ico" rel="shortcut icon" />
 		<link rel="stylesheet" type="text/css" href="comunes/css/micss.css">
+		<link rel="stylesheet" type="text/css" href="comunes/css/micss_print.css" media="print">
 		<!-- IE 6 "fixes" -->
 		<!--[if lt IE 7]>
 		<link type='text/css' href='comunes/css/basic_ie.css' rel='stylesheet' media='screen' />

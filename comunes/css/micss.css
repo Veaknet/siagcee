@@ -68,7 +68,7 @@ table.tablasecundaria{
 
 table.tablasecundariatitulo{
 	background: url(../imagenes/fondotitulo.png) repeat-x;
-  background-position: top right;
+	background-position: top right;
 	width:1010px;
 	min-width:1010px;
 	max-width:1010px;
@@ -207,12 +207,12 @@ table.tablesorter thead tr .headerSortDown {
 	background-image: url(desc.gif);
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-background-color: #cccc00;
+	background-color: #cccc00;
 }
 
 textarea{
-  width: 500px;
-  height: 150px;
-  border: 3px solid #cccccc;
-  padding: 5px;
+	width: 500px;
+	height: 150px;
+	border: 3px solid #cccccc;
+	padding: 5px;
 }

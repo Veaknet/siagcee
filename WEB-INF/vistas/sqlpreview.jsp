@@ -18,7 +18,7 @@
 		</tr>
 		<tr>
 			<td valign="top" align="left">
-				<table cellpadding="4" cellspacing="4" class="tablasecundariatitulo" style="width:950px;min-width:950px;max-width:950px;">
+				<table cellpadding="4" cellspacing="4" class="tablasecundariatitulo hideprint" style="width:950px;min-width:950px;max-width:950px;">
 					<tr>
 						<td style="text-align:left" valign="top" >
 							<h2>Informaci&oacute;n</h2>
@@ -63,13 +63,13 @@ if(request.getParameter("accioninvitar") != null){
 <table class="tablasecundaria" cellpadding="4" cellspacing="4">
 	<tr>
 		<td>
-	<h3>Vista Preliminar de Encuestados Seleccionados.</h3>
+			<h3>Vista Preliminar de Encuestados Seleccionados.</h3>
 <%
 	if(_respuestas.isEmpty()){
 		out.println("La consulta no arroj&oacute; resultados.<br /><p /><a href='#' onclick='window.close();'>Cerrar esta ventana y regresar.</a>");
 	}else{
 %>
-	<form action="sqlpreview" method="post" target="_top" id="formPreguntas">
+	<form action="sqlpreview" method="post" target="_top" id="formPreguntas" class="hideprint">
 		<input type="hidden" value="<% out.print(_sqlFinal); %>" id="generadorSql_sqlFinal" name="generadorSql_sqlFinal">
 		<input type="hidden" value="<% out.print(_objetoatrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
 		<input type="hidden" value="<% out.print(_accioninvitar); %>" id="accioninvitar" name="accioninvitar">
@@ -104,79 +104,79 @@ if(request.getParameter("accioninvitar") != null){
 	if(!_preguntas.isEmpty()){
 %>
 	<table id="_myTable" class="tablesorter" style="min-width:940px;max-width:940px;width:940px">
-	<thead>
-	<tr>
-		<%
-			_enu = _preguntas.elements();
-			_pregAct = null;
-			while(_enu.hasMoreElements()){
-				_pregAct = (InstanciaPregunta)_enu.nextElement();
-				out.print("<th title='clic aqu&iacute; para ordenar por: "+_pregAct.getAcronimo()+"'>"+_pregAct.getAcronimo()+"</th>");
-			}
-		%>
-	</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<%
-			_enu = _respuestas.elements();
-			Respuesta _respAct = null;
-			int id_usuario = -1;
-			while(_enu.hasMoreElements()){
-				//para cada usuario
-				_respAct = (Respuesta)_enu.nextElement();
-				//caso base... partimos de ningun usuario
-				if(id_usuario != _respAct.getElaborado_por()){
-					//otro usuario
-					id_usuario = _respAct.getElaborado_por();
-					if(id_usuario != -1){out.println("</tr><tr>");}
-				}else{
-					//mismo usuario que el anterior... ya procesado
-					continue;
-				}
-				//para cada pregunta busco su correspondiente respuesta
-				Enumeration _enu2 = _preguntas.elements();
+		<thead>
+			<tr>
+			<%
+				_enu = _preguntas.elements();
 				_pregAct = null;
+				while(_enu.hasMoreElements()){
+					_pregAct = (InstanciaPregunta)_enu.nextElement();
+					out.print("<th title='clic aqu&iacute; para ordenar por: "+_pregAct.getAcronimo()+"'>"+_pregAct.getAcronimo()+"</th>");
+				}
+			%>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<%
+					_enu = _respuestas.elements();
+					Respuesta _respAct = null;
+					int id_usuario = -1;
+					while(_enu.hasMoreElements()){
+						//para cada usuario
+						_respAct = (Respuesta)_enu.nextElement();
+						//caso base... partimos de ningun usuario
+						if(id_usuario != _respAct.getElaborado_por()){
+							//otro usuario
+							id_usuario = _respAct.getElaborado_por();
+							if(id_usuario != -1){out.println("</tr><tr>");}
+						}else{
+							//mismo usuario que el anterior... ya procesado
+							continue;
+						}
+						//para cada pregunta busco su correspondiente respuesta
+						Enumeration _enu2 = _preguntas.elements();
+						_pregAct = null;
 
-				while(_enu2.hasMoreElements()){
-					//para cada pregunta
-					_pregAct = (InstanciaPregunta)_enu2.nextElement();
-					Enumeration _enuInterno = _respuestas.elements();
-					Respuesta _respActInterna = null;
-					boolean _respEncon = false;
-					while(_enuInterno.hasMoreElements()){
-						//para cada respuesta donde cuadre usuario y pregunta
-						_respActInterna = (Respuesta)_enuInterno.nextElement();
-						if((_respActInterna.getElaborado_por() == id_usuario) && (_respActInterna.getInstanciaPregunta().getId() == _pregAct.getId())){
-							_respEncon = true;
-							try{
-								if(_pregAct.getTipoPregunta() < 30){
-									out.print("<td>"+_respActInterna.getRespuestaCerrada().getRespuesta()+"</td>");
-								}else	if(_pregAct.getTipoPregunta() == 30 || _pregAct.getTipoPregunta() == 100){
-									out.print("<td>"+_respActInterna.getRespuestaAbiertaTexto()+"</td>");
-								}else	if(_pregAct.getTipoPregunta() == 31){
-									out.print("<td>"+_respActInterna.getRespuestaAbiertaInt()+"</td>");
-								}else	if(_pregAct.getTipoPregunta() == 32){
-									out.print("<td>"+_respActInterna.getRespuestaAbiertaDouble()+"</td>");
-								}else	if(_pregAct.getTipoPregunta() == 33){
-									String[] _respDate = _respActInterna.getRespuestaAbiertaDate().toString().split("-");
-									out.print("<td>"+_respDate[2]+"-"+_respDate[1]+"-"+_respDate[0]+"</td>");
+						while(_enu2.hasMoreElements()){
+							//para cada pregunta
+							_pregAct = (InstanciaPregunta)_enu2.nextElement();
+							Enumeration _enuInterno = _respuestas.elements();
+							Respuesta _respActInterna = null;
+							boolean _respEncon = false;
+							while(_enuInterno.hasMoreElements()){
+								//para cada respuesta donde cuadre usuario y pregunta
+								_respActInterna = (Respuesta)_enuInterno.nextElement();
+								if((_respActInterna.getElaborado_por() == id_usuario) && (_respActInterna.getInstanciaPregunta().getId() == _pregAct.getId())){
+									_respEncon = true;
+									try{
+										if(_pregAct.getTipoPregunta() < 30){
+											out.print("<td>"+_respActInterna.getRespuestaCerrada().getRespuesta()+"</td>");
+										}else	if(_pregAct.getTipoPregunta() == 30 || _pregAct.getTipoPregunta() == 100){
+											out.print("<td>"+_respActInterna.getRespuestaAbiertaTexto()+"</td>");
+										}else	if(_pregAct.getTipoPregunta() == 31){
+											out.print("<td>"+_respActInterna.getRespuestaAbiertaInt()+"</td>");
+										}else	if(_pregAct.getTipoPregunta() == 32){
+											out.print("<td>"+_respActInterna.getRespuestaAbiertaDouble()+"</td>");
+										}else	if(_pregAct.getTipoPregunta() == 33){
+											String[] _respDate = _respActInterna.getRespuestaAbiertaDate().toString().split("-");
+											out.print("<td>"+_respDate[2]+"-"+_respDate[1]+"-"+_respDate[0]+"</td>");
+										}
+									}catch (Exception e1){out.print("<td>Error cargando esta respuesta</td>");}
+									break;
 								}
-							}catch (Exception e1){out.print("<td>Error cargando esta respuesta</td>");}
-							break;
+							}
+							if(!_respEncon){
+								out.print("<td>&nbsp;</td>");
+							}
 						}
 					}
-					if(!_respEncon){
-						out.print("<td>&nbsp;</td>");
-					}
-				}
-			}
-		%>
-	</tr>
-	</tbody>
+				%>
+			</tr>
+		</tbody>
 	</table>
 	<% if(_accioninvitar.equals("true")) {%>
-	<form action="#">
+	<form action="#" class="hideprint">
 		<label>Indique cu&aacute;l es el campo de correo electr&oacute;nico a utilizar para invitar a los participantes:</label><br />
 		<select id='email_id_invite' name="email_id_invite" onchange="if(this.value == '-1'){$('#containerParaMensaje').css('display', 'none');}else{$('#containerParaMensaje').css('display', 'block');}">
 			<%
@@ -221,7 +221,7 @@ if(request.getParameter("accioninvitar") != null){
 		<button value="Cerrar esta ventana" onclick="window.close();">Cancelar y cerrar esta ventana</button>
 	</form>
 	<% }else{ %>
-    <div style="padding-left:10px;float:left;text-align:right">
+    <div style="padding-left:10px;float:left;text-align:right" class="hideprint">
         <a href="javascript:void(null);" onclick="$('#formPreguntas').attr('action', 'archivo.pdf');$('#accionextra').val('exportapdf');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/pdf.png" alt="Exportar estos datos a PDF" title="Exportar estos datos a PDF"/></a>
         &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#formPreguntas').attr('action', 'archivo.docx');$('#accionextra').val('exportaword');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/word.png" alt="Exportar estos datos a Word" title="Exportar estos datos a Word"/></a>
         &nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#formPreguntas').attr('action', 'archivo.xls');$('#accionextra').val('exportaexcel');$('#formPreguntas').submit();"><img height="46" src="comunes/imagenes/excel.png" alt="Exportar estos datos a excel" title="Exportar estos datos a excel"/></a>
@@ -240,5 +240,5 @@ if(request.getParameter("accioninvitar") != null){
 	}
 %>
 
-<p /><button value="Cerrar esta ventana" onclick="window.close();">Cerrar esta ventana</button>
+<p /><button class="hideprint" value="Cerrar esta ventana" onclick="window.close();">Cerrar esta ventana</button>
 <%@include file="adminfooter.jsp" %>
