@@ -205,18 +205,26 @@ public class UtilidadesVarias {
                     Enumeration _enuInterno = _respuestas.elements();
                     Respuesta _respActInterna = null;
                     boolean _respEncon = false;
+					boolean concatena = false;
+					String _respMultiple = "";
+					WritableCellFormat times14format = new WritableCellFormat ();
+					times14format.setBorder(Border.ALL, jxl.format.BorderLineStyle.THIN, Colour.GREY_80_PERCENT);
                     while(_enuInterno.hasMoreElements()){
                         //para cada respuesta donde cuadre usuario y pregunta
                         _respActInterna = (Respuesta)_enuInterno.nextElement();
                         if((_respActInterna.getElaborado_por() == id_usuario) && (_respActInterna.getInstanciaPregunta().getId() == _pregAct.getId())){
                             _respEncon = true;
                             try{
-                                WritableCellFormat times14format = new WritableCellFormat ();
-                                times14format.setBorder(Border.ALL, jxl.format.BorderLineStyle.THIN, Colour.GREY_80_PERCENT);
-                                if(_pregAct.getTipoPregunta() < 30 && !_plantilla){
+                                if(_pregAct.getTipoPregunta() == 1 && !_plantilla){
                                     Label label = new Label(Col, Fil, _respActInterna.getRespuestaCerrada().getRespuesta(), times14format);
                                     hoja.addCell(label);
                                     Col++;
+								}else	if(_pregAct.getTipoPregunta() == 2){
+									if(concatena){
+										_respMultiple = _respMultiple + "\n";
+									}
+									_respMultiple = _respMultiple + _respActInterna.getRespuestaCerrada().getRespuesta();
+									concatena = true;
                                 }else	if(_pregAct.getTipoPregunta() == 30){
                                     Label label = new Label(Col, Fil, _respActInterna.getRespuestaAbiertaTexto(), times14format);
                                     hoja.addCell(label);
@@ -253,7 +261,13 @@ public class UtilidadesVarias {
                         Label label = new Label(Col, Fil, "");
                         hoja.addCell(label);
                         Col++;
-                    }
+                    }else{
+						if(_pregAct.getTipoPregunta() == 2){
+							Label label = new Label(Col, Fil, _respMultiple, times14format);
+							hoja.addCell(label);
+							Col++;
+						}
+					}
                 }
             }
 			workbook.write();
@@ -333,16 +347,22 @@ public class UtilidadesVarias {
                     Enumeration _enuInterno = _respuestas.elements();
                     Respuesta _respActInterna = null;
                     boolean _respEncon = false;
+					boolean concatena = false;
+					String _respMultiple = "";
                     while(_enuInterno.hasMoreElements()){
                         //para cada respuesta donde cuadre usuario y pregunta
                         _respActInterna = (Respuesta)_enuInterno.nextElement();
                         if((_respActInterna.getElaborado_por() == id_usuario) && (_respActInterna.getInstanciaPregunta().getId() == _pregAct.getId())){
                             _respEncon = true;
                             try{
-                                WritableCellFormat times14format = new WritableCellFormat ();
-                                times14format.setBorder(Border.ALL, jxl.format.BorderLineStyle.THIN, Colour.GREY_80_PERCENT);
-                                if(_pregAct.getTipoPregunta() < 30){
+                                if(_pregAct.getTipoPregunta() == 1){
                                     table.addCell(_respActInterna.getRespuestaCerrada().getRespuesta());
+								}else	if(_pregAct.getTipoPregunta() == 2){
+									if(concatena){
+										_respMultiple = _respMultiple + "\n";
+									}
+									_respMultiple = _respMultiple + "- "+_respActInterna.getRespuestaCerrada().getRespuesta();
+									concatena = true;
                                 }else	if(_pregAct.getTipoPregunta() == 30){
                                     table.addCell(_respActInterna.getRespuestaAbiertaTexto());
                                 }else	if(_pregAct.getTipoPregunta() == 31){
@@ -363,7 +383,11 @@ public class UtilidadesVarias {
                     }
                     if(!_respEncon){
                         table.addCell("");
-                    }
+					}else{
+						if(_pregAct.getTipoPregunta() == 2){
+							table.addCell(_respMultiple);
+						}
+					}
                 }
             }
 
@@ -438,14 +462,22 @@ public class UtilidadesVarias {
                     Enumeration _enuInterno = _respuestas.elements();
                     Respuesta _respActInterna = null;
                     boolean _respEncon = false;
+					boolean concatena = false;
+					String _respMultiple = "";
                     while(_enuInterno.hasMoreElements()){
                         //para cada respuesta donde cuadre usuario y pregunta
                         _respActInterna = (Respuesta)_enuInterno.nextElement();
                         if((_respActInterna.getElaborado_por() == id_usuario) && (_respActInterna.getInstanciaPregunta().getId() == _pregAct.getId())){
                             _respEncon = true;
                             try{
-                                if(_pregAct.getTipoPregunta() < 30){
+                                if(_pregAct.getTipoPregunta() == 1){
                                     row2.add(_respActInterna.getRespuestaCerrada().getRespuesta());
+								}else	if(_pregAct.getTipoPregunta() == 2){
+									if(concatena){
+										_respMultiple = _respMultiple + "\n";
+									}
+									_respMultiple = _respMultiple + "- "+_respActInterna.getRespuestaCerrada().getRespuesta();
+									concatena = true;
                                 }else	if(_pregAct.getTipoPregunta() == 30){
                                     row2.add(_respActInterna.getRespuestaAbiertaTexto());
                                 }else	if(_pregAct.getTipoPregunta() == 31){
@@ -466,7 +498,11 @@ public class UtilidadesVarias {
                     }
                     if(!_respEncon){
                         row2.add("");
-                    }
+					}else{
+						if(_pregAct.getTipoPregunta() == 2){
+							row2.add(_respMultiple);
+						}
+					}
                 }
             }
 
