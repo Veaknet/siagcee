@@ -439,7 +439,7 @@ if(_miIns != null){
 				<table class="reporte" id='tabla_relaciones' cellpadding="4" cellspacing="4" border="1" style="max-width:950px;width:950px;" width="950">
 					<tr class="reporteTR">
 						<th valign="top">
-							Colecc&oacute;n
+							Colecci&oacute;n
 						</th>
 						<th style="max-width:50px;" valign="top" width="50">
 							Detalle
