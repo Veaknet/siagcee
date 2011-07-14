@@ -144,31 +144,40 @@ if(request.getParameter("accioninvitar") != null){
 							Enumeration _enuInterno = _respuestas.elements();
 							Respuesta _respActInterna = null;
 							boolean _respEncon = false;
+							boolean concatena = false;
+							out.print("<td>");
 							while(_enuInterno.hasMoreElements()){
 								//para cada respuesta donde cuadre usuario y pregunta
 								_respActInterna = (Respuesta)_enuInterno.nextElement();
 								if((_respActInterna.getElaborado_por() == id_usuario) && (_respActInterna.getInstanciaPregunta().getId() == _pregAct.getId())){
 									_respEncon = true;
 									try{
-										if(_pregAct.getTipoPregunta() < 30){
-											out.print("<td>"+_respActInterna.getRespuestaCerrada().getRespuesta()+"</td>");
+										if(_pregAct.getTipoPregunta() == 1){
+											out.print(_respActInterna.getRespuestaCerrada().getRespuesta());
+										}else	if(_pregAct.getTipoPregunta() == 2){
+											if(concatena){
+												out.print("<br />");
+											}
+											out.print("-&nbsp;"+_respActInterna.getRespuestaCerrada().getRespuesta());
+											concatena = true;
 										}else	if(_pregAct.getTipoPregunta() == 30 || _pregAct.getTipoPregunta() == 100){
-											out.print("<td>"+_respActInterna.getRespuestaAbiertaTexto()+"</td>");
+											out.print(_respActInterna.getRespuestaAbiertaTexto());
 										}else	if(_pregAct.getTipoPregunta() == 31){
-											out.print("<td>"+_respActInterna.getRespuestaAbiertaInt()+"</td>");
+											out.print(_respActInterna.getRespuestaAbiertaInt());
 										}else	if(_pregAct.getTipoPregunta() == 32){
-											out.print("<td>"+_respActInterna.getRespuestaAbiertaDouble()+"</td>");
+											out.print(_respActInterna.getRespuestaAbiertaDouble());
 										}else	if(_pregAct.getTipoPregunta() == 33){
 											String[] _respDate = _respActInterna.getRespuestaAbiertaDate().toString().split("-");
-											out.print("<td>"+_respDate[2]+"-"+_respDate[1]+"-"+_respDate[0]+"</td>");
+											out.print(_respDate[2]+"-"+_respDate[1]+"-"+_respDate[0]);
 										}
-									}catch (Exception e1){out.print("<td>Error cargando esta respuesta</td>");}
-									break;
+									}catch (Exception e1){out.print("Error cargando esta respuesta");}
+									//break;
 								}
 							}
 							if(!_respEncon){
-								out.print("<td>&nbsp;</td>");
+								out.print("&nbsp;");
 							}
+							out.print("</td>");
 						}
 					}
 				%>
