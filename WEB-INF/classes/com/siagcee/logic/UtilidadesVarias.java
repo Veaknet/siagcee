@@ -208,6 +208,9 @@ public class UtilidadesVarias {
 					boolean concatena = false;
 					String _respMultiple = "";
 					WritableCellFormat times14format = new WritableCellFormat ();
+					times14format.setWrap(true);
+					times14format.setAlignment(Alignment.LEFT);
+					times14format.setVerticalAlignment(VerticalAlignment.TOP);
 					times14format.setBorder(Border.ALL, jxl.format.BorderLineStyle.THIN, Colour.GREY_80_PERCENT);
                     while(_enuInterno.hasMoreElements()){
                         //para cada respuesta donde cuadre usuario y pregunta
