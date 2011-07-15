@@ -534,6 +534,10 @@ public class EstudioPerso extends ObjetoBase{
 							if(_resp.getRespuestaCerrada().getRespuesta().compareTo(resultado3) > 0){
 								resultado3 = _resp.getRespuestaCerrada().getRespuesta();
 							}
+						}else if(_insPre.getTipoPregunta() == 2){
+							if(_resp.getRespuestaCerrada().getRespuesta().compareTo(resultado3) > 0){
+								resultado3 = _resp.getRespuestaCerrada().getRespuesta();
+							}
 						}else if(_insPre.getTipoPregunta() == 100 || _insPre.getTipoPregunta() == 30){
 							if(_resp.getRespuestaAbiertaTexto().compareTo(resultado3) > 0){
 								resultado3 = _resp.getRespuestaAbiertaTexto();
@@ -562,7 +566,7 @@ public class EstudioPerso extends ObjetoBase{
 	public String getMinField(String _campo){
 		double resultado = Double.MAX_VALUE;
 		Date resultado2 = null;
-		String resultado3 = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
+		String resultado3 = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
 		String resultadoFinal = "";
 		Enumeration _enu = InstanciaPregunta.todasPreguntasInstanciadas(this.getAdmin(), this.getConexion(), this.get_obj_simple(),true).elements();
 		while(_enu.hasMoreElements()){
@@ -591,6 +595,10 @@ public class EstudioPerso extends ObjetoBase{
 								}
 							}
 						}else if(_insPre.getTipoPregunta() == 1){
+							if(_resp.getRespuestaCerrada().getRespuesta().compareTo(resultado3) < 0){
+								resultado3 = _resp.getRespuestaCerrada().getRespuesta();
+							}
+						}else if(_insPre.getTipoPregunta() == 2){
 							if(_resp.getRespuestaCerrada().getRespuesta().compareTo(resultado3) < 0){
 								resultado3 = _resp.getRespuestaCerrada().getRespuesta();
 							}
