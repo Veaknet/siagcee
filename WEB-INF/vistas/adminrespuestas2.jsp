@@ -139,6 +139,10 @@ if(request.getParameter("opcionbase")!=null){
 						<input type="submit" value="Agregar Respuesta" name="boton" id="boton" onclick="return compruebaNoVacio(getElementById('valor'))">
 						<input type="button" value="Borrar" onclick="$('#respuestaid').val('');$('#valor').val('');$('#opcionprincipal').val('plantillapreguntas');$('#accion').val('insertar');">
 					</form>
+					<form action="adminrespuestas4.do" method="get">
+						<input type="hidden" value="<% out.print(preguntaatrabajar.getId());%>" name="preguntaseleccionada">
+						<input type="submit" value="Cargar Respuestas Desde Instrumento Finalizado" />
+					</form>
 				</div>
 			<%
 			}else { %>

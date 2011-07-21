@@ -499,6 +499,7 @@ public class InstanciaObjeto extends ObjetoBase{
 		try{
 			return Respuesta.todasRespuestas(this.getUsuario(), this.getConexion(), _pregunta, this);
 		}catch(Exception e){
+			e.printStackTrace();
 			return new Vector();
 		}
 	}

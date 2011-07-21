@@ -53,6 +53,15 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>Respuestas4</servlet-name>
+    <servlet-class>com.siagcee.web.AdministrarRespuestas4</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>Respuestas4</servlet-name>
+	  <url-pattern>/adminrespuestas4.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>Preguntas</servlet-name>
     <servlet-class>com.siagcee.web.AdministrarPreguntas</servlet-class>
 	</servlet>

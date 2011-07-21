@@ -511,7 +511,7 @@ public class Respuesta extends ObjetoBase{
 			}
 		}
 		catch (Exception e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 			return new Vector();
 		}
 		return _lista;
