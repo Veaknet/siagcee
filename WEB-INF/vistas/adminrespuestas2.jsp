@@ -137,7 +137,7 @@ if(request.getParameter("opcionbase")!=null){
 						<input type="hidden" value="" name="respuestaid" id="respuestaid">
 						<label>Posible Respuesta:</label><br /><input type="text" value="" name="valor" id="valor" size="30" onkeyup="this.style.backgroundColor = '';"><p />
 						<input type="submit" value="Agregar Respuesta" name="boton" id="boton" onclick="return compruebaNoVacio(getElementById('valor'))">
-						<input type="button" value="Cancelar" onclick="cerrarDiv()">
+						<input type="button" value="Borrar" onclick="$('#respuestaid').val('');$('#valor').val('');$('#opcionprincipal').val('plantillapreguntas');$('#accion').val('insertar');">
 					</form>
 				</div>
 			<%
