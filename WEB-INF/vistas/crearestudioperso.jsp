@@ -268,7 +268,7 @@ function creaSelectRespuestas(_tipodedato){
 			_boton.id = "botonAgregar";
 			_boton.name = "botonAgregar";
 
-			if(_tipoPregunta == 31){
+			if(_tipoPregunta == 30){
 				_boton.onclick = function(){
 					var textArea = document.getElementById("codigoestudio");
 					if(_select.value == ""){
@@ -386,7 +386,7 @@ $(document).ready(function(){
 <table class="tablasecundaria" cellpadding="4" cellspacing="4">
 	<tr>
 		<td>
-			<h2 class="hideprint">Creaci&oacute;n de estudio personalizado</h2>
+			<h2 class="hideprint">Creaci&oacute;n de estudio</h2>
 			<%
 			if(mostrarresultados){
 				if(EstudioPerso.getInstance().hayErrores()){

@@ -136,13 +136,13 @@ if(_miIns != null){
 						<th style="max-width:70px;" width="70" valign="top">
 							Finalizar&aacute;
 						</th>
-						<th valign="top">
+						<th valign="top" width="100%">
 							Instrumento
 						</th>
+						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
 						<th style="max-width:50px;" valign="top" width="50">
 							Detalle
 						</th>
-						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
 						<th style="max-width:175px;" valign="top" width="175">
 							Invitar a Nuevos Usuarios
 						</th>
@@ -163,10 +163,11 @@ if(_miIns != null){
 						<th style="max-width:50px;" valign="top" width="50">
 							Campos Editables
 						</th>
-						<% } %>
-						<th style="max-width:55px;" valign="top" width="55">
-							Aplicar Estudio
+						<% }else{ %>
+						<th style="max-width:70px;" valign="top" width="70">
+							Seleccionar
 						</th>
+						<% } %>
 					</tr>
 				<%
 			}
@@ -190,8 +191,8 @@ if(_miIns != null){
 			}else{
 				out.println("<tr><td valign='top'>"+ini+"</td><td valign='top'>"+fin+"</td><td valign='top'>"+miObj.getObjeto()+"</td>");
 			}
-			out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas del Instrumento' alt='Revisar Preguntas del Instrumento' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
+				out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas del Instrumento' alt='Revisar Preguntas del Instrumento' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
 					out.println("<td align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
@@ -207,8 +208,9 @@ if(_miIns != null){
 				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='' alt='Enlace' src='comunes/imagenes/world_link.png'></a></td>");
 				out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
 				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
+			}else{
+				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Seleccionar' title='Seleccionar' height='24' /></a></td>");
 			}
-			out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
 			out.println("</tr>");
 			todoVacio=false;
 		}
@@ -238,13 +240,13 @@ if(_miIns != null){
 						<th style="max-width:70px;" width="70" valign="top">
 							Finalizar&aacute;
 						</th>
-						<th valign="top">
+						<th valign="top" width="100%">
 							Instrumento
 						</th>
+						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
 						<th style="max-width:50px;" valign="top" width="50">
 							Detalle
 						</th>
-						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
 						<th style="max-width:175px;" valign="top" width="175">
 							Invitar a Nuevos Usuarios
 						</th>
@@ -265,13 +267,14 @@ if(_miIns != null){
 						<th style="max-width:50px;" valign="top" width="50">
 							Campos Editables
 						</th>
-						<% } %>
 						<th style="max-width:55px;" valign="top" width="55">
 							Revisar Datos
 						</th>
-						<th style="max-width:55px;" valign="top" width="55">
-							Aplicar Estudio
+						<% }else{ %>
+						<th style="max-width:70px;" valign="top" width="70">
+							Seleccionar
 						</th>
+						<% } %>
 					</tr>
 				<%
 			}
@@ -295,8 +298,8 @@ if(_miIns != null){
 			}else{
 				out.println("<tr><td valign='top'>"+ini+"</td><td valign='top'>"+fin+"</td><td valign='top'>"+miObj.getObjeto()+"</td>");
 			}
-			out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas del Instrumento' alt='Revisar Preguntas del Instrumento' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
+				out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas del Instrumento' alt='Revisar Preguntas del Instrumento' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
 					out.println("<td align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
@@ -312,9 +315,10 @@ if(_miIns != null){
 				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='' alt='Enlace' src='comunes/imagenes/world_link.png'></a></td>");
 				//out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
 				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
+				out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
+			}else{
+				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Seleccionar' title='Seleccionar' height='24' /></a></td>");
 			}
-			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
-			out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
 			out.println("</tr>");
 			todoVacio=false;
 		}
@@ -344,13 +348,13 @@ if(_miIns != null){
 						<th style="max-width:70px;" width="70" valign="top">
 							Finaliz&oacute;
 						</th>
-						<th valign="top">
+						<th valign="top" width="100%">
 							Instrumento
 						</th>
+						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
 						<th style="max-width:50px;" valign="top" width="50">
 							Detalle
 						</th>
-						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
 						<th style="max-width:60px;" valign="top" width="45">
 							Reenviar
 						</th>
@@ -359,13 +363,14 @@ if(_miIns != null){
 							Borrar
 						</th>
 						<% } %>
-						<% } %>
 						<th style="max-width:55px;" valign="top" width="55">
 							Revisar Datos
 						</th>
-						<th style="max-width:55px;" valign="top" width="55">
-							Aplicar Estudio
+						<% }else{ %>
+						<th style="max-width:70px;" valign="top" width="70">
+							Seleccionar
 						</th>
+						<% } %>
 						<!-- <th style="max-width:50px;" valign="top" width="50">
 							Carga desde Excel
 						</th> //-->
@@ -392,9 +397,8 @@ if(_miIns != null){
 			}else{
 				out.println("<tr><td valign='top'>"+ini+"</td><td valign='top'>"+fin+"</td><td valign='top'>"+miObj.getObjeto()+"</td>");
 			}
-			out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas del Instrumento' alt='Revisar Preguntas del Instrumento' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
-
+				out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas del Instrumento' alt='Revisar Preguntas del Instrumento' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
 					out.println("<td align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
@@ -411,9 +415,10 @@ if(_miIns != null){
 					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar el instrumento:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar este instrumento y todas las respuestas que posea' title='Eliminar este instrumento y todas las respuestas que posea' /></a></td>");
 				}
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
+				out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
+			}else{
+				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Seleccionar' title='Seleccionar' height='24' /></a></td>");
 			}
-			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
-			out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
 			//out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
 			out.println("</tr>");
 			todoVacio=false;
@@ -438,13 +443,13 @@ if(_miIns != null){
 				%>
 				<table class="reporte" id='tabla_relaciones' cellpadding="4" cellspacing="4" border="1" style="max-width:950px;width:950px;" width="950">
 					<tr class="reporteTR">
-						<th valign="top">
+						<th valign="top" width="100%">
 							Colecci&oacute;n
 						</th>
+						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
 						<th style="max-width:50px;" valign="top" width="50">
 							Detalle
 						</th>
-						<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
 						<th style="max-width:175px;" valign="top" width="175">
 							Invitar a Nuevos Usuarios
 						</th>
@@ -463,13 +468,14 @@ if(_miIns != null){
 						<th style="max-width:50px;" valign="top" width="50">
 							Campos Editables
 						</th>
-						<% } %>
 						<th style="max-width:55px;" valign="top" width="55">
 							Revisar Datos
 						</th>
-						<th style="max-width:55px;" valign="top" width="55">
-							Aplicar Estudio
+						<% }else{ %>
+						<th style="max-width:70px;" valign="top" width="70">
+							Seleccionar
 						</th>
+						<% } %>
 					</tr>
 				<%
 			}
@@ -479,9 +485,8 @@ if(_miIns != null){
 			}else{
 				out.println("<tr><td valign='top'>"+miObj.getObjeto()+"</td>");
 			}
-			out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas de la Colecci&oacute;n' alt='Revisar Preguntas de la Colecci&oacute;n' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
-
+				out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas de la Colecci&oacute;n' alt='Revisar Preguntas de la Colecci&oacute;n' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
 					out.println("<td align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
 					if(miObj.getAcceso() == 0){
@@ -507,9 +512,10 @@ if(_miIns != null){
 				}else{
 					out.println("<td align='center'>-</td>");
 				}
+				out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
+			}else{
+				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Seleccionar' title='Seleccionar' height='24' /></a></td>");
 			}
-			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
-			out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Aplicar Estudios' title='Aplicar Estudios' height='24' /></a></td>");
 			out.println("</tr>");
 			todoVacio=false;
 		}

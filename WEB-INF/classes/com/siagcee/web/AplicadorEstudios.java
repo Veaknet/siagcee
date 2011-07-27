@@ -168,7 +168,7 @@ public class AplicadorEstudios extends HttpServlet {
 										}
 									}
 								}
-								DecimalFormat _df = new DecimalFormat("###,###.######");
+								DecimalFormat _df = new DecimalFormat("###.###,######");
 								for(int i=0;i < _intervalos;i++){
 									if((i + 1) == _intervalos){
 										_respuestasFiltradas.add(""+_df.format(_min+(i*_cantInter))+" - "+_df.format(_max));
@@ -283,7 +283,7 @@ public class AplicadorEstudios extends HttpServlet {
 						JFreeChart _graifoc = _grafica.graficar();
 						request.setAttribute("mostrarResultado", "si");
 						if(_graifoc != null){
-							ChartUtilities.saveChartAsJPEG(new File(_dir), _graifoc, 800, 450);
+							ChartUtilities.saveChartAsJPEG(new File(_dir), _graifoc, 900, 475);
 							request.setAttribute("imagen", "comunes/graficos/grafico_"+admin.getUsuarioId()+".jpg");
 						}else{
 							//error
