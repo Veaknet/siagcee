@@ -33,7 +33,7 @@ if(request.getAttribute("estructuras") != null){
 <table class="tablasecundaria" cellpadding="4" cellspacing="4">
 	<tr>
 		<td>
-			<h2>Selecci&oacute;n de Instrumento para Estudios</h2>
+			<h2>Instrumentos publicados factibles para elaborar estudio</h2>
 		<%
 			if(_estructuras.isEmpty()){
 				out.println("No existen estructuras disponibles para crear un estudio.");

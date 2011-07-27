@@ -200,6 +200,9 @@ function habilitarUpdateDiv(_id, _objeto, _inicio, _cierre, _tipoacceso, _objeto
 	var accion = document.getElementById("accion");
 	var _info = document.getElementById("infoEstructuras");
 
+	var esFinalizado = false;
+	var hoy = Date();
+
 	_info.style.display = 'inline';
 	if(_habilitaCambioDeEstructura == 1){
 		 objetoasociado.disabled = true;
@@ -218,7 +221,7 @@ function habilitarUpdateDiv(_id, _objeto, _inicio, _cierre, _tipoacceso, _objeto
 	tipoacceso.value = _tipoacceso;
 	tipoacceso.disabled = true;
 	enlace.value = _enlace;
-	enlace.readonly = true;
+	enlace.readOnly = true;
 	objetoasociado.value = _objetoasociado;
 	objetoasociado.disabled = false;
 	boton.value = "Guardar Cambios";
@@ -327,8 +330,8 @@ while(_misInstanciados99.hasMoreElements()){
 					<label>T&iacute;tulo:</label><br /><input type="text" name="objeto" id="objeto" value="" size="50"><p />
 					<label>Tipo de acceso:</label><br /><select name="tipo_acceso" id="tipo_acceso" onchange="modificarTipoInvitacion();">
 						<option value="0" selected="selected">P&uacute;blico</option>
-						<option value="1">Restringido</option>
-                        <option value="2">Uso interno (carga de datos desde excel)</option>
+						<option value="1">Restringido desde instrumento</option>
+                        <option value="2">Restringido desde datos en excel</option>
 					</select><p />
 					<span name="span_tipo_invitacion" id="span_tipo_invitacion">
 						<label>Seleccionar o invitar usuarios:</label><br /><select name="tipo_invitacion" id="tipo_invitacion">

@@ -386,7 +386,7 @@ $(document).ready(function(){
 <table class="tablasecundaria" cellpadding="4" cellspacing="4">
 	<tr>
 		<td>
-			<h2 class="hideprint">Creaci&oacute;n de estudio</h2>
+			<h2 class="hideprint">Creaci&oacute;n del estudio</h2>
 			<%
 			if(mostrarresultados){
 				if(EstudioPerso.getInstance().hayErrores()){

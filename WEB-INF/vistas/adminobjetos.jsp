@@ -160,7 +160,7 @@ if(!_mensaje.equals("")){
 					Objeto miObjeto = null;
 					Vector _nuevoVector = new Vector();
 					while(objetosDisponibles.hasMoreElements()){
-						miObjeto	= (Objeto)objetosDisponibles.nextElement();
+						miObjeto = (Objeto)objetosDisponibles.nextElement();
 						/*if((miObjeto.getPublico() && _opcionBase.equals("modificar")) && (!_tipoinstrumento.equals("relacion"))){
 							continue;
 						}else if(miObjeto.getPublico() && _opcionBase.equals("crear")){
@@ -169,12 +169,14 @@ if(!_mensaje.equals("")){
 						//	continue;
 						}else{*/
 							if(_tipoinstrumento.equals("estructura")){
+								//if(!miObjeto.getPublico() && _opcionBase.equals("eliminar")){continue;}
 								if(miObjeto.getClass().toString().contains("EstructuraBase")){_nuevoVector.add(miObjeto);}
 							}
 							if(_tipoinstrumento.equals("relacion")){
 								if(miObjeto.getClass().toString().contains("Relacion")){_nuevoVector.add(miObjeto);}
 							}
 							if((!_tipoinstrumento.equals("estructura")) && (!_tipoinstrumento.equals("relacion"))){
+								//if(!miObjeto.getPublico() && _opcionBase.equals("eliminar")){continue;}
 								if(!miObjeto.getClass().toString().contains("EstructuraBase") && !miObjeto.getClass().toString().contains("Relacion")){_nuevoVector.add(miObjeto);}
 							}
 						//}
@@ -196,7 +198,7 @@ if(!_mensaje.equals("")){
 								String miClasePrint = "";
 								objetosDisponibles = _nuevoVector.elements();
 								while(objetosDisponibles.hasMoreElements()){
-									miObjeto	= (Objeto)objetosDisponibles.nextElement();
+									miObjeto = (Objeto)objetosDisponibles.nextElement();
 
 									//solo se hace lo siguiente para mostrarlos por grupos: censos, encuestas y relaciones
 									if(!miClase.equals(miObjeto.getClass().toString())){

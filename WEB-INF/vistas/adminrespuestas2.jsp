@@ -143,6 +143,12 @@ if(request.getParameter("opcionbase")!=null){
 						<input type="hidden" value="<% out.print(preguntaatrabajar.getId());%>" name="preguntaseleccionada">
 						<input type="submit" value="Cargar Respuestas Desde Instrumento Finalizado" />
 					</form>
+					<form action="adminpreguntas.do" method="post">
+						<input type="hidden" value="<% out.print(preguntaatrabajar.getId());%>" name="preguntaseleccionada">
+						<input type="hidden" value="revisar" name="opcionbase">
+						<input type="hidden" value="revisar" name="accion">
+						<input type="submit" value="Finalizar" />
+					</form>
 				</div>
 			<%
 			}else { %>

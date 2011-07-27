@@ -205,7 +205,7 @@ if(_miIns != null){
 					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar el instrumento:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar este instrumento y todas las respuestas que posea' title='Eliminar este instrumento y todas las respuestas que posea' /></a></td>");
 				}
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
-				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='' alt='Enlace' src='comunes/imagenes/world_link.png'></a></td>");
+				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' alt='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' src='comunes/imagenes/world_link.png'></a></td>");
 				out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
 				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
 			}else{
@@ -312,7 +312,7 @@ if(_miIns != null){
 					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar el instrumento:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar este instrumento y todas las respuestas que posea' title='Eliminar este instrumento y todas las respuestas que posea' /></a></td>");
 				}
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
-				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='' alt='Enlace' src='comunes/imagenes/world_link.png'></a></td>");
+				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' alt='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' src='comunes/imagenes/world_link.png'></a></td>");
 				//out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
 				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
 				out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
@@ -505,7 +505,7 @@ if(_miIns != null){
 					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar la colecci&oacute;n:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar esta colecci&oacute;n y todas las respuestas que posea' title='Eliminar esta colecci&oacute;n y todas las respuestas que posea' /></a></td>");
 				}
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
-				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='' alt='Enlace' src='comunes/imagenes/world_link.png'></a></td>");
+				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' alt='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' src='comunes/imagenes/world_link.png'></a></td>");
 				//out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
 				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
 					out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
@@ -557,9 +557,11 @@ if(_miIns != null){
 						<th style="max-width:55px;" valign="top" width="55">
 							Revisar Datos
 						</th>
+                        <!--
                         <th style="max-width:50px;" valign="top" width="50">
                             Enlace
                         </th>
+                        //-->
 					</tr>
 				<%
 			}
@@ -586,7 +588,7 @@ if(_miIns != null){
 			out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas del Instrumento' alt='Revisar Preguntas del Instrumento' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
 			out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Seguro que desea recuperar el instrumento:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&recuperar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Recuperar este instrumento y todas las respuestas que posea' title='Recuperar este instrumento y todas las respuestas que posea' /></a></td>");
 			out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
-			out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='' alt='Enlace' src='comunes/imagenes/world_link.png'></a></td></tr>");
+			//out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='' alt='Enlace' src='comunes/imagenes/world_link.png'></a></td></tr>");
 			todoVacio=false;
 		}
 		if(!vacio){
