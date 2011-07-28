@@ -52,11 +52,18 @@ public class SetEditables extends HttpServlet {
 
 						String[] _listaPreguntas = request.getParameterValues("preguntaseditables");
 						if(_listaPreguntas != null){
+							for(String _pregunta : _listaPreguntas){
+								int _idP = Integer.parseInt(_pregunta);
+								_prEd = (PreguntaEditable)_opcional.get(_idP);
+								_prEd.setRequerida(false);
+							}
+							/*
 							for(int p = 0; p < _listaPreguntas.length; ++p){
 								int _idP = Integer.parseInt(_listaPreguntas[p]);
 								_prEd = (PreguntaEditable)_opcional.get(_idP);
 								_prEd.setRequerida(false);
 							}
+							*/
 						}
 
 						Vector _objetos = Objeto.todosObjetos(admin, micon, 0, true, false);
@@ -66,12 +73,20 @@ public class SetEditables extends HttpServlet {
 						request.setAttribute("objetosInstanciados", _instanciados);
 						view = request.getRequestDispatcher("WEB-INF/vistas/admininsobj.jsp");
 					}else{
+						PreguntaEditable.delPreguntasEditables(admin, micon, _obj);
+
 						String[] _listaPreguntas = request.getParameterValues("preguntaseditables");
 						if(_listaPreguntas != null){
+							for (String _pregunta : _listaPreguntas){
+								int _idP = Integer.parseInt(_pregunta);
+								new PreguntaEditable(admin, micon, _obj, new InstanciaPregunta(admin, micon, _idP));
+							}
+							/*
 							for(int p = 0; p < _listaPreguntas.length; ++p){
 								int _idP = Integer.parseInt(_listaPreguntas[p]);
 								new PreguntaEditable(admin, micon, _obj, new InstanciaPregunta(admin, micon, _idP));
 							}
+							*/
 						}
 
 						request.setAttribute("objetoatrabajar", _obj);

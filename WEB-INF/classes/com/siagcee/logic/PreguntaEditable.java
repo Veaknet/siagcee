@@ -24,6 +24,12 @@ public class PreguntaEditable extends ObjetoBase{
 		_InsPregunta = _insPreg;
 		noRequerida = false;
 		this.recarga();
+		if(!this.getCargadaDeBD()){
+			_InsObjeto = _insObj;
+			_InsPregunta = _insPreg;
+			noRequerida = false;
+			this.guarda();
+		}
 	}
 
 	public PreguntaEditable(Usuario _usuario, Connection _miConexion, int __id){
@@ -69,6 +75,7 @@ public class PreguntaEditable extends ObjetoBase{
 
 	public void setRequerida(boolean noRequerida) {
 		this.setNoRequerida(!noRequerida);
+		this.guarda();
 	}
 
 	public void setNoRequerida(boolean noRequerida) {
@@ -175,16 +182,15 @@ public class PreguntaEditable extends ObjetoBase{
 					this._id = -1;
 					this.noRequerida = false;
 					this.setCargadaDeBD(false);
-					this.guarda();
 				}
 			}catch (Exception e1){
-				//e1.printStackTrace();
+				e1.printStackTrace();
 				this._id = -1;
 				this.noRequerida = false;
 				this.setCargadaDeBD(false);
 			}
 		}catch (Exception e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 			this._id = -1;
 			this.noRequerida = false;
 			this.setCargadaDeBD(false);
