@@ -17,7 +17,6 @@
 <script type="text/javascript">
 var array_preguntas = new Array(); //contiene las preguntas disponibles
 
-
 <%
 
 Vector _datos = new Vector();
@@ -59,6 +58,7 @@ if(request.getAttribute("objetoatrabajar") != null){
 String _codigo = "";
 if(request.getAttribute("codigoestudio") != null){
 	_codigo = (String)request.getAttribute("codigoestudio");
+	//out.println("codigo_fuente = '"+UtilidadesVarias.reemplazarCaracteres(_codigo,"'","\\'")+"';");
 }
 
 Boolean mostrarresultados = false;

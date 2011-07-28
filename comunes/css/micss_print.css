@@ -4,3 +4,6 @@
 	display:none;
 }
 
+table.tablasecundaria{
+	border-right:burlywood ridge thick !important;
+}
