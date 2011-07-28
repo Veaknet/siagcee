@@ -201,7 +201,6 @@ function habilitarUpdateDiv(_id, _objeto, _inicio, _cierre, _tipoacceso, _objeto
 	var _info = document.getElementById("infoEstructuras");
 
 	var esFinalizado = false;
-	var hoy = Date();
 
 	_info.style.display = 'inline';
 	if(_habilitaCambioDeEstructura == 1){
@@ -218,10 +217,37 @@ function habilitarUpdateDiv(_id, _objeto, _inicio, _cierre, _tipoacceso, _objeto
 	inicio.value = __fecha[2]+"-"+__fecha[1]+"-"+__fecha[0];
 	__fecha = _cierre.split("-");
 	cierre.value = __fecha[2]+"-"+__fecha[1]+"-"+__fecha[0];
+
 	tipoacceso.value = _tipoacceso;
 	tipoacceso.disabled = true;
 	enlace.value = _enlace;
 	enlace.readOnly = true;
+
+	var hoy = new Date();
+	var comprobacion = new Date();
+	comprobacion.setDate(__fecha[2]);
+	comprobacion.setMonth(__fecha[1] - 1);
+	comprobacion.setFullYear(__fecha[0]);
+	if(comprobacion.getTime() <= hoy.getTime()){
+		esFinalizado = true;
+	}else{
+		esFinalizado = false;
+	}
+
+	if(esFinalizado){
+		var MesActual = hoy.getMonth() + 1;
+		inicio.value = hoy.getDate()+"-"+MesActual+"-"+hoy.getFullYear();
+
+		var tomorrow = new Date();
+		tomorrow.setDate(hoy.getDate() + 1);
+		MesActual = tomorrow.getMonth() + 1;
+		cierre.value = tomorrow.getDate()+"-"+MesActual+"-"+tomorrow.getFullYear();
+
+		enlace.readOnly = false;
+	}else{
+		objeto.readOnly = true;
+	}
+
 	objetoasociado.value = _objetoasociado;
 	objetoasociado.disabled = false;
 	boton.value = "Guardar Cambios";
