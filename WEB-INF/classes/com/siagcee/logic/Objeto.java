@@ -13,6 +13,7 @@ package com.siagcee.logic;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -136,6 +137,19 @@ public class Objeto extends ObjetoBase{
 			return false;
 		}
 		return false;
+	}
+
+	//ajusta la numeracion de las preguntas, eliminando espacios en blanco
+	public void ajustaNumeracion(){
+		int i = 0;
+		this.getPreguntas();
+		Collections.sort(this.misPreguntas, new OrdenadorInstanciaPreguntas(OrdenadorInstanciaPreguntas.ORDEN_PREGUNTA));
+		Enumeration _enu = this.misPreguntas.elements();
+		InstanciaPregunta _miPreg;
+		while(_enu.hasMoreElements()){
+			_miPreg = (InstanciaPregunta)_enu.nextElement();
+			_miPreg.setOrden(++i);
+		}
 	}
 
 	//retorna un vector de estudios asociados a la estructura

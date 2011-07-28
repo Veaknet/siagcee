@@ -18,6 +18,7 @@ import java.util.Vector;
 
 public class InstanciaPregunta extends ObjetoBase{
 
+	enum CAMPOS {TEXTO_PREGUNTA, ACRONIMO};
 	int idInstanciaPregunta;
 	int ordenPregunta;
 	String pregunta;
@@ -168,8 +169,10 @@ public class InstanciaPregunta extends ObjetoBase{
 
 	public void setAcronimo(String _acronimo) {
 		_acronimo = _acronimo.trim();
-		if(!_acronimo.equals("")){
-			this.acronimo = _acronimo;
+		if(!_acronimo.trim().equals("")){
+			this.acronimo = _acronimo.trim();
+		}else{
+			this.acronimo = this.pregunta.trim();
 		}
 		this.ingresaABd();
 	}
@@ -187,7 +190,7 @@ public class InstanciaPregunta extends ObjetoBase{
 	}
 
 	public void setCampo_clave_unico(boolean _campo_clave_unico){
-		if(this.getPadre().getPublico()){
+		if(this.getPadre().getPublico() && this.getPadre().getClass().toString().contains("Instrumento")){
 			return;
 		}
 		if(_campo_clave_unico){
@@ -290,8 +293,11 @@ public class InstanciaPregunta extends ObjetoBase{
 	//establece el texto visible a los usuarios de la pregunta
 	public void setTextoPregunta(String _pregunta){
 		_pregunta = _pregunta.trim();
-		if(!_pregunta.equals("")){
-			this.pregunta = _pregunta;
+		if(!_pregunta.trim().equals("")){
+			this.pregunta = _pregunta.trim();
+			if(this.acronimo.trim().equals("")){
+				this.acronimo = _pregunta;
+			}
 		}
 		this.ingresaABd();
 	}
@@ -371,12 +377,53 @@ public class InstanciaPregunta extends ObjetoBase{
 		return false;
 	}
 
+	//revisa las duplicaciones de un campo indicado y agrega el prefijo 1º, 2º, 3º, .... Nº al campo
+	private void ValidaRepeticionCampo(int repeticionesEncontradas, CAMPOS campo){
+		Enumeration _enu = this.getPadre().getPreguntas().elements();
+		String _prefix = "";
+		String _prefixSig = "";
+		if(repeticionesEncontradas > 1){
+			_prefix = repeticionesEncontradas+"º ";
+		}
+		repeticionesEncontradas++;
+		_prefixSig = repeticionesEncontradas+"º ";
+		while(_enu.hasMoreElements()){
+			InstanciaPregunta _temp = (InstanciaPregunta)_enu.nextElement();
+			if(_temp.getId() == this.getId()){
+				continue;
+			}
+			if(campo == CAMPOS.ACRONIMO){
+				if(this.getAcronimo().equals(_prefix+_temp.getAcronimo())){
+					//reviso si la siguiente tambien se encuentra
+					ValidaRepeticionCampo(repeticionesEncontradas, campo);
+					if(this.getAcronimo().equals(_prefix+_temp.getAcronimo())){
+						//si no se encuentra, entonces no ha cambiado la condicion de duplicacion, lo cambio
+						this.acronimo = _prefixSig+_temp.getAcronimo();
+					}
+					return;
+				}
+			}else if(campo == CAMPOS.TEXTO_PREGUNTA){
+				if(this.getTextoPregunta().equals(_prefix+_temp.getTextoPregunta())){
+					//reviso si la siguiente tambien se encuentra
+					ValidaRepeticionCampo(repeticionesEncontradas, campo);
+					if(this.getTextoPregunta().equals(_prefix+_temp.getTextoPregunta())){
+						//si no se encuentra, entonces no ha cambiado la condicion de duplicacion, lo cambio
+						this.pregunta = _prefixSig+_temp.getTextoPregunta();
+					}
+					return;
+				}
+			}
+		}
+	}
+
 	//dado los datos que se tienen en el objeto se actualiza o se inserta en la BD
 	private void ingresaABd(){
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		//si no se ha provisto de un nombre amistoso para la pregunta no es posible insertarla en la BD
 		if((!(this.getTextoPregunta()).equals("")) && (this.getPreguntaAsociada() != null) && (this.getPadre() != null)){
+			ValidaRepeticionCampo(1, CAMPOS.TEXTO_PREGUNTA);
+			ValidaRepeticionCampo(1, CAMPOS.ACRONIMO);
 			try{
 				pstmt = this.getConexion().prepareStatement("SELECT * FROM instancia_preguntas WHERE orden_pregunta = ? AND id_pool_objetos = ? AND id_instancia_preguntas <> ?");
 				pstmt.setInt(1, this.getOrden());

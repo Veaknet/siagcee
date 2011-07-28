@@ -176,7 +176,9 @@ if(!_mensaje.equals("")){
 								if(miObjeto.getClass().toString().contains("Relacion")){_nuevoVector.add(miObjeto);}
 							}
 							if((!_tipoinstrumento.equals("estructura")) && (!_tipoinstrumento.equals("relacion"))){
-								//if(!miObjeto.getPublico() && _opcionBase.equals("eliminar")){continue;}
+								if(miObjeto.getPublico() && (_opcionBase.equals("eliminar") || _opcionBase.equals("crear"))){
+									continue;
+								}
 								if(!miObjeto.getClass().toString().contains("EstructuraBase") && !miObjeto.getClass().toString().contains("Relacion")){_nuevoVector.add(miObjeto);}
 							}
 						//}

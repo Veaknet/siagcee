@@ -19,6 +19,7 @@ public class OrdenadorInstanciaPreguntas implements Comparator<InstanciaPregunta
 	public static int ID_INSTANCIA_PREGUNTA = 3;
 	public static int TIPO_PREGUNTA = 4;
 	public static int ACRONIMO = 5;
+	public static int ORDEN_PREGUNTA_INV = 6;
 
 	int tipoOrdenacion;
 
@@ -51,6 +52,9 @@ public class OrdenadorInstanciaPreguntas implements Comparator<InstanciaPregunta
 		if(this.getOrdenarPor() == OrdenadorInstanciaPreguntas.ORDEN_PREGUNTA){
 			return ((Integer)p1.getOrden()).compareTo((Integer)p2.getOrden());
 		}
+		if(this.getOrdenarPor() == OrdenadorInstanciaPreguntas.ORDEN_PREGUNTA_INV){
+			return ((Integer)p2.getOrden()).compareTo((Integer)p1.getOrden());
+		}
 		if(this.getOrdenarPor() == OrdenadorInstanciaPreguntas.ID_INSTANCIA_PREGUNTA){
 			return ((Integer)p1.getId()).compareTo((Integer)p2.getId());
 		}
@@ -60,5 +64,5 @@ public class OrdenadorInstanciaPreguntas implements Comparator<InstanciaPregunta
 		return 0;
 	}
 
-	
+
 }

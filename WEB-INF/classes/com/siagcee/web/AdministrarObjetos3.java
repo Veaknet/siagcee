@@ -1,9 +1,6 @@
 package com.siagcee.web;
 
-import com.siagcee.logic.Administrador;
-import com.siagcee.logic.InstanciaPregunta;
-import com.siagcee.logic.Objeto;
-import com.siagcee.logic.Pregunta;
+import com.siagcee.logic.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Vector;
 
 /**
@@ -59,14 +58,23 @@ public class AdministrarObjetos3 extends HttpServlet{
 							//listadoPreguntasDeseadas
 							String[] _listadoPreguntasDeseadas = request.getParameterValues("listadoPreguntasDeseadas");
 							if(_listadoPreguntasDeseadas != null){
+								int ordenMax = 0;
+								Vector preguntas = _objetoSeleccionado.getPreguntas();
+								Collections.sort(preguntas, new OrdenadorInstanciaPreguntas(OrdenadorInstanciaPreguntas.ORDEN_PREGUNTA_INV));
+								if(preguntas.size() > 0){
+									InstanciaPregunta _temp = (InstanciaPregunta)preguntas.get(0);
+									ordenMax = _temp.getOrden();
+								}
 								for(int p = 0; p < _listadoPreguntasDeseadas.length; ++p){
 									String _miParam = _listadoPreguntasDeseadas[p];
 									InstanciaPregunta _insPreg = new InstanciaPregunta(admin, micon, Integer.parseInt((String)_miParam));
 									//clono la instancia pregunta
 									InstanciaPregunta _nuevaPreg = new InstanciaPregunta(_insPreg);
+									_nuevaPreg.setOrden(++ordenMax);
 									//establezco nuevo objeto asociado
 									_nuevaPreg.setPadre(_objetoSeleccionado);
 								}
+								_objetoSeleccionado.ajustaNumeracion();
 							}
 						}
 						Vector _preguntasComunes = Pregunta.todasPreguntas(admin, micon, true, false);

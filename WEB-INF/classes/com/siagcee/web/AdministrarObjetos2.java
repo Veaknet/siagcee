@@ -108,6 +108,7 @@ public class AdministrarObjetos2 extends HttpServlet{
 							_nuevaInstancia.setTextoPregunta(_txtPregunta);
 							_nuevaInstancia.setOrden(_orden);
 							_nuevaInstancia.setEstudioAsociado(estudioAAsociar);
+							_objetoSeleccionado.ajustaNumeracion();
 						}
 						if(((String)request.getParameter("accion")).equals("insertar")){
 							String _txtPregunta = (String)request.getParameter("valor");
@@ -134,6 +135,7 @@ public class AdministrarObjetos2 extends HttpServlet{
 							_nuevaInstancia.setOrden(_orden);
 							_nuevaInstancia.asociarPregunta(_preguntaAAsociar);
 							_nuevaInstancia.setEstudioAsociado(estudioAAsociar);
+							_objetoSeleccionado.ajustaNumeracion();
 						}
 						//ahora indico si la pregunta es de tipo clave, o demás
 						InstanciaPregunta _temporalPreg = null;
@@ -283,6 +285,7 @@ public class AdministrarObjetos2 extends HttpServlet{
 									}
 								}
 								_nuevaInstancia.delPregunta();
+								_objetoSeleccionado.ajustaNumeracion();
 							}
 						}
 
