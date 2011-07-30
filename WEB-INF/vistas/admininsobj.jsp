@@ -53,7 +53,11 @@ if(request.getAttribute("highlight") != null){
 <script type="text/javascript">
 	$(document).ready(function(){
 	<% if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){%>
+		<% if(_mostrarOpcion.equals("relaciones")){%>
+		$("#link_colecciones_de_datos").css("color","red");
+		<% }else{ %>
 		$("#link_instrumentos_generados").css("color","red");
+		<% } %>
 	<% }else{ %>
 		$("#link_estudios").css("color","red");
 	<% } %>
@@ -63,7 +67,11 @@ if(request.getAttribute("highlight") != null){
 <table class="tablasecundaria" cellpadding="4" cellspacing="4">
 	<tr>
 		<td>
+			<% if(_mostrarOpcion.equals("relaciones")){%>
+			<h2>Colecciones de datos</h2>
+			<% }else{ %>
 			<h2>Instrumentos Publicados</h2>
+			<% } %>
 
 <%
 boolean todoVacio = true;
@@ -167,7 +175,7 @@ if(_miIns != null){
 							Aplicar Estudio
 						</th>
 						<% }else{ %>
-						<th style="max-width:70px;" valign="top" width="70">
+						<th style="max-width:75px;" valign="top" width="75">
 							Seleccionar
 						</th>
 						<% } %>
@@ -278,7 +286,7 @@ if(_miIns != null){
 							Aplicar Estudio
 						</th>
 						<% }else{ %>
-						<th style="max-width:70px;" valign="top" width="70">
+						<th style="max-width:75px;" valign="top" width="75">
 							Seleccionar
 						</th>
 						<% } %>
@@ -378,7 +386,7 @@ if(_miIns != null){
 							Aplicar Estudio
 						</th>
 						<% }else{ %>
-						<th style="max-width:70px;" valign="top" width="70">
+						<th style="max-width:75px;" valign="top" width="75">
 							Seleccionar
 						</th>
 						<% } %>
@@ -451,7 +459,9 @@ if(_miIns != null){
 			vacio = false;
 			if(primerColeccion){
 				primerColeccion = false;
-				out.println("<h4>Colecciones de datos</h4>");
+				if(!_mostrarOpcion.equals("relaciones")){
+					out.println("<h4>Colecciones De Datos</h4>");
+				}
 				%>
 				<table class="reporte" id='tabla_relaciones' cellpadding="4" cellspacing="4" border="1" style="max-width:950px;width:950px;" width="950">
 					<tr class="reporteTR">
@@ -478,7 +488,7 @@ if(_miIns != null){
 							Aplicar Estudio
 						</th>
 						<% }else{ %>
-						<th style="max-width:70px;" valign="top" width="70">
+						<th style="max-width:75px;" valign="top" width="75">
 							Seleccionar
 						</th>
 						<% } %>

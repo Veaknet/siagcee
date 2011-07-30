@@ -987,7 +987,7 @@ $(document).ready(function(){
 											<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=relacion&opcionbase=armar"><img src="comunes/imagenes/file-add.png" height="18" title="Crear colecci&oacute;n de datos">&nbsp;Crear</a></li>
 											<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=relacion&opcionbase=modificar"><img src="comunes/imagenes/file-edit.png" height="18" title="Modificar colecci&oacute;n de datos">&nbsp;Modificar</a></li>
 											<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=relacion&opcionbase=eliminar"><img src="comunes/imagenes/file-delete.png" height="18" title="Eliminar colecci&oacute;n de datos">&nbsp;Eliminar</a></li>
-											<li class="childlink"><a href="adminobjetos.do?tipoinstrumento=relacion&opcionbase=revisar"><img src="comunes/imagenes/file-review.png" height="18" title="Revisar colecci&oacute;n de datos">&nbsp;Revisar</a></li>
+											<li class="childlink"><a href="admininsobj.do?opcionbase=relaciones"><img src="comunes/imagenes/file-review.png" height="18" title="Revisar colecci&oacute;n de datos">&nbsp;Revisar</a></li>
 										</ul>
 									</li>
 									<li class="headlink">
@@ -1001,7 +1001,7 @@ $(document).ready(function(){
 													<a id='link_administrar_cuentas' href="cuentas.do"><img src="comunes/imagenes/profile.png" height="18" title="Maneje las cuentas de administradores del sistema">&nbsp;Cuentas</a>
 												<% } 	%>
 												<% if(admin.getTipoUsuario().equals("regular")){ %>
-													<a id='link_administrar_cuentas' href="cuentas.do"><img src="comunes/imagenes/profile.png" height="18" title="Administre sus datos personales">&nbsp;Mi Cuenta</a>
+													<a id='link_administrar_cuentas' href="cuentas.do"><img src="comunes/imagenes/profile.png" height="18" title="Administre sus datos personales">&nbsp;Cuenta</a>
 												<% } 	%>
 											</li>
 											<li class="childlink">

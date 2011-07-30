@@ -353,7 +353,7 @@ public class AdministrarRelacion extends HttpServlet {
 						sesion.setAttribute("generadorSql_instanciaObjetoAUX", _instanciaDeInstrumento);
 						sesion.setAttribute("generadorSql_pregDestino", _pregDeRelacion);
 						sesion.setAttribute("generadorSql_pregOrigen", _pregDeInstrumento);
-						view = request.getRequestDispatcher("generadorsql.do?soloeste=true&accioninvitar=true&accion=seleccionar&exclusivo=si&objetoatrabajar="+_instanciaDeInstrumento.getId());
+						view = request.getRequestDispatcher("generadorsql.do?soloeste=true&accioninvitar=halftrue&accion=seleccionar&exclusivo=si&objetoatrabajar="+_instanciaDeInstrumento.getId());
 					}else if(_forma_de_relacion_de_datos == 6){
 						//solo data... no duplico instanciadepreguntas en la estructura.
 						//debo pedir que asocie las preguntas de la relacion con alguna del instrumento.

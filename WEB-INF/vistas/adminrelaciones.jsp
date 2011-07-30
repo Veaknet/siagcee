@@ -90,7 +90,7 @@ function habilitarUpdateDiv(){
 	//formulario.style.display = "block";
 	nombre.focus();
 }
-	
+
 </script>
 
 <%
@@ -153,7 +153,7 @@ if(_instrumentoSeleccionado != null){
 			%>
 		</script>
 		<%
-	}	
+	}
 }
 %>
 </head>
@@ -172,12 +172,12 @@ if(request.getAttribute("instrumentos") != null){
 }
 
 String _tipoinstrumento = "relacion";
-	
+
 String _opcionBase = "armar";
 if(request.getParameter("opcionbase")!=null){
 	_opcionBase = request.getParameter("opcionbase");
 }
-	
+
 if(request.getAttribute("mensaje") != null) {
 	out.println((String)request.getAttribute("mensaje") + "<br />");
 }

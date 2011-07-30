@@ -184,7 +184,7 @@ if(request.getParameter("accioninvitar") != null){
 			</tr>
 		</tbody>
 	</table>
-	<% if(_accioninvitar.equals("true")) {%>
+	<% if(_accioninvitar.equals("true")) { %>
 	<form action="#" class="hideprint">
 		<label>Indique cu&aacute;l es el campo de correo electr&oacute;nico a utilizar para invitar a los participantes:</label><br />
 		<select id='email_id_invite' name="email_id_invite" onchange="if(this.value == '-1'){$('#containerParaMensaje').css('display', 'none');}else{$('#containerParaMensaje').css('display', 'block');}">
@@ -226,6 +226,13 @@ if(request.getParameter("accioninvitar") != null){
 		<% }else{ %>
 			 <input type="hidden" value="" id="email_id_invite_text" name="email_id_invite_text">
 		<% } %>
+		<button value="Procesar estos usuarios" onclick="window.opener.document.getElementById('id_encapsulador').style.display = 'block';window.opener.document.getElementById('hacerpreview').value='falso';window.opener.document.getElementById('email_id_invite').value=document.getElementById('email_id_invite').value;window.opener.document.getElementById('email_id_invite_text').value=document.getElementById('email_id_invite_text').value;window.opener.document.getElementById('formgenerasql').target = '_top';window.opener.document.getElementById('formgenerasql').submit();window.opener.document.getElementById('formgenerasql').action = '#';window.close();">Aceptar y procesar estos usuarios</button>
+		<button value="Cerrar esta ventana" onclick="window.close();">Cancelar y cerrar esta ventana</button>
+	</form>
+	<% }else if(_accioninvitar.equals("halftrue")) { %>
+	<form action="#" class="hideprint">
+		<input type="hidden" value="-1" name="email_id_invite" id="email_id_invite">
+		<input type="hidden" value="" name="email_id_invite_text" id="email_id_invite_text">
 		<button value="Procesar estos usuarios" onclick="window.opener.document.getElementById('id_encapsulador').style.display = 'block';window.opener.document.getElementById('hacerpreview').value='falso';window.opener.document.getElementById('email_id_invite').value=document.getElementById('email_id_invite').value;window.opener.document.getElementById('email_id_invite_text').value=document.getElementById('email_id_invite_text').value;window.opener.document.getElementById('formgenerasql').target = '_top';window.opener.document.getElementById('formgenerasql').submit();window.opener.document.getElementById('formgenerasql').action = '#';window.close();">Aceptar y procesar estos usuarios</button>
 		<button value="Cerrar esta ventana" onclick="window.close();">Cancelar y cerrar esta ventana</button>
 	</form>
