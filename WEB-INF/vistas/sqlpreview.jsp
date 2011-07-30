@@ -103,7 +103,7 @@ if(request.getParameter("accioninvitar") != null){
 <%
 	if(!_preguntas.isEmpty()){
 %>
-	<table id="_myTable" class="tablesorter" style="min-width:940px;max-width:940px;width:940px">
+	<table id="myTable" class="tablesorter" style="min-width:940px;max-width:940px;width:940px">
 		<thead>
 			<tr>
 			<%
@@ -111,7 +111,7 @@ if(request.getParameter("accioninvitar") != null){
 				_pregAct = null;
 				while(_enu.hasMoreElements()){
 					_pregAct = (InstanciaPregunta)_enu.nextElement();
-					out.print("<th title='clic aqu&iacute; para ordenar por: "+_pregAct.getAcronimo()+"'>"+_pregAct.getAcronimo()+"</th>");
+					out.print("<th title='clic aqu&iacute; para ordenar por: "+UtilidadesVarias.reemplazarCaracteres(_pregAct.getAcronimo(), "'", "\"")+"'>"+_pregAct.getAcronimo()+"</th>");
 				}
 			%>
 			</tr>
@@ -128,8 +128,12 @@ if(request.getParameter("accioninvitar") != null){
 						//caso base... partimos de ningun usuario
 						if(id_usuario != _respAct.getElaborado_por()){
 							//otro usuario
-							id_usuario = _respAct.getElaborado_por();
-							if(id_usuario != -1){out.println("</tr><tr>");}
+							if(id_usuario == -1){
+								id_usuario = _respAct.getElaborado_por();
+							}else{
+								id_usuario = _respAct.getElaborado_por();
+								out.println("</tr><tr>");
+							}
 						}else{
 							//mismo usuario que el anterior... ya procesado
 							continue;
@@ -248,7 +252,7 @@ if(request.getParameter("accioninvitar") != null){
 </td></tr></table>
 <script type="text/javascript">
 	$(document).ready(function(){
-		//$("#myTable").tablesorter();
+		$("#myTable").tablesorter();
 	 });
 </script>
 
