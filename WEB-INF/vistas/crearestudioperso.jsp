@@ -401,8 +401,8 @@ $(document).ready(function(){
 					if(EstudioPerso.getInstance().get_titulo() != null && !EstudioPerso.getInstance().get_titulo().equals("")){
 						out.print("<h4>"+EstudioPerso.getInstance().get_titulo()+"</h4>");
 					}
-					out.println("<table id=\"_myTable\" class=\"tablesorter\"  style=\"min-width:100px;max-width:940px;width:100px\">");
-					out.println("<tr><th>Resultado(s)</th></tr><tbody>");
+					out.println("<table id=\"myTable\" class=\"tablesorter\" style=\"min-width:100px;max-width:940px;width:100px\">");
+					out.println("<thead><tr><th>Resultado(s)</th></tr></thead><tbody>");
 					HashMap _resulMostrados = new HashMap();
 					_resul = EstudioPerso.getInstance().firstResultado();
 					if(_resul != null){
@@ -564,6 +564,11 @@ $(document).ready(function(){
 		</td>
 	</tr>
 </table>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#myTable").tablesorter();
+	 });
+</script>
 
 <iframe name="gToday:contrast:agenda.js" id="gToday:contrast:agenda.js" src="Contrast/ipopeng.htm" style="visibility: visible; z-index: 999; position: absolute; top: -500px; left: -500px;" scrolling="no" frameborder="0" height="142" width="132">
 </iframe>
