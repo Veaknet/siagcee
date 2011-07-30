@@ -96,16 +96,16 @@ if(_miIns != null){
 		if(miObj.isEliminado()){
 		  misEliminados.add(miObj);
 		}else{
-			//si es una Relacion va al final.
-			if(miObj.getObjetoAsociado().getClass().toString().equals(Relacion.class.toString())){
-				misRelaciones.add(miObj);
-				continue;
-			}
 			if(_dateFormat.format(_hoy).compareTo(_dateFormat.format(miObj.getFechaInicio())) < 0){
 				misPendientes.add(miObj);
 			}else if(_dateFormat.format(_hoy).compareTo(_dateFormat.format(miObj.getFechaCierre())) < 0){
 				misEnEjecucion.add(miObj);
 			}else{
+				//si es una Relacion va al final.
+				if(miObj.getObjetoAsociado().getClass().toString().equals(Relacion.class.toString())){
+					misRelaciones.add(miObj);
+					continue;
+				}
 				misFinalizados.add(miObj);
 			}
 		}
@@ -146,7 +146,7 @@ if(_miIns != null){
 						<th style="max-width:175px;" valign="top" width="175">
 							Invitar a Nuevos Usuarios
 						</th>
-						<th style="max-width:60px;" valign="top" width="45">
+						<th style="max-width:65px;" valign="top" width="65">
 							Modificar
 						</th>
 						<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
@@ -154,14 +154,17 @@ if(_miIns != null){
 							Borrar
 						</th>
 						<% } %>
-                        <th style="max-width:50px;" valign="top" width="50">
+                        <!-- <th style="max-width:50px;" valign="top" width="50">
                             Enlace
-                        </th>
+                        </th> //-->
 						<th style="max-width:50px;" valign="top" width="50">
 							Carga desde Excel
 						</th>
-						<th style="max-width:50px;" valign="top" width="50">
+						<th style="max-width:60px;" valign="top" width="60">
 							Campos Editables
+						</th>
+						<th style="max-width:55px;" valign="top" width="55">
+							Aplicar Estudio
 						</th>
 						<% }else{ %>
 						<th style="max-width:70px;" valign="top" width="70">
@@ -205,9 +208,10 @@ if(_miIns != null){
 					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar el instrumento:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar este instrumento y todas las respuestas que posea' title='Eliminar este instrumento y todas las respuestas que posea' /></a></td>");
 				}
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
-				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' alt='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' src='comunes/imagenes/world_link.png'></a></td>");
+				//out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' alt='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' src='comunes/imagenes/world_link.png'></a></td>");
 				out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
 				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
+				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Aplicar Estudio' title='Aplicar Estudio' height='24' /></a></td>");
 			}else{
 				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Seleccionar' title='Seleccionar' height='24' /></a></td>");
 			}
@@ -250,7 +254,7 @@ if(_miIns != null){
 						<th style="max-width:175px;" valign="top" width="175">
 							Invitar a Nuevos Usuarios
 						</th>
-						<th style="max-width:60px;" valign="top" width="45">
+						<th style="max-width:65px;" valign="top" width="65">
 							Modificar
 						</th>
 						<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
@@ -263,12 +267,15 @@ if(_miIns != null){
                         </th>
 						<!-- <th style="max-width:50px;" valign="top" width="50">
 							Carga desde Excel
-						</th> //-->
+						</th>
 						<th style="max-width:50px;" valign="top" width="50">
 							Campos Editables
-						</th>
+						</th>//-->
 						<th style="max-width:55px;" valign="top" width="55">
 							Revisar Datos
+						</th>
+						<th style="max-width:55px;" valign="top" width="55">
+							Aplicar Estudio
 						</th>
 						<% }else{ %>
 						<th style="max-width:70px;" valign="top" width="70">
@@ -314,8 +321,9 @@ if(_miIns != null){
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
 				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' alt='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' src='comunes/imagenes/world_link.png'></a></td>");
 				//out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
-				out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
+				//out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
 				out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
+				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Aplicar Estudio' title='Aplicar Estudio' height='24' /></a></td>");
 			}else{
 				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Seleccionar' title='Seleccionar' height='24' /></a></td>");
 			}
@@ -365,6 +373,9 @@ if(_miIns != null){
 						<% } %>
 						<th style="max-width:55px;" valign="top" width="55">
 							Revisar Datos
+						</th>
+						<th style="max-width:55px;" valign="top" width="55">
+							Aplicar Estudio
 						</th>
 						<% }else{ %>
 						<th style="max-width:70px;" valign="top" width="70">
@@ -416,6 +427,7 @@ if(_miIns != null){
 				}
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
 				out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
+				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Aplicar Estudio' title='Aplicar Estudio' height='24' /></a></td>");
 			}else{
 				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Seleccionar' title='Seleccionar' height='24' /></a></td>");
 			}
@@ -450,26 +462,20 @@ if(_miIns != null){
 						<th style="max-width:50px;" valign="top" width="50">
 							Detalle
 						</th>
-						<th style="max-width:175px;" valign="top" width="175">
-							Invitar a Nuevos Usuarios
-						</th>
 						<th style="max-width:60px;" valign="top" width="45">
 							Publicar
 						</th>
-						<th style="max-width:50px;" valign="top" width="50">
+						<th style="max-width:45px;" valign="top" width="45">
 							Borrar
-						</th>
-						<th style="max-width:50px;" valign="top" width="50">
-							Enlace
 						</th>
 						<!-- <th style="max-width:50px;" valign="top" width="50">
 							Carga desde Excel
 						</th> //-->
-						<th style="max-width:50px;" valign="top" width="50">
-							Campos Editables
-						</th>
 						<th style="max-width:55px;" valign="top" width="55">
 							Revisar Datos
+						</th>
+						<th style="max-width:55px;" valign="top" width="55">
+							Aplicar Estudio
 						</th>
 						<% }else{ %>
 						<th style="max-width:70px;" valign="top" width="70">
@@ -487,32 +493,12 @@ if(_miIns != null){
 			}
 			if((request.getParameter("soloaplicar") == null) || !request.getParameter("soloaplicar").equals("true")){
 				out.println("<td align='center'><img height='24' src='comunes/imagenes/file-review.png' title='Revisar Preguntas de la Colecci&oacute;n' alt='Revisar Preguntas de la Colecci&oacute;n' onclick='window.open(\"mostrarinfo.do?accion=mostrarinfodeobjeto&id="+miObj.getObjetoAsociado().getId()+"\", \"mostrarInfo\" , \"width=700,height=500,scrollbars=YES,resizable=YES,Location=NO,Menubar=NO,Titlebar=No,Toolbar=NO\");'></td>");
-				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
-					out.println("<td align='center'><select name='invitando"+miObj.getId()+"' id='invitando"+miObj.getId()+"' onchange='revisarOpciones(this);'><option value='-1'>Seleccione...</option><option value='admininsobj.do?accioninvitar=true&invitar="+miObj.getId()+"'>De otro instrumento</option>");
-					if(miObj.getAcceso() == 0){
-						out.println("<option value='correos_a_invitar.do?_hightlight="+miObj.getId()+"'>Especificando emails</option>");
-					}
-					out.println("</select></td>");
-				}else{
-					out.println("<td align='center'>-</td>");
-				}
-				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) >= 0){
-					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Desea publicar la colecci&oacute;n :\\n"+miObj.getObjeto()+" y actualizar sus datos?\")){window.location=\"implementobjeto.do?solo="+miObj.getId()+"\";return true;}else{return false;}' height='24' alt='Publicar esta colecci&oacute;n y actualizar todas las respuestas que posea' title='Publicar esta colecci&oacute;n y actualizar todas las respuestas que posea' /></a></td>");
-				}else{
-					out.println("<td align='center'>-</td>");
-				}
-				if(admin.getTipoUsuario().equals("superadministrador")){
-					out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar la colecci&oacute;n:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar esta colecci&oacute;n y todas las respuestas que posea' title='Eliminar esta colecci&oacute;n y todas las respuestas que posea' /></a></td>");
-				}
+				out.println("<td align='center'><a href='#'><img src='comunes/imagenes/refresh.png' onclick='if(confirm(\"Desea publicar la colecci&oacute;n :\\n"+miObj.getObjeto()+" y actualizar sus datos?\")){window.location=\"implementobjeto.do?solo="+miObj.getId()+"\";return true;}else{return false;}' height='24' alt='Publicar esta colecci&oacute;n y actualizar todas las respuestas que posea' title='Publicar esta colecci&oacute;n y actualizar todas las respuestas que posea' /></a></td>");
+				out.println("<td align='center'><a href='#'><img src='comunes/imagenes/delete.png' onclick='if(confirm(\"Seguro que desea eliminar la colecci&oacute;n:\\n"+miObj.getObjeto()+"\\n y todas las respuestas asociadas?.\")){window.location=\"admininsobj.do?opcionbase="+_mostrarOpcion+"&eliminar="+miObj.getId()+"\";}else{return false;}' height='24' alt='Eliminar esta colecci&oacute;n y todas las respuestas que posea' title='Eliminar esta colecci&oacute;n y todas las respuestas que posea' /></a></td>");
 				//out.println("<td align='center'><a href='indexadminmenu.do?desdeindex=false&opcionprincipal=estudios&estructura="+miObj.getObjetoAsociado().getId()+"'><img src='comunes/imagenes/barchart.png' alt='Administrar Estudios' title='Administrar Estudios' height='24' /></a></td>");
-				out.println("<td align='center'><a href='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' target='_blank'><img height='24' title='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' alt='"+UtilidadesVarias.dominioWeb+"enlace?"+miObj.getIdPublico()+"' src='comunes/imagenes/world_link.png'></a></td>");
 				//out.println("<td align='center'><a href='subirexcel?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Cargar datos desde excel' src='comunes/imagenes/excel.png'></a></td>");
-				if(_dateFormat.format(_hoy).compareTo(miObj.getFechaCierre().toString()) < 0){
-					out.println("<td align='center'><a href='seteditables?objetoatrabajar="+miObj.getId()+"'><img height='24' title='' alt='Establecer campos editables y opcionales para el encuestado' src='comunes/imagenes/modificar.png'></td>");
-				}else{
-					out.println("<td align='center'>-</td>");
-				}
 				out.println("<td align='center'><a href='admininsobj.do?objetoatrabajar="+miObj.getId()+"&accion=seleccionar&soloeste=true&accioninvitar=false&invitar="+miObj.getId()+"'><img src='comunes/imagenes/tabulador.png' alt='Revisar todas las respuestas' title='Revisar todas las respuestas' height='24' /></a></td>");
+				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Aplicar Estudio' title='Aplicar Estudio' height='24' /></a></td>");
 			}else{
 				out.println("<td align='center'><a href='aplicadorestudios?objetoatrabajar="+miObj.getId()+"'><img src='comunes/imagenes/piechart.png' alt='Seleccionar' title='Seleccionar' height='24' /></a></td>");
 			}

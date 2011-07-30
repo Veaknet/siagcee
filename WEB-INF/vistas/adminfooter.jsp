@@ -51,5 +51,24 @@
 				}
 			 }
 		});
+		$('td[title]').qtip({
+			style: {
+				name: 'green',
+				tip: true,
+				color: 'black'
+			},
+			border: {
+				 width: 7,
+				 radius: 5,
+				 color: '#A2D959'
+			},
+			hide:{ when: { event: 'mouseout'}},
+			position: {
+				corner: {
+				 target: 'topMiddle',
+				 tooltip: 'bottomMiddle'
+				}
+			 }
+		});
 	</script>
 </html>
