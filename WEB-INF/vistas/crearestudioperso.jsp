@@ -520,17 +520,15 @@ $(document).ready(function(){
 											<option value="<=">Menor o igual que ( <= )</option>
 											<option value="<">Menor estricto que ( < )</option>
 										</optgroup>
-										<optgroup label="Funciones">
+										<optgroup label="Funciones Utilitarias">
 											<option value="promedio( )">Promedio de un dato</option>
 											<option value="sumatoria( )">Sumatoria de un dato</option>
 											<option value="contar( )">Conteo de respuestas de un dato</option>
 											<option value="max( )">M&aacute;ximo valor de un dato</option>
 											<option value="min( )">M&iacute;nimo valor de un dato</option>
 											<option value="redondea( )">Redondea un valor</option>
-										<optgroup label="Funciones Utilitarias">
 											<option value="diff_fechas( , )">Calcula diferencia entre fechas en a&ntilde;os</option>
 											<option value="concatenar( , )">Concatena dos valores</option>
-										</optgroup>
 										</optgroup>
 									</select>
 								</td>
