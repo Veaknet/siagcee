@@ -312,7 +312,7 @@ if(_instrumentoSeleccionado == null){
 								<option value='5'>Seg&uacute;n criterios personalizados de b&uacute;squeda.</option>
 								<option value="6">Combinando ambos instrumentos, indicando las equivalencias entre los datos seleccionados.</option>
 							<% } %>
-						</select><p />
+						</select>&nbsp;<img src="comunes/imagenes/info-about.png" height="24px" title="Haga clic aqu&iacute; para obtener ayuda sobre este tema" onclick="window.open('ayuda.do?tema=administracolecciones#'+$('#forma_de_relacion_de_datos').val(),'ventana');"/><p />
 						<% if(!_relacionActual.getPreguntas(false).isEmpty()){ %>
 							<input type="submit" value="Procesar" onclick="return validaForm(document.getElementById('forma_de_relacion_de_datos'), document.getElementById('pregunta_join_instrumento'));">
 						<% }else{ %>

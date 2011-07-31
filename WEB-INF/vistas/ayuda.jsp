@@ -14,20 +14,20 @@
 	<center>
 	<table cellpadding="0" cellspacing="0" class="tablaprincipal">
 		<tr>
-			<td valign="middle" align="left" style="border-top: burlywood ridge thick;border-left: burlywood ridge thick;border-width:3px;max-width:320px;width:320px">
+			<td valign="middle" align="left" style="border-top: burlywood ridge thick;border-left: burlywood ridge thick;border-width:3px;max-width:950px;width:950px">
 				<img src="comunes/imagenes/siagcee_logo.png" alt="">
 			</td>
 		</tr>
 		<tr>
 			<td valign="top" align="left">
-				<table cellpadding="4" cellspacing="4" class="tablasecundariatitulo" style="width:600px;min-width:600px;max-width:600px;">
+				<table cellpadding="4" cellspacing="4" class="tablasecundariatitulo" style="width:950px;min-width:950px;max-width:950px;">
 					<tr>
 						<td style="text-align:left" valign="top" >
 							<h2>Ayuda</h2>
 						</td>
 					</tr>
 				</table>
-				<table cellspacing="4" cellpadding="4" class="tablasecundaria" style="width:600px;min-width:600px;max-width:600px;">
+				<table cellspacing="4" cellpadding="4" class="tablasecundaria" style="width:950px;min-width:950px;max-width:950px;">
 					<tr>
 						<td style="text-align:left" valign="top">
 			<%
@@ -61,7 +61,7 @@
 				<ul><strong>Uso exclusivo para estudios:</strong> no ser&aacute; visible para los encuestados. En este tipo de dato se almacenar&aacute; el resultado de un estudio que posteriormente se indique.</ul>
 				La visibilidad se aplica en situaciones donde usted no desea que sea usado el dato que se est&aacute; definiendo, por razones variadas, una de ellas puede ser que el dato no se ha definido en su totalidad.<p />
 				Para crear un dato haga clic en <img height="24" src="comunes/imagenes/add.png" alt="nuevo">
-				<strong>Nota importante:</strong> S&oacute;lo es posible editar datos mientras no sean usados en las estructuras de instrumentos. En caso que est&eacute;n siendo usadas, no aparecer&aacute;n en la lista. 
+				<strong>Nota importante:</strong> S&oacute;lo es posible editar datos mientras no sean usados en las estructuras de instrumentos. En caso que est&eacute;n siendo usadas, no aparecer&aacute;n en la lista.
 				<%
 			}
 			if(_opcion.equals("valorestipodedatos")){
@@ -90,7 +90,7 @@
 				<ul>Nombre de la estructura.</ul>
 				La visibilidad se aplica en situaciones donde usted no desea que sea usada la estructura que se est&aacute; definiendo, por razones variadas, una de ellas puede ser que la estructura no se ha definido en su totalidad.<p />
 				Para crear una estructura haga clic en <img height="24" src="comunes/imagenes/add.png" alt="nuevo"><p />
-				<strong>Nota importante:</strong> S&oacute;lo es posible editar estructuras mientras no sean usadas en los instrumentos. En caso que est&eacute;n siendo usadas, no aparecer&aacute;n en la lista. 
+				<strong>Nota importante:</strong> S&oacute;lo es posible editar estructuras mientras no sean usadas en los instrumentos. En caso que est&eacute;n siendo usadas, no aparecer&aacute;n en la lista.
 				<%
 			}
 			if(_opcion.equals("modificacionestructuras")){
@@ -139,7 +139,7 @@
 				<ul><strong><a href="ayuda.do?tema=estructuras" title="Ayuda sobre este t&oacute;pico" alt="ayuda sobre este t&oacute;pico">Estructura</a></strong>: indica la estructura que se utilizar&aacute;. Dicha estructura contiene las preguntas que se formular&aacute;n.</ul>
 				<ul><strong>Inicio y Fin</strong>: indica la fecha que comienza y termina la ejecuci&oacute;n del instrumento.</ul>
 				Puede modificar un instrumento ya creado haciendo clic en <img src="comunes/imagenes/modify.png" alt="editar" height="24"> y eliminarlo haciendo clic en <img src="comunes/imagenes/delete.png" alt="eliminar" height="24"><p />
-				<strong>Nota importante:</strong> No aparecer&aacute;n en esta pantalla instrumentos que se est&eacute;n ejecutando o ya hayan finalizado. 
+				<strong>Nota importante:</strong> No aparecer&aacute;n en esta pantalla instrumentos que se est&eacute;n ejecutando o ya hayan finalizado.
 				<%
 			}
 			if(_opcion.equals("instrumentofinalizado")){
@@ -168,35 +168,32 @@
 			if(_opcion.equals("administracolecciones")){
 				%>
 				<h4>Colecciones de Datos.</h4>
-				Es posible eliminar una relaci&oacute;n haciendo clic en <img src="comunes/imagenes/delete.png" alt="eliminar" height="24"> y editar sus caracter&iacute;n haciendo clic en <img src="comunes/imagenes/modify.png" alt="editar" height="24"><p />
-				Para agregar preguntas a la colecci&oacute;n debe indicar el <strong><a href="ayuda.do?tema=instrumento" title="Ayuda sobre este t&oacute;pico" alt="ayuda sobre este t&oacute;pico">Instrumento</a></strong> o la <strong><a href="ayuda.do?tema=estructuras" title="Ayuda sobre este t&oacute;pico" alt="ayuda sobre este t&oacute;pico">Estructura de Instrumento</a></strong> de donde se obtendr&aacute;.<p />
-				Una vez hecho lo anterior seleccione del listado la(s) pregunta(s) que agregar&aacute; a la colecci&oacute;n.<p />
-				Si trabaja con instrumentos, se le presentar&aacute;n un grupo de opciones (dado que los instrumentos poseen respuestas de los encuestados asociados), y son las siguientes:<p />
-				<ul><li><strong>Copiando en la Colecci&oacute;n la Estructura del Instrumento</strong></li>
-					S&oacute;lo se tomar&aacute; la estructura del instrumento para agregarla a la colecci&oacute;n. Las respuestas asociadas al instrumentos ser&aacute;n obviadas.
+				Para coleccionar datos se presentar&aacute;n un grupo de opciones para relacionar los instrumentos:<p />
+				<ul><li><a name="1"><strong>"Todos los datos seleccionados producto de la uni&oacute;n de ambos instrumentos" &oacute; "Todos los datos seleccionados del instrumento pasar&aacute;n a la colecci&oacute;n"</strong></a></li>
+					Se unir&aacute;n todos los datos existentes en la colecci&oacute;n con los indicados en el instrumento, no se aplicar&aacute;n filtros.<br />
+					<center><img src="comunes/imagenes/ayuda/colecciones_union.png" /></center><p />
 				</ul>
-				<ul><li><strong>Uniendo todos los datos del Instrumento y la Colecci&oacute;n</strong></li>
-					Se tomar&aacute; la estructura del instrumento y las respuestas asociadas para agregarla a la colecci&oacute;n.<br />
-					<img src="comunes/imagenes/ayuda/colecciones_union.png" /><br />
+				<ul><li><a name="2"><strong>"Todos los datos del instrumento 1 m&aacute;s los datos seleccionados del instrumento 2 que coincidan en el primero"</strong></a></li>
+					Se tomar&aacute;n todos los datos del primer instrumento sin realizar ning&uacute;n filtro adicional y se agregar&aacute;n del instrumento 2 s&oacute;lo aquellos datos de los actores que tambi&eacute;n se encuentren en el primer instrumento, los dem&aacute;s ser&aacute;n obviados.<br />
+					<center><img src="comunes/imagenes/ayuda/colecciones_left_join.png" /></center><p />
 				</ul>
-				<ul><li><strong>Uniendo todos los datos de la Colecci&oacute;n m&aacute;s aquellos del Instrumento que coincidan en la primera</strong></li>
-					Se tomar&aacute; la estructura del instrumento y las respuestas asociadas para agregarla a la colecci&oacute;n. Con la restricci&oacute;n de que se importar&aacute;n &uacute;nicamente las respuestas de los encuestados que existan en la colecci&oacute;n, los dem&aacute;s ser&aacute;n obviados.<br />
-					<img src="comunes/imagenes/ayuda/colecciones_left_join.png" /><br />
+				<ul><li><a name="3"><strong>"Todos los datos seleccionados del instrumento 2 m&aacute;s los datos del instrumento 1 que coincidan en el primero"</strong></a></li>
+					Se tomar&aacute;n todos los datos del segundo instrumento sin realizar ning&uacute;n filtro adicional y se agregar&aacute;n del instrumento 1 s&oacute;lo aquellos datos de los actores que tambi&eacute;n se encuentren en el segundo instrumento, los dem&aacute;s ser&aacute;n obviados.<br />
+					<center><img src="comunes/imagenes/ayuda/colecciones_right_join.png" /></center><p />
 				</ul>
-				<ul><li><strong>Uniendo todos los datos del Instrumento m&aacute;s aquellos de la Colecci&oacute;n que coincidan en la primera</strong></li>
-					Se tomar&aacute; la estructura colecci&oacute;n y las respuestas asociadas para agregarla al instrumento. Con la restricci&oacute;n de que se importar&aacute;n &uacute;nicamente las respuestas de los encuestados que existan en el instrumento, los dem&aacute;s ser&aacute;n obviados.<br />
-					<img src="comunes/imagenes/ayuda/colecciones_right_join.png" /><br />
+				<ul><li><a name="4"><strong>"Todos los datos seleccionados producto de la intersecci&oacute;n de ambos instrumentos"</strong></a></li>
+					Se tomar&aacute;n los datos de los actores que se encuentren en ambos instrumentos, los dem&aacute;s ser&aacute;n obviados.<br />
+					<center><img src="comunes/imagenes/ayuda/colecciones_interseccion.png" /></center><p />
 				</ul>
-				<ul><li><strong>Tomando los datos de la Colecci&oacute;n y del Instrumento que coincidan</strong></li>
-					Se une toda la informaci&oacute;n del instrumento y de la colecci&oacute;n. Con la restricci&oacute;n de que se importar&aacute;n &uacute;nicamente las respuestas de los encuestados que existan tanto en el instrumento como en la colecci&oacute;n, los dem&aacute;s ser&aacute;n obviados.<br />
-					<img src="comunes/imagenes/ayuda/colecciones_interseccion.png" /><br />
+				<ul><li><a name="7"><strong>"Todos los datos seleccionados producto del complemento de la intersecci&oacute;n de ambos instrumentos (O Exclusivo)"</strong></a></li>
+					Se tomar&aacute;n los datos de los actores que no se repitan en los instrumentos, matem&aacute;ticamente, se expresa como el complemento de la intersecci&oacute;n de ambos conjuntos.<br />
+					<center><img src="comunes/imagenes/ayuda/colecciones_or_exclusive.png" /></center><p />
 				</ul>
-				<ul><li><strong>Seg&uacute;n criterios personalizados se ingresar&aacute;n datos del instrumento en la Colecci&oacute;n</strong></li>
-					Se agregar&aacute; la informaci&oacute;n del instrumento a la colecci&oacute;n siempre que los encuestados en el instrumento se encuentren en una subconsulta que se generar&aacute;.
-					<img src="comunes/imagenes/ayuda/colecciones_condiciones_especiales.png" /><br />
+				<ul><li><a name="5"><strong>"Seg&uacute;n criterios personalizados de b&uacute;squeda"</strong></a></li>
+					Permitir&aacute; coleccionar datos de forma selectiva seg&uacute;n criterios que imponga el administrador y creador de la colecci&oacute;n.<p />
 				</ul>
-				<ul><li><strong>Asociando preguntas del instrumento a preguntas existentes de la colecci&oacute;n</strong></li>
-					No se agregar&aacute;n preguntas a la colecci&oacute;n, m&aacute;s bien se tomar&aacute; la informaci&oacute;n de cada pregunta del instrumento para agregarlo a preguntas especificadas en la colecci&oacute;n.
+				<ul><li><a name="6"><strong>"Combinando ambos instrumentos, indicando las equivalencias entre los datos seleccionados"</strong></a></li>
+					Se indicar&aacute;n equivalencias entre datos de ambos instrumentos para luego realizar una combinaci&oacute;n entre ambos.<p />
 				</ul>
 				<%
 			}
@@ -283,7 +280,7 @@
 				REALIZAR:<br /><br />
 				FIN..<p />
 				Donde:<br />
-			  <ul>CUANDO SE CUMPLA CON:<ul>indicar&aacute; las condiciones que deben cumplirse para que el c&aacute;lculo dentro de la bifurcaci&oacute;n se realice. Debe retornar un resultado l&oacute;gico verdadero o falso. Las operaciones pueden ocupar mas de una l&iacute;nea y pueden usarse par&eacute;ntesis para agrupar.</ul></ul>	
+			  <ul>CUANDO SE CUMPLA CON:<ul>indicar&aacute; las condiciones que deben cumplirse para que el c&aacute;lculo dentro de la bifurcaci&oacute;n se realice. Debe retornar un resultado l&oacute;gico verdadero o falso. Las operaciones pueden ocupar mas de una l&iacute;nea y pueden usarse par&eacute;ntesis para agrupar.</ul></ul>
 				<ul>REALIZAR:<ul>indicar&aacute; los c&aacute;lculos que se realizar&aacute;n. Puede dentro de este bloque ingresarse una nueva bifurcaci&oacute;n. Las operaciones pueden ocupar mas de una l&iacute;nea y pueden usarse par&eacute;ntesis para agrupar.</ul></ul>
 				<strong>Nota importante:</strong> cuando se realicen los <a href="ayuda.do?tema=calculos_estudio" title="Ayuda sobre este t&oacute;pico" alt="ayuda sobre este t&oacute;pico">c&aacute;lculos</a> para obtener los resultados deben colocarse las operaciones dentro de:<p />
 				CALCULAR ESTUDIO:<br /><br />
@@ -376,11 +373,11 @@
 				Queremos s&oacute;lo los usuarios que indicaron que su sexo era femenino y adicionalmente tienen un ingreso anual mayor a BsF 2000 &oacute; todos los que indicaron sexo masculino:<p />
 				<img src="comunes/imagenes/ayuda/generadorsql_2.png" alt="generadorsql_2" width="850"><hr />
 
-				
+
 				<%
 			}
 			%>
-			<div style='text-align:right'><a href="#" onclick="window.close();" title="Cerrar esta ventana" alt="Cerrar esta ventana">Cerrar Ventana</a></div>
+			<div style='text-align:right'><input type="button" onclick="window.close();" title="Cerrar esta ventana" alt="Cerrar esta ventana" value="Cerrar esta ventana"></div>
 		</td>
 	</tr>
 </table>
