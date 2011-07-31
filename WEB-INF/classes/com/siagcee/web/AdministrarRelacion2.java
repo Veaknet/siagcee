@@ -132,7 +132,7 @@ public class AdministrarRelacion2 extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/vistas/adminrelaciones.jsp");
 		if(admin != null){
 			try{
-
+				doPost(request, response);
 			}catch(Exception e){
 				//error voy a pantalla principal
 				//e.printStackTrace();

@@ -27,7 +27,7 @@ if(request.getAttribute("Instrumento") != null){
 <table cellpadding="4" cellspacing="4" class="tablasecundaria" >
 	<tr>
 		<td >
-			<h2>Coleccionar Datos</h2>
+			<h2>Combinaci&oacute;n de instrumentos por equivalencia de datos</h2>
 <%
 if(request.getAttribute("mensaje") != null) {
 	out.println((String)request.getAttribute("mensaje") + "<br />");
@@ -36,7 +36,7 @@ if(request.getAttribute("mensaje") != null) {
 if(_instanciaObjeto != null && _relacionadaInstancia != null){
 	if(!_instanciaObjeto.getObjetoAsociado().getPreguntas().isEmpty() && !_relacionadaInstancia.getObjetoAsociado().getPreguntas().isEmpty()){
 		%>
-		<label>Por favor asocie las preguntas seg&uacute;n su consideraci&oacute;n, para luego pasar la data del Instrumento a la Colecci&oacute;n en la pregunta correspondiente:</label><p />
+		<label>Por favor indique la equivalencia de los datos seg&uacute;n considere:</label><p />
 		<form action="adminrelaciones2.do" method="post">
 			<input type="hidden" name="relacion" id="relacion" value="<% out.print(_instanciaObjeto.getId()); %>">
 			<input type="hidden" name="instrumento" id="instrumento" value="<% out.print(_relacionadaInstancia.getId()); %>">
@@ -48,21 +48,24 @@ if(_instanciaObjeto != null && _relacionadaInstancia != null){
 				out.println("<input type='hidden' value='"+((InstanciaPregunta)request.getAttribute("preguntaJoinInstrumento")).getId()+"' name='pregJoinInstrumento' id='pregJoinInstrumento'>");
 			}
 			%>
-			<table cellpadding="4" cellspacing="4" border="0" width="95%">
-				<tr>
-					<th style="text-align:right;padding-right:5px" width="50%" nowrap>Preguntas de la Colecci&oacute;n de Datos</th>
-					<th style="text-align:left;padding-left:5px" width="50%" nowrap>Preguntas del Instrumento</th>
-				</tr>
+			<table cellpadding="4" cellspacing="4" style="max-width:95%;" class="reporte">
+				<thead>
+					<tr class="reporteTR">
+						<th style="text-align:center;border: 1px solid #3333ff" >Datos del Instrumento 1:<br /><% out.print(_instanciaObjeto.getObjeto()); %></th>
+						<th style="text-align:center;border: 1px solid #3333ff" >Datos del Instrumento 2:<br /><% out.print(_relacionadaInstancia.getObjeto()); %></th>
+					</tr>
+				</thead>
+				<tbody>
 					<%
 					Enumeration _enu = _instanciaObjeto.getObjetoAsociado().getPreguntas().elements();
 					InstanciaPregunta _miPreg = null;
 					while(_enu.hasMoreElements()){
 						_miPreg = (InstanciaPregunta)_enu.nextElement();
-						out.println("<tr>");
-						out.println("<td style='text-align:right'>");
+						out.println("<tr style='border: 1px groove #9999ff'>");
+						out.println("<td style='text-align:right;'>");
 						out.println(_miPreg.getAcronimo());
 						out.println("</td>");
-						out.println("<td style='text-align:left'>");
+						out.println("<td style='text-align:left;'>");
 						out.println("<select id='pregunta_"+_miPreg.getId()+"' name='pregunta_"+_miPreg.getId()+"'><option value='-1'>No asociar pregunta</option>");
 						Enumeration _enuIn = _relacionadaInstancia.getObjetoAsociado().getPreguntas().elements();
 						InstanciaPregunta _miPregIn = null;
@@ -78,12 +81,13 @@ if(_instanciaObjeto != null && _relacionadaInstancia != null){
 						out.println("</tr>");
 					}
 					%>
-				<tr><td></td><td><input type="submit" value="Agregar" onclick="return confirm('Esta seguro que quiere procesar ya el formulario?. Esta accion no tiene regreso.');"></td></tr>
+					<tr><td></td><td><input type="submit" value="Procesar" onclick="return confirm('Esta seguro que quiere procesar ya el formulario?. Esta accion no tiene regreso.');"></td></tr>
+				</tbody>
 			</table>
 		</form>
 		<%
 	}else{
-	  out.println("O el Instrumento o la Colecci&oacute;n no tienen preguntas asocidas para poder trabajar.");
+	  out.println("O el Instrumento o la Colecci&oacute;n no tienen datos asocidos.");
 	}
 }else{
 	out.println("No se han definido ni el Instrumento ni la Colecci&oacute;n con la que se trabajar&aactue;.");

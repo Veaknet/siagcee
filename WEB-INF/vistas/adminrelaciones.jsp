@@ -11,7 +11,7 @@ var array_preguntas_instrumento = new Array();
 function validaForm(opcionesJoin, campoInstrumento){
 	if(opcionesJoin.value != '5' && opcionesJoin.value != '6' ){
 		if(campoInstrumento.value == '-1'){
-			return confirm('Es necesario que indique las preguntas por la que se hara la union de datos.\nEn caso de no hacerlo no se podran identificar a los distintos participantes del instrumento.\n\nDesea continuar de todas formas?');
+			return confirm('Es necesario que indique los datos para relacionar los instrumentos.\nEn caso de no hacerlo no se podran identificar a los actores.\n\nDesea continuar de todas formas?');
 		}else{
 			return true;
 		}
@@ -26,7 +26,7 @@ function actualizarSelect(_elemOrigen, _elemDestino){
 		for (var iiii = _elemDestino.length - 1; iiii>=0; iiii--) {
 			_elemDestino.remove(iiii);
 		}
-		_elemDestino.options[0] = new Option("No existen preguntas que encajen con el mismo tipo de pregunta seleccionada", "-1", true, true);
+		_elemDestino.options[0] = new Option("No existen datos que encajen con el mismo tipo de dato seleccionado", "-1", true, true);
 	}
 	for(var i=0;i<array_preguntas_relacion.length;i++){
 		if(array_preguntas_relacion[i]['id'] == _elemOrigen.value){
@@ -45,7 +45,7 @@ function actualizarSelect(_elemOrigen, _elemDestino){
 				for (var iiiiii = _elemDestino.length - 1; iiiiii>=0; iiiiii--) {
 					_elemDestino.remove(iiiiii);
 				}
-				_elemDestino.options[0] = new Option("No existen preguntas que encajen con el mismo tipo de pregunta seleccionada", "-1", true, true);
+				_elemDestino.options[0] = new Option("No existen datos que encajen con el mismo tipo de dato seleccionado", "-1", true, true);
 			}
 			return true;
 		}
@@ -252,7 +252,6 @@ if(_instrumentoSeleccionado == null){
 		<tr>
 			<td valign="top" align="left" style="text-align:left">
 				<h2>Coleccionar Datos</h2>
-				<h4>Instrumento: <% out.print(_instrumentoSeleccionado.getObjeto()); %></H4>
 				<%
 				Vector _preguntasAMostrar = _instrumentoSeleccionado.getObjetoAsociado().getPreguntas(true);
 				Enumeration _enuPreguntas = _preguntasAMostrar.elements();
@@ -266,7 +265,7 @@ if(_instrumentoSeleccionado == null){
 						<input type="hidden" value="<% out.print(_instrumentoSeleccionado.getId()); %>" id="instrumentoseleccionado" name="instrumentoseleccionado">
 						<input type="hidden" value="relacion" id="tipoinstrumento" name="tipoinstrumento">
 						<input type="hidden" value="<% out.print(_opcionBase);%>" id="opcionbase" name="opcionbase">
-						<label><strong>Seleccione la(s) pregunta(s) que desea agregar a la colecci&oacute;n:</strong></label><br />
+						<label><strong>Seleccione los datos que desea coleccionar:</strong></label><br />
 						<select id="preguntasseleccionadas" name="preguntasseleccionadas" multiple size="10">
 							<%
 							do{
@@ -280,8 +279,8 @@ if(_instrumentoSeleccionado == null){
 							%>
 						</select><p /><br />
 						<% if(!_relacionActual.getPreguntas(false).isEmpty()){ %>
-							<label><strong>Indique la pregunta por la que se har&aacute; la uni&oacute;n de datos.</strong></label><br />
-							<label>De la colecci&oacute;n: </label>
+							<label><strong>Indique el dato por el cual se relacionar&aacute;n los instrumentos:</strong></label><br />
+							<label>Instrumento 1: </label><span title="<% out.print(UtilidadesVarias.reemplazarCaracteres(_relacionActual.getObjeto(), "\"", "'")); %>" style="display:inline-block;overflow:hidden;min-width:300px;max-width:300px;width:300px;"><% out.print(_relacionActual.getObjeto()); %></span>
 								<select id='pregunta_join_relacion' name="pregunta_join_relacion" onchange="actualizarSelect(this, document.getElementById('pregunta_join_instrumento'));">
 									<option selected="selected" value="-1">Seleccione...</option>
 									<%
@@ -294,31 +293,28 @@ if(_instrumentoSeleccionado == null){
 									}while(_enuPreguntas.hasMoreElements());
 									%>
 								</select>
-							<br /><label>Del instrumento: </label>
+							<br /><label>Instrumento 2: </label><span title="<% out.print(UtilidadesVarias.reemplazarCaracteres(_instrumentoSeleccionado.getObjeto(), "\"", "'")); %>" style="display:inline-block;overflow:hidden;min-width:300px;max-width:300px;width:300px;"><% out.print(_instrumentoSeleccionado.getObjeto()); %></span>
 								<select id='pregunta_join_instrumento' name="pregunta_join_instrumento">
-									<option selected="selected" value="-1">Seleccione pregunta de la colecci&oacute;n primero...</option>
+									<option selected="selected" value="-1">Seleccione el dato del instrumento 1 primero...</option>
 								</select><br /><p /><br />
 						<% } %>
-						<label><strong>Indique como desea pasar los datos del instrumento seleccionado a la colecci&oacute;n:</strong></label><br />
+						<label><strong>Indique como desea coleccionar los datos de ambos instrumentos:</strong></label><br />
 						<select id="forma_de_relacion_de_datos" name="forma_de_relacion_de_datos">
 							<% if(_relacionActual.getPreguntas(false).isEmpty()){ %>
-								<option value='1'>Todos los datos del instrumento pasar&aacute;n a la colecci&oacute;n.</option>
-								<option value='5'>Seg&uacute;n criterios personalizados se ingresar&aacute;n datos del instrumento en la colecci&oacute;n.</option>
+								<option value='1'>Todos los datos seleccionados del instrumento pasar&aacute;n a la colecci&oacute;n.</option>
+								<option value='5'>Seg&uacute;n criterios personalizados de b&uacute;squeda.</option>
 							<% }else{ %>
-								<optgroup label="Unir los datos del instrumento y de la colecci&oacute;n, de la forma:">
-									<option value='1'>Todos los datos del instrumento y la colecci&oacute;n.</option>
-									<option value='2'>Todos los datos de la colecci&oacute;n mas los del instrumento que coincidan en la primera.</option>
-									<option value='3'>Todos los datos del instrumento mas los de la colecci&oacute;n que coincidan en el primero.</option>
-									<option value='4'>Tomando &uacute;nicamente los datos de la colecci&oacute;n y del instrumento que coincidan.</option>
-									<option value='5'>Seg&uacute;n criterios personalizados se ingresar&aacute;n datos del instrumento en la colecci&oacute;n.</option>
-								</optgroup>
-								<optgroup label="Agregar datos del Instrumento, sobre las preguntas existentes, de la forma:">
-									<option value="6">Asociando preguntas del instrumento a preguntas existentes de la colecci&oacute;n.</option>
-								</optgroup>
+								<option value='1'>Todos los datos seleccionados producto de la uni&oacute;n de ambos instrumentos.</option>
+								<option value='2'>Todos los datos del instrumento 1 m&aacute;s los datos seleccionados del instrumento 2 que coincidan en el primero.</option>
+								<option value='3'>Todos los datos seleccionados del instrumento 2 m&aacute;s los datos del instrumento 1 que coincidan en el primero.</option>
+								<option value='4'>Todos los datos seleccionados producto de la intersecci&oacute;n de ambos instrumentos.</option>
+								<option value='7'>Todos los datos seleccionados producto del complemento de la intersecci&oacute;n de ambos instrumentos (O Exclusivo).</option>
+								<option value='5'>Seg&uacute;n criterios personalizados de b&uacute;squeda.</option>
+								<option value="6">Combinando ambos instrumentos, indicando las equivalencias entre los datos seleccionados.</option>
 							<% } %>
 						</select><p />
 						<% if(!_relacionActual.getPreguntas(false).isEmpty()){ %>
-							<input type="submit" value="Agregar" onclick="return validaForm(document.getElementById('forma_de_relacion_de_datos'), document.getElementById('pregunta_join_instrumento'));">
+							<input type="submit" value="Procesar" onclick="return validaForm(document.getElementById('forma_de_relacion_de_datos'), document.getElementById('pregunta_join_instrumento'));">
 						<% }else{ %>
 							<input type="submit" value="Procesar">
 						<% } %>

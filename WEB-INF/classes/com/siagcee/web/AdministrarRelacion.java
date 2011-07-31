@@ -366,6 +366,56 @@ public class AdministrarRelacion extends HttpServlet {
 						request.setAttribute("preguntaJoinInstrumento", _preguntaJoinInstrumento);
 
 						view = request.getRequestDispatcher("WEB-INF/vistas/adminrelaciones2.jsp");
+					}else if(_forma_de_relacion_de_datos == 7){
+						//or exclusive
+						_dP.setObjetoDestino(_instanciaDeRelacion);
+						_dP.setObjetoOrigen(_instanciaDeInstrumento);
+						_dP.setPreguntasDestino(_pregDeRelacion);
+						_dP.setPreguntasOrigen(_pregDeInstrumento);
+						String _sqlFiltro = "";
+
+						if(_preguntaJoinInstrumento.getTipoPregunta() < 30){
+							_sqlFiltro = "SELECT elaborado_por FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeInstrumento.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinInstrumento.getId()+"' AND id_respuestas_posibles NOT IN (SELECT id_respuestas_posibles FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeRelacion.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinRelacion.getId()+"')";
+						}else if(_preguntaJoinInstrumento.getTipoPregunta() == 33){
+							_sqlFiltro = "SELECT elaborado_por FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeInstrumento.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinInstrumento.getId()+"' AND respuesta_date NOT IN (SELECT respuesta_date FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeRelacion.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinRelacion.getId()+"')";
+						}else if(_preguntaJoinInstrumento.getTipoPregunta() == 31){
+							_sqlFiltro = "SELECT elaborado_por FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeInstrumento.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinInstrumento.getId()+"' AND respuesta_int NOT IN (SELECT respuesta_int FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeRelacion.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinRelacion.getId()+"')";
+						}else if(_preguntaJoinInstrumento.getTipoPregunta() == 32){
+							_sqlFiltro = "SELECT elaborado_por FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeInstrumento.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinInstrumento.getId()+"' AND respuesta_float NOT IN (SELECT respuesta_float FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeRelacion.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinRelacion.getId()+"')";
+						}else{
+							_sqlFiltro = "SELECT elaborado_por FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeInstrumento.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinInstrumento.getId()+"' AND respuesta_string NOT IN (SELECT respuesta_string FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeRelacion.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinRelacion.getId()+"')";
+						}
+
+						if(_dP.crearTempRespuestas(DuplicadorRespuestas.LIMPIAR_TEMPORALES_VIEJOS, _sqlFiltro) != DuplicadorRespuestas.CORRECTO){
+							_dP.cierraTempRespuestas();
+							//error
+						}else{
+							//correcto
+							//Paso a respuestas y cierro
+							if(_dP.cambiarPreguntaID() == DuplicadorRespuestas.CORRECTO){
+								//bien
+								if(_preguntaJoinInstrumento.getTipoPregunta() < 30){
+									_sqlFiltro = "SELECT elaborado_por FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeRelacion.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinRelacion.getId()+"' AND id_respuestas_posibles NOT IN (SELECT id_respuestas_posibles FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeInstrumento.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinInstrumento.getId()+"')";
+								}else if(_preguntaJoinInstrumento.getTipoPregunta() == 33){
+									_sqlFiltro = "SELECT elaborado_por FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeRelacion.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinRelacion.getId()+"' AND respuesta_date NOT IN (SELECT respuesta_date FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeInstrumento.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinInstrumento.getId()+"')";
+								}else if(_preguntaJoinInstrumento.getTipoPregunta() == 31){
+									_sqlFiltro = "SELECT elaborado_por FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeRelacion.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinRelacion.getId()+"' AND respuesta_int NOT IN (SELECT respuesta_int FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeInstrumento.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinInstrumento.getId()+"')";
+								}else if(_preguntaJoinInstrumento.getTipoPregunta() == 32){
+									_sqlFiltro = "SELECT elaborado_por FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeRelacion.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinRelacion.getId()+"' AND respuesta_float NOT IN (SELECT respuesta_float FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeInstrumento.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinInstrumento.getId()+"')";
+								}else{
+									_sqlFiltro = "SELECT elaborado_por FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeRelacion.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinRelacion.getId()+"' AND respuesta_string NOT IN (SELECT respuesta_string FROM respuestas WHERE id_instancia_objetos = '"+_instanciaDeInstrumento.getId()+"' AND id_instancia_preguntas = '"+_preguntaJoinInstrumento.getId()+"')";
+								}
+
+								_dP.deleteSegunSQL(_sqlFiltro);
+
+								_dP.deTempAProduccion();
+							}else{
+								//error
+							}
+							_dP.cierraTempRespuestas();
+						}
+
+						view = request.getRequestDispatcher("adminobjetos.do");
 					}
 				}
 				Vector _temp = InstanciaObjeto.todosObjetosInstanciados(admin, micon);
