@@ -78,6 +78,18 @@ public class Encuestado extends Usuario{
 		ingresaUsuario(this.Username, this.clave);
 	}
 
+	public void actualizaUsuario(){
+		try {
+			PreparedStatement pstmt = getConexion().prepareStatement("UPDATE usuarios set campo_clave = ? WHERE id_usuarios = ?");
+			pstmt.setString(1, this.getCampoClave());
+			pstmt.setInt(2, this.getUsuarioId());
+			pstmt.execute();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void ingresaUsuario(String _idPoblacion, String _campoClave){
 		try {
 			if(!_idPoblacion.equals("")){

@@ -70,6 +70,16 @@ function validarDouble(_nombreElem){
 
 var _listaDatos = new Array();
 
+function validarModificacionPregClave(){
+	var _sufix = '_<% out.print(encuestado.getUsuarioId()); %>';
+	if($("#modificacion_pregunta_clave_"+_sufix).val() != $("#modificacion_pregunta_clave2_"+_sufix).val()){
+		alert("Al modificar la pregunta clave es necesario que indique por duplicado el nuevo valor.");
+		$("#modificacion_pregunta_clave_"+_sufix).focus();
+		return false;
+	}
+	return true;
+}
+
 function validarRequeridos(){
 	//return true;
 	var _sufix = '_<% out.print(encuestado.getUsuarioId()); %>';
@@ -168,6 +178,9 @@ No ha indicado un censo o encuesta para participar.
 }else{
 	StringBuffer _pregTit = new StringBuffer();  //preguntas titulares inicio de pagina
 	StringBuffer _pregResp = new StringBuffer(); //preguntas a responder parte final de la pagina
+	StringBuffer _pregRespTemp; //para modificacion de pregunta clave
+	StringBuffer _pregRespTemp2; //para modificacion de pregunta clave
+
 	//lanzo el conjunto de preguntas
 	out.print("<h4><a name='top'>Responda las preguntas que se indican:</a></h4>");
 	%>
@@ -200,6 +213,9 @@ No ha indicado un censo o encuesta para participar.
 		while(_misPreg.hasMoreElements()){
 			//para verificar si se encontro una respuesta guardada previamente
 
+			_pregRespTemp = new StringBuffer();
+			_pregRespTemp2 = new StringBuffer();
+
 			respEncontrada = false;
 
 			miPreg = (InstanciaPregunta)_misPreg.nextElement();
@@ -215,7 +231,6 @@ No ha indicado un censo o encuesta para participar.
 
 			//muestro la pregunta
 			_pregResp.append("<p><label>"+miPreg.getTextoPregunta()+"</label><br />");
-
 
 			//+++++++++++++++
 			//seleccion simple
@@ -233,12 +248,18 @@ No ha indicado un censo o encuesta para participar.
 
 				if(miPreg.isCampo_clave_unico()){
 					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' readonly>");
+					_pregRespTemp.append("<select id='modificacion_pregunta_clave_"+_sufix+"' name='modificacion_pregunta_clave_"+_sufix+"'>");
+					_pregRespTemp2.append("<select id='modificacion_pregunta_clave2_"+_sufix+"' name='modificacion_pregunta_clave2_"+_sufix+"'>");
 				}else{
 					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"'>");
 				}
 				if(!respEncontrada || miRespDada.getRespuestaCerrada().getId() < 0){
 					//si no encontré respuesta este option va
 					_pregResp.append("<option value='-1' selected='selected'>Seleccione...</option>");
+					if(miPreg.isCampo_clave_unico()){
+						_pregRespTemp.append("<option value='-1' selected='selected'>Seleccione...</option>");
+						_pregRespTemp2.append("<option value='-1' selected='selected'>Seleccione...</option>");
+					}
 					try{
 						if((Boolean)_requerida.get(miPreg.getId())){
 							preguntaRequeridaSinRespuestaEncontrada = true;
@@ -256,15 +277,28 @@ No ha indicado un censo o encuesta para participar.
 						__misResp = (RespuestasPosibles)_misResp.nextElement();
 						if(respEncontrada && (miRespDada.getRespuestaCerrada().getId() == __misResp.getId())){
 							_pregResp.append("<option value='"+__misResp.getId()+"' selected='selected'>"+__misResp.getRespuesta()+"</option>");
+							if(miPreg.isCampo_clave_unico()){
+								_pregRespTemp.append("<option value='"+__misResp.getId()+"' selected='selected'>"+__misResp.getRespuesta()+"</option>");
+								_pregRespTemp2.append("<option value='"+__misResp.getId()+"' selected='selected'>"+__misResp.getRespuesta()+"</option>");
+							}
 							respEncontrada = false;
 							miRespDada = new Respuesta();
 						}else{
 							_pregResp.append("<option value='"+__misResp.getId()+"'>"+__misResp.getRespuesta()+"</option>");
+							if(miPreg.isCampo_clave_unico()){
+								_pregRespTemp.append("<option value='"+__misResp.getId()+"'>"+__misResp.getRespuesta()+"</option>");
+								_pregRespTemp2.append("<option value='"+__misResp.getId()+"'>"+__misResp.getRespuesta()+"</option>");
+							}
 						}
 					}
 				}catch(Exception e){e.printStackTrace();
 				}finally{
 					_pregResp.append("</select>");
+					if(miPreg.isCampo_clave_unico()){
+						_pregRespTemp.append("</select>");
+						_pregRespTemp2.append("</select>");
+						_pregResp.append(_pregRespTemp.toString()+_pregRespTemp2.toString());
+					}
 				}
 
 			//+++++++++++++++
@@ -284,6 +318,8 @@ No ha indicado un censo o encuesta para participar.
 
 				if(miPreg.isCampo_clave_unico()){
 					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' multiple readonly>");
+					_pregRespTemp.append("<select id='modificacion_pregunta_clave_"+_sufix+"' name='modificacion_pregunta_clave_"+_sufix+"' multiple readonly>");
+					_pregRespTemp2.append("<select id='modificacion_pregunta_clave2_"+_sufix+"' name='modificacion_pregunta_clave2_"+_sufix+"' multiple readonly>");
 				}else{
 					_pregResp.append("<select id='pregunta_"+miPreg.getId()+_sufix+"' name='pregunta_"+miPreg.getId()+_sufix+"' multiple>");
 				}
@@ -317,13 +353,24 @@ No ha indicado un censo o encuesta para participar.
 						}
 						if(_miEncontrado){
 							_pregResp.append("<option value='"+__misResp.getId()+"' selected='selected'>"+__misResp.getRespuesta()+"</option>");
+							_pregRespTemp.append("<option value='"+__misResp.getId()+"' selected='selected'>"+__misResp.getRespuesta()+"</option>");
+							_pregRespTemp2.append("<option value='"+__misResp.getId()+"' selected='selected'>"+__misResp.getRespuesta()+"</option>");
 						}else{
 							_pregResp.append("<option value='"+__misResp.getId()+"'>"+__misResp.getRespuesta()+"</option>");
+							if(miPreg.isCampo_clave_unico()){
+								_pregRespTemp.append("<option value='"+__misResp.getId()+"'>"+__misResp.getRespuesta()+"</option>");
+								_pregRespTemp2.append("<option value='"+__misResp.getId()+"'>"+__misResp.getRespuesta()+"</option>");
+							}
 						}
 					}
 				}catch(Exception e){e.printStackTrace();
 				}finally{
 					_pregResp.append("</select>");
+					if(miPreg.isCampo_clave_unico()){
+						_pregRespTemp.append("</select>");
+						_pregRespTemp2.append("</select>");
+						_pregResp.append(_pregRespTemp.toString()+_pregRespTemp2.toString());
+					}
 				}
 
 			//+++++++++++++++
@@ -345,6 +392,8 @@ No ha indicado un censo o encuesta para participar.
 
 				if(miPreg.isCampo_clave_unico()){
 					_pregResp.append(" readonly ");
+					_pregRespTemp.append("<input type='text' name='modificacion_pregunta_clave_"+_sufix+"' id='modificacion_pregunta_clave_"+_sufix+"'");
+					_pregRespTemp2.append("<input type='text' name='modificacion_pregunta_clave2_"+_sufix+"' id='modificacion_pregunta_clave2_"+_sufix+"'");
 				}
 				//+++++++++++++++
 				//pregunta abierta para texto
@@ -353,6 +402,10 @@ No ha indicado un censo o encuesta para participar.
 					if(!respEncontrada || miRespDada.getRespuestaAbiertaTexto().equals("")){
 						//si no encontré respuesta
 						_pregResp.append(" value=''>");
+						if(miPreg.isCampo_clave_unico()){
+							_pregRespTemp.append(" value=''>");
+							_pregRespTemp2.append(" value=''>");
+						}
 						try{
 							if((Boolean)_requerida.get(miPreg.getId())){
 								preguntaRequeridaSinRespuestaEncontrada = true;
@@ -361,6 +414,10 @@ No ha indicado un censo o encuesta para participar.
 					}else{
 						//si encontré respuesta
 						_pregResp.append(" value='"+miRespDada.getRespuestaAbiertaTexto()+"'>");
+						if(miPreg.isCampo_clave_unico()){
+							_pregRespTemp.append(" value='"+miRespDada.getRespuestaAbiertaTexto()+"'>");
+							_pregRespTemp2.append(" value='"+miRespDada.getRespuestaAbiertaTexto()+"'>");
+						}
 					}
 
 				//+++++++++++++++
@@ -370,6 +427,10 @@ No ha indicado un censo o encuesta para participar.
 					if(!respEncontrada || (miRespDada.getRespuestaAbiertaInt() == 0)){
 						//si no encontré respuesta
 						_pregResp.append(" value='' onblur='validarEntero(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
+						if(miPreg.isCampo_clave_unico()){
+							_pregRespTemp.append(" value='' onblur='validarEntero(\"modificacion_pregunta_clave_"+_sufix+"\");'>");
+							_pregRespTemp2.append(" value='' onblur='validarEntero(\"modificacion_pregunta_clave2_"+_sufix+"\");'>");
+						}
 						try{
 							if((Boolean)_requerida.get(miPreg.getId())){
 								preguntaRequeridaSinRespuestaEncontrada = true;
@@ -378,6 +439,10 @@ No ha indicado un censo o encuesta para participar.
 					}else{
 						//si encontré respuesta
 						_pregResp.append(" value='"+String.valueOf(miRespDada.getRespuestaAbiertaInt())+"' onblur='validarEntero(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
+						if(miPreg.isCampo_clave_unico()){
+							_pregRespTemp.append(" value='"+String.valueOf(miRespDada.getRespuestaAbiertaInt())+"' onblur='validarEntero(\"modificacion_pregunta_clave_"+_sufix+"\");'>");
+							_pregRespTemp2.append(" value='"+String.valueOf(miRespDada.getRespuestaAbiertaInt())+"' onblur='validarEntero(\"modificacion_pregunta_clave2_"+_sufix+"\");'>");
+						}
 					}
 
 				//+++++++++++++++
@@ -388,6 +453,10 @@ No ha indicado un censo o encuesta para participar.
 					if(!respEncontrada || miRespDada.getRespuestaAbiertaDouble() == 0F){
 						//si no encontré respuesta
 						_pregResp.append(" value='' onblur='validarDouble(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
+						if(miPreg.isCampo_clave_unico()){
+							_pregRespTemp.append(" value='' onblur='validarDouble(\"modificacion_pregunta_clave_"+_sufix+"\");'>");
+							_pregRespTemp2.append(" value='' onblur='validarDouble(\"modificacion_pregunta_clave2_"+_sufix+"\");'>");
+						}
 						try{
 							if((Boolean)_requerida.get(miPreg.getId())){
 								preguntaRequeridaSinRespuestaEncontrada = true;
@@ -396,6 +465,10 @@ No ha indicado un censo o encuesta para participar.
 					}else{
 						//si encontré respuesta
 						_pregResp.append(" value='"+_df.format(miRespDada.getRespuestaAbiertaDouble())+"' onblur='validarDouble(\"pregunta_"+miPreg.getId()+_sufix+"\");'>");
+						if(miPreg.isCampo_clave_unico()){
+							_pregRespTemp.append(" value='"+_df.format(miRespDada.getRespuestaAbiertaDouble())+"' onblur='validarDouble(\"modificacion_pregunta_clave_"+_sufix+"\");'>");
+							_pregRespTemp2.append(" value='"+_df.format(miRespDada.getRespuestaAbiertaDouble())+"' onblur='validarDouble(\"modificacion_pregunta_clave2_"+_sufix+"\");'>");
+						}
 					}
 
 				//+++++++++++++++
@@ -405,6 +478,10 @@ No ha indicado un censo o encuesta para participar.
 					if(!respEncontrada || miRespDada.getRespuestaAbiertaDate() == null){
 						//si no encontré respuesta
 						_pregResp.append(" value='' ");
+						if(miPreg.isCampo_clave_unico()){
+							_pregRespTemp.append(" value='' ");
+							_pregRespTemp2.append(" value='' ");
+						}
 						try{
 							if((Boolean)_requerida.get(miPreg.getId())){
 								preguntaRequeridaSinRespuestaEncontrada = true;
@@ -416,8 +493,23 @@ No ha indicado un censo o encuesta para participar.
 
 						String[] _respDate = miRespDada.getRespuestaAbiertaDate().toString().split("-");
 						_pregResp.append(" value='"+df.format(miRespDada.getRespuestaAbiertaDate())+"' ");
+						if(miPreg.isCampo_clave_unico()){
+							_pregRespTemp.append(" value='"+df.format(miRespDada.getRespuestaAbiertaDate())+"' ");
+							_pregRespTemp2.append(" value='"+df.format(miRespDada.getRespuestaAbiertaDate())+"' ");
+						}
 					}
 					_pregResp.append(" readonly onclick='if(self.gfPop)gfPop.fPopCalendar(document.getElementById(\"pregunta_"+miPreg.getId()+_sufix+"\"));return false;'>");
+					if(miPreg.isCampo_clave_unico()){
+						_pregRespTemp.append(" readonly onclick='if(self.gfPop)gfPop.fPopCalendar(document.getElementById(\"modificacion_pregunta_clave_"+_sufix+"\"));return false;'>");
+						_pregRespTemp2.append(" readonly onclick='if(self.gfPop)gfPop.fPopCalendar(document.getElementById(\"modificacion_pregunta_clave2_"+_sufix+"\"));return false;'>");
+					}
+				}
+				if(miPreg.isCampo_clave_unico()){
+					String _newHtml = "<img title='Haga clic aqu&iacute; para modificar la informaci&oacute;n en la pregunta clave' height='24' src='comunes/imagenes/modificar.png' onclick='$(\"#containerforkeypass\").toggle();'><div id='containerforkeypass'>";
+					_newHtml += "<table><tr>";
+					_newHtml += "<td>Actualice su pregunta clave:</td><td>"+_pregRespTemp.toString()+"</td></tr><tr><td>Confirme la respuesta:</td><td>"+_pregRespTemp2.toString()+"</td>";
+					_newHtml += "</tr></table></div>";
+					_pregResp.append(_newHtml);
 				}
 			}
 		}
@@ -431,7 +523,7 @@ No ha indicado un censo o encuesta para participar.
 		out.println(_pregResp);
 		%>
 		<p />
-		<input type='submit' value='Finalizar' onclick="return validarRequeridos();">
+		<input type='submit' value='Finalizar' onclick="return validarRequeridos()&&validarModificacionPregClave();">
 		</form>
 		<iframe name='gToday:contrast:agenda.js' id='gToday:contrast:agenda.js' src='Contrast/ipopeng.htm' style='visibility: visible; z-index: 999; position: absolute; top: -500px; left: -500px;' scrolling='no' frameborder='0' height='142' width='132'>
 		</iframe>

@@ -55,6 +55,13 @@ public class UserObjetos extends HttpServlet {
 
 				String _sufix = "_"+String.valueOf(encuestado.getUsuarioId());
 				if(_accion.equals("insertar")){
+					//hay campo clave unico update? hago las actualizaciones sobre tabla usuarios
+					if(!request.getParameter("modificacion_pregunta_clave_"+_sufix).trim().equals("") &&
+						   request.getParameter("modificacion_pregunta_clave_"+_sufix).trim().equals(request.getParameter("modificacion_pregunta_clave2_"+_sufix).trim())){
+						encuestado.setCampoClave(request.getParameter("modificacion_pregunta_clave_"+_sufix));
+						encuestado.actualizaUsuario();
+					}
+
 					view = request.getRequestDispatcher("WEB-INF/vistas/userobjetos.jsp");
 					//Vector _temporalPreguntas = _miIns.getObjetoAsociado().getPreguntas(true);
 					//Collections.sort(_temporalPreguntas, new OrdenadorInstanciaPreguntas());
@@ -73,12 +80,17 @@ public class UserObjetos extends HttpServlet {
 						miResp.asociarInstanciaObjeto(_miIns);
 						miResp.asociarInstanciaPregunta(miPreg);
 
+						String valorRespuesta = (String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix).trim();
+						if(miPreg.isCampo_clave_unico() && !request.getParameter("modificacion_pregunta_clave_"+_sufix).trim().equals("")){
+							valorRespuesta = (String)request.getParameter("modificacion_pregunta_clave_"+_sufix).trim();
+						}
+
 						if(miPreg.getTipoPregunta() == 1){
 						  //seleccion simple
 							try{
-								if(!((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("") &&
-									   !((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("-1")){
-									miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix))));
+								if(!(valorRespuesta).equals("") &&
+									   !(valorRespuesta).equals("-1")){
+									miResp.setRespuesta(new RespuestasPosibles(encuestado, micon, Integer.parseInt(valorRespuesta)));
 								}else{
 									if(miPregEd.isRequerida() || miPreg.isCampo_clave_unico()){
 										Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
@@ -126,11 +138,11 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 30){
 							//abierta texto
 							try{
-								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
+								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && (valorRespuesta).equals("")){
 									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
 									break;
 								}
-								miResp.setRespuesta((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix));
+								miResp.setRespuesta(valorRespuesta);
 							}catch(Exception e){
 								//e.printStackTrace();
 								miResp.delRespuesta();
@@ -138,11 +150,11 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 31){
 							//abierta int
 							try{
-								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
+								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && (valorRespuesta).equals("")){
 									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
 									break;
 								}
-								miResp.setRespuesta(Long.parseLong((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)));
+								miResp.setRespuesta(Long.parseLong(valorRespuesta));
 							}catch(Exception e){
 								//e.printStackTrace();
 								miResp.delRespuesta();
@@ -150,11 +162,11 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 32){
 							//abierta Double
 							try{
-								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals("")){
+								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && (valorRespuesta).equals("")){
 									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
 									break;
 								}
-								miResp.setRespuesta(Double.parseDouble((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)));
+								miResp.setRespuesta(Double.parseDouble(valorRespuesta));
 							}catch(Exception e){
 								miResp.delRespuesta();
 								//e.printStackTrace();
@@ -162,9 +174,9 @@ public class UserObjetos extends HttpServlet {
 						}else if(miPreg.getTipoPregunta() == 33){
 							//abierta date
 							try{
-								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && !(((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).equals(""))){
+								if((miPregEd.isRequerida() || miPreg.isCampo_clave_unico()) && !((valorRespuesta).equals(""))){
 									SimpleDateFormat _temp = new SimpleDateFormat("yyyy-MM-dd");
-									String[] _fechaFormateada = ((String)request.getParameter("pregunta_"+String.valueOf(miPreg.getId())+_sufix)).split("-");
+									String[] _fechaFormateada = (valorRespuesta).split("-");
 									miResp.setRespuesta(_temp.parse(_fechaFormateada[2]+"-"+_fechaFormateada[1]+"-"+_fechaFormateada[0]));
 								}else{
 									Respuesta.delRespuestasDeUsuario(encuestado, micon, _miIns);
@@ -187,7 +199,7 @@ public class UserObjetos extends HttpServlet {
 					view.forward(request, response);
 				}
 			}catch(Exception e){
-				//e.printStackTrace();
+				e.printStackTrace();
 				view = request.getRequestDispatcher("autenticarusuario.do");
 				view.forward(request, response);
 			}
