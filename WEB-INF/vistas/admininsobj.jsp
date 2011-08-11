@@ -152,10 +152,10 @@ if(_miIns != null){
 							Detalle
 						</th>
 						<th style="max-width:175px;" valign="top" width="175">
-							Invitar a Nuevos Usuarios
+							Invitar Nuevos Usuarios
 						</th>
-						<th style="max-width:65px;" valign="top" width="65">
-							Modificar
+						<th style="max-width:75px;" valign="top" width="75">
+							Modificar Publicaci&oacute;n
 						</th>
 						<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
 						<th style="max-width:45px;" valign="top" width="45">
@@ -260,10 +260,10 @@ if(_miIns != null){
 							Detalle
 						</th>
 						<th style="max-width:175px;" valign="top" width="175">
-							Invitar a Nuevos Usuarios
+							Invitar Nuevos Usuarios
 						</th>
-						<th style="max-width:65px;" valign="top" width="65">
-							Modificar
+						<th style="max-width:75px;" valign="top" width="75">
+							Modificar Publicaci&oacute;n
 						</th>
 						<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
 						<th style="max-width:45px;" valign="top" width="45">
@@ -371,8 +371,8 @@ if(_miIns != null){
 						<th style="max-width:50px;" valign="top" width="50">
 							Detalle
 						</th>
-						<th style="max-width:60px;" valign="top" width="45">
-							Reenviar
+						<th style="max-width:70px;" valign="top" width="70">
+							Republicar
 						</th>
 						<% if(admin.getTipoUsuario().equals("superadministrador")){ %>
 						<th style="max-width:45px;" valign="top" width="45">
