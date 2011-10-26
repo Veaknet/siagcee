@@ -522,6 +522,8 @@ public class AplicadorEstudios extends HttpServlet {
 						//actualizo las respuestas
 						InstanciaPregunta _insPreg = EstudioPerso.getInstance().retornaPreguntaAsociada();
 
+						Respuesta.delRespuesta(micon, EstudioPerso.getInstance().get_obj(), _insPreg);
+
 						HashMap _respuestas = EstudioPerso.getInstance().getHashMapResultados();
 						Iterator _ite = _respuestas.entrySet().iterator();
 						PreparedStatement pstmt = null;
@@ -531,17 +533,12 @@ public class AplicadorEstudios extends HttpServlet {
 							if(_temp.getValue() == null){continue;}
 							String resultad = (String)(_temp.getValue());
 
-							pstmt = micon.prepareStatement("UPDATE respuestas SET respuesta_string = ? WHERE elaborado_por = ? AND id_instancia_objetos = ? AND id_instancia_preguntas = ?");
-							pstmt.setString(1, resultad);
-							pstmt.setInt(2, encuestado);
-							pstmt.setInt(3, EstudioPerso.getInstance().get_obj().getId());
-							if(_insPreg != null){
-								pstmt.setInt(4, _insPreg.getId());
-							}else{
-								pstmt.setInt(4, -1);
-							}
+							Respuesta _respNueva = new Respuesta(new Encuestado(micon, encuestado),  micon);
+							_respNueva.setElaborado_por(encuestado);
+							_respNueva.asociarInstanciaPregunta(_insPreg);
+							_respNueva.asociarInstanciaObjeto(EstudioPerso.getInstance().get_obj());
+							_respNueva.setRespuesta(resultad);
 
-							pstmt.execute();
 						}
 
 					}
