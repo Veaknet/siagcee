@@ -21,11 +21,12 @@ function agregarRespuesta(){
 
 	var selIndex = _externas.selectedIndex;
 	if (selIndex != -1){
-		for(var i=_externas.length-1; i>=0; i--){
+		for(var i=0; i<_externas.length; i++){
 			if(_externas.options[i].selected){
 				var newOpt = new Option(_externas.options[i].text, _externas.options[i].value);
 				_deseadas.options[_deseadas.length] = newOpt;
 				_externas.options[i] = null;
+				i--;
 			}
 		}
 	}
@@ -99,6 +100,16 @@ if(filtrarinstrumento){
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#link_preguntas").css("color","red");
+		$("#listadoRespuestasExternas").dblclick(
+			function(){
+				agregarRespuesta();
+			}
+		);
+		$("#formListadoRespuestasDeseadas").dblclick(
+			function(){
+				eliminarRespuesta();
+			}
+		);
 	});
 </script>
 

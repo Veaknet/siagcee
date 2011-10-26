@@ -617,9 +617,9 @@ if(!_mensaje.equals("")){
 									<a href="#" title="Agregar una Nueva Pregunta" alt="Agregar una Nueva Pregunta" onclick="habilitarInsertDiv();"><label>Agregar una Nueva Pregunta.</label></a>
 								<% } %>
 								<% if(!objetoatrabajar.getClass().toString().contains("Relacion")){ %>
-									<br /><a href="adminobjetos3.do?tipoinstrumento=<% out.print(_tipoinstrumento);%>&opcionbase=<% out.print(_opcionBase);%>&objetoseleccionado=<% out.print(objetoatrabajar.getId()); %>" title="Importar Preguntas desde Otro <% out.print(_elemento);%>" ><label>Importar Preguntas desde <% if(_elemento.equals("estructura")){out.print("Otra Estructura");}else{out.print("Otro Instrumento o Estructura Base");} %>.</label></a>
+									<br /><a href="adminobjetos3.do?tipoinstrumento=<% out.print(_tipoinstrumento);%>&opcionbase=<% out.print(_opcionBase);%>&objetoseleccionado=<% out.print(objetoatrabajar.getId()); %>" title="Importar Preguntas desde otro <% out.print(_elemento);%>" ><label>Importar Preguntas desde <% if(_elemento.equals("estructura")){out.print("otra Estructura Base");}else{out.print("otro Instrumento o Estructura Base");} %>.</label></a>
 								<% }else{ %>
-									<a href="adminrelaciones.do?tipoinstrumento=<% out.print(_tipoinstrumento);%>&opcionbase=<% out.print(_opcionBase);%>&objetoseleccionado=<% out.print(objetoatrabajar.getId()); %>" title="Coleccionar Preguntas de Instrumentos"><label>Coleccionar Datos De Instrumentos.</label></a><br />
+									<a href="adminrelaciones.do?tipoinstrumento=<% out.print(_tipoinstrumento);%>&opcionbase=<% out.print(_opcionBase);%>&objetoseleccionado=<% out.print(objetoatrabajar.getId()); %>" title="Coleccionar Preguntas de Instrumentos"><label>Coleccionar Datos de Instrumentos.</label></a><br />
 								<%
 									Enumeration _enuthis = InstanciaObjeto.todosObjetosInstanciados(objetoatrabajar.getUsuario(), objetoatrabajar.getConexion(), false, 0).elements();
 									InstanciaObjeto _instanciaDeRelacion = null;
@@ -630,7 +630,7 @@ if(!_mensaje.equals("")){
 										}
 									}
 								%>
-									<a href='admininsobj.do?objetoatrabajar=<% out.print(_instanciaDeRelacion.getId()); %>&accion=seleccionar&soloeste=true&accioninvitar=false&invitar=<% out.print(_instanciaDeRelacion.getId()); %>'>Revisar Todos Los Datos Coleccionados</a>
+									<a href='admininsobj.do?objetoatrabajar=<% out.print(_instanciaDeRelacion.getId()); %>&accion=seleccionar&soloeste=true&accioninvitar=false&invitar=<% out.print(_instanciaDeRelacion.getId()); %>'>Revisar Todos los Datos Coleccionados</a>
 								<% } %>
 							</td>
 						</tr>

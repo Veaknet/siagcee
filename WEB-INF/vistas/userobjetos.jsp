@@ -401,10 +401,10 @@ No ha indicado un censo o encuesta para participar.
 				if(miPreg.getTipoPregunta() == 30){
 					if(!respEncontrada || miRespDada.getRespuestaAbiertaTexto().equals("")){
 						//si no encontré respuesta
-						_pregResp.append(" value=''>");
+						_pregResp.append(" value='' size='50'>");
 						if(miPreg.isCampo_clave_unico()){
-							_pregRespTemp.append(" value=''>");
-							_pregRespTemp2.append(" value=''>");
+							_pregRespTemp.append(" value='' size='50'>");
+							_pregRespTemp2.append(" value='' size='50'>");
 						}
 						try{
 							if((Boolean)_requerida.get(miPreg.getId())){
@@ -413,10 +413,10 @@ No ha indicado un censo o encuesta para participar.
 						}catch (Exception noReq){}
 					}else{
 						//si encontré respuesta
-						_pregResp.append(" value='"+miRespDada.getRespuestaAbiertaTexto()+"'>");
+						_pregResp.append(" value='"+miRespDada.getRespuestaAbiertaTexto()+"' size='50'>");
 						if(miPreg.isCampo_clave_unico()){
-							_pregRespTemp.append(" value='"+miRespDada.getRespuestaAbiertaTexto()+"'>");
-							_pregRespTemp2.append(" value='"+miRespDada.getRespuestaAbiertaTexto()+"'>");
+							_pregRespTemp.append(" value='"+miRespDada.getRespuestaAbiertaTexto()+"' size='50'>");
+							_pregRespTemp2.append(" value='"+miRespDada.getRespuestaAbiertaTexto()+"' size='50'>");
 						}
 					}
 

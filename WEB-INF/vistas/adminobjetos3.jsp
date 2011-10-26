@@ -19,16 +19,17 @@ function agregarPregunta(){
 	var _externas = document.getElementById("listadoPreguntasExternas");
 	var _deseadas = document.getElementById("listadoPreguntasDeseadas");
 
-  var selIndex = _externas.selectedIndex;
-  if (selIndex != -1){
-    for(var i=_externas.length-1; i>=0; i--){
-      if(_externas.options[i].selected){
-	      var newOpt = new Option(_externas.options[i].text, _externas.options[i].value);
-        _deseadas.options[_deseadas.length] = newOpt;
-        _externas.options[i] = null;
-      }
-    }
-  }
+	var selIndex = _externas.selectedIndex;
+	if (selIndex != -1){
+		for(var i=0; i<_externas.length; i++){
+			if(_externas.options[i].selected){
+				var newOpt = new Option(_externas.options[i].text, _externas.options[i].value);
+				_deseadas.options[_deseadas.length] = newOpt;
+				_externas.options[i] = null;
+				i--;
+			}
+		}
+	}
 }
 
 function eliminarPregunta(){
@@ -112,6 +113,16 @@ if(_tipoinstrumento.equals("estructura")){
 		<% if(_tipoinstrumento.equals("estructura")){ %>
 		$("#link_estructuras").css("color","red");
 		<% } %>
+		$("#listadoPreguntasExternas").dblclick(
+			function(){
+				agregarPregunta();
+			}
+		);
+		$("#formListadoPreguntasDeseadas").dblclick(
+			function(){
+				eliminarPregunta();
+			}
+		);
 	});
 </script>
 

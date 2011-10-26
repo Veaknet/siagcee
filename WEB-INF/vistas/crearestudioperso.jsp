@@ -421,7 +421,7 @@ $(document).ready(function(){
 					<form id="expor" method="post" action="#" target="_blank" class="hideprint">
 					<input type="hidden" value="" id="exportar" name="exportar">
 					<input type="hidden" value="<% out.print(_objTrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
-					<input type="hidden" value="<% out.print(_codigo); %>" id="codigoestudio" name="codigoestudio">
+					<input type="hidden" value='<% out.print(_codigo); %>' id="codigoestudio" name="codigoestudio">
 					<a href="javascript:void(null);" onclick="$('#expor').attr('action', 'est_archivo.pdf');$('#exportar').val('exportapdf');$('#guardar').val('');$('#expor').submit();"><img height="24" src="comunes/imagenes/pdf.png" alt="Exportar estos datos a pdf" title="Exportar estos datos a pdf"/></a>
 					&nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#expor').attr('action', 'est_archivo.docx');$('#exportar').val('exportaword');$('#guardar').val('');$('#expor').submit();"><img height="24" src="comunes/imagenes/word.png" alt="Exportar estos datos a word" title="Exportar estos datos a word"/></a>
 					&nbsp;&nbsp;<a href="javascript:void(null);" onclick="$('#expor').attr('action', 'est_archivo.xls');$('#exportar').val('exportaexcel');$('#guardar').val('');$('#expor').submit();"><img height="24" src="comunes/imagenes/excel.png" alt="Exportar estos datos a excel" title="Exportar estos datos a excel"/></a>
@@ -445,7 +445,7 @@ $(document).ready(function(){
 					<form id="formestudios" method="post" action="crearestudioperso" onsubmit="if(document.getElementById('titulo').value==''){alert('Debe indicar el titulo.');document.getElementById('titulo').focus();return false;}if(document.getElementById('acronimo').value==''){alert('Debe indicar el acronimo.');document.getElementById('acronimo').focus();return false;}" class="hideprint">
 						<input type="hidden" value="true" id="guardar" name="guardar">
 						<input type="hidden" value="<% out.print(_objTrabajar.getId()); %>" id="objetoatrabajar" name="objetoatrabajar">
-						<input type="hidden" value="<% out.print(_codigo); %>" id="codigoestudio" name="codigoestudio">
+						<input type="hidden" value='<% out.print(_codigo); %>' id="codigoestudio" name="codigoestudio">
 						<table>
 							<tr>
 								<td>
