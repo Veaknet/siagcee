@@ -213,7 +213,7 @@ public class GeneradorSQL extends HttpServlet{
 
 				}else{
 					//es abierta, depende del tipo de dato esperado
-					if(_insPregunta.getTipoPregunta() == 30){
+					if(_insPregunta.getTipoPregunta() == 30 || _insPregunta.getTipoPregunta() == 100){
 						//abierta con texto
 						_sqltmp.append(" respuestas.respuesta_string ");
 						_sqltmp.append(_operador);
