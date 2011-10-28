@@ -295,7 +295,15 @@ Vector _listadoPreguntas = new Vector();
 if(request.getAttribute("listadoPreguntas") != null){
 	_listadoPreguntas = (Vector)request.getAttribute("listadoPreguntas");
 	Collections.sort(_listadoPreguntas, new OrdenadorInstanciaPreguntas());
-	out.println("<script type='text/javascript'>contador_preguntas = "+_listadoPreguntas.size()+";</script>");
+	Enumeration ee = _listadoPreguntas.elements();
+	int contador = 0;
+	while(ee.hasMoreElements()){
+		InstanciaPregunta _insPre = (InstanciaPregunta)ee.nextElement();
+		if(_insPre.getTipoPregunta() == 100){
+			contador++;
+		}
+	}
+	out.println("<script type='text/javascript'>contador_preguntas = "+(_listadoPreguntas.size()-contador)+";</script>");
 }
 
 Vector _listadoEstudios = new Vector();
